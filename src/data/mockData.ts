@@ -1,4 +1,4 @@
-import seedRaw from './seed.json';
+import seedRaw from '../../scripts/seed.health.json';
 import type {
   AppState, Program, Action, BudgetItemOBZ, LogicalFramework, ProcessMap,
   Mirror, SelectionLists, SupportList,
@@ -11,6 +11,18 @@ const seed: any = seedRaw;
 // ---------------------------------------------------------------------------
 const slug = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '').slice(0, 24);
 const codeOf = (s: string) => (s.match(/^\s*([\w.]+)/)?.[1] || s).trim();
+const programCodeOf = (s: string) => {
+  const digits = codeOf(s).match(/\d+/)?.[0] || '';
+  return digits ? String(Number(digits)).padStart(3, '0') : codeOf(s);
+};
+const actionCodeOf = (s: string) => {
+  const digits = codeOf(s).match(/\d+/)?.[0] || '';
+  return digits ? String(Number(digits)) : codeOf(s);
+};
+const labelOfUo = (codigo?: string, nome?: string) => {
+  const c = String(codigo || '').replace(/^0+/, '') || String(codigo || '');
+  return `${c} - ${nome || 'Unidade orçamentária'}`;
+};
 const uoLabel: Record<string, string> = {
   'FES/SES': '4291 — Fundo Estadual de Saúde (SES)',
   SEJUSP: '1451 — Sec. de Justiça e Segurança Pública (SEJUSP)',
@@ -196,42 +208,127 @@ const MAP_105: ProcessMap = {
 // ---------------------------------------------------------------------------
 // Programas/Ações/OBZ reais a partir do seed (4 órgãos)
 // ---------------------------------------------------------------------------
-const programs: Program[] = [PROG_105];
-const actions: Action[] = [ACT_1029];
-const budgetItems: BudgetItemOBZ[] = [...OBZ_105];
+const uniq = (a: string[]) => Array.from(new Set(a.filter(Boolean)));
+const programs: Program[] = [];
+const actions: Action[] = [];
+const budgetItems: BudgetItemOBZ[] = [];
 
-const progIndex = new Map<string, string>(); // chave org|progcod -> programId
-const actIndex = new Map<string, string>();  // chave progcod|acaocod -> actionId
+const progIndex = new Map<string, string>(); // progcod -> programId
+const actIndex = new Map<string, string>();  // progcod|acaocod -> actionId
 
-for (const it of seed.obzItems as any[]) {
-  const uo = uoLabel[it.org] || it.org;
-  const pCode = codeOf(it.programa);
-  const pKey = `${it.org}|${pCode}`;
-  let programId = progIndex.get(pKey);
+const upsertProgram = (pCode: string, nome: string, data: any = {}) => {
+  let programId = progIndex.get(pCode);
   if (!programId) {
-    programId = `prog-${slug(it.org)}-${pCode}`;
-    progIndex.set(pKey, programId);
+    programId = `prog-saude-${pCode}`;
+    progIndex.set(pCode, programId);
     programs.push({
-      id: programId, codigo: pCode, nome: it.programa.replace(/^[\w.]+\s*-\s*/, ''),
-      unidadeOrcamentaria: uo, orgao: it.org, problemaCentral: '', objetivo: '', justificativa: '',
-      publicoAlvo: '', contexto: '', resultados: [], impactos: [], status: 'RASCUNHO',
+      id: programId,
+      codigo: pCode,
+      nome,
+      unidadeAdministrativa: data.unidadeAdministrativa || '',
+      unidadeOrcamentaria: data.unidadeOrcamentaria || '4291 - Fundo Estadual de Saúde (SES)',
+      orgao: data.orgao || 'SAÚDE',
+      areaTematica: data.areaTematica || 'Saúde',
+      problemaCentral: '',
+      objetivo: '',
+      justificativa: data.justificativa || '',
+      publicoAlvo: '',
+      contexto: '',
+      horizonteTemporal: '',
+      tipoPrograma: '',
+      indicador: '',
+      resultados: [],
+      impactos: [],
+      status: 'RASCUNHO',
     });
   }
-  const aCode = codeOf(it.acao);
+  return programId;
+};
+
+const upsertAction = (programId: string, pCode: string, aCode: string, nome: string, data: any = {}) => {
   const aKey = `${pCode}|${aCode}`;
   let actionId = actIndex.get(aKey);
   if (!actionId) {
-    actionId = `act-${slug(it.org)}-${aCode}`;
+    actionId = `act-saude-${pCode}-${aCode}`;
     actIndex.set(aKey, actionId);
-    const det = (seed.acaoDetails as any)[aCode] || {};
     actions.push({
-      id: actionId, codigo: aCode, nome: it.acao.replace(/^[\w.]+\s*-\s*/, ''), programaId: programId,
-      unidadeOrcamentaria: uo, orgao: it.org, funcao: det.funcao || '', subfuncao: det.subfuncao || '',
-      tipoAcao: det.tipoAcao || '', iag: det.iag || '', publicoAlvo: det.publicoAlvo || '',
-      produto: det.produto || '', especificacaoProduto: det.especificacao || '', unidadeMedida: det.unidadeMedida || '',
-      finalidade: det.finalidade || '', descricao: det.descricao || '', baseLegal: det.baseLegal || '', status: 'RASCUNHO',
+      id: actionId,
+      codigo: aCode,
+      nome,
+      programaId: programId,
+      unidadeAdministrativa: data.unidadeAdministrativa || '',
+      unidadeOrcamentaria: data.unidadeOrcamentaria || '4291 - Fundo Estadual de Saúde (SES)',
+      codigoUnidadeOrcamentaria: data.codigoUnidadeOrcamentaria || '',
+      orgao: data.orgao || 'SAÚDE',
+      codigoOrgao: data.codigoOrgao || '',
+      funcao: data.funcao || '',
+      subfuncao: data.subfuncao || '',
+      tipoAcao: data.tipoAcao || '',
+      iag: data.iag || '',
+      publicoAlvo: data.publicoAlvo || '',
+      relacaoMulher: data.relacaoMulher || '',
+      produto: data.produto || '',
+      especificacaoProduto: data.especificacaoProduto || data.especificacao || '',
+      codigoProduto: data.codigoProduto || '',
+      unidadeMedida: data.unidadeMedida || '',
+      finalidade: data.finalidade || '',
+      descricao: data.descricao || '',
+      detalhamentoImplementacao: data.detalhamentoImplementacao || '',
+      baseLegal: data.baseLegal || '',
+      status: 'RASCUNHO',
     });
   }
+  return actionId;
+};
+
+for (const it of ((seed.healthActions as any[]) || [])) {
+  const pCode = programCodeOf(it.programaCodigo);
+  const aCode = actionCodeOf(it.acaoCodigo);
+  const unidadeAcao = labelOfUo(it.codigoUnidadeAcao, it.unidadeAcao);
+  const programId = upsertProgram(pCode, it.programaNome, {
+    unidadeOrcamentaria: labelOfUo(it.codigoUnidadePrograma, it.unidadePrograma),
+    orgao: it.setorGoverno || 'SAÚDE',
+    areaTematica: it.areaTematica || 'Saúde',
+    justificativa: it.programaJustificativa || '',
+  });
+  upsertAction(programId, pCode, aCode, it.acaoNome, {
+    unidadeAdministrativa: it.unidadeAdministrativa || '',
+    unidadeOrcamentaria: unidadeAcao,
+    codigoUnidadeOrcamentaria: it.codigoUnidadeAcao || '',
+    codigoOrgao: it.codigoUnidadePrograma || '',
+    orgao: it.setorGoverno || 'SAÚDE',
+    funcao: it.funcao,
+    subfuncao: it.subfuncao,
+    tipoAcao: it.tipoAcao,
+    iag: it.iag,
+    publicoAlvo: it.publicoAlvo,
+    relacaoMulher: it.politicaMulheres,
+    produto: it.produto,
+    especificacaoProduto: it.especificacaoProduto,
+    codigoProduto: it.produtoCodigo,
+    unidadeMedida: it.unidadeMedida,
+    finalidade: it.finalidade,
+    descricao: it.descricao,
+    baseLegal: it.baseLegal,
+  });
+}
+
+for (const it of seed.obzItems as any[]) {
+  const uo = it.org === 'FES/SES' ? '4291 - Fundo Estadual de Saúde (SES)' : (uoLabel[it.org] || it.org);
+  const pCode = programCodeOf(it.programa);
+  const programId = upsertProgram(pCode, it.programa.replace(/^[\w.]+\s*-\s*/, ''), {
+    unidadeOrcamentaria: uo,
+    orgao: it.org,
+    areaTematica: 'Saúde',
+  });
+  const aCode = actionCodeOf(it.acao);
+  const det = (seed.acaoDetails as any)[aCode] || {};
+  const actionId = upsertAction(programId, pCode, aCode, it.acao.replace(/^[\w.]+\s*-\s*/, ''), {
+    unidadeOrcamentaria: uo,
+    codigoUnidadeOrcamentaria: '04291',
+    orgao: it.org,
+    ...det,
+  });
   budgetItems.push({
     id: `obz-${slug(it.org)}-${aCode}-${budgetItems.length}`,
     unidadeOrcamentaria: uo, programaId: programId, actionId, acaoLabel: it.acao,
@@ -240,14 +337,44 @@ for (const it of seed.obzItems as any[]) {
     precoUnitario: it.precoUnitario, frequenciaPagamento: it.frequencia, valorTotal: it.valorTotal,
     classificacaoCenario: it.classificacao, novo: !!it.novo, descricaoCenario: it.descricaoCenario,
     riscoNaoFazer: it.risco, beneficioAoFazer: it.beneficio, prioridadeN3: it.pN3, prioridadeN2: it.pN2,
-    prioridadeN1: it.pN1, observacoes: '', statusValidacao: 'EM PREENCHIMENTO',
+    prioridadeN1: it.pN1, observacoes: `N2: ${it.n2 || '-'} | N3: ${it.n3 || '-'}`,
+    cotaAprovada: it.deliberacaoCofin != null ? Number(it.deliberacaoCofin) > 0 : undefined,
+    statusValidacao: 'EM PREENCHIMENTO',
   });
 }
+
+for (const p of programs) {
+  const publics = uniq(actions.filter((a) => a.programaId === p.id).map((a) => a.publicoAlvo));
+  if (!p.publicoAlvo) p.publicoAlvo = publics.join('; ');
+}
+
+const maps: ProcessMap[] = programs.map((p) => ({
+  programId: p.id,
+  problemaCentral: p.problemaCentral,
+  contexto: [],
+  premissas: [],
+  resultados: [],
+  impactos: [],
+  actions: actions.filter((a) => a.programaId === p.id).map((a) => ({
+    id: a.id,
+    codigo: a.codigo,
+    nome: a.nome,
+    objetivo: a.finalidade || a.descricao || '',
+    publicoAlvo: a.publicoAlvo || '',
+    recursos: [],
+    atividades: [],
+    produtos: a.produto ? [{ id: `prod-${a.id}`, texto: a.produto, categoria: a.unidadeMedida ? `Unidade: ${a.unidadeMedida}` : undefined }] : [],
+    pressupostos: [],
+    riscos: [],
+  })),
+  status: 'RASCUNHO',
+}));
+
+const defaultProgramId = progIndex.get('063') || programs[0]?.id || '';
 
 // ---------------------------------------------------------------------------
 // Listas de seleção
 // ---------------------------------------------------------------------------
-const uniq = (a: string[]) => Array.from(new Set(a.filter(Boolean)));
 const lists: SelectionLists = {
   unidades: uniq([
     '1481 — Fundação de Arte de Ouro Preto', '1261 — Secretaria de Estado de Educação (SEE)',
@@ -329,7 +456,7 @@ const mirrors: Mirror[] = [{
 // ---------------------------------------------------------------------------
 export const initialState: AppState = {
   perfil: 'Técnico do Órgão',
-  unidade: '1481 — Fundação de Arte de Ouro Preto',
-  currentProgramId: 'prog-105',
-  programs, actions, frameworks: [FW_105], maps: [MAP_105], budgetItems, links: [], mirrors, support, lists,
+  unidade: '4291 - Fundo Estadual de Saúde (SES)',
+  currentProgramId: defaultProgramId,
+  programs, actions, frameworks: [], maps, budgetItems, links: [], mirrors: [], support, lists,
 };
