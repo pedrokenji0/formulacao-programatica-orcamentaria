@@ -18,7 +18,7 @@ function emptyFw(programId: string): LogicalFramework {
   };
 }
 
-export function MarcoLogicoPage({ initialTab }: { initialTab?: string }) {
+export function MarcoLogicoPage({ initialTab, embedded = false }: { initialTab?: string; embedded?: boolean }) {
   const { state, update, can, setCurrentProgram } = useApp();
   const toast = useToast();
   const [tab, setTab] = useState(initialTab || 'teoria');
@@ -67,15 +67,16 @@ export function MarcoLogicoPage({ initialTab }: { initialTab?: string }) {
   };
 
   const tabs = [
-    { id: 'teoria', label: 'Teoria / Preenchimento' },
+    ...(!embedded ? [{ id: 'teoria', label: 'Teoria / Preenchimento' }] : []),
     { id: 'arvores', label: 'Árvores' },
     { id: 'alternativas', label: 'Análise de Alternativas e Síntese' },
+    { id: 'envolvidos', label: 'Análise de Envolvidos' },
   ];
 
   return (
     <>
-      <PageHeader crumb="1.1 Programação Qualitativa" title="Teoria do Problema e desenho do programa"
-        sub="Preenchimento enxuto para construir as duas árvores, escolher alternativas e preparar o Mapa de Processos e Resultados." status={fw.status} />
+      {!embedded && <PageHeader crumb="1.1 Programação Qualitativa" title="Ferramentas de análise do programa"
+        sub="Ferramentas opcionais para apoiar o desenho do programa." status={fw.status} />}
       <Tabs tabs={tabs} active={tab} onChange={setTab} />
 
       {tab === 'teoria' && <TeoriaTab fw={fw} prog={prog} programs={state.programs} editable={editable}
@@ -84,6 +85,7 @@ export function MarcoLogicoPage({ initialTab }: { initialTab?: string }) {
         onSave={() => { updateFw((f) => { f.status = 'EM PREENCHIMENTO'; }); toast('Teoria do problema salva.', 'ok'); }} />}
       {tab === 'arvores' && <ArvoresTab fw={fw} editable={editable} updateFw={updateFw} toast={toast} />}
       {tab === 'alternativas' && <AlternativasTab fw={fw} prog={prog} editable={editable} updateFw={updateFw} toast={toast} />}
+      {tab === 'envolvidos' && <EnvolvidosTab fw={fw} editable={editable} updateFw={updateFw} />}
     </>
   );
 }

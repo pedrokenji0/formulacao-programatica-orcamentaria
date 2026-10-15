@@ -10,11 +10,10 @@ const MENU: NavNode[] = [
       { id: 'fpo-home', label: 'Tela inicial do macroprocesso', route: 'fpo' },
       {
         id: 'qualitativa', label: '1.1 PROGRAMAÇÃO QUALITATIVA', children: [
-          { id: 'ml-preenchimento', label: 'Teoria do Problema / Preenchimento', route: 'ml-preenchimento' },
-          { id: 'ml-arvores', label: 'Árvores de Problemas e Objetivos', route: 'ml-arvores' },
-          { id: 'ml-alternativas', label: 'Análise de Alternativas e Síntese', route: 'ml-alternativas' },
-          { id: 'mapa-preenchimento', label: 'Mapa de Processos / Resultados', route: 'mapa-preenchimento' },
-          { id: 'mapa-visualizacao', label: 'Visualização do Mapa', route: 'mapa-visualizacao' },
+          { id: 'qual-programa', label: 'Programa', route: 'qual-programa' },
+          { id: 'qual-acoes', label: 'Ações e Entregas', route: 'qual-acoes' },
+          { id: 'qual-mapa', label: 'Mapa de Processos e Resultados', route: 'qual-mapa' },
+          { id: 'qual-revisao', label: 'Revisão do Planejamento', route: 'qual-revisao' },
         ],
       },
       {

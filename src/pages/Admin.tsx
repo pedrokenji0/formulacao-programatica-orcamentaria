@@ -1,11 +1,11 @@
 import { useState } from 'react';
-import { useApp, type Permission } from '../store/AppStore';
+import { useApp, PERMS, type Permission } from '../store/AppStore';
 import { Card, Tabs, ActionButton, useToast, uid } from '../components/ui';
 import { PageHeader } from '../components/PageHeader';
 import type { Action, BudgetItemOBZ, Program, SupportList, Perfil } from '../types';
 import { Plus, Trash2, Power, Download, Upload, History, Database } from 'lucide-react';
 
-const PERFIS: Perfil[] = ['Consulta', 'Técnico do Órgão', 'Validador do Órgão', 'DCMEFO/SEPLAG', 'Administrador'];
+const PERFIS: Perfil[] = ['Leitor', 'Gestor UA', 'Gestor Setorial', 'Central Geral', 'Consulta', 'Técnico do Órgão', 'Validador do Órgão', 'DCMEFO/SEPLAG', 'Administrador'];
 const PERM_LABELS: { key: Permission; label: string }[] = [
   { key: 'editMarcoLogico', label: 'Editar Marco Lógico' }, { key: 'editMapa', label: 'Editar Mapa' },
   { key: 'editObz', label: 'Editar OBZ' }, { key: 'editLinks', label: 'Editar associações' },
@@ -13,13 +13,6 @@ const PERM_LABELS: { key: Permission; label: string }[] = [
   { key: 'validarDcmefo', label: 'Validar (DCMEFO)' }, { key: 'devolver', label: 'Devolver' },
   { key: 'bloquear', label: 'Bloquear' }, { key: 'adminTabelas', label: 'Administrar tabelas' }, { key: 'exportar', label: 'Exportar' },
 ];
-const PERMS: Record<Perfil, Permission[]> = {
-  Consulta: ['exportar'],
-  'Técnico do Órgão': ['editMarcoLogico', 'editMapa', 'editObz', 'editLinks', 'enviarValidacao', 'exportar'],
-  'Validador do Órgão': ['validarOrgao', 'devolver', 'exportar', 'editMarcoLogico', 'editMapa', 'editObz'],
-  'DCMEFO/SEPLAG': ['validarDcmefo', 'devolver', 'bloquear', 'exportar'],
-  Administrador: PERM_LABELS.map((p) => p.key),
-};
 
 export function AdminPage() {
   const { can } = useApp();

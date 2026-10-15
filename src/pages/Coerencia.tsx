@@ -10,8 +10,10 @@ import { Save, ArrowRight, Coins, Boxes, Activity, Package, Target, TrendingUp, 
 
 function matchAction(map: ProcessMap | undefined, b: BudgetItemOBZ): ProcessAction | undefined {
   if (!map) return undefined;
+  if (b.actionId) return map.actions.find((action) => (action.catalogActionId || action.id) === b.actionId);
   const code = (b.acaoLabel.match(/^\s*(\w+)/)?.[1]) || '';
-  return map.actions.find((a) => a.codigo === code) || map.actions[0];
+  const candidates = map.actions.filter((action) => action.codigo === code);
+  return candidates.length === 1 ? candidates[0] : undefined;
 }
 function linkStatus(l: Partial<CoherenceLink>): CoherenceStatus {
   if (!l.actionId) return 'Inconsistente';
@@ -87,9 +89,9 @@ function GuiadaTab({ items, map, pid }: { items: BudgetItemOBZ[]; map?: ProcessM
     { key: 'actionId', label: 'Ação', badge: 'Obrigatório', icon: <Coins size={16} />, value: act ? `${act.codigo} — ${act.nome}` : '—', fixed: true },
     { key: 'resourceIds', single: 'resourceId', label: 'Recursos reais', badge: 'Obrigatório', icon: <Boxes size={16} />, options: act?.recursos, multi: true },
     { key: 'activityIds', single: 'activityId', label: 'Atividades', badge: 'Obrigatório', icon: <Activity size={16} />, options: act?.atividades, multi: true },
-    { key: 'productIds', single: 'productId', label: 'Produto principal', badge: 'Opcional', icon: <Package size={16} />, options: act?.produtos, multi: true },
-    { key: 'resultId', label: 'Resultado', badge: 'Recomendado', icon: <Target size={16} />, options: map?.resultados },
-    { key: 'impactId', label: 'Impacto', badge: 'Recomendado', icon: <TrendingUp size={16} />, options: map?.impactos },
+    { key: 'productIds', single: 'productId', label: 'Produtos / entregas', badge: 'Opcional', icon: <Package size={16} />, options: act?.produtos, multi: true },
+    { key: 'resultId', label: 'Resultado', badge: 'Recomendado', icon: <Target size={16} />, options: [...(act?.resultados || []), ...(map?.resultados || [])] },
+    { key: 'impactId', label: 'Impacto', badge: 'Recomendado', icon: <TrendingUp size={16} />, options: [...(act?.impactos || []), ...(map?.impactos || [])] },
   ];
 
   const msgs: string[] = [];
@@ -161,8 +163,8 @@ function GuiadaTab({ items, map, pid }: { items: BudgetItemOBZ[]; map?: ProcessM
           <Resumo label="Atividades" v={namesOf(act.atividades, activityIds)} />
           <Resumo label="Produto" v={namesOf(act.produtos, productIds)} />
           <Resumo label="Pré-produtos" v={preProdutos.join('; ') || '—'} />
-          <Resumo label="Resultado" v={nameOf(map?.resultados, link.resultId)} />
-          <Resumo label="Impacto" v={nameOf(map?.impactos, link.impactId)} />
+          <Resumo label="Resultado" v={nameOf([...(act.resultados || []), ...(map?.resultados || [])], link.resultId)} />
+          <Resumo label="Impacto" v={nameOf([...(act.impactos || []), ...(map?.impactos || [])], link.impactId)} />
           <div className="alert ok" style={{ marginTop: 10 }}>Status do vínculo: <b style={{ marginLeft: 5 }}>{linkStatus(link)}</b></div>
         </> : <div className="empty">Cadastre a ação no Mapa de Processos para associar.</div>}
       </Card>

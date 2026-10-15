@@ -4,6 +4,13 @@ import { mockApi } from '../services/mockApi';
 import { Card, Tabs, FormField, ActionButton, ChipList, useToast, uid } from '../components/ui';
 import { PageHeader } from '../components/PageHeader';
 import { MapVisualizer } from '../components/MapVisualizer';
+import type { MapSection } from '../components/MapVisualizer';
+import { IntegratedMap } from './qualitative/IntegratedMap';
+import { MapReferences } from '../components/MapReferences';
+import { ActionMapItems } from '../components/ActionMapItems';
+import { addActionItem, principalProduct, removeActionItem, type ActionEditorSection } from '../services/mapDomain';
+import { setOfficialField } from '../services/planningDomain';
+import { draftAction } from '../services/proposalDomain';
 import { ValidationPanel, type Issue } from '../components/ValidationPanel';
 import { CoherenceScore } from '../components/CoherenceScore';
 import type { Action, ProcessMap, ProcessAction, MapItem } from '../types';
@@ -31,7 +38,7 @@ function AddRow({ categorias, onAdd, placeholder, disabled }: { categorias?: str
   );
 }
 
-export function MapaProcessosPage({ initialTab }: { initialTab?: string }) {
+export function MapaProcessosPage({ initialTab, qualitative = false }: { initialTab?: string; qualitative?: boolean }) {
   const { state, update, can } = useApp();
   const toast = useToast();
   const [tab, setTab] = useState(initialTab || 'preenchimento');
@@ -50,40 +57,43 @@ export function MapaProcessosPage({ initialTab }: { initialTab?: string }) {
   });
 
   const tabs = [
-    { id: 'preenchimento', label: 'Preenchimento' },
-    { id: 'subcategorias', label: 'Subcategorias' },
-    { id: 'visualizacao', label: 'Visualização do Mapa' },
+    { id: 'preenchimento', label: 'Organizar' },
+    ...(can('adminTabelas') ? [{ id: 'subcategorias', label: 'Tabelas de apoio' }] : []),
+    { id: 'visualizacao', label: 'Visualizar' },
     { id: 'validacao', label: 'Validação do Desenho' },
   ];
 
   const obzCount: Record<string, number> = {};
-  for (const a of map.actions) obzCount[a.id] = state.budgetItems.filter((b) => b.programaId === pid && (b.acaoLabel.startsWith(a.codigo) || b.actionId.includes(a.codigo))).length;
+  for (const a of map.actions) obzCount[a.id] = state.budgetItems.filter((b) => b.programaId === pid && b.actionId === (a.catalogActionId || a.id)).length;
   const catalogActions = state.actions.filter((a) => a.programaId === pid);
-  const availableCatalogActions = catalogActions.filter((a) => !map.actions.some((m) => m.codigo === a.codigo));
+  const availableCatalogActions = catalogActions.filter((a) => !map.actions.some((m) => (m.catalogActionId || m.id) === a.id));
   const addMappedAction = (a?: Action) => update((s) => {
     const m = s.maps.find((x) => x.programId === pid) || emptyMap(pid, prog.problemaCentral);
     if (!s.maps.includes(m)) s.maps.push(m);
     if (a) {
-      m.actions.push({ id: uid('pa'), codigo: a.codigo, nome: a.nome, objetivo: a.finalidade || a.descricao || '', publicoAlvo: a.publicoAlvo, recursos: [], atividades: [], produtos: a.produto ? [{ id: uid('prod'), texto: a.produto, categoria: a.unidadeMedida ? `Unidade: ${a.unidadeMedida}` : undefined }] : [], pressupostos: [], riscos: [] });
+      m.actions.push({ id: a.id, catalogActionId: a.id, codigoUnidadeOrcamentaria: a.codigoUnidadeOrcamentaria, codigo: a.codigo, nome: a.nome, objetivo: '', publicoAlvo: a.publicoAlvo, recursos: [], atividades: [], produtos: a.produto ? [{ id: `produto-${a.id}`, texto: a.produto, origin: 'importado', categoria: a.unidadeMedida ? `Unidade: ${a.unidadeMedida}` : undefined }] : [], pressupostos: [], riscos: [] });
     } else {
-      const code = String(Date.now()).slice(-4);
-      const actionId = uid('act');
-      s.actions.push({ id: actionId, codigo: code, nome: 'Nova ação', programaId: pid, unidadeOrcamentaria: prog.unidadeOrcamentaria, orgao: prog.orgao, funcao: '', subfuncao: '', tipoAcao: 'Atividade Fim do Orçamento Fiscal', iag: '', publicoAlvo: '', produto: '', especificacaoProduto: '', unidadeMedida: '', finalidade: '', descricao: '', baseLegal: '', status: 'RASCUNHO' });
-      m.actions.push({ id: uid('pa'), codigo: code, nome: 'Nova ação', objetivo: '', publicoAlvo: '', recursos: [], atividades: [], produtos: [], pressupostos: [], riscos: [] });
+      const actionId = draftAction(s, pid);
+      m.actions.push({ id: actionId, catalogActionId: actionId, codigo: '', nome: '', objetivo: '', publicoAlvo: '', recursos: [], atividades: [], produtos: [], pressupostos: [], riscos: [] });
     }
   });
 
+  if (qualitative) return <IntegratedMap map={map} updateMap={updateMap} editable={editable} availableActions={availableCatalogActions} onAddAction={addMappedAction}
+    renderActionEditor={(action, section) => <ActionCard a={action} editable={editable} lists={state.lists} catalogActions={catalogActions} update={update} pid={pid} updateMap={updateMap} section={section} />}
+    categories={<SubcategoriasTab />} validation={<ValidacaoTab map={map} pid={pid} />} />;
+
   return (
     <>
-      <PageHeader crumb="Formulação do Programa › Mapa de Processos e Resultados" title="Mapa de Processos e Resultados"
-        sub="Cadeia: Recursos/Insumos → Atividades → Produtos → Resultados → Impactos. Campos do programa e das ações." status={map.status} />
+      {!qualitative && <PageHeader crumb="Formulação do Programa › Mapa de Processos e Resultados" title="Mapa de Processos e Resultados"
+        sub="Cadeia: Recursos/Insumos → Atividades → Produtos → Resultados → Impactos." status={map.status} />}
       <Tabs tabs={tabs} active={tab} onChange={setTab} />
 
       {tab === 'preenchimento' && (
         <>
+          <MapReferences map={map} updateMap={updateMap} editable={editable} />
           <Card title="Programa" scope="PROGRAMA"
             actions={<ActionButton color="green" icon={<Save size={16} />} disabled={!editable} onClick={() => { updateMap((m) => { m.status = 'EM PREENCHIMENTO'; }); toast('Mapa salvo.', 'ok'); }}>Salvar rascunho</ActionButton>}>
-            <FormField label="Problema central" textarea value={map.problemaCentral} disabled={!editable} onChange={(v) => updateMap((m) => { m.problemaCentral = v; })} />
+            <FormField label="Problema ou necessidade de atuação" textarea value={map.problemaCentral} disabled={!editable} onChange={(v) => updateMap((m) => { m.problemaCentral = v; })} />
             <ProgramList label="Contexto" items={map.contexto} editable={editable}
               onAdd={(t, c) => updateMap((m) => m.contexto.push({ id: uid('ctx'), texto: t, categoria: c }))}
               onRemove={(id) => updateMap((m) => { m.contexto = m.contexto.filter((x) => x.id !== id); })} placeholder="Elemento de contexto..." />
@@ -100,11 +110,11 @@ export function MapaProcessosPage({ initialTab }: { initialTab?: string }) {
 
           <Card title="Ações do Programa" scope="AÇÃO" count={map.actions.length}
             actions={<ActionButton color="green" icon={<Plus size={16} />} disabled={!editable} onClick={() => addMappedAction()}>Criar nova ação</ActionButton>}
-            lead="Selecione ações já existentes/importadas, ou crie uma ação nova. Depois preencha recursos reais, até 5 atividades e produto principal.">
+            lead="Selecione ações já existentes/importadas, ou crie uma ação nova. Organize até 8 linhas por grupo e ação, com um produto principal e até 7 entregas secundárias.">
             <div className="action-catalog-row">
               <select value={catalogActionId} disabled={!editable || availableCatalogActions.length === 0} onChange={(e) => setCatalogActionId(e.target.value)}>
                 <option value="">Selecionar ação existente...</option>
-                {availableCatalogActions.map((a) => <option key={a.id} value={a.id}>{a.codigo} — {a.nome}</option>)}
+                {availableCatalogActions.map((a) => <option key={a.id} value={a.id}>{a.codigo} · UO {a.codigoUnidadeOrcamentaria} — {a.nome}</option>)}
               </select>
               <ActionButton color="blue" icon={<Link2 size={16} />} disabled={!editable || !catalogActionId} onClick={() => { addMappedAction(catalogActions.find((a) => a.id === catalogActionId)); setCatalogActionId(''); }}>Vincular ao mapa</ActionButton>
             </div>
@@ -117,7 +127,7 @@ export function MapaProcessosPage({ initialTab }: { initialTab?: string }) {
         </>
       )}
 
-      {tab === 'subcategorias' && <SubcategoriasTab />}
+      {tab === 'subcategorias' && can('adminTabelas') && <SubcategoriasTab />}
 
       {tab === 'visualizacao' && (
         <Card title="Visualização do Mapa"
@@ -143,41 +153,46 @@ function ProgramList({ label, items, editable, onAdd, onRemove, placeholder }: a
   );
 }
 
-function ActionCard({ a, editable, lists, catalogActions, update, pid, updateMap }: {
-  a: ProcessAction; editable: boolean; lists: any; catalogActions: Action[]; update: any; pid: string; updateMap: (fn: (m: ProcessMap) => void) => void;
+function ActionCard({ a, editable, lists, catalogActions, update, pid, updateMap, section = 'todos' }: {
+  a: ProcessAction; editable: boolean; lists: any; catalogActions: Action[]; update: any; pid: string; updateMap: (fn: (m: ProcessMap) => void) => void; section?: MapSection | 'todos';
 }) {
   const toast = useToast();
-  const catalog = catalogActions.find((x) => x.codigo === a.codigo);
+  const catalog = catalogActions.find((x) => x.id === (a.catalogActionId || a.id));
   const setField = (k: string, v: string) => update((s: any) => {
     const m = s.maps.find((x: ProcessMap) => x.programId === pid);
     const x = m?.actions.find((y: ProcessAction) => y.id === a.id);
     const oldCode = x?.codigo;
     if (x) (x as any)[k] = v;
-    const act = s.actions.find((act: Action) => act.programaId === pid && act.codigo === oldCode);
+    const act = s.actions.find((act: Action) => act.id === (a.catalogActionId || a.id));
     if (act) {
-      if (k === 'codigo') act.codigo = v;
-      if (k === 'nome') act.nome = v;
-      if (k === 'publicoAlvo') act.publicoAlvo = v;
-      if (k === 'objetivo') act.finalidade = v;
+      if (k === 'codigo') setOfficialField(act, 'Código da Ação', v);
+      if (k === 'nome') setOfficialField(act, 'Título da Ação', v);
+      if (k === 'publicoAlvo') setOfficialField(act, 'Público-Alvo', v);
+      if (k === 'objetivo') setOfficialField(act, 'Finalidade da Ação', v);
     }
   });
-  const addItem = (sec: keyof ProcessAction, t: string, c?: string, publicos?: string[], preProduto?: string) => updateMap((m) => {
-    const x = m.actions.find((y) => y.id === a.id) as any;
-    if (sec === 'atividades' && x.atividades.length >= 5) { toast('Limite de 5 atividades por ação.', 'err'); return; }
-    x[sec].push({ id: uid('mi'), texto: t, categoria: c, publicos, preProduto });
+  const addItem = (sec: 'recursos' | 'atividades' | 'produtos' | 'pressupostos' | 'riscos', t: string, c?: string, publicos?: string[], preProduto?: string) => updateMap((m) => {
+    const record = m.actions.find((candidate) => candidate.id === a.id)!;
+    const item: MapItem = { id: uid('mi'), texto: t, categoria: c, publicos, preProduto, origin: 'local' };
+    if (sec === 'pressupostos' || sec === 'riscos') record[sec].push(item);
+    else if (!addActionItem(record, sec === 'produtos' ? principalProduct(record) ? 'produtosSecundarios' : 'produtoPrincipal' : sec, item)) toast('Limite de linhas atingido para esta ação.', 'err');
   });
-  const rmItem = (sec: keyof ProcessAction, id: string) => updateMap((m) => { const x = m.actions.find((y) => y.id === a.id) as any; x[sec] = x[sec].filter((i: MapItem) => i.id !== id); });
+  const rmItem = (sec: 'recursos' | 'atividades' | 'produtos' | 'pressupostos' | 'riscos', id: string) => updateMap((m) => { if (sec === 'pressupostos' || sec === 'riscos') { const record = m.actions.find((candidate) => candidate.id === a.id)!; record[sec] = record[sec].filter((item) => item.id !== id); } else removeActionItem(m, a.id, sec, id); });
+  const editItem = (sec: 'recursos' | 'atividades' | 'produtos' | 'pressupostos' | 'riscos', id: string, text: string) => updateMap((target) => { const item = target.actions.find((record) => record.id === a.id)![sec].find((record) => record.id === id)!; item.texto = text; item.origin = 'local'; });
   const del = () => updateMap((m) => { m.actions = m.actions.filter((y) => y.id !== a.id); });
 
+  if (['recursos', 'atividades', 'produtoPrincipal', 'produtosSecundarios', 'resultados', 'impactos'].includes(section)) return <ActionMapItems key={`${a.id}-${section}`} action={a} section={section as ActionEditorSection} updateMap={updateMap} editable={editable} />;
+
   return (
-    <Card title={<>Ação {a.codigo || ''} <span className="muted small">{a.nome}</span></>}
-      actions={<button className="icobtn del" disabled={!editable} onClick={del}><Trash2 size={14} /></button>}>
+    <Card title={<>Ação {a.codigo || ''} · UO {catalog?.codigoUnidadeOrcamentaria || 'local'} <span className="muted small">{a.nome}</span></>}
+      actions={section === 'todos' || section === 'identificacao' ? <button className="icobtn del" aria-label="Remover ação do mapa" disabled={!editable} onClick={del}><Trash2 size={14} /></button> : undefined}>
+      {(section === 'todos' || section === 'identificacao') && <>
       <div className="locked-fields">
         <span className="badge gray">travados após criação: código, programa, UO, órgão e tipo de ação</span>
         <span className="badge blue">alteráveis: nome, unidade administrativa, função, subfunção, IAG e campos qualitativos</span>
       </div>
       <div className="grid g3">
-        <FormField label="Código da ação" value={a.codigo} disabled={!editable} onChange={(v) => setField('codigo', v)} />
+        <FormField label="Código da ação" value={a.codigo} disabled={!editable || catalog?.source?.origin === 'PPO'} onChange={(v) => setField('codigo', v)} />
         <FormField label="Nome da ação" value={a.nome} disabled={!editable} onChange={(v) => setField('nome', v)} />
         <FormField label="Público-alvo" value={a.publicoAlvo} disabled={!editable} onChange={(v) => setField('publicoAlvo', v)} />
       </div>
@@ -190,27 +205,30 @@ function ActionCard({ a, editable, lists, catalogActions, update, pid, updateMap
         </div>
       )}
       <FormField label="Objetivo / finalidade da ação" textarea value={a.objetivo} disabled={!editable} onChange={(v) => setField('objetivo', v)} />
-
+      </>}
+      {(section === 'todos' || section === 'recursos') &&
       <Sub label="Recursos reais" items={a.recursos} cats={lists.categoriasRecurso} editable={editable}
-        onAdd={(t: string, c?: string) => addItem('recursos', t, c)} onRemove={(id: string) => rmItem('recursos', id)} ph="Recurso/insumo..." />
+        onAdd={(t: string, c?: string) => addItem('recursos', t, c)} onEdit={section === 'todos' ? undefined : (id: string, text: string) => editItem('recursos', id, text)} onRemove={(id: string) => rmItem('recursos', id)} ph="Recurso/insumo..." />}
+      {(section === 'todos' || section === 'atividades') &&
       <AtividadesSub items={a.atividades} cats={lists.categoriasAtividade} editable={editable}
-        onAdd={(t: string, c?: string, pre?: string) => addItem('atividades', t, c, undefined, pre)} onRemove={(id: string) => rmItem('atividades', id)} />
-      <ProdutoSub a={a} editable={editable} publicos={lists.publicos} onAdd={(t: string, p: string[]) => addItem('produtos', t, undefined, p)} onRemove={(id: string) => rmItem('produtos', id)} />
+        onAdd={(t: string, c?: string, pre?: string) => addItem('atividades', t, c, undefined, pre)} onEdit={section === 'todos' ? undefined : (id: string, text: string) => editItem('atividades', id, text)} onRemove={(id: string) => rmItem('atividades', id)} />}
+      {(section === 'todos' || section === 'produtos') && <ProdutoSub a={a} editable={editable} publicos={lists.publicos} onAdd={(t: string, p: string[]) => addItem('produtos', t, undefined, p)} onEdit={section === 'todos' ? undefined : (id: string, text: string) => editItem('produtos', id, text)} onRemove={(id: string) => rmItem('produtos', id)} />}
+      {(section === 'pressupostos' || section === 'riscos') && <Sub label={section === 'riscos' ? 'Riscos' : 'Pressupostos'} items={a[section]} editable={editable} onAdd={(text: string) => addItem(section, text)} onEdit={(id: string, text: string) => editItem(section, id, text)} onRemove={(id: string) => rmItem(section, id)} ph="Novo item..." />}
     </Card>
   );
 }
 
-function Sub({ label, items, cats, editable, onAdd, onRemove, ph }: any) {
+function Sub({ label, items, cats, editable, onAdd, onRemove, onEdit, ph }: any) {
   return (
     <div style={{ marginTop: 12, borderTop: '1px dashed var(--line-soft)', paddingTop: 10 }}>
       <label style={{ fontWeight: 700, fontSize: 13, color: 'var(--ink)' }}>{label} <span className="pill-count">{items.length}</span></label>
       <AddRow categorias={cats} onAdd={onAdd} placeholder={ph} disabled={!editable} />
-      <ChipList items={items} onRemove={editable ? onRemove : undefined} />
+      {onEdit ? <MapItemFields items={items} editable={editable} label={label} onEdit={onEdit} onRemove={onRemove} /> : <ChipList items={items} onRemove={editable ? onRemove : undefined} />}
     </div>
   );
 }
 
-function AtividadesSub({ items, cats, editable, onAdd, onRemove }: any) {
+function AtividadesSub({ items, cats, editable, onAdd, onRemove, onEdit }: any) {
   const [texto, setTexto] = useState('');
   const [cat, setCat] = useState('');
   const [pre, setPre] = useState('');
@@ -221,7 +239,7 @@ function AtividadesSub({ items, cats, editable, onAdd, onRemove }: any) {
   };
   return (
     <div style={{ marginTop: 12, borderTop: '1px dashed var(--line-soft)', paddingTop: 10 }}>
-      <label style={{ fontWeight: 700, fontSize: 13, color: 'var(--ink)' }}>Atividades / Processos <span className="pill-count">{items.length}/5</span></label>
+      <label style={{ fontWeight: 700, fontSize: 13, color: 'var(--ink)' }}>Atividades / Processos <span className="pill-count">{items.length}/8</span></label>
       <div className="add-row activity-add">
         <select value={cat} disabled={disabledOrLimit(editable, items)} onChange={(e) => setCat(e.target.value)} style={{ border: '1px solid #ccd6dc', borderRadius: 9, padding: '9px 11px' }}>
           <option value="">Categoria (opcional)</option>{cats.map((c: string) => <option key={c}>{c}</option>)}
@@ -230,17 +248,17 @@ function AtividadesSub({ items, cats, editable, onAdd, onRemove }: any) {
         <input value={pre} disabled={disabledOrLimit(editable, items)} placeholder="Pré-produto opcional..." onChange={(e) => setPre(e.target.value)} style={{ border: '1px solid #ccd6dc', borderRadius: 9, padding: '9px 11px' }} />
         <ActionButton color="green" icon={<Plus size={15} />} disabled={disabledOrLimit(editable, items)} onClick={add}>Criar</ActionButton>
       </div>
-      <ChipList items={items} onRemove={editable ? onRemove : undefined} render={(i) => <>{i.texto}{i.preProduto && <span className="pre-product">pré-produto: {i.preProduto}</span>}</>} />
-      {items.length >= 5 && <div className="alert warn" style={{ marginTop: 8 }}>Limite de 5 atividades atingido para esta ação.</div>}
+      {onEdit ? <MapItemFields items={items} editable={editable} label="Atividades" onEdit={onEdit} onRemove={onRemove} /> : <ChipList items={items} onRemove={editable ? onRemove : undefined} render={(i) => <>{i.texto}{i.preProduto && <span className="pre-product">pré-produto: {i.preProduto}</span>}</>} />}
+      {items.length >= 8 && <div className="alert warn" style={{ marginTop: 8 }}>Limite de 8 atividades atingido para esta ação.</div>}
     </div>
   );
 }
 
 function disabledOrLimit(editable: boolean, items: any[]) {
-  return !editable || items.length >= 5;
+  return !editable || items.length >= 8;
 }
 
-function ProdutoSub({ a, editable, publicos, onAdd, onRemove }: any) {
+function ProdutoSub({ a, editable, publicos, onAdd, onRemove, onEdit }: any) {
   const [texto, setTexto] = useState(''); const [sel, setSel] = useState<string[]>([]);
   const toggle = (p: string) => setSel((s) => s.includes(p) ? s.filter((x) => x !== p) : [...s, p]);
   return (
@@ -256,19 +274,24 @@ function ProdutoSub({ a, editable, publicos, onAdd, onRemove }: any) {
             className={'badge ' + (sel.includes(p) ? 'blue' : 'gray')} style={{ cursor: 'pointer', border: 'none' }}>{p}</button>
         ))}
       </div>
-      <ChipList items={a.produtos} onRemove={editable ? onRemove : undefined} />
+      {onEdit ? <MapItemFields items={a.produtos} editable={editable} label="Produtos" onEdit={onEdit} onRemove={onRemove} /> : <ChipList items={a.produtos} onRemove={editable ? onRemove : undefined} />}
     </div>
   );
 }
 
+function MapItemFields({ items, editable, label, onEdit, onRemove }: { items: MapItem[]; editable: boolean; label: string; onEdit: (id: string, text: string) => void; onRemove: (id: string) => void }) {
+  return <>{items.map((item, index) => <div className="map-item-editor" key={item.id}><FormField label={`${label} — item ${index + 1}`} textarea disabled={!editable} value={item.texto} onChange={(text) => onEdit(item.id, text)} />{item.preProduto && <p className="small muted">Pré-produto: {item.preProduto}</p>}<ActionButton sm color="ghost" disabled={!editable} onClick={() => onRemove(item.id)}>Remover item {index + 1}</ActionButton></div>)}</>;
+}
+
 function SubcategoriasTab() {
-  const { state, update } = useApp();
+  const { state, update, can } = useApp();
   const lists: { key: keyof typeof state.lists; label: string }[] = [
     { key: 'categoriasRecurso', label: 'Categorias de Recursos' },
     { key: 'categoriasAtividade', label: 'Categorias de Atividades' },
     { key: 'categoriasProduto', label: 'Categorias de Produtos' },
     { key: 'publicos', label: 'Públicos-alvo' },
   ];
+  if (!can('adminTabelas')) return <div className="empty">Gestão de tabelas de apoio disponível apenas para o perfil Administrador.</div>;
   return (
     <Card title="Subcategorias do Mapa" lead="Listas usadas nos seletores de recursos, atividades, produtos e públicos. Refletem em todo o módulo.">
       <div className="grid g2">
@@ -296,8 +319,8 @@ function ValidacaoTab({ map, pid }: { map: ProcessMap; pid: string }) {
     if (a.atividades.length === 0) issues.push({ level: 'err', text: `${nm}: sem atividade.` });
     if (a.recursos.length === 0) issues.push({ level: 'warn', text: `${nm}: sem recurso.` });
   }
-  if (map.resultados.length === 0) issues.push({ level: 'err', text: 'Programa sem resultados (produtos sem efeito).' });
-  if (map.impactos.length === 0) issues.push({ level: 'warn', text: 'Programa sem impactos (resultados sem impacto).' });
+  if (map.resultados.length === 0 && !map.actions.some((action) => action.resultados?.length)) issues.push({ level: 'err', text: 'Mapa sem resultados informados.' });
+  if (map.impactos.length === 0 && !map.actions.some((action) => action.impactos?.length)) issues.push({ level: 'warn', text: 'Mapa sem impactos informados.' });
   const score = mockApi.calculateCoherenceScore(pid);
 
   return (

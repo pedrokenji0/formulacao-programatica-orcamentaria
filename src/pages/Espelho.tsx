@@ -77,7 +77,7 @@ function AcaoMirrorTab({ pid }: { pid: string }) {
   const [selId, setSelId] = useState(actions[0]?.id || '');
   const a = actions.find((x) => x.id === selId) || actions[0];
   if (!a) return <Card title="Simulação · Ação"><div className="empty">Nenhuma ação neste programa.</div></Card>;
-  const obz = state.budgetItems.filter((b) => b.programaId === pid && b.acaoLabel.startsWith(a.codigo));
+  const obz = state.budgetItems.filter((item) => item.programaId === pid && item.actionId === a.id);
   const valorObz = obz.reduce((s, b) => s + b.valorTotal, 0);
   const am: ActionMirror = {
     codigoPrograma: prog?.codigo, programaNome: prog?.nome, codigo: a.codigo, nome: a.nome, unidadeAdministrativa: (prog as any)?.unidadeAdministrativa || '',

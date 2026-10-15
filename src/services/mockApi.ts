@@ -1,27 +1,28 @@
 import { initialState } from '../data/mockData';
+import { encodeState, readPersisted, STORAGE_KEY } from './planningPersistence';
 import type {
   AppState, Program, Action, LogicalFramework, ProcessMap, BudgetItemOBZ,
   CoherenceLink, ProblemNode, ObjectiveNode,
 } from '../types';
 
-const KEY = 'fpo-state-v1';
+let baseline = initialState;
+let currentState: AppState | undefined;
 const delay = (ms = 120) => new Promise((r) => setTimeout(r, ms));
 
 function read(): AppState {
-  try {
-    const raw = localStorage.getItem(KEY);
-    if (raw) return JSON.parse(raw) as AppState;
-  } catch { /* ignore */ }
-  return JSON.parse(JSON.stringify(initialState));
+  if (currentState) return currentState;
+  return readPersisted(localStorage, baseline, initialState);
 }
 function write(s: AppState) {
-  try { localStorage.setItem(KEY, JSON.stringify(s)); } catch { /* ignore */ }
+  currentState = s;
+  localStorage.setItem(STORAGE_KEY, encodeState(s, baseline));
 }
 
 export const mockApi = {
+  configure(initial: AppState) { baseline = initial; currentState = undefined; },
   async loadState(): Promise<AppState> { await delay(); return read(); },
   async saveState(s: AppState): Promise<void> { await delay(0); write(s); },
-  resetState(): AppState { const s = JSON.parse(JSON.stringify(initialState)); write(s); return s; },
+  resetState(): AppState { const s = structuredClone(baseline); write(s); return s; },
 
   async getPrograms(): Promise<Program[]> { await delay(); return read().programs; },
   async getProgram(id: string): Promise<Program | undefined> { await delay(); return read().programs.find((p) => p.id === id); },
@@ -57,8 +58,8 @@ export const mockApi = {
     const add = (ok: boolean) => { total++; if (ok) score++; };
     add(!!map.problemaCentral.trim());
     add(map.contexto.length > 0);
-    add(map.resultados.length > 0);
-    add(map.impactos.length > 0);
+    add(map.resultados.length > 0 || map.actions.some((action) => !!action.resultados?.length));
+    add(map.impactos.length > 0 || map.actions.some((action) => !!action.impactos?.length));
     add(map.actions.length > 0);
     for (const a of map.actions) {
       add(a.recursos.length > 0); add(a.atividades.length > 0); add(a.produtos.length > 0);

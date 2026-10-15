@@ -4,7 +4,7 @@ import { SidebarMenu } from './SidebarMenu';
 import { useApp } from '../store/AppStore';
 import type { Perfil } from '../types';
 
-const PERFIS: Perfil[] = ['Consulta', 'Técnico do Órgão', 'Validador do Órgão', 'DCMEFO/SEPLAG', 'Administrador'];
+const PERFIS: Perfil[] = ['Leitor', 'Gestor UA', 'Gestor Setorial', 'Central Geral', 'Consulta', 'Técnico do Órgão', 'Validador do Órgão', 'DCMEFO/SEPLAG', 'Administrador'];
 const portalLogo = `${import.meta.env.BASE_URL}logo-portal-planejamento.svg`;
 
 export function AppShell({ route, onNavigate, area, children }: {

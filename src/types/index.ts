@@ -2,8 +2,15 @@
 // Modelos de domínio — Formulação Programática-Orçamentária
 // ============================================================================
 
+import type { ActionComplements, ComponentAssociation, OfficialFields, PlanningProposal } from './planning';
+export type * from './planning';
+
 export type Perfil =
   | 'Consulta'
+  | 'Leitor'
+  | 'Gestor UA'
+  | 'Gestor Setorial'
+  | 'Central Geral'
   | 'Técnico do Órgão'
   | 'Validador do Órgão'
   | 'DCMEFO/SEPLAG'
@@ -35,9 +42,19 @@ export interface Program {
   horizonteTemporal?: string;
   tipoPrograma?: string;
   indicador?: string;
+  causas?: string;
+  causeItems?: { id: string; texto: string }[];
+  ppoComplements?: Record<string, string>;
+  estrategiaImplementacao?: string;
+  codigoOrgao?: string;
+  codigoUnidadeOrcamentaria?: string;
   resultados: string[];
   impactos: string[];
   status: Status;
+  officialFields?: OfficialFields;
+  strategicLinks?: OfficialFields[];
+  sourceVariants?: OfficialFields[];
+  source?: { origin: 'PPO' | 'local'; file: string };
 }
 
 export interface Action {
@@ -59,12 +76,18 @@ export interface Action {
   produto: string;
   especificacaoProduto: string;
   codigoProduto?: string;
+  codigoProjetoEstrategico?: string;
+  projetoEstrategico?: string;
   unidadeMedida: string;
   finalidade: string;
   descricao: string;
   detalhamentoImplementacao?: string;
   baseLegal: string;
   status: Status;
+  officialFields?: OfficialFields;
+  sourceVariants?: OfficialFields[];
+  source?: { origin: 'PPO' | 'local'; file: string };
+  local?: ActionComplements;
 }
 
 // ---- Marco Lógico ----
@@ -169,6 +192,10 @@ export interface MapItem {
   categoria?: string;
   publicos?: string[];
   preProduto?: string;
+  productRole?: 'principal' | 'secundario';
+  origin?: 'importado' | 'sugestao' | 'confirmado' | 'local';
+  sourceReference?: string;
+  associations?: ComponentAssociation[];
 }
 
 export interface ProcessAction {
@@ -180,8 +207,12 @@ export interface ProcessAction {
   recursos: MapItem[];
   atividades: MapItem[];
   produtos: MapItem[];
+  resultados?: MapItem[];
+  impactos?: MapItem[];
   pressupostos: MapItem[];
   riscos: MapItem[];
+  catalogActionId?: string;
+  codigoUnidadeOrcamentaria?: string;
 }
 
 export interface ProcessMap {
@@ -193,6 +224,7 @@ export interface ProcessMap {
   impactos: MapItem[];
   actions: ProcessAction[];
   status: Status;
+  causas?: MapItem[];
 }
 
 // ---- OBZ ----
@@ -333,6 +365,8 @@ export interface SupportList {
 
 // ---- Estado global ----
 export interface AppState {
+  schemaVersion?: number;
+  planning?: PlanningProposal;
   perfil: Perfil;
   unidade: string;
   currentProgramId: string;

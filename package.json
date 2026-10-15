@@ -5,6 +5,12 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "generate:data": "node scripts/planning-import.mjs --exercicio 2026",
+    "test:planning": "node --test scripts/planning.test.mjs",
+    "test:e2e": "playwright test",
+    "dev:local": "vite --host 127.0.0.1 --port 5173 --strictPort",
+    "preview:local": "vite preview --host 127.0.0.1 --port 4173 --strictPort",
+    "deploy:local": "npm run build && npm run preview:local",
     "build": "vite build",
     "typecheck": "tsc --noEmit",
     "preview": "vite preview"
@@ -16,6 +22,7 @@
     "xlsx": "^0.18.5"
   },
   "devDependencies": {
+    "@playwright/test": "^1.64.1",
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
     "@vitejs/plugin-react": "^4.3.4",

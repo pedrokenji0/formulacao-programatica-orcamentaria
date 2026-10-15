@@ -17,9 +17,9 @@ export function LandingPage({ onNavigate }: { onNavigate: (id: string) => void }
 
   const modulos = [
     {
-      id: 'ml-preenchimento', etapa: '1.1', label: 'Programação Qualitativa', icon: GitBranch,
-      desc: 'Teoria do problema, árvores, alternativas e preparação do mapa.', status: fw?.status,
-      checks: ['Editar ou criar programa', 'Árvore de problemas seca', 'Árvore de objetivos verde'],
+      id: 'qual-programa', etapa: '1.1', label: 'Programação Qualitativa', icon: GitBranch,
+      desc: 'Cadastros do PPO, ações e entregas, indicadores, território e proposta local.', status: fw?.status,
+      checks: ['Programa e indicadores', 'Ações e Entregas', 'Mapa e Revisão do Planejamento'],
     },
     {
       id: 'obz-elaboracao', etapa: '1.2', label: 'Orçamento Base Zero', icon: Coins,
@@ -79,7 +79,7 @@ export function LandingPage({ onNavigate }: { onNavigate: (id: string) => void }
         <Card title="Estado do desenho">
           <CoherenceScore value={coher} label="Nota de coerência do mapa (0-100)" sub="Calculada a partir do preenchimento da cadeia causal." />
           <div className="row" style={{ marginTop: 14 }}>
-            <ActionButton color="blue" icon={<Network size={16} />} onClick={() => onNavigate('mapa-visualizacao')}>Ver mapa</ActionButton>
+            <ActionButton color="blue" icon={<Network size={16} />} onClick={() => onNavigate('qual-mapa')}>Ver mapa</ActionButton>
             <ActionButton color="ghost" icon={<ArrowRight size={16} />} onClick={() => onNavigate('coer-matriz')}>Abrir casamento OBZ</ActionButton>
           </div>
         </Card>

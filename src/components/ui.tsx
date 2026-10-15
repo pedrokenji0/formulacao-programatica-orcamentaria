@@ -1,23 +1,26 @@
-import React, { createContext, useContext, useState, useCallback } from 'react';
+import React, { createContext, useContext, useState, useCallback, useEffect, useRef, useId } from 'react';
+import { createPortal } from 'react-dom';
 import { X } from 'lucide-react';
 import type { Status } from '../types';
 import { STATUS_COLOR } from '../store/AppStore';
+import { CompactHelpContext, HelpTip } from './HelpTip';
 
 // ---- Card ----
 export function Card({ title, scope, count, actions, children, lead, invalid }: {
   title?: React.ReactNode; scope?: 'PROGRAMA' | 'AÇÃO'; count?: number;
   actions?: React.ReactNode; children: React.ReactNode; lead?: React.ReactNode; invalid?: boolean;
 }) {
+  const compact = useContext(CompactHelpContext);
   return (
     <div className={'card' + (invalid ? ' invalid' : '')}>
       {(title || actions) && (
         <div className="section-actions">
           <div>
-            {title && <h2>{title}
+            {title && <div className="card-heading"><h2>{title}
               {scope && <span className={'badge ' + (scope === 'PROGRAMA' ? 'blue' : 'purple')}>{scope}</span>}
               {count != null && <span className="pill-count">{count}</span>}
-            </h2>}
-            {lead && <p className="lead">{lead}</p>}
+            </h2>{compact && lead && <HelpTip label="Ajuda desta seção" text={lead} />}</div>}
+            {lead && !compact && <p className="lead">{lead}</p>}
           </div>
           {actions && <div className="row">{actions}</div>}
         </div>
@@ -56,13 +59,14 @@ export function FormField({ label, required, hint, value, onChange, textarea, ty
   label: string; required?: boolean; hint?: string; value: string | number;
   onChange?: (v: string) => void; textarea?: boolean; type?: string; disabled?: boolean; placeholder?: string; maxLength?: number;
 }) {
+  const compact = useContext(CompactHelpContext);
   return (
     <div className="field">
-      <label>{label}{required && <span className="req"> *</span>}</label>
+      <div className="field-label-row"><label>{label}{required && <span className="req"> *</span>}</label>{compact && hint && <HelpTip label={`Ajuda: ${label}`} text={hint} />}</div>
       {textarea
-        ? <textarea value={value} disabled={disabled} placeholder={placeholder} maxLength={maxLength} onChange={(e) => onChange?.(e.target.value)} />
-        : <input type={type} value={value} disabled={disabled} placeholder={placeholder} maxLength={maxLength} onChange={(e) => onChange?.(e.target.value)} />}
-      {hint && <span className="hint">{hint}</span>}
+        ? <textarea aria-label={label} value={value} disabled={disabled} placeholder={placeholder} maxLength={maxLength} onChange={(e) => onChange?.(e.target.value)} />
+        : <input aria-label={label} type={type} value={value} disabled={disabled} placeholder={placeholder} maxLength={maxLength} onChange={(e) => onChange?.(e.target.value)} />}
+      {hint && !compact && <span className="hint">{hint}</span>}
     </div>
   );
 }
@@ -75,7 +79,7 @@ export function SelectField({ label, required, value, options, onChange, disable
     <div className="field">
       <label>{label}{required && <span className="req"> *</span>}</label>
       <div className="select-wrap">
-        <select value={value} disabled={disabled} onChange={(e) => onChange?.(e.target.value)}>
+        <select aria-label={label} value={value} disabled={disabled} onChange={(e) => onChange?.(e.target.value)}>
           <option value="">{placeholder}</option>
           {options.map((o) => <option key={o} value={o}>{o}</option>)}
         </select>
@@ -109,17 +113,42 @@ export function ChipList({ items, onRemove, render }: {
 export function Modal({ title, sub, onClose, children, foot, wide }: {
   title: string; sub?: string; onClose: () => void; children: React.ReactNode; foot?: React.ReactNode; wide?: boolean;
 }) {
-  return (
+  const compact = useContext(CompactHelpContext);
+  const container = useRef<HTMLDivElement>(null);
+  const close = useRef(onClose);
+  close.current = onClose;
+  const titleId = useId();
+  useEffect(() => {
+    const previousFocus = document.activeElement as HTMLElement | null;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    container.current?.focus();
+    const handleKey = (event: KeyboardEvent) => {
+      const dialogs = document.querySelectorAll('[role="dialog"]');
+      if (dialogs[dialogs.length - 1] !== container.current) return;
+      if (event.key === 'Escape') { event.preventDefault(); close.current(); }
+      if (event.key === 'Tab') {
+        const controls = Array.from(container.current?.querySelectorAll<HTMLElement>('button:not(:disabled), input:not(:disabled), select:not(:disabled), textarea:not(:disabled), a[href], [tabindex="0"]') || []).filter((element) => element.getClientRects().length);
+        const first = controls[0], last = controls[controls.length - 1];
+        if (!first) { event.preventDefault(); return; }
+        if (event.shiftKey && (document.activeElement === first || document.activeElement === container.current)) { event.preventDefault(); last.focus(); }
+        else if (!event.shiftKey && (document.activeElement === last || document.activeElement === container.current)) { event.preventDefault(); first.focus(); }
+      }
+    };
+    document.addEventListener('keydown', handleKey);
+    return () => { document.body.style.overflow = previousOverflow; document.removeEventListener('keydown', handleKey); if (previousFocus?.isConnected) previousFocus.focus({ preventScroll: true }); };
+  }, []);
+  return createPortal(
     <div className="overlay" onClick={(e) => { if (e.target === e.currentTarget) onClose(); }}>
-      <div className="modal" style={wide ? { maxWidth: 1040 } : undefined}>
+      <div className={`modal${compact ? ' qualitative-dialog' : ''}`} ref={container} role="dialog" aria-modal="true" aria-labelledby={titleId} tabIndex={-1} style={wide ? { maxWidth: 1040 } : undefined}>
         <div className="modal-head">
-          <div><h3>{title}</h3>{sub && <div style={{ fontSize: 11.5, opacity: .8 }}>{sub}</div>}</div>
-          <button className="x" onClick={onClose}><X size={16} /></button>
+          <div><h3 id={titleId}>{title}</h3>{sub && <div style={{ fontSize: 11.5, opacity: .8 }}>{sub}</div>}</div>
+          <button className="x" aria-label="Fechar janela" onClick={onClose}><X size={16} /></button>
         </div>
         <div className="modal-body">{children}</div>
         {foot && <div className="modal-foot">{foot}</div>}
       </div>
-    </div>
+    </div>, document.body
   );
 }
 

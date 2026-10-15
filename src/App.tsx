@@ -9,10 +9,15 @@ import { ObzPage } from './pages/OBZ';
 import { CoerenciaPage } from './pages/Coerencia';
 import { EspelhoPage } from './pages/Espelho';
 import { AdminPage } from './pages/Admin';
+import { QualitativePage } from './pages/Qualitative';
 
 interface RouteDef { page: string; tab?: string; area: string }
 const ROUTES: Record<string, RouteDef> = {
   fpo: { page: 'landing', area: 'Formulação Programática-Orçamentária' },
+  'qual-programa': { page: 'qualitative', area: 'Programação Qualitativa' },
+  'qual-acoes': { page: 'qualitative', area: 'Programação Qualitativa' },
+  'qual-mapa': { page: 'qualitative', area: 'Programação Qualitativa' },
+  'qual-revisao': { page: 'qualitative', area: 'Programação Qualitativa' },
   'ml-preenchimento': { page: 'ml', tab: 'teoria', area: 'Programação Qualitativa' },
   'ml-arvores': { page: 'ml', tab: 'arvores', area: 'Programação Qualitativa' },
   'ml-alternativas': { page: 'ml', tab: 'alternativas', area: 'Programação Qualitativa' },
@@ -38,6 +43,7 @@ const ROUTES: Record<string, RouteDef> = {
 function Router({ route, onNavigate }: { route: string; onNavigate: (id: string) => void }) {
   const def = ROUTES[route] || ROUTES.fpo;
   switch (def.page) {
+    case 'qualitative': return <QualitativePage area={route} onNavigate={onNavigate} />;
     case 'landing': return <LandingPage onNavigate={onNavigate} />;
     case 'ml': return <MarcoLogicoPage key={route} initialTab={def.tab} />;
     case 'mapa': return <MapaProcessosPage key={route} initialTab={def.tab} />;
@@ -51,7 +57,7 @@ function Router({ route, onNavigate }: { route: string; onNavigate: (id: string)
 }
 
 export default function App() {
-  const [route, setRoute] = useState('fpo');
+  const [route, setRoute] = useState('qual-programa');
   const area = (ROUTES[route] || ROUTES.fpo).area;
   return (
     <AppProvider>
