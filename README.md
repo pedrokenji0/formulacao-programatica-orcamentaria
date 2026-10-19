@@ -51,7 +51,7 @@ Há duas combinações de ação com variantes divergentes: `705 / UO 2471 / 241
 
 ## MaPR e mapa de indicadores do Minas Reurb
 
-Na Programação Qualitativa, abra **Mapa de Processos e Resultados**. O projeto estratégico **14 — Minas Reurb** abre com os **37 componentes do MaPR e 12 indicadores** da avaliação de 2025. Há duas abas: **MaPR — Processos e Resultados** e **Mapa de Indicadores**. Ambas organizam a cadeia de recursos, atividades, produtos, resultados e impactos. Clique num componente ou indicador para consultar ou editar sua ficha.
+Na Programação Qualitativa, abra **Mapas de planejamento**. O projeto estratégico **14 — Minas Reurb** abre com os **37 componentes do MaPR e 12 indicadores** da avaliação de 2025. Há duas abas: **MaPR — Processos e Resultados** e **Mapa de Indicadores**. Ambas organizam a cadeia de recursos, atividades, produtos, resultados e impactos. Clique num componente ou indicador para consultar ou editar sua ficha. As fichas abrem em janelas, com o mesmo padrão de campos e controles do cadastro. É possível alternar entre mapa e lista, pesquisar por texto e filtrar por etapa. A origem documental fica em “Sobre os dados”, sem páginas e figuras repetidas nos cartões.
 
 As ações **1082 / UO 01221** e **4528 / UO 02461** abrem o mesmo `mapa-minas-reurb`; os componentes não são duplicados por ação. Há atalhos nas fichas de programa e ação. O mapa geral do programa continua disponível no seletor **Mapa em edição**, preservando o conteúdo anterior.
 
@@ -116,7 +116,7 @@ Orientações secundárias ficam nos botões **?**, acessíveis por mouse, foco 
 
 1. **Programa:** identificação, responsabilidade, alinhamento estratégico, objetivo, justificativa, causas, estratégia de implementação, tipo, horizonte e situação cadastral. Indicadores ficam nesta área. Árvores, alternativas e envolvidos são ferramentas opcionais, inclusive para apoio administrativo e manutenção de serviços.
 2. **Ações e Entregas:** cadastro, classificações, UO, unidade administrativa, finalidade, público, descrição, produto, especificação e base legal. Atividades, critério de entrega, evidência, parceiros e Detalhamento da Implementação são complementos locais. Localizadores ficam aqui, com filtros e detalhes.
-3. **Mapa de Processos e Resultados:** organizar e visualizar no mesmo espaço. Produto e especificação alimentam referências de entrega. Objetivo e finalidade não são convertidos automaticamente em resultados ou impactos confirmados. Causas podem ser associadas explicitamente a atividades e produtos. Recursos e demais funções anteriores do mapa são preservados.
+3. **Mapas de planejamento:** organizar e visualizar no mesmo espaço. Produto e especificação alimentam referências de entrega. Objetivo e finalidade não são convertidos automaticamente em resultados ou impactos confirmados. Causas podem ser associadas explicitamente a atividades e produtos. Recursos e demais funções anteriores do mapa são preservados.
 4. **Revisão do Planejamento:** comparação campo a campo, justificativas, indicadores locais, associações ao mapa, localizadores alterados e avisos. A revisão qualitativa pode ser exportada em JSON com referência e proposta.
 
 A unidade global no topo continua sendo contexto dos módulos anteriores e delimita a edição para o perfil **Gestor UA**. A consulta das ações qualitativas não é filtrada: elas continuam identificadas por programa/UO/ação, com edição bloqueada fora do escopo desse perfil.

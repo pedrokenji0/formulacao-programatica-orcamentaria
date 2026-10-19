@@ -46,9 +46,9 @@ export function MapaProcessosPage({ initialTab, qualitative = false, initialProj
   const [selected, setSelected] = useState(initialProjectMapId || projects[0]?.id || 'programa');
   const map = projects.find((record) => record.id === selected);
   return <>
-    {!!projects.length && <label className="planning-selector project-map-picker">Mapa em edição<select aria-label="Mapa em edição" value={map?.id || 'programa'} onChange={(event) => setSelected(event.target.value)}>
-      {projects.map((project) => <option key={project.id} value={project.id}>{project.projectName} · Projeto estratégico {project.projectCode} · MaPR e indicadores</option>)}
-      <option value="programa">Mapa geral do programa · conteúdo anterior</option>
+    {!!projects.length && <label className="planning-selector project-map-picker"><span>Projeto ou programa</span><select aria-label="Mapa em edição" value={map?.id || 'programa'} onChange={(event) => setSelected(event.target.value)}>
+      {projects.map((project) => <option key={project.id} value={project.id}>{project.projectName} · Projeto estratégico {project.projectCode}</option>)}
+      <option value="programa">Mapa geral do programa</option>
     </select></label>}
     {map ? <ProjectMapWorkspace key={map.id} map={map} /> : <ProgramMapEditor initialTab={initialTab} qualitative={qualitative} />}
   </>;

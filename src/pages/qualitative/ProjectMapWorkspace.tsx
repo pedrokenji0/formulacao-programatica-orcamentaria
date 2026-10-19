@@ -1,143 +1,118 @@
 import { useState } from 'react';
+import { ArrowRight, FileText, GitBranch, List, Network, Plus, RotateCcw, Save, Search } from 'lucide-react';
 import { useApp } from '../../store/AppStore';
 import { ActionButton, Card, FormField, Modal, Tabs, useToast } from '../../components/ui';
 import { originalProjectMap } from '../../services/projectMapReference';
 import { COMPONENT_LABELS, CHAIN_STAGES, canEditProjectMap, editableProjectMap, projectMapDifferences, projectMapsForProgram, projectMapForAction, restoreProjectMap, restoreProjectRecord, removeProjectRecord } from '../../services/projectMapDomain';
-import type { MapDocumentSource, ProjectPlanningMap, ProjectComponent, ProjectComponentKind, ProjectIndicator, IndicatorStage } from '../../types';
+import type { ProjectPlanningMap, ProjectComponent, ProjectComponentKind, ProjectIndicator, IndicatorStage } from '../../types';
+
+type MapView = 'mapr' | 'indicadores';
+const recordOrder = (a: { order: number }, b: { order: number }) => a.order - b.order;
+const normalized = (text: string) => text.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLocaleLowerCase('pt-BR');
+const STAGE_LABELS: Record<IndicatorStage, string> = { recurso: 'Recursos', atividade: 'Atividades', produto: 'Produtos', resultado: 'Resultados', impacto: 'Impactos' };
 
 export function ProjectMapLinks({ programId, actionId, onOpen }: { programId: string; actionId?: string; onOpen?: (id: string) => void }) {
   const { state } = useApp();
   const maps = actionId ? [projectMapForAction(state, actionId)].filter((map): map is ProjectPlanningMap => !!map) : projectMapsForProgram(state, programId);
   if (!maps.length || !onOpen) return null;
-  return <div className="project-map-links">{maps.map((map) => <ActionButton key={map.id} sm color="ghost" onClick={() => onOpen(map.id)}>Abrir MaPR e indicadores — {map.projectName} · projeto {map.projectCode}</ActionButton>)}</div>;
+  return <div className="project-map-links">{maps.map((map) => <button className="project-map-shortcut" key={map.id} onClick={() => onOpen(map.id)}><Network size={18} /><span><strong>{map.projectName}</strong><small>Projeto estratégico {map.projectCode} · MaPR e indicadores compartilhados</small></span><ArrowRight size={17} /></button>)}</div>;
 }
-
-function SourceNote({ source }: { source: MapDocumentSource | null }) {
-  return <span className={`badge ${source ? 'blue' : 'purple'}`}>{source ? `Avaliação ${source.year} · figura ${source.figure} · p. ${source.printedPage}` : 'Rascunho local'}</span>;
-}
-const recordOrder = (left: { order: number }, right: { order: number }) => left.order - right.order;
-const showEditor = () => requestAnimationFrame(() => document.getElementById('project-map-editor')?.scrollIntoView({ behavior: 'smooth', block: 'start' }));
 
 export function ProjectMapWorkspace({ map }: { map: ProjectPlanningMap }) {
   const { state, update, saveNow } = useApp();
   const toast = useToast();
-  const [tab, setTab] = useState<'mapr' | 'indicadores'>('mapr');
-  const [view, setView] = useState<'mapr' | 'indicadores'>('mapr');
+  const [view, setView] = useState<MapView>('mapr');
+  const [layout, setLayout] = useState<'mapa' | 'lista'>('mapa');
+  const [query, setQuery] = useState('');
+  const [stage, setStage] = useState('');
   const [readOriginal, setReadOriginal] = useState(false);
   const [comparison, setComparison] = useState(false);
-  const [restore, setRestore] = useState<'mapr' | 'indicadores' | null>(null);
-  const [selection, setSelection] = useState('');
+  const [restore, setRestore] = useState<MapView | null>(null);
+  const [selection, setSelection] = useState<{ id: string; view: MapView } | null>(null);
   const [removeId, setRemoveId] = useState('');
+  const [saving, setSaving] = useState(false);
   const original = originalProjectMap(map);
   const visible = readOriginal ? original : map;
-  const allowed = canEditProjectMap(state, map);
-  const editable = allowed && !readOriginal;
-  const changes = projectMapDifferences(map);
-  const maprChanged = projectMapDifferences(map, 'mapr').length > 0;
-  const indicatorsChanged = projectMapDifferences(map, 'indicadores').length > 0;
-  const component = visible.components.find((item) => item.id === selection);
-  const indicator = visible.indicators.find((item) => item.id === selection);
-  const owner = state.programs.find((program) => program.id === map.ownerProgramId);
+  const editable = canEditProjectMap(state, map) && !readOriginal;
+  const changes = projectMapDifferences(map, view);
+  const component = selection?.view === 'mapr' ? visible.components.find((item) => item.id === selection.id) : undefined;
+  const indicator = selection?.view === 'indicadores' ? visible.indicators.find((item) => item.id === selection.id) : undefined;
   const actions = map.actionIds.map((id) => state.actions.find((action) => action.id === id)).filter((action) => !!action);
   const change = (apply: (target: ProjectPlanningMap) => void) => update((draft) => apply(editableProjectMap(draft, map.id)));
-  const select = (id: string, kind: 'mapr' | 'indicadores' = 'mapr') => { setTab(kind); setSelection(id); showEditor(); };
+  const select = (id: string, selectedView: MapView = view) => setSelection({ id, view: selectedView });
+  const setComponent = (apply: (record: ProjectComponent) => void) => change((target) => { const item = target.components.find((item) => item.id === selection?.id); if (item) apply(item); });
+  const setIndicator = (apply: (record: ProjectIndicator) => void) => change((target) => { const item = target.indicators.find((item) => item.id === selection?.id); if (item) apply(item); });
   const addComponent = (kind: ProjectComponentKind) => {
     const id = `componente-local-${crypto.randomUUID()}`;
     change((target) => target.components.push({ id, kind, order: Math.max(0, ...target.components.filter((item) => item.kind === kind).map((item) => item.order)) + 1, text: '', origin: 'local', source: null, actionIds: [] }));
-    select(id);
+    select(id, 'mapr');
   };
-  const addIndicator = (stage: IndicatorStage) => {
+  const addIndicator = (selectedStage: IndicatorStage) => {
     const id = `indicador-projeto-local-${crypto.randomUUID()}`;
-    change((target) => target.indicators.push({ id, name: '', stage, order: Math.max(0, ...target.indicators.map((item) => item.order)) + 1, officialCode: '', formula: '', unit: '', frequency: '', polarity: '', definition: '', dataSource: '', geography: '', referenceIndex: '', referenceDate: '', origin: 'local', source: null, links: [] }));
+    change((target) => target.indicators.push({ id, name: '', stage: selectedStage, order: Math.max(0, ...target.indicators.map((item) => item.order)) + 1, officialCode: '', formula: '', unit: '', frequency: '', polarity: '', definition: '', dataSource: '', geography: '', referenceIndex: '', referenceDate: '', origin: 'local', source: null, links: [] }));
     select(id, 'indicadores');
   };
-  const setComponent = (apply: (record: ProjectComponent) => void) => change((target) => apply(target.components.find((item) => item.id === selection)!));
-  const setIndicator = (apply: (record: ProjectIndicator) => void) => change((target) => apply(target.indicators.find((item) => item.id === selection)!));
-  const toolbar = <div className="row project-map-operations">
-    <span className={`badge ${changes.length ? 'orange' : 'blue'}`}>{changes.length ? 'Alterado na proposta' : 'Original preservado'}</span>
-    <span className={`badge ${editable ? 'green' : 'gray'}`}>{readOriginal ? 'Referência somente leitura' : allowed ? 'Editável na proposta' : 'Somente consulta'}</span>
-    <ActionButton sm disabled={!editable} onClick={async () => { try { await saveNow(); toast('Proposta do mapa salva neste navegador.', 'ok'); } catch { toast('Falha ao salvar. Confira o aviso no cabeçalho.', 'err'); } }}>Salvar proposta do mapa</ActionButton>
-    <ActionButton sm color="ghost" onClick={() => { setReadOriginal(!readOriginal); setSelection(''); }}>{readOriginal ? 'Voltar à proposta' : 'Ver original'}</ActionButton>
-    <ActionButton sm color="ghost" onClick={() => setComparison(true)}>Comparar com o original</ActionButton>
-    <ActionButton sm color="ghost" disabled={!editable || !maprChanged} onClick={() => setRestore('mapr')}>Reverter MaPR para o original</ActionButton>
-    <ActionButton sm color="ghost" disabled={!editable || !indicatorsChanged} onClick={() => setRestore('indicadores')}>Reverter indicadores para o original</ActionButton>
-  </div>;
-  return <div className="ppo-sheet project-map-workspace" data-map-id={map.id}>
-    <Card title={`${map.projectName} · projeto estratégico ${map.projectCode}`}>
-      <div className="project-map-summary"><span>Um mapa compartilhado · {visible.components.length} componentes · {visible.indicators.length} indicadores</span><details><summary>Origem e ações participantes</summary>
-        <p>MaPR: figura 2, p. 8. Indicadores: figura 3, p. 9. Avaliação publicada em 2025; mapas discutidos em 2024. As ações são da referência PPO {state.planning?.exercise}.</p>
-        <ul>{actions.map((action) => <li key={action.id}>Ação {action.codigo} · UO {action.codigoUnidadeOrcamentaria} · {action.nome}</li>)}</ul>
-        <p>A participação no projeto não atribui automaticamente cada componente a todas as ações. A edição compartilhada segue a permissão do programa {owner?.codigo}, UO {owner?.codigoUnidadeOrcamentaria || 'não informada'}, como regra deste mockup.</p>
-      </details></div>
-      <Tabs tabs={[{ id: 'mapr', label: 'MaPR — Processos e Resultados' }, { id: 'indicadores', label: 'Mapa de Indicadores' }]} active={view} onChange={(value) => { setView(value as typeof view); setTab(value as typeof tab); setSelection(''); }} />
-      {toolbar}
-      {readOriginal && <p className="alert info">Você está consultando o original da avaliação. Suas alterações continuam na proposta.</p>}
-      {view === 'mapr' ? <>
-      <p className="small muted">Mapa de Processos e Resultados da avaliação do Minas Reurb — 37 componentes compartilhados entre as ações do projeto.</p>
-      <details className="reference-panel" open><summary>Contexto e pressupostos ({visible.components.filter((item) => item.kind === 'contexto' || item.kind === 'pressuposto').length})</summary><div className="project-map-context">{(['contexto', 'pressuposto'] as const).map((kind) => <ComponentColumn key={kind} kind={kind} items={visible.components.filter((item) => item.kind === kind)} originals={original.components} editable={editable} onSelect={select} onAdd={() => addComponent(kind)} />)}</div></details>
-      <div className="project-map-chain" role="region" aria-label="MaPR do projeto" tabIndex={0}>{CHAIN_STAGES.map((kind) => <ComponentColumn key={kind} kind={kind} items={visible.components.filter((item) => item.kind === kind)} originals={original.components} editable={editable} onSelect={select} onAdd={() => addComponent(kind)} />)}</div>
-      </> : <>
-      <p className="small muted">12 indicadores da figura 3 da avaliação. Fórmulas e medições não informadas permanecem vazias; vínculos sugeridos dependem de confirmação.</p>
-      <div className="project-map-chain" role="region" aria-label="Mapa de indicadores do projeto" tabIndex={0}>{CHAIN_STAGES.map((stage) => <section className="project-map-column" key={stage}><h3>{COMPONENT_LABELS[stage]} <span className="pill-count">{visible.indicators.filter((item) => item.stage === stage).length}</span></h3>{visible.indicators.filter((item) => item.stage === stage).sort(recordOrder).map((item) => <article className="project-map-node indicator-node" key={item.id}>
-        <p>{item.name || 'Indicador em rascunho'}</p><SourceNote source={item.source} /><p className="small muted">{item.links.filter((link) => link.status === 'confirmado').length} vínculos confirmados</p>
-        <ActionButton sm color="ghost" onClick={() => select(item.id, 'indicadores')} aria-label={`Abrir indicador ${item.name || 'em rascunho'}`}>{editable ? 'Editar ficha' : 'Consultar ficha'}</ActionButton>
-      </article>)}<ActionButton sm color="ghost" disabled={!editable} onClick={() => addIndicator(stage)}>Rascunhar indicador — {COMPONENT_LABELS[stage]}</ActionButton></section>)}</div>
-      </>}
-      {selection && <fieldset className="sheet-inline-editor project-map-editor" id="project-map-editor"><legend>{tab === 'mapr' ? 'Ficha do componente' : 'Ficha do indicador'}</legend>
-        {component && tab === 'mapr' && <>
-          <div className="grid g2"><FormField label="Identificador do componente" value={component.id} disabled /><FormField label="Origem do componente" value={component.source ? `${component.source.title} · ${component.source.year}` : 'Rascunho local'} disabled /></div>
-          <FormField label="Texto do componente" textarea value={component.text} disabled={!editable} onChange={(value) => setComponent((item) => { item.text = value; })} />
-          <label className="field">Tipo de componente<select aria-label="Tipo de componente" value={component.kind} disabled={!editable} onChange={(event) => setComponent((item) => { item.kind = event.target.value as ProjectComponentKind; })}>{Object.entries(COMPONENT_LABELS).map(([value, label]) => <option key={value} value={value}>{label}</option>)}</select></label>
-          <fieldset><legend>Participação das ações neste componente</legend><p className="small muted">Associação explícita, opcional. O componente continua único no projeto.</p>{actions.map((action) => <label className="project-map-check" key={action.id}><input type="checkbox" checked={component.actionIds.includes(action.id)} disabled={!editable} onChange={(event) => setComponent((item) => { item.actionIds = item.actionIds.filter((id) => id !== action.id); if (event.target.checked) item.actionIds.push(action.id); })} />{action.codigo} · UO {action.codigoUnidadeOrcamentaria} · {action.nome}</label>)}</fieldset>
-          {original.components.some((item) => item.id === component.id) && <details className="reference-panel"><summary>Texto original da avaliação</summary><p>{original.components.find((item) => item.id === component.id)!.text}</p></details>}
-        </>}
-        {indicator && tab === 'indicadores' && <>
-          <div className="grid g2"><FormField label="Identificador do indicador" value={indicator.id} disabled /><FormField label="Código oficial PPO do indicador" value={indicator.officialCode} disabled hint="O relatório não informa código oficial." /></div>
-          <SourceNote source={indicator.source} />
-          <FormField label="Nome do indicador" textarea value={indicator.name} disabled={!editable} onChange={(value) => setIndicator((item) => { item.name = value; })} />
-          <label className="field">Etapa acompanhada<select aria-label="Etapa acompanhada" value={indicator.stage} disabled={!editable} onChange={(event) => setIndicator((item) => { item.stage = event.target.value as IndicatorStage; })}>{CHAIN_STAGES.map((stage) => <option key={stage} value={stage}>{COMPONENT_LABELS[stage]}</option>)}</select></label>
-          <div className="grid g2">{([['definition', 'Definição operacional'], ['formula', 'Fórmula de cálculo'], ['unit', 'Unidade de medida'], ['frequency', 'Periodicidade da coleta'], ['polarity', 'Polaridade'], ['dataSource', 'Fonte dos dados de medição'], ['geography', 'Base geográfica'], ['referenceIndex', 'Índice de referência'], ['referenceDate', 'Data de apuração']] as const).map(([field, label]) => <FormField key={field} label={label} value={indicator[field]} textarea={['definition', 'formula', 'dataSource'].includes(field)} disabled={!editable} onChange={(value) => setIndicator((item) => { item[field] = value; })} />)}</div>
-          <fieldset><legend>Componentes acompanhados no MaPR</legend><p className="small muted">Marque para confirmar uma associação. Sugestões não contam como vínculos confirmados.</p>
-            {visible.components.filter((item) => CHAIN_STAGES.includes(item.kind as IndicatorStage)).map((item) => {
-              const link = indicator.links.find((record) => record.componentId === item.id);
-              return <label className="project-map-check" key={item.id}><input type="checkbox" checked={link?.status === 'confirmado'} disabled={!editable} onChange={(event) => setIndicator((record) => {
-                record.links = record.links.filter((candidate) => candidate.componentId !== item.id);
-                if (event.target.checked) record.links.push({ componentId: item.id, status: 'confirmado' });
-                else if (original.indicators.find((candidate) => candidate.id === indicator.id)?.links.some((candidate) => candidate.componentId === item.id)) record.links.push({ componentId: item.id, status: 'sugerido' });
-              })} /><span>{COMPONENT_LABELS[item.kind]} · {item.text || 'Componente sem texto'}{link?.status === 'sugerido' && <small className="badge orange">Sugestão — não confirmada</small>}</span></label>;
-            })}
-            {indicator.links.filter((link) => !visible.components.some((item) => item.id === link.componentId)).map((link) => <p className="alert warn" key={link.componentId}>Componente removido da proposta: {link.componentId}. Revise a associação ou restaure o MaPR.</p>)}
-          </fieldset>
-          {original.indicators.some((item) => item.id === indicator.id) && <details className="reference-panel"><summary>Ficha original da avaliação</summary><p>{original.indicators.find((item) => item.id === indicator.id)!.name}</p><p>Fórmula, unidade, periodicidade, linha de base e valores não informados na figura permanecem vazios no original.</p></details>}
-        </>}
-        <div className="row">
-          <ActionButton sm color="ghost" onClick={() => setSelection('')}>Concluir ficha</ActionButton>
-          {(tab === 'mapr' ? original.components : original.indicators).some((item) => item.id === selection) && <ActionButton sm color="ghost" disabled={!editable} onClick={() => update((draft) => restoreProjectRecord(draft, map.id, tab === 'mapr' ? 'componente' : 'indicador', selection))}>Reverter este {tab === 'mapr' ? 'componente' : 'indicador'} para o original</ActionButton>}
-          <ActionButton sm color="ghost" disabled={!editable} onClick={() => setRemoveId(selection)}>Remover da proposta</ActionButton>
-        </div>
-      </fieldset>}
-    </Card>
-    {comparison && <Modal wide title="Comparação — MaPR e indicadores" onClose={() => setComparison(false)}>{!changes.length ? <p>A proposta mantém o original da avaliação.</p> : <div className="table-wrap"><table className="dt revision-table"><thead><tr><th>Campo</th><th>Original da avaliação</th><th>Proposta local</th></tr></thead><tbody>{changes.map((change) => <tr key={change.field}><th>{change.field}</th><td><pre className="preserve-text">{change.before}</pre></td><td><pre className="preserve-text">{change.after}</pre></td></tr>)}</tbody></table></div>}</Modal>}
-    {restore && <Modal title={`Reverter ${restore === 'mapr' ? 'MaPR' : 'indicadores'}?`} onClose={() => setRestore(null)}><p>Restaurar este conjunto de dados conforme a avaliação de 2025? A operação ficará no histórico.</p><p>{restore === 'mapr' ? 'As fichas dos indicadores continuam preservadas. Vínculos a componentes locais removidos serão sinalizados.' : 'Os componentes e textos do MaPR continuam preservados.'}</p><ActionButton disabled={!editable} onClick={() => { update((draft) => restoreProjectMap(draft, map.id, restore)); setSelection(''); setRestore(null); }}>Confirmar reversão</ActionButton></Modal>}
-    {removeId && <Modal title="Remover da proposta?" onClose={() => setRemoveId('')}><p>O registro será preservado no histórico. O original da avaliação continuará disponível.</p><ActionButton disabled={!editable} color="red" onClick={() => { update((draft) => removeProjectRecord(draft, map.id, tab === 'mapr' ? 'componente' : 'indicador', removeId)); setSelection(''); setRemoveId(''); }}>Confirmar remoção da proposta</ActionButton></Modal>}
-  </div>;
-}
-
-function ComponentColumn({ kind, items, originals, editable, onSelect, onAdd, indicators, allIndicators = [], onSelectIndicator, onAddIndicator }: {
-  kind: ProjectComponentKind; items: ProjectComponent[]; originals: ProjectComponent[]; editable: boolean;
-  onSelect: (id: string) => void; onAdd: () => void; indicators?: ProjectIndicator[]; allIndicators?: ProjectIndicator[];
-  onSelectIndicator?: (id: string) => void; onAddIndicator?: () => void;
-}) {
-  return <section className="project-map-column" aria-label={COMPONENT_LABELS[kind]}><h3>{COMPONENT_LABELS[kind]} <span className="pill-count">{items.length}</span></h3>{items.sort(recordOrder).map((item) => <article className="project-map-node" key={item.id}>
-    <p>{item.text || 'Componente em rascunho'}</p><SourceNote source={item.source} />
-    {originals.some((original) => original.id === item.id && (original.text !== item.text || original.kind !== item.kind)) && <span className="badge orange">Alterado</span>}
-    {!!item.actionIds.length && <p className="small muted">{item.actionIds.length} ações associadas explicitamente</p>}
-    {allIndicators.filter((indicator) => indicator.links.some((link) => link.componentId === item.id && link.status === 'confirmado')).map((indicator) => <button className="project-linked-indicator" key={indicator.id} onClick={() => onSelectIndicator?.(indicator.id)}>Indicador: {indicator.name || 'Rascunho'}</button>)}
-    <ActionButton sm color="ghost" onClick={() => onSelect(item.id)} aria-label={`Abrir componente ${item.text || 'em rascunho'}`}>{editable ? 'Editar' : 'Consultar'}</ActionButton>
-  </article>)}{!items.length && <p className="small muted">Nenhum componente registrado.</p>}<ActionButton sm color="ghost" disabled={!editable} onClick={onAdd}>Adicionar {COMPONENT_LABELS[kind].toLocaleLowerCase('pt-BR')}</ActionButton>
-    {indicators && <div className="project-indicators-inline"><h4>Indicadores de {COMPONENT_LABELS[kind].toLocaleLowerCase('pt-BR')} <span className="pill-count">{indicators.length}</span></h4>{indicators.sort(recordOrder).map((item) => <article className="project-map-node indicator-node" key={item.id}>
-      <p>{item.name || 'Indicador em rascunho'}</p><SourceNote source={item.source} /><p className="small muted">{item.links.filter((link) => link.status === 'confirmado').length} vínculos confirmados</p>
-      <ActionButton sm color="ghost" onClick={() => onSelectIndicator?.(item.id)} aria-label={`Abrir indicador ${item.name || 'em rascunho'}`}>{editable ? 'Editar ficha' : 'Consultar ficha'}</ActionButton>
-    </article>)}<ActionButton sm color="ghost" disabled={!editable} onClick={onAddIndicator}>Rascunhar indicador — {COMPONENT_LABELS[kind]}</ActionButton></div>}
+  const matches = (text: string, kind: string) => (!query || normalized(text).includes(normalized(query))) && (!stage || stage === kind);
+  const components = visible.components.filter((item) => matches(item.text, item.kind));
+  const indicators = visible.indicators.filter((item) => matches(item.name, item.stage));
+  const count = view === 'mapr' ? components.length : indicators.length;
+  const total = view === 'mapr' ? visible.components.length : visible.indicators.length;
+  const save = async () => { setSaving(true); try { await saveNow(); toast('Proposta salva neste navegador.', 'ok'); } catch { toast('Não foi possível salvar a proposta.', 'err'); } finally { setSaving(false); } };
+  const componentChanged = (item: ProjectComponent) => { const source = original.components.find((record) => record.id === item.id); return source && JSON.stringify([source.text, source.kind, source.actionIds]) !== JSON.stringify([item.text, item.kind, item.actionIds]); };
+  const indicatorChanged = (item: ProjectIndicator) => { const source = original.indicators.find((record) => record.id === item.id); return source && JSON.stringify(source) !== JSON.stringify(item); };
+  const badge = (local: boolean, changed: boolean | undefined) => local ? <span className="badge purple">Rascunho</span> : changed ? <span className="badge orange">Alterado</span> : null;
+  const componentColumn = (kind: ProjectComponentKind, index?: number) => <section className={`project-map-column stage-${kind}`} aria-label={COMPONENT_LABELS[kind]} key={kind}>
+    <header><h3>{index !== undefined && <span className="stage-number">{index + 1}</span>}{COMPONENT_LABELS[kind]}</h3><span className="pill-count">{components.filter((item) => item.kind === kind).length}</span></header>
+    <div className="project-map-nodes">{components.filter((item) => item.kind === kind).sort(recordOrder).map((item) => <article className="project-map-node" key={item.id}><button className="project-node-open" aria-label={`Abrir componente ${item.text || 'em rascunho'}`} onClick={() => select(item.id)}><p>{item.text || 'Componente em rascunho'}</p>{badge(!item.source, componentChanged(item))}<span className="project-node-caption">{editable ? 'Editar componente' : 'Consultar componente'}<ArrowRight size={13} /></span></button></article>)}</div>
+    {!components.some((item) => item.kind === kind) && <p className="map-empty">{query ? 'Nenhum resultado.' : 'Nenhum componente.'}</p>}
+    <ActionButton sm color="ghost" icon={<Plus size={14} />} disabled={!editable} onClick={() => addComponent(kind)}>Adicionar</ActionButton>
   </section>;
+  return <div className="ppo-sheet project-map-workspace" data-map-id={map.id}>
+    <Card>
+      <header className="project-heading"><span className="project-heading-icon"><Network size={23} /></span><div><span className="planning-eyebrow">Projeto estratégico {map.projectCode}</span><h2>{map.projectName}</h2><p>{visible.components.length} componentes · {visible.indicators.length} indicadores · {actions.length} ações participantes</p></div><span className={`badge ${editable ? 'green' : 'gray'}`}>{readOriginal ? 'Original · somente leitura' : editable ? 'Editável na proposta' : 'Somente consulta'}</span></header>
+      <div className="project-participation">{actions.map((action) => <span key={action.id} title={action.nome}>Ação {action.codigo} <span>UO {action.codigoUnidadeOrcamentaria}</span></span>)}<details><summary>Sobre os dados</summary><p>Preenchido com a avaliação do Programa Minas Reurb (2025). Os mapas pertencem ao projeto e são compartilhados pelas ações participantes. Alterações são propostas locais; o original permanece disponível para consulta e reversão.</p></details></div>
+      <div className="sheet-toolbar">
+        <Tabs tabs={[{ id: 'mapr', label: 'MaPR — Processos e Resultados' }, { id: 'indicadores', label: 'Mapa de Indicadores' }]} active={view} onChange={(value) => { setView(value as MapView); setQuery(''); setStage(''); setSelection(null); }} />
+        <div className="proposal-actions project-map-operations" role="toolbar" aria-label="Ações da proposta do mapa">
+          <ActionButton icon={<Save size={15} />} disabled={!editable || saving} onClick={save}>{saving ? 'Salvando…' : 'Salvar proposta do mapa'}</ActionButton>
+          <ActionButton color="ghost" onClick={() => { setReadOriginal(!readOriginal); setSelection(null); }}>{readOriginal ? 'Voltar à proposta' : 'Ver original'}</ActionButton>
+          <ActionButton color="ghost" onClick={() => setComparison(true)}>Comparar com o original</ActionButton>
+          <ActionButton color="ghost" icon={<RotateCcw size={15} />} disabled={!editable || !changes.length} onClick={() => setRestore(view)}>{view === 'mapr' ? 'Reverter MaPR para o original' : 'Reverter indicadores para o original'}</ActionButton>
+          <span className="record-meta"><span className={`badge ${changes.length ? 'orange' : 'blue'}`}>{changes.length ? 'Alterado na proposta' : 'Original preservado'}</span></span>
+        </div>
+      </div>
+      {readOriginal && <p className="alert info">Original da avaliação. Volte à proposta para continuar editando.</p>}
+      <div className="project-view-toolbar">
+        <label className="project-search"><Search size={16} /><input aria-label={view === 'mapr' ? 'Pesquisar componentes' : 'Pesquisar indicadores'} placeholder={view === 'mapr' ? 'Pesquisar no mapa…' : 'Pesquisar indicadores…'} value={query} onChange={(event) => setQuery(event.target.value)} /></label>
+        <label className="project-stage-filter"><span className="visually-hidden">Filtrar etapa</span><select aria-label="Filtrar etapa" value={stage} onChange={(event) => setStage(event.target.value)}><option value="">Todas as etapas</option>{(view === 'mapr' ? Object.keys(COMPONENT_LABELS) as ProjectComponentKind[] : [...CHAIN_STAGES]).map((kind) => <option key={kind} value={kind}>{COMPONENT_LABELS[kind]}</option>)}</select></label>
+        <span className="project-result-count" role="status">{count} de {total} {view === 'mapr' ? 'componentes' : 'indicadores'}</span>
+        <div className="project-layout" role="group" aria-label="Modo de visualização"><button aria-pressed={layout === 'mapa'} onClick={() => setLayout('mapa')}><GitBranch size={15} />Mapa</button><button aria-pressed={layout === 'lista'} onClick={() => setLayout('lista')}><List size={15} />Lista</button></div>
+      </div>
+      {!count && <div className="empty">Nenhum registro encontrado.{(query || stage) && <ActionButton sm color="ghost" onClick={() => { setQuery(''); setStage(''); }}>Limpar filtros</ActionButton>}</div>}
+      {view === 'mapr' && layout === 'mapa' && <>
+        {(!stage || CHAIN_STAGES.includes(stage as IndicatorStage)) && <div className="project-map-chain" role="region" aria-label="MaPR do projeto" tabIndex={0}>{CHAIN_STAGES.filter((kind) => !stage || kind === stage).map((kind, index) => componentColumn(kind, CHAIN_STAGES.indexOf(kind)))}</div>}
+        {(!stage || stage === 'contexto' || stage === 'pressuposto') && <div className="project-map-context">{(['contexto', 'pressuposto'] as const).filter((kind) => !stage || kind === stage).map((kind) => componentColumn(kind))}</div>}
+      </>}
+      {view === 'indicadores' && layout === 'mapa' && <div className="project-map-chain" role="region" aria-label="Mapa de indicadores do projeto" tabIndex={0}>{CHAIN_STAGES.filter((kind) => !stage || stage === kind).map((kind, index) => <section className={`project-map-column stage-${kind}`} key={kind}><header><h3><span className="stage-number">{CHAIN_STAGES.indexOf(kind) + 1}</span>{STAGE_LABELS[kind]}</h3><span className="pill-count">{indicators.filter((item) => item.stage === kind).length}</span></header><div className="project-map-nodes">{indicators.filter((item) => item.stage === kind).sort(recordOrder).map((item) => <article className="project-map-node indicator-node" key={item.id}><button className="project-node-open" aria-label={`Abrir indicador ${item.name || 'em rascunho'}`} onClick={() => select(item.id)}><p>{item.name || 'Indicador em rascunho'}</p>{badge(!item.source, indicatorChanged(item))}<span className="project-indicator-detail">{item.unit || 'Unidade a definir'} · {item.links.filter((link) => link.status === 'confirmado').length} vínculos</span><span className="project-node-caption">{editable ? 'Editar ficha' : 'Consultar ficha'}<ArrowRight size={13} /></span></button></article>)}</div><ActionButton sm color="ghost" icon={<Plus size={14} />} disabled={!editable} onClick={() => addIndicator(kind)}>Adicionar indicador</ActionButton></section>)}</div>}
+      {layout === 'lista' && <div className="table-wrap"><table className="dt project-records"><thead><tr><th>Etapa</th><th>{view === 'mapr' ? 'Componente' : 'Indicador'}</th><th>{view === 'mapr' ? 'Ações associadas' : 'Unidade / periodicidade'}</th><th>Ficha</th></tr></thead><tbody>{view === 'mapr' ? components.sort(recordOrder).map((item) => <tr key={item.id}><td>{COMPONENT_LABELS[item.kind]}</td><td>{item.text || 'Componente em rascunho'} {badge(!item.source, componentChanged(item))}</td><td>{item.actionIds.length || 'Não associadas'}</td><td><ActionButton sm color="ghost" aria-label={`Abrir componente ${item.text || 'em rascunho'}`} onClick={() => select(item.id)}>{editable ? 'Editar' : 'Consultar'}</ActionButton></td></tr>) : indicators.sort(recordOrder).map((item) => <tr key={item.id}><td>{COMPONENT_LABELS[item.stage]}</td><td>{item.name || 'Indicador em rascunho'} {badge(!item.source, indicatorChanged(item))}</td><td>{item.unit || 'A definir'} · {item.frequency || 'A definir'}</td><td><ActionButton sm color="ghost" aria-label={`Abrir indicador ${item.name || 'em rascunho'}`} onClick={() => select(item.id)}>{editable ? 'Editar' : 'Consultar'}</ActionButton></td></tr>)}</tbody></table></div>}
+      {layout === 'lista' && <div className="row project-list-add"><ActionButton sm icon={<Plus size={15} />} disabled={!editable} onClick={() => view === 'mapr' ? addComponent((stage || 'atividade') as ProjectComponentKind) : addIndicator((stage || 'resultado') as IndicatorStage)}>{view === 'mapr' ? 'Adicionar componente' : 'Adicionar indicador'}</ActionButton></div>}
+    </Card>
+    {selection && (component || indicator) && <Modal wide title={component ? 'Ficha do componente' : 'Ficha do indicador'} sub={`${map.projectName} · ${readOriginal ? 'original somente leitura' : editable ? 'alterações salvas automaticamente na proposta' : 'somente consulta'}`} onClose={() => setSelection(null)} foot={<><ActionButton color="ghost" disabled={!editable} onClick={() => setRemoveId(selection.id)}>Remover da proposta</ActionButton>{(selection.view === 'mapr' ? original.components : original.indicators).some((item) => item.id === selection.id) && <ActionButton color="ghost" icon={<RotateCcw size={15} />} disabled={!editable} onClick={() => update((draft) => restoreProjectRecord(draft, map.id, selection.view === 'mapr' ? 'componente' : 'indicador', selection.id))}>Reverter este {selection.view === 'mapr' ? 'componente' : 'indicador'} para o original</ActionButton>}<ActionButton onClick={() => setSelection(null)}>Concluir ficha</ActionButton></>}>
+      <div className="project-record-editor">
+      {component && <>
+        <section className="sheet-section"><h2>Descrição e etapa</h2><FormField label="Texto do componente" textarea value={component.text} disabled={!editable} onChange={(value) => setComponent((item) => { item.text = value; })} /><label className="field">Tipo de componente<select aria-label="Tipo de componente" value={component.kind} disabled={!editable} onChange={(event) => setComponent((item) => { item.kind = event.target.value as ProjectComponentKind; })}>{Object.entries(COMPONENT_LABELS).map(([kind, label]) => <option key={kind} value={kind}>{label}</option>)}</select></label></section>
+        <section className="sheet-section"><h2>Ações participantes</h2><p className="small muted">Associe as ações que contribuem para este componente.</p>{actions.map((action) => <label className="project-map-check" key={action.id}><input type="checkbox" checked={component.actionIds.includes(action.id)} disabled={!editable} onChange={(event) => setComponent((item) => { item.actionIds = item.actionIds.filter((id) => id !== action.id); if (event.target.checked) item.actionIds.push(action.id); })} /><span><strong>Ação {action.codigo} · UO {action.codigoUnidadeOrcamentaria}</strong><small>{action.nome}</small></span></label>)}</section>
+      </>}
+      {indicator && <>
+        <section className="sheet-section"><h2>Identificação do indicador</h2><FormField label="Nome do indicador" textarea value={indicator.name} disabled={!editable} onChange={(value) => setIndicator((item) => { item.name = value; })} /><label className="field">Etapa acompanhada<select aria-label="Etapa acompanhada" value={indicator.stage} disabled={!editable} onChange={(event) => setIndicator((item) => { item.stage = event.target.value as IndicatorStage; })}>{CHAIN_STAGES.map((kind) => <option key={kind} value={kind}>{COMPONENT_LABELS[kind]}</option>)}</select></label><FormField label="Definição operacional" textarea value={indicator.definition} disabled={!editable} onChange={(value) => setIndicator((item) => { item.definition = value; })} /></section>
+        <section className="sheet-section"><h2>Cálculo e apuração</h2><p className="small muted">Complete os campos ainda não informados na avaliação.</p><FormField label="Fórmula de cálculo" textarea value={indicator.formula} disabled={!editable} onChange={(value) => setIndicator((item) => { item.formula = value; })} /><div className="grid g2">{([['unit', 'Unidade de medida'], ['frequency', 'Periodicidade da coleta'], ['polarity', 'Polaridade'], ['dataSource', 'Fonte dos dados de medição'], ['geography', 'Base geográfica'], ['referenceIndex', 'Índice de referência'], ['referenceDate', 'Data de apuração']] as const).map(([field, label]) => <FormField key={field} label={label} value={indicator[field]} disabled={!editable} onChange={(value) => setIndicator((item) => { item[field] = value; })} />)}</div></section>
+        <section className="sheet-section"><h2>Componentes acompanhados no MaPR</h2><p className="small muted">Marque os vínculos confirmados pela equipe. As sugestões permanecem identificadas.</p>{CHAIN_STAGES.map((kind) => <details className="project-link-group" key={kind} open={kind === indicator.stage}><summary>{COMPONENT_LABELS[kind]} <span className="pill-count">{visible.components.filter((item) => item.kind === kind).length}</span></summary>{visible.components.filter((item) => item.kind === kind).map((item) => { const link = indicator.links.find((record) => record.componentId === item.id); return <label className="project-map-check" key={item.id}><input type="checkbox" checked={link?.status === 'confirmado'} disabled={!editable} onChange={(event) => setIndicator((record) => { record.links = record.links.filter((candidate) => candidate.componentId !== item.id); if (event.target.checked) record.links.push({ componentId: item.id, status: 'confirmado' }); else if (original.indicators.find((candidate) => candidate.id === indicator.id)?.links.some((candidate) => candidate.componentId === item.id)) record.links.push({ componentId: item.id, status: 'sugerido' }); })} /><span>{item.text || 'Componente sem texto'}{link?.status === 'sugerido' && <small className="badge orange">Vínculo sugerido</small>}</span></label>; })}</details>)}{indicator.links.filter((link) => !visible.components.some((item) => item.id === link.componentId)).map((link) => <p className="alert warn" key={link.componentId}>Um componente associado foi removido da proposta. Restaure o MaPR para recuperar esse vínculo.</p>)}</section>
+      </>}
+      <details className="reference-panel"><summary>Original e identificação</summary><p>{component ? original.components.find((item) => item.id === component.id)?.text || 'Componente criado nesta proposta.' : original.indicators.find((item) => item.id === indicator?.id)?.name || 'Indicador criado nesta proposta.'}</p><div className="grid g2"><FormField label={component ? 'Identificador do componente' : 'Identificador do indicador'} value={selection.id} disabled /><FormField label="Origem" value={(component || indicator)?.source ? 'Avaliação do Programa Minas Reurb · 2025' : 'Rascunho local'} disabled /></div>{indicator && <FormField label="Código oficial PPO do indicador" value={indicator.officialCode} disabled />}</details>
+      </div>
+    </Modal>}
+    {comparison && <Modal wide title={`Comparação — ${view === 'mapr' ? 'MaPR' : 'indicadores'}`} onClose={() => setComparison(false)}>{!changes.length ? <div className="empty"><FileText size={24} /><p>A proposta mantém o original da avaliação.</p></div> : <div className="table-wrap"><table className="dt revision-table"><thead><tr><th>Campo</th><th>Original da avaliação</th><th>Proposta local</th></tr></thead><tbody>{changes.map((item) => <tr key={item.field}><th>{item.field}</th><td><pre className="preserve-text">{item.before}</pre></td><td><pre className="preserve-text">{item.after}</pre></td></tr>)}</tbody></table></div>}</Modal>}
+    {restore && <Modal title={`Reverter ${restore === 'mapr' ? 'MaPR' : 'indicadores'}?`} onClose={() => setRestore(null)} foot={<><ActionButton color="ghost" onClick={() => setRestore(null)}>Cancelar</ActionButton><ActionButton disabled={!editable} onClick={() => { update((draft) => restoreProjectMap(draft, map.id, restore)); setSelection(null); setRestore(null); }}>Confirmar reversão</ActionButton></>}><p>Restaurar este mapa conforme a avaliação do Minas Reurb?</p><p>{restore === 'mapr' ? 'As fichas dos indicadores serão preservadas.' : 'Os componentes do MaPR serão preservados.'}</p></Modal>}
+    {removeId && <Modal title="Remover da proposta?" onClose={() => setRemoveId('')} foot={<><ActionButton color="ghost" onClick={() => setRemoveId('')}>Cancelar</ActionButton><ActionButton disabled={!editable} color="red" onClick={() => { update((draft) => removeProjectRecord(draft, map.id, selection!.view === 'mapr' ? 'componente' : 'indicador', removeId)); setSelection(null); setRemoveId(''); }}>Confirmar remoção da proposta</ActionButton></>}><p>O original continua disponível e a remoção será registrada no histórico.</p></Modal>}
+  </div>;
 }

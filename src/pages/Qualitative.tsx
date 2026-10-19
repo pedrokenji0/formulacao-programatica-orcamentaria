@@ -13,17 +13,17 @@ import { canDraftRecord } from '../services/editingPolicy';
 const AREAS = [
   { id: 'qual-programa', label: 'Programa' },
   { id: 'qual-acoes', label: 'Ações e Entregas' },
-  { id: 'qual-mapa', label: 'Mapa de Processos e Resultados' },
+  { id: 'qual-mapa', label: 'Mapas de planejamento' },
   { id: 'qual-revisao', label: 'Revisão do Planejamento' },
 ];
 export function QualitativePage({ area, onNavigate }: { area: string; onNavigate: (route: string) => void }) {
   const [projectMapId, setProjectMapId] = useState('');
   const openProjectMap = (id: string) => { setProjectMapId(id); onNavigate('qual-mapa'); };
-  const { state, reference, persistenceMessage, update, can, setCurrentProgram } = useApp();
+  const { state, reference, persistenceMessage, update, setCurrentProgram } = useApp();
   const program = state.programs.find((record) => record.id === state.currentProgramId);
   const saveError = persistenceMessage.startsWith('Não');
   return <CompactHelpContext.Provider value><div className="qualitative-workspace compact-workspace">
-    <h1 className="visually-hidden">Programação Qualitativa</h1>
+    <div className="planning-page-heading"><div><span className="planning-eyebrow">Formulação programática-orçamentária</span><h1>Planejamento qualitativo</h1><p>Revise programas e ações, organize os mapas e prepare sua proposta.</p></div><span className="planning-year">Exercício {reference.manifest.exercise}</span></div>
     <header className="qualitative-header">
       <ActionButton sm color="ghost" aria-label="Visão geral do macroprocesso" title="Visão geral do macroprocesso" onClick={() => onNavigate('fpo')}><ArrowLeft size={15} /></ActionButton>
       <label className="active-program">Programa<select aria-label="Programa ativo" value={state.currentProgramId} onChange={(event) => setCurrentProgram(event.target.value)}>{state.programs.map((record) => <option key={record.id} value={record.id}>{record.codigo || 'Sem código oficial'} — {record.nome || 'Programa em rascunho'}{record.source?.origin === 'local' ? ' · Rascunho' : ''}</option>)}</select></label>

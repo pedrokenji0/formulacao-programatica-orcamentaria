@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { AppProvider } from './store/AppStore';
 import { ToastProvider } from './components/ui';
 import { AppShell } from './components/AppShell';
-import { LandingPage, ComposePage } from './pages/Simple';
+import { LandingPage } from './pages/Simple';
 import { MarcoLogicoPage } from './pages/MarcoLogico';
 import { MapaProcessosPage } from './pages/MapaProcessos';
 import { ObzPage } from './pages/OBZ';
@@ -35,9 +35,6 @@ const ROUTES: Record<string, RouteDef> = {
   'esp-indicador': { page: 'esp', tab: 'indicador', area: 'Espelhos do Planejamento' },
   'esp-export': { page: 'esp', tab: 'export', area: 'Espelhos do Planejamento' },
   admin: { page: 'admin', area: 'Administrador' },
-  planejamento: { page: 'compose', area: 'Planejamento' },
-  relatorio: { page: 'compose', area: 'Relatório e Bases de Planejamento' },
-  orcamento: { page: 'compose', area: 'Orçamento' },
 };
 
 function Router({ route, onNavigate }: { route: string; onNavigate: (id: string) => void }) {
@@ -51,7 +48,6 @@ function Router({ route, onNavigate }: { route: string; onNavigate: (id: string)
     case 'coer': return <CoerenciaPage key={route} initialTab={def.tab} />;
     case 'esp': return <EspelhoPage key={route} initialTab={def.tab} />;
     case 'admin': return <AdminPage />;
-    case 'compose': return <ComposePage route={route} />;
     default: return <LandingPage onNavigate={onNavigate} />;
   }
 }

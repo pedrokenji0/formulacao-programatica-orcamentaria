@@ -28,14 +28,14 @@ const TEXT_FIELDS: Record<PlanningEntityKind, string[]> = {
 export function fieldRule(kind: PlanningEntityKind, field: string, context: EditingContext) {
   const rule = (editable: boolean, source: RuleSource, reason: string) => ({ editable, source, reason });
   if (context === 'reference' || context === 'query') return rule(false, 'decisão do mockup', 'Referência e consulta não permitem alterações.');
-  if (kind === 'action' && ['Código do Tipo de Ação', 'Tipo de Ação'].includes(field) && context !== 'draft') return rule(false, 'expressa no manual', 'Tipo de Ação bloqueado para ação existente (p. 16).');
+  if (kind === 'action' && ['Código do Tipo de Ação', 'Tipo de Ação'].includes(field) && context !== 'draft') return rule(false, 'expressa no manual', 'Tipo de Ação bloqueado para ação existente.');
   if (field === exclusionName(kind)) return rule(false, 'decisão do mockup', 'Utilize a operação de exclusão ou restauração.');
   if (['program', 'action'].includes(kind) && unitNames(kind as 'program' | 'action').includes(field) && context !== 'draft') return rule(false, 'decisão do mockup', 'Mudança de responsabilidade exige proposta específica.');
   const officialCode = { program: 'Código do Programa', action: 'Código da Ação', indicator: 'Código do Indicador', localizer: 'Código do Localizador' }[kind];
   if (field === officialCode) return rule(context === 'draft', 'decisão do mockup', 'Código importado protegido; rascunho pode ter identificação informada ou vazia.');
-  if (kind === 'localizer' && CLASSIFICATIONS.localizer[0].includes(field)) return rule(context === 'draft', 'decisão do mockup', 'Território importado preservado; proponha outro localizador (tela p. 26).');
-  if (kind === 'program' && field === 'Causas') return rule(true, 'expressa no manual', 'Inclusão, edição e exclusão de causas (p. 31), preservando os identificadores e vínculos.');
-  if (kind === 'program' && ['Nome do Gerente', 'E-mail do Gerente', 'Telefone do Gerente', 'Cargo do Gerente'].includes(field)) return rule(true, 'expressa no manual', 'Informações do gerente permitem inclusão e edição (p. 32).');
+  if (kind === 'localizer' && CLASSIFICATIONS.localizer[0].includes(field)) return rule(context === 'draft', 'decisão do mockup', 'Território importado preservado; proponha outro localizador.');
+  if (kind === 'program' && field === 'Causas') return rule(true, 'expressa no manual', 'Inclusão, edição e exclusão de causas, preservando os identificadores e vínculos.');
+  if (kind === 'program' && ['Nome do Gerente', 'E-mail do Gerente', 'Telefone do Gerente', 'Cargo do Gerente'].includes(field)) return rule(true, 'expressa no manual', 'Informações do gerente permitem inclusão e edição.');
   if (TEXT_FIELDS[kind].includes(field) || CLASSIFICATIONS[kind].some((group) => group.includes(field))) return rule(true, 'decisão do mockup', 'Editável na proposta local; classificações selecionadas em conjunto.');
   return rule(false, 'decisão do mockup', 'Informação cadastral ou do sistema preservada como referência.');
 }
@@ -78,9 +78,9 @@ export function indicatorPending(indicator: PlanningIndicator): string[] {
   const pending: string[] = [];
   if (!fields.Indicador?.trim()) pending.push('Nome do indicador — decisão do mockup');
   if (normalizedFlag(fields['Em apuração? (Índice de Referência)']) === true) {
-    if ((fields['Justificativa do Status em apuração do Índice de Referência'] || '').trim().length < 60) pending.push('Justificativa de Em apuração: mínimo de 60 caracteres — observada em tela, p. 38');
-  } else if (!fields['Índice de Referência']?.trim()) pending.push('Índice numérico ou situação Em apuração — expressa no manual, p. 37');
-  else if (!isNumericIndex(fields['Índice de Referência'])) pending.push('Índice de referência deve ser numérico — expressa no manual, p. 37');
+    if ((fields['Justificativa do Status em apuração do Índice de Referência'] || '').trim().length < 60) pending.push('Justificativa de Em apuração: mínimo de 60 caracteres');
+  } else if (!fields['Índice de Referência']?.trim()) pending.push('Índice numérico ou situação Em apuração');
+  else if (!isNumericIndex(fields['Índice de Referência'])) pending.push('Índice de referência deve ser numérico');
   if (!fields['Data de Apuração']?.trim()) pending.push('Data de apuração — decisão do mockup');
   return pending;
 }

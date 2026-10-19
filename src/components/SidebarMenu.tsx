@@ -12,7 +12,7 @@ const MENU: NavNode[] = [
         id: 'qualitativa', label: '1.1 PROGRAMAÇÃO QUALITATIVA', children: [
           { id: 'qual-programa', label: 'Programa', route: 'qual-programa' },
           { id: 'qual-acoes', label: 'Ações e Entregas', route: 'qual-acoes' },
-          { id: 'qual-mapa', label: 'Mapa de Processos e Resultados', route: 'qual-mapa' },
+          { id: 'qual-mapa', label: 'Mapas de planejamento', route: 'qual-mapa' },
           { id: 'qual-revisao', label: 'Revisão do Planejamento', route: 'qual-revisao' },
         ],
       },
@@ -40,9 +40,6 @@ const MENU: NavNode[] = [
       },
     ],
   },
-  { id: 'planejamento', label: '2. PLANEJAMENTO', route: 'planejamento' },
-  { id: 'relatorio', label: '3. RELATÓRIO E BASES DO PLANEJAMENTO', route: 'relatorio' },
-  { id: 'orcamento', label: '4. ORÇAMENTO', route: 'orcamento' },
   { id: 'admin', label: 'ADMINISTRADOR', route: 'admin', perm: 'adminTabelas' },
 ];
 

@@ -11,7 +11,7 @@ const TERRITORY_FIELDS = ['Código da Região Geográfica Intermediária', 'Regi
 const button = async (page: Page, name: string) => page.getByRole('button', { name, exact: true }).click();
 const closeWindow = async (page: Page) => page.getByRole('dialog').getByRole('button', { name: 'Fechar janela', exact: true }).click();
 const openProgramMap = async (page: Page) => {
-  await button(page, 'Mapa de Processos e Resultados');
+  await button(page, 'Mapas de planejamento');
   const picker = page.getByLabel('Mapa em edição', { exact: true });
   if (await picker.count()) await picker.selectOption('programa');
 };
@@ -83,7 +83,7 @@ test('edita fichas, causas, classificações, indicadores e localizadores e recu
   await chooseCatalog(page, 'Referência territorial', choice(alternative, TERRITORY_FIELDS));
   await closeWindow(page);
   await openProgramMap(page);
-  await button(page, 'Referências do PPO');
+  await button(page, 'Relacionar cadastro');
   await button(page, 'Confirmar atividade no mapa');
   await page.getByLabel('Resultado ou impacto proposto', { exact: true }).fill('Melhoria da segurança jurídica das famílias atendidas');
   await button(page, 'Confirmar e acrescentar ao mapa');
@@ -358,8 +358,8 @@ test('atalhos do mapa têm destaque e tabelas de apoio são exclusivas do admini
   await openProgramMap(page);
   await expect(page.getByRole('navigation', { name: 'Ferramentas do mapa' }).getByRole('button')).toHaveCount(3);
   await expect(page.getByRole('button', { name: 'Tabelas de apoio', exact: true })).toHaveCount(0);
-  await button(page, 'Referências do PPO');
-  await expect(page.getByRole('dialog')).toContainText('Referências do PPO e associações');
+  await button(page, 'Relacionar cadastro');
+  await expect(page.getByRole('dialog')).toContainText('Cadastro e associações');
   await closeWindow(page);
   await button(page, 'Gerenciar ações');
   await expect(page.getByRole('dialog')).toContainText('Gerenciar ações do mapa');
@@ -642,7 +642,7 @@ test('exclusão de importado novo não pede motivo; restauração e descarte tê
 test('reformular uma causa preserva identidade e associações já confirmadas no MaPR', async ({ page }) => {
   await open(page);
   await openProgramMap(page);
-  await button(page, 'Referências do PPO');
+  await button(page, 'Relacionar cadastro');
   await page.getByText('Causas do programa — organização opcional', { exact: true }).click();
   await page.getByRole('button', { name: 'Confirmar causa no mapa', exact: true }).first().click();
   await button(page, 'Associações');
@@ -652,7 +652,7 @@ test('reformular uma causa preserva identidade e associações já confirmadas n
   await button(page, 'Programa');
   await page.getByLabel('Causa 1', { exact: true }).fill('Causa reformulada sem perder a relação com a entrega');
   await openProgramMap(page);
-  await button(page, 'Referências do PPO');
+  await button(page, 'Relacionar cadastro');
   await page.getByText('Causas do programa — organização opcional', { exact: true }).click();
   await button(page, 'Atualizar causa no mapa');
   await closeWindow(page);

@@ -97,20 +97,3 @@ export function LandingPage({ onNavigate }: { onNavigate: (id: string) => void }
     </>
   );
 }
-
-export function ComposePage({ route }: { route: string }) {
-  const titles: Record<string, { t: string; d: string }> = {
-    planejamento: { t: 'Planejamento', d: 'Módulo existente no sistema oficial (PPO). Aqui aparece apenas para compor a navegação do protótipo.' },
-    relatorio: { t: 'Relatório e Bases de Planejamento', d: 'Módulo existente no sistema oficial (PPO). Apenas composição de navegação no protótipo.' },
-    orcamento: { t: 'Orçamento', d: 'Módulo existente no sistema oficial (PPO/SISOR). Apenas composição de navegação no protótipo.' },
-  };
-  const info = titles[route] || { t: route, d: '' };
-  return (
-    <>
-      <PageHeader crumb="Sistema oficial (PPO)" title={info.t} sub={info.d} showProgram={false} />
-      <Card>
-        <div className="empty">Tela ilustrativa — integra-se ao módulo correspondente do sistema oficial.</div>
-      </Card>
-    </>
-  );
-}

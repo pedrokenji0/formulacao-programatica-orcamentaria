@@ -31,7 +31,7 @@ export function MapReferences({ map, updateMap, editable, section = 'todas', ini
     if (record) record.origin = 'confirmado';
   });
   return <>
-    {section !== 'associacoes' && <Card title="Referências do cadastro e organização do mapa" lead="Importado: conteúdo cadastral do PPO. Sugestão: organização ainda não validada. Confirmado/complementado: decisão explícita da equipe.">
+    {section !== 'associacoes' && <Card title="Cadastro do programa e ações" lead="Importado: conteúdo cadastral do PPO. Sugestão: organização ainda não validada. Confirmado/complementado: decisão explícita da equipe.">
       <div className="map-origin-legend"><span className="badge blue">Importado</span><span className="badge orange">Sugestão de organização</span><span className="badge green">Confirmado pelo usuário</span><span className="badge purple">Complemento local</span></div>
       <div className="grid g2"><div className="map-reference-text"><b>Objetivo do programa — referência cadastral na proposta</b><ExpandableText text={program.objetivo} label="Objetivo do programa" /><b>Justificativa — referência para contexto</b><ExpandableText text={program.justificativa} label="Justificativa do programa" />
         <ActionButton sm color="ghost" disabled={!editable || !program.justificativa} onClick={() => updateMap((target) => { if (!target.contexto.some((item) => item.sourceReference === 'Justificativa do programa no PPO')) target.contexto.push({ id: stableLocalId('contexto'), texto: program.justificativa, origin: 'confirmado', sourceReference: 'Justificativa do programa no PPO' }); })}>Confirmar justificativa como contexto</ActionButton>

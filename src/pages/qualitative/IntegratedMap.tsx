@@ -26,7 +26,7 @@ export function IntegratedMap({ map, updateMap, editable, availableActions, onAd
   const program = state.programs.find((record) => record.id === map.programId)!;
   return <Card title="Mapa de Processos e Resultados" lead="Explore a cadeia e edite cada bloco na própria visualização. Textos longos ficam recolhidos até você abrir “Ver mais”." actions={can('adminTabelas') ? <ActionButton sm color="ghost" icon={<Settings size={16} />} onClick={() => setDialog('categorias')}>Tabelas de apoio</ActionButton> : undefined}>
     <nav className="map-workspace-shortcuts" aria-label="Ferramentas do mapa">
-      <button className="map-shortcut references" aria-label="Referências do PPO" type="button" onClick={() => setDialog('referencias')}><BookOpen size={22} /><span><strong>Referências do PPO</strong><small>Consultar cadastro e confirmar associações</small></span></button>
+      <button className="map-shortcut references" aria-label="Relacionar cadastro" type="button" onClick={() => setDialog('referencias')}><BookOpen size={22} /><span><strong>Relacionar cadastro</strong><small>Consultar cadastro e confirmar associações</small></span></button>
       <button className="map-shortcut actions" aria-label="Gerenciar ações" type="button" onClick={() => setDialog('acoes')}><ListTree size={22} /><span><strong>Gerenciar ações</strong><small>Vincular ações e preservar suas UOs</small></span></button>
       <button className="map-shortcut validation" aria-label="Validar desenho" type="button" onClick={() => setDialog('validacao')}><ClipboardCheck size={22} /><span><strong>Validar desenho</strong><small>Conferir a cadeia e suas pendências</small></span></button>
     </nav>
@@ -41,8 +41,8 @@ export function IntegratedMap({ map, updateMap, editable, availableActions, onAd
         ? <FormField label="Problema ou necessidade de atuação" textarea value={map.problemaCentral} disabled={!editable} onChange={(value) => updateMap((target) => { target.problemaCentral = value; })} hint="Que situação se pretende alcançar, melhorar ou preservar?" />
         : <ProgramMapItems map={map} section={editor.section} updateMap={updateMap} editable={editable} />}
     </Modal>}
-    {dialog === 'referencias' && <Modal wide title="Referências do PPO e associações" onClose={() => setDialog('')}>
-      <Tabs tabs={[{ id: 'referencias', label: 'Referências e sugestões' }, { id: 'associacoes', label: 'Associações' }]} active={referenceTab} onChange={setReferenceTab} />
+    {dialog === 'referencias' && <Modal wide title="Cadastro e associações" onClose={() => setDialog('')}>
+      <Tabs tabs={[{ id: 'referencias', label: 'Cadastro existente' }, { id: 'associacoes', label: 'Associações' }]} active={referenceTab} onChange={setReferenceTab} />
       <MapReferences map={map} updateMap={updateMap} editable={editable} section={referenceTab} initialActionId={selected === '*' ? undefined : selected} />
     </Modal>}
     {dialog === 'acoes' && <Modal title="Gerenciar ações do mapa" onClose={() => setDialog('')}>
