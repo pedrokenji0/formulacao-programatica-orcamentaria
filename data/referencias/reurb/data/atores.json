@@ -1,0 +1,62 @@
+{
+  "schema":{
+    "fields":[
+      {
+        "name":"ator_id",
+        "type":"any",
+        "extDtype":"string"
+      },
+      {
+        "name":"nome",
+        "type":"any",
+        "extDtype":"string"
+      },
+      {
+        "name":"tipo",
+        "type":"any",
+        "extDtype":"string"
+      },
+      {
+        "name":"fonte_id",
+        "type":"any",
+        "extDtype":"string"
+      },
+      {
+        "name":"observacao",
+        "type":"any",
+        "extDtype":"string"
+      }
+    ],
+    "pandas_version":"1.4.0"
+  },
+  "data":[
+    {
+      "ator_id":"ator-sede",
+      "nome":"Sede",
+      "tipo":"orgao_estadual",
+      "fonte_id":"fonte-avaliacao-reurb-2025",
+      "observacao":"Ator do desenho do relatório; não equivale automaticamente a ação ou UO financiadora."
+    },
+    {
+      "ator_id":"ator-armva",
+      "nome":"ARMVA",
+      "tipo":"entidade_estadual",
+      "fonte_id":"fonte-avaliacao-reurb-2025",
+      "observacao":"Ator do desenho do relatório; não equivale automaticamente a ação ou UO financiadora."
+    },
+    {
+      "ator_id":"ator-cohab",
+      "nome":"Cohab-MG",
+      "tipo":"entidade_estadual",
+      "fonte_id":"fonte-avaliacao-reurb-2025",
+      "observacao":"Ator do desenho do relatório; não equivale automaticamente a ação ou UO financiadora."
+    },
+    {
+      "ator_id":"ator-municipios",
+      "nome":"Municípios participantes",
+      "tipo":"grupo_de_entes_municipais",
+      "fonte_id":"fonte-avaliacao-reurb-2025",
+      "observacao":"Ator do desenho do relatório; não equivale automaticamente a ação ou UO financiadora."
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "schema":{
+    "fields":[
+      {
+        "name":"projeto_id",
+        "type":"any",
+        "extDtype":"string"
+      },
+      {
+        "name":"sistema_origem",
+        "type":"any",
+        "extDtype":"string"
+      },
+      {
+        "name":"codigo_projeto",
+        "type":"any",
+        "extDtype":"string"
+      },
+      {
+        "name":"nome_projeto",
+        "type":"any",
+        "extDtype":"string"
+      },
+      {
+        "name":"origem_registro",
+        "type":"any",
+        "extDtype":"string"
+      },
+      {
+        "name":"fonte_id",
+        "type":"any",
+        "extDtype":"string"
+      }
+    ],
+    "pandas_version":"1.4.0"
+  },
+  "data":[
+    {
+      "projeto_id":"projeto-minas-reurb",
+      "sistema_origem":"PPO-MG",
+      "codigo_projeto":"14",
+      "nome_projeto":"Minas Reurb - Programa Mineiro de Regularização Fundiária Urbana",
+      "origem_registro":"extracao_PPO",
+      "fonte_id":"fonte-ppo-plan2026-eac7892"
+    }
+  ]
+}

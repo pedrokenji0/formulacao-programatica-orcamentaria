@@ -1,0 +1,47 @@
+{
+  "schema":{
+    "fields":[
+      {
+        "name":"mapa_id",
+        "type":"any",
+        "extDtype":"string"
+      },
+      {
+        "name":"projeto_id",
+        "type":"any",
+        "extDtype":"string"
+      },
+      {
+        "name":"nome_mapa",
+        "type":"any",
+        "extDtype":"string"
+      },
+      {
+        "name":"versao_atual_id",
+        "type":"any",
+        "extDtype":"string"
+      },
+      {
+        "name":"origem_vinculo",
+        "type":"any",
+        "extDtype":"string"
+      },
+      {
+        "name":"observacao",
+        "type":"any",
+        "extDtype":"string"
+      }
+    ],
+    "pandas_version":"1.4.0"
+  },
+  "data":[
+    {
+      "mapa_id":"mapa-minas-reurb",
+      "projeto_id":"projeto-minas-reurb",
+      "nome_mapa":"Minas Reurb",
+      "versao_atual_id":"mapa-minas-reurb-relatorio2025-v1",
+      "origem_vinculo":"proposta_de_modelagem_solicitada_pelo_usuario",
+      "observacao":"Um mapa lógico reúne MaPR e MaInd. O relatório não informa código PPO 14; a vinculação é proposta com base no projeto homônimo e nas duas ações da base."
+    }
+  ]
+}
