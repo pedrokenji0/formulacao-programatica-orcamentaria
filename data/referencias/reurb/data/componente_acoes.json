@@ -1,0 +1,40 @@
+{
+  "schema":{
+    "fields":[
+      {
+        "name":"componente_id",
+        "type":"any",
+        "extDtype":"string"
+      },
+      {
+        "name":"acao_id",
+        "type":"any",
+        "extDtype":"string"
+      },
+      {
+        "name":"papel",
+        "type":"any",
+        "extDtype":"string"
+      },
+      {
+        "name":"abrangencia",
+        "type":"any",
+        "extDtype":"string"
+      },
+      {
+        "name":"situacao",
+        "type":"any",
+        "extDtype":"string"
+      },
+      {
+        "name":"fonte_id",
+        "type":"any",
+        "extDtype":"string"
+      }
+    ],
+    "pandas_version":"1.4.0"
+  },
+  "data":[
+
+  ]
+}

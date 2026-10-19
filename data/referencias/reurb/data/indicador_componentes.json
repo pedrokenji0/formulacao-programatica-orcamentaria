@@ -1,0 +1,111 @@
+{
+  "schema":{
+    "fields":[
+      {
+        "name":"indicador_id",
+        "type":"any",
+        "extDtype":"string"
+      },
+      {
+        "name":"componente_id",
+        "type":"any",
+        "extDtype":"string"
+      },
+      {
+        "name":"situacao",
+        "type":"any",
+        "extDtype":"string"
+      },
+      {
+        "name":"origem_registro",
+        "type":"any",
+        "extDtype":"string"
+      },
+      {
+        "name":"observacao",
+        "type":"any",
+        "extDtype":"string"
+      }
+    ],
+    "pandas_version":"1.4.0"
+  },
+  "data":[
+    {
+      "indicador_id":"ind-reurb-recurso-03",
+      "componente_id":"reurb-recurso-02",
+      "situacao":"sugestao_a_confirmar",
+      "origem_registro":"proposta_de_modelagem",
+      "observacao":"Associação sugerida pelo sentido dos rótulos. A figura do MaInd informa a categoria, mas não esta associação individual."
+    },
+    {
+      "indicador_id":"ind-reurb-recurso-03",
+      "componente_id":"reurb-recurso-04",
+      "situacao":"sugestao_a_confirmar",
+      "origem_registro":"proposta_de_modelagem",
+      "observacao":"Associação sugerida pelo sentido dos rótulos. A figura do MaInd informa a categoria, mas não esta associação individual."
+    },
+    {
+      "indicador_id":"ind-reurb-recurso-03",
+      "componente_id":"reurb-recurso-06",
+      "situacao":"sugestao_a_confirmar",
+      "origem_registro":"proposta_de_modelagem",
+      "observacao":"Associação sugerida pelo sentido dos rótulos. A figura do MaInd informa a categoria, mas não esta associação individual."
+    },
+    {
+      "indicador_id":"ind-reurb-recurso-03",
+      "componente_id":"reurb-recurso-08",
+      "situacao":"sugestao_a_confirmar",
+      "origem_registro":"proposta_de_modelagem",
+      "observacao":"Associação sugerida pelo sentido dos rótulos. A figura do MaInd informa a categoria, mas não esta associação individual."
+    },
+    {
+      "indicador_id":"ind-reurb-atividade-02",
+      "componente_id":"reurb-atividade-02",
+      "situacao":"sugestao_a_confirmar",
+      "origem_registro":"proposta_de_modelagem",
+      "observacao":"Associação sugerida pelo sentido dos rótulos. A figura do MaInd informa a categoria, mas não esta associação individual."
+    },
+    {
+      "indicador_id":"ind-reurb-produto-01",
+      "componente_id":"reurb-produto-02",
+      "situacao":"sugestao_a_confirmar",
+      "origem_registro":"proposta_de_modelagem",
+      "observacao":"Associação sugerida pelo sentido dos rótulos. A figura do MaInd informa a categoria, mas não esta associação individual."
+    },
+    {
+      "indicador_id":"ind-reurb-produto-02",
+      "componente_id":"reurb-produto-01",
+      "situacao":"sugestao_a_confirmar",
+      "origem_registro":"proposta_de_modelagem",
+      "observacao":"Associação sugerida pelo sentido dos rótulos. A figura do MaInd informa a categoria, mas não esta associação individual."
+    },
+    {
+      "indicador_id":"ind-reurb-resultado-02",
+      "componente_id":"reurb-resultado-07",
+      "situacao":"sugestao_a_confirmar",
+      "origem_registro":"proposta_de_modelagem",
+      "observacao":"Associação sugerida pelo sentido dos rótulos. A figura do MaInd informa a categoria, mas não esta associação individual."
+    },
+    {
+      "indicador_id":"ind-reurb-resultado-03",
+      "componente_id":"reurb-resultado-03",
+      "situacao":"sugestao_a_confirmar",
+      "origem_registro":"proposta_de_modelagem",
+      "observacao":"Associação sugerida pelo sentido dos rótulos. A figura do MaInd informa a categoria, mas não esta associação individual."
+    },
+    {
+      "indicador_id":"ind-reurb-resultado-04",
+      "componente_id":"reurb-resultado-05",
+      "situacao":"sugestao_a_confirmar",
+      "origem_registro":"proposta_de_modelagem",
+      "observacao":"Associação sugerida pelo sentido dos rótulos. A figura do MaInd informa a categoria, mas não esta associação individual."
+    },
+    {
+      "indicador_id":"ind-reurb-impacto-01",
+      "componente_id":"reurb-impacto-01",
+      "situacao":"sugestao_a_confirmar",
+      "origem_registro":"proposta_de_modelagem",
+      "observacao":"Associação sugerida pelo sentido dos rótulos. A figura do MaInd informa a categoria, mas não esta associação individual."
+    }
+  ]
+}

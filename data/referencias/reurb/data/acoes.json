@@ -1,0 +1,111 @@
+{
+  "schema":{
+    "fields":[
+      {
+        "name":"acao_id",
+        "type":"any",
+        "extDtype":"string"
+      },
+      {
+        "name":"programa_id",
+        "type":"any",
+        "extDtype":"string"
+      },
+      {
+        "name":"codigo_programa",
+        "type":"any",
+        "extDtype":"string"
+      },
+      {
+        "name":"nome_programa",
+        "type":"any",
+        "extDtype":"string"
+      },
+      {
+        "name":"codigo_uo",
+        "type":"any",
+        "extDtype":"string"
+      },
+      {
+        "name":"nome_uo",
+        "type":"any",
+        "extDtype":"string"
+      },
+      {
+        "name":"codigo_acao",
+        "type":"any",
+        "extDtype":"string"
+      },
+      {
+        "name":"titulo_acao",
+        "type":"any",
+        "extDtype":"string"
+      },
+      {
+        "name":"exercicio_referencia",
+        "type":"any",
+        "extDtype":"string"
+      },
+      {
+        "name":"codigo_produto",
+        "type":"any",
+        "extDtype":"string"
+      },
+      {
+        "name":"produto",
+        "type":"any",
+        "extDtype":"string"
+      },
+      {
+        "name":"especificacao_produto",
+        "type":"any",
+        "extDtype":"string"
+      },
+      {
+        "name":"origem_registro",
+        "type":"any",
+        "extDtype":"string"
+      },
+      {
+        "name":"fonte_id",
+        "type":"any",
+        "extDtype":"string"
+      }
+    ],
+    "pandas_version":"1.4.0"
+  },
+  "data":[
+    {
+      "acao_id":"ppo-acao-125-1221-1082",
+      "programa_id":"ppo-programa-125",
+      "codigo_programa":"0125",
+      "nome_programa":"POLÍTICA DE REGULARIZAÇÃO FUNDIÁRIA E DE GESTÃO DE IMÓVEIS",
+      "codigo_uo":"01221",
+      "nome_uo":"SECRETARIA DE ESTADO DE DESENVOLVIMENTO ECONÔMICO",
+      "codigo_acao":"1082",
+      "titulo_acao":"MINAS REURB SEDE",
+      "exercicio_referencia":"2026",
+      "codigo_produto":"12452",
+      "produto":"TÍTULO DE PROPRIEDADE URBANA EMITIDO",
+      "especificacao_produto":"DOCUMENTO (TÍTULO) ENTREGUE AO BENEFICIÁRIO QUE COMPROVA QUE ESTE PASSA A SER EFETIVAMENTE PROPRIETÁRIO DO  IMÓVEL REGULARIZADO.",
+      "origem_registro":"extracao_PPO",
+      "fonte_id":"fonte-ppo-plan2026-eac7892"
+    },
+    {
+      "acao_id":"ppo-acao-125-2461-4528",
+      "programa_id":"ppo-programa-125",
+      "codigo_programa":"0125",
+      "nome_programa":"POLÍTICA DE REGULARIZAÇÃO FUNDIÁRIA E DE GESTÃO DE IMÓVEIS",
+      "codigo_uo":"02461",
+      "nome_uo":"AGÊNCIA DE DESENVOLVIMENTO DA REGIÃO METROPOLITANA DO VALE DO AÇO",
+      "codigo_acao":"4528",
+      "titulo_acao":"MINAS REURB ARMVA",
+      "exercicio_referencia":"2026",
+      "codigo_produto":"12452",
+      "produto":"TÍTULO DE PROPRIEDADE URBANA EMITIDO",
+      "especificacao_produto":"A AÇÃO SE MATERIALIZA COM A ABERTURA DE TODAS AS  MATRÍCULAS DOS LOTES  E A EMISSÃO DA CERTIDÃO DE REGISTRO DO PARCELAMENTO PELO CARTÓRIO DE REGISTRO DE IMÓVEIS",
+      "origem_registro":"extracao_PPO",
+      "fonte_id":"fonte-ppo-plan2026-eac7892"
+    }
+  ]
+}

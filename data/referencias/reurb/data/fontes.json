@@ -1,0 +1,55 @@
+{
+  "schema":{
+    "fields":[
+      {
+        "name":"fonte_id",
+        "type":"any",
+        "extDtype":"string"
+      },
+      {
+        "name":"tipo",
+        "type":"any",
+        "extDtype":"string"
+      },
+      {
+        "name":"titulo",
+        "type":"any",
+        "extDtype":"string"
+      },
+      {
+        "name":"localizacao",
+        "type":"any",
+        "extDtype":"string"
+      },
+      {
+        "name":"ano",
+        "type":"integer",
+        "extDtype":"Int64"
+      },
+      {
+        "name":"sha256",
+        "type":"any",
+        "extDtype":"string"
+      }
+    ],
+    "pandas_version":"1.4.0"
+  },
+  "data":[
+    {
+      "fonte_id":"fonte-avaliacao-reurb-2025",
+      "tipo":"relatorio_avaliacao",
+      "titulo":"SAAP-MG_Avaliação_do_Programa_Minas_Reurb_SEDE_relatório_final_2025(1).pdf",
+      "localizacao":"PDF fornecido pelo usuário. Figuras 2 e 3, páginas impressas 8 e 9; páginas 11 e 12 do arquivo.",
+      "ano":2025,
+      "sha256":"b1f4ce7f307e473f79777a7cdd2b1d41c54a86fe59cdea8495103590654df40e"
+    },
+    {
+      "fonte_id":"fonte-ppo-plan2026-eac7892",
+      "tipo":"exportacoes_PPO",
+      "titulo":"Base qualitativa plan2026 no commit eac7892",
+      "localizacao":"https:\/\/github.com\/pedrokenji0\/formulacao-programatica-orcamentaria\/tree\/eac78920e1488ef15dfe1cc9d13283c7f5e66365\/data\/raw\/plan2026",
+      "ano":2026,
+      "sha256":null
+    }
+  ]
+}
