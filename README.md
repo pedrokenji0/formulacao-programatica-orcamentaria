@@ -49,6 +49,18 @@ Há duas combinações de ação com variantes divergentes: `705 / UO 2471 / 241
 - Indicadores oficiais sem código usam ID estável derivado de programa e nome; indicadores locais recebem UUID e indicação de origem.
 - Previsões orçamentárias, físicas e de indicadores não integram o cadastro qualitativo. Seus cabeçalhos originais permanecem apenas no manifesto de origem.
 
+## MaPR e mapa de indicadores do Minas Reurb
+
+Os dados de referência estão em [`data/referencias/reurb/`](data/referencias/reurb/README.md): **37 componentes do MaPR e 12 indicadores**, transcritos das figuras da avaliação do programa. O pacote inclui dicionário, fontes, carregador Python e os vínculos PPO do projeto estratégico **14** às ações **1082 / UO 01221** e **4528 / UO 02461**.
+
+O modelo prevê **um único mapa lógico por projeto estratégico**, compartilhado pelas ações participantes. Relações sugeridas permanecem pendentes de confirmação. Fórmulas, metas e medições ausentes não foram preenchidas.
+
+Esta pasta contém dados para integração; o frontend e `generate:data` ainda não os carregam. Não use estes JSON para restaurar o backup dos Espelhos. Para inspecionar os dataframes em Python com pandas instalado:
+
+```powershell
+python data/referencias/reurb/carregar_dataframes.py
+```
+
 ## Desenvolvimento local
 
 ```powershell

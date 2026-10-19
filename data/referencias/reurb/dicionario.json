@@ -1,0 +1,668 @@
+{
+  "modelo": "Reurb: um mapa lógico por projeto estratégico, com MaPR e MaInd como visões relacionadas.",
+  "versao_modelo": 1,
+  "identificadores": "IDs de projeto, mapa, versão, componentes, atores e indicadores são internos deste pacote; não são códigos oficiais.",
+  "regras": [
+    "mapas.projeto_id deve ser único; revisões pertencem a versoes_mapa.",
+    "Não usar codigo_acao, codigo_uo, programa_id ou exercício como identidade do mapa do projeto.",
+    "projeto_acoes liga todas as ações do projeto sem criar cópias do mapa.",
+    "componente_acoes é muitos-para-muitos; ligação ao projeto não prova execução de todos os componentes pela ação.",
+    "Não somar novamente um componente/indicador compartilhado por causa de um join com várias ações.",
+    "Preservar codigo_programa, codigo_uo, codigo_acao, codigo_projeto e códigos IBGE como texto.",
+    "O exercício da base PPO é 2026; o relatório é de 2025 e os mapas foram discutidos em 2024.",
+    "Figuras fornecem desenho e nomes; fichas técnicas, valores observados e associações específicas não devem ser inventados."
+  ],
+  "tabelas": {
+    "fontes": {
+      "granularidade": "Uma fonte documental ou cadastral.",
+      "chave_primaria": [
+        "fonte_id"
+      ],
+      "chaves_estrangeiras": {},
+      "campos": [
+        {
+          "nome": "fonte_id",
+          "tipo_pandas": "string"
+        },
+        {
+          "nome": "tipo",
+          "tipo_pandas": "string"
+        },
+        {
+          "nome": "titulo",
+          "tipo_pandas": "string"
+        },
+        {
+          "nome": "localizacao",
+          "tipo_pandas": "string"
+        },
+        {
+          "nome": "ano",
+          "tipo_pandas": "Int64"
+        },
+        {
+          "nome": "sha256",
+          "tipo_pandas": "string"
+        }
+      ]
+    },
+    "projetos": {
+      "granularidade": "Um projeto estratégico lógico, com ID independente do exercício.",
+      "chave_primaria": [
+        "projeto_id"
+      ],
+      "chaves_estrangeiras": {
+        "fonte_id": "fontes.fonte_id"
+      },
+      "campos": [
+        {
+          "nome": "projeto_id",
+          "tipo_pandas": "string"
+        },
+        {
+          "nome": "sistema_origem",
+          "tipo_pandas": "string"
+        },
+        {
+          "nome": "codigo_projeto",
+          "tipo_pandas": "string"
+        },
+        {
+          "nome": "nome_projeto",
+          "tipo_pandas": "string"
+        },
+        {
+          "nome": "origem_registro",
+          "tipo_pandas": "string"
+        },
+        {
+          "nome": "fonte_id",
+          "tipo_pandas": "string"
+        }
+      ]
+    },
+    "acoes": {
+      "granularidade": "Uma ação identificada por programa/UO/ação no conjunto de referência.",
+      "chave_primaria": [
+        "acao_id"
+      ],
+      "chaves_estrangeiras": {
+        "fonte_id": "fontes.fonte_id"
+      },
+      "campos": [
+        {
+          "nome": "acao_id",
+          "tipo_pandas": "string"
+        },
+        {
+          "nome": "programa_id",
+          "tipo_pandas": "string"
+        },
+        {
+          "nome": "codigo_programa",
+          "tipo_pandas": "string"
+        },
+        {
+          "nome": "nome_programa",
+          "tipo_pandas": "string"
+        },
+        {
+          "nome": "codigo_uo",
+          "tipo_pandas": "string"
+        },
+        {
+          "nome": "nome_uo",
+          "tipo_pandas": "string"
+        },
+        {
+          "nome": "codigo_acao",
+          "tipo_pandas": "string"
+        },
+        {
+          "nome": "titulo_acao",
+          "tipo_pandas": "string"
+        },
+        {
+          "nome": "exercicio_referencia",
+          "tipo_pandas": "string"
+        },
+        {
+          "nome": "codigo_produto",
+          "tipo_pandas": "string"
+        },
+        {
+          "nome": "produto",
+          "tipo_pandas": "string"
+        },
+        {
+          "nome": "especificacao_produto",
+          "tipo_pandas": "string"
+        },
+        {
+          "nome": "origem_registro",
+          "tipo_pandas": "string"
+        },
+        {
+          "nome": "fonte_id",
+          "tipo_pandas": "string"
+        }
+      ]
+    },
+    "projeto_acoes": {
+      "granularidade": "Um vínculo entre projeto, ação e exercício de referência.",
+      "chave_primaria": [
+        "projeto_id",
+        "acao_id",
+        "exercicio_referencia"
+      ],
+      "chaves_estrangeiras": {
+        "projeto_id": "projetos.projeto_id",
+        "acao_id": "acoes.acao_id",
+        "fonte_id": "fontes.fonte_id"
+      },
+      "campos": [
+        {
+          "nome": "projeto_id",
+          "tipo_pandas": "string"
+        },
+        {
+          "nome": "acao_id",
+          "tipo_pandas": "string"
+        },
+        {
+          "nome": "exercicio_referencia",
+          "tipo_pandas": "string"
+        },
+        {
+          "nome": "natureza_vinculo",
+          "tipo_pandas": "string"
+        },
+        {
+          "nome": "fonte_id",
+          "tipo_pandas": "string"
+        }
+      ]
+    },
+    "mapas": {
+      "granularidade": "Um único mapa lógico por projeto estratégico.",
+      "chave_primaria": [
+        "mapa_id"
+      ],
+      "chaves_estrangeiras": {
+        "projeto_id": "projetos.projeto_id",
+        "versao_atual_id": "versoes_mapa.versao_id"
+      },
+      "campos": [
+        {
+          "nome": "mapa_id",
+          "tipo_pandas": "string"
+        },
+        {
+          "nome": "projeto_id",
+          "tipo_pandas": "string"
+        },
+        {
+          "nome": "nome_mapa",
+          "tipo_pandas": "string"
+        },
+        {
+          "nome": "versao_atual_id",
+          "tipo_pandas": "string"
+        },
+        {
+          "nome": "origem_vinculo",
+          "tipo_pandas": "string"
+        },
+        {
+          "nome": "observacao",
+          "tipo_pandas": "string"
+        }
+      ]
+    },
+    "versoes_mapa": {
+      "granularidade": "Uma versão do mapa lógico; ano de publicação não é automaticamente exercício orçamentário.",
+      "chave_primaria": [
+        "versao_id"
+      ],
+      "chaves_estrangeiras": {
+        "mapa_id": "mapas.mapa_id",
+        "fonte_id": "fontes.fonte_id"
+      },
+      "campos": [
+        {
+          "nome": "versao_id",
+          "tipo_pandas": "string"
+        },
+        {
+          "nome": "mapa_id",
+          "tipo_pandas": "string"
+        },
+        {
+          "nome": "numero_versao",
+          "tipo_pandas": "Int64"
+        },
+        {
+          "nome": "ano_publicacao",
+          "tipo_pandas": "Int64"
+        },
+        {
+          "nome": "referencia_temporal",
+          "tipo_pandas": "string"
+        },
+        {
+          "nome": "exercicio_orcamentario",
+          "tipo_pandas": "string"
+        },
+        {
+          "nome": "situacao",
+          "tipo_pandas": "string"
+        },
+        {
+          "nome": "fonte_id",
+          "tipo_pandas": "string"
+        }
+      ]
+    },
+    "componentes": {
+      "granularidade": "Um componente do MaPR nesta versão; posição e tipo originais são preservados.",
+      "chave_primaria": [
+        "componente_id"
+      ],
+      "chaves_estrangeiras": {
+        "versao_id": "versoes_mapa.versao_id",
+        "fonte_id": "fontes.fonte_id"
+      },
+      "campos": [
+        {
+          "nome": "componente_id",
+          "tipo_pandas": "string"
+        },
+        {
+          "nome": "versao_id",
+          "tipo_pandas": "string"
+        },
+        {
+          "nome": "tipo",
+          "tipo_pandas": "string"
+        },
+        {
+          "nome": "ordem_na_coluna",
+          "tipo_pandas": "Int64"
+        },
+        {
+          "nome": "texto_original",
+          "tipo_pandas": "string"
+        },
+        {
+          "nome": "origem_registro",
+          "tipo_pandas": "string"
+        },
+        {
+          "nome": "pagina_impressa",
+          "tipo_pandas": "Int64"
+        },
+        {
+          "nome": "pagina_pdf",
+          "tipo_pandas": "Int64"
+        },
+        {
+          "nome": "figura",
+          "tipo_pandas": "string"
+        },
+        {
+          "nome": "fonte_id",
+          "tipo_pandas": "string"
+        }
+      ]
+    },
+    "indicadores": {
+      "granularidade": "Um indicador listado no MaInd; sem supor fórmula, ficha técnica, série ou cadastro oficial PPO.",
+      "chave_primaria": [
+        "indicador_id"
+      ],
+      "chaves_estrangeiras": {
+        "versao_id": "versoes_mapa.versao_id",
+        "fonte_id": "fontes.fonte_id"
+      },
+      "campos": [
+        {
+          "nome": "indicador_id",
+          "tipo_pandas": "string"
+        },
+        {
+          "nome": "versao_id",
+          "tipo_pandas": "string"
+        },
+        {
+          "nome": "categoria_original",
+          "tipo_pandas": "string"
+        },
+        {
+          "nome": "ordem_na_coluna",
+          "tipo_pandas": "Int64"
+        },
+        {
+          "nome": "nome_original",
+          "tipo_pandas": "string"
+        },
+        {
+          "nome": "codigo_oficial_PPO",
+          "tipo_pandas": "string"
+        },
+        {
+          "nome": "formula_calculo",
+          "tipo_pandas": "string"
+        },
+        {
+          "nome": "unidade_medida",
+          "tipo_pandas": "string"
+        },
+        {
+          "nome": "periodicidade_coleta",
+          "tipo_pandas": "string"
+        },
+        {
+          "nome": "polaridade",
+          "tipo_pandas": "string"
+        },
+        {
+          "nome": "definicao_operacional",
+          "tipo_pandas": "string"
+        },
+        {
+          "nome": "fonte_dados_medicao",
+          "tipo_pandas": "string"
+        },
+        {
+          "nome": "origem_registro",
+          "tipo_pandas": "string"
+        },
+        {
+          "nome": "pagina_impressa",
+          "tipo_pandas": "Int64"
+        },
+        {
+          "nome": "pagina_pdf",
+          "tipo_pandas": "Int64"
+        },
+        {
+          "nome": "figura",
+          "tipo_pandas": "string"
+        },
+        {
+          "nome": "fonte_id",
+          "tipo_pandas": "string"
+        }
+      ]
+    },
+    "relacoes_componentes": {
+      "granularidade": "Uma relação dirigida entre dois componentes do mesmo mapa/versão.",
+      "chave_primaria": [
+        "relacao_id"
+      ],
+      "chaves_estrangeiras": {
+        "versao_id": "versoes_mapa.versao_id",
+        "origem_componente_id": "componentes.componente_id",
+        "destino_componente_id": "componentes.componente_id"
+      },
+      "campos": [
+        {
+          "nome": "relacao_id",
+          "tipo_pandas": "string"
+        },
+        {
+          "nome": "versao_id",
+          "tipo_pandas": "string"
+        },
+        {
+          "nome": "origem_componente_id",
+          "tipo_pandas": "string"
+        },
+        {
+          "nome": "destino_componente_id",
+          "tipo_pandas": "string"
+        },
+        {
+          "nome": "tipo_relacao",
+          "tipo_pandas": "string"
+        },
+        {
+          "nome": "situacao",
+          "tipo_pandas": "string"
+        },
+        {
+          "nome": "origem_registro",
+          "tipo_pandas": "string"
+        },
+        {
+          "nome": "observacao",
+          "tipo_pandas": "string"
+        }
+      ]
+    },
+    "indicador_componentes": {
+      "granularidade": "Um vínculo indicador–componente; permite vários componentes por indicador e vários indicadores por componente.",
+      "chave_primaria": [
+        "indicador_id",
+        "componente_id"
+      ],
+      "chaves_estrangeiras": {
+        "indicador_id": "indicadores.indicador_id",
+        "componente_id": "componentes.componente_id"
+      },
+      "campos": [
+        {
+          "nome": "indicador_id",
+          "tipo_pandas": "string"
+        },
+        {
+          "nome": "componente_id",
+          "tipo_pandas": "string"
+        },
+        {
+          "nome": "situacao",
+          "tipo_pandas": "string"
+        },
+        {
+          "nome": "origem_registro",
+          "tipo_pandas": "string"
+        },
+        {
+          "nome": "observacao",
+          "tipo_pandas": "string"
+        }
+      ]
+    },
+    "componente_acoes": {
+      "granularidade": "Um vínculo confirmado/proposto de componente com ação. Vazio porque a figura não mapeia componentes para códigos de ação.",
+      "chave_primaria": [
+        "componente_id",
+        "acao_id"
+      ],
+      "chaves_estrangeiras": {
+        "componente_id": "componentes.componente_id",
+        "acao_id": "acoes.acao_id",
+        "fonte_id": "fontes.fonte_id"
+      },
+      "campos": [
+        {
+          "nome": "componente_id",
+          "tipo_pandas": "string"
+        },
+        {
+          "nome": "acao_id",
+          "tipo_pandas": "string"
+        },
+        {
+          "nome": "papel",
+          "tipo_pandas": "string"
+        },
+        {
+          "nome": "abrangencia",
+          "tipo_pandas": "string"
+        },
+        {
+          "nome": "situacao",
+          "tipo_pandas": "string"
+        },
+        {
+          "nome": "fonte_id",
+          "tipo_pandas": "string"
+        }
+      ]
+    },
+    "atores": {
+      "granularidade": "Um ator institucional ou grupo citado no mapa.",
+      "chave_primaria": [
+        "ator_id"
+      ],
+      "chaves_estrangeiras": {
+        "fonte_id": "fontes.fonte_id"
+      },
+      "campos": [
+        {
+          "nome": "ator_id",
+          "tipo_pandas": "string"
+        },
+        {
+          "nome": "nome",
+          "tipo_pandas": "string"
+        },
+        {
+          "nome": "tipo",
+          "tipo_pandas": "string"
+        },
+        {
+          "nome": "fonte_id",
+          "tipo_pandas": "string"
+        },
+        {
+          "nome": "observacao",
+          "tipo_pandas": "string"
+        }
+      ]
+    },
+    "componente_atores": {
+      "granularidade": "Um vínculo de ator com componente; aqui somente a origem dos oito recursos, explícita nos rótulos.",
+      "chave_primaria": [
+        "componente_id",
+        "ator_id",
+        "papel"
+      ],
+      "chaves_estrangeiras": {
+        "componente_id": "componentes.componente_id",
+        "ator_id": "atores.ator_id",
+        "fonte_id": "fontes.fonte_id"
+      },
+      "campos": [
+        {
+          "nome": "componente_id",
+          "tipo_pandas": "string"
+        },
+        {
+          "nome": "ator_id",
+          "tipo_pandas": "string"
+        },
+        {
+          "nome": "papel",
+          "tipo_pandas": "string"
+        },
+        {
+          "nome": "origem_registro",
+          "tipo_pandas": "string"
+        },
+        {
+          "nome": "fonte_id",
+          "tipo_pandas": "string"
+        }
+      ]
+    },
+    "medicoes": {
+      "granularidade": "Uma observação de indicador, período e recorte. Não há valores apurados nas figuras; tabela vazia.",
+      "chave_primaria": [
+        "medicao_id"
+      ],
+      "chaves_estrangeiras": {
+        "indicador_id": "indicadores.indicador_id",
+        "versao_id": "versoes_mapa.versao_id",
+        "ator_id": "atores.ator_id",
+        "acao_id": "acoes.acao_id",
+        "fonte_id": "fontes.fonte_id"
+      },
+      "campos": [
+        {
+          "nome": "medicao_id",
+          "tipo_pandas": "string"
+        },
+        {
+          "nome": "indicador_id",
+          "tipo_pandas": "string"
+        },
+        {
+          "nome": "versao_id",
+          "tipo_pandas": "string"
+        },
+        {
+          "nome": "periodo_inicio",
+          "tipo_pandas": "string"
+        },
+        {
+          "nome": "periodo_fim",
+          "tipo_pandas": "string"
+        },
+        {
+          "nome": "codigo_municipio_ibge",
+          "tipo_pandas": "string"
+        },
+        {
+          "nome": "ator_id",
+          "tipo_pandas": "string"
+        },
+        {
+          "nome": "acao_id",
+          "tipo_pandas": "string"
+        },
+        {
+          "nome": "valor",
+          "tipo_pandas": "Float64"
+        },
+        {
+          "nome": "numerador",
+          "tipo_pandas": "Float64"
+        },
+        {
+          "nome": "denominador",
+          "tipo_pandas": "Float64"
+        },
+        {
+          "nome": "tipo_medida",
+          "tipo_pandas": "string"
+        },
+        {
+          "nome": "metodo_apuracao",
+          "tipo_pandas": "string"
+        },
+        {
+          "nome": "fonte_id",
+          "tipo_pandas": "string"
+        }
+      ]
+    }
+  },
+  "contagens": {
+    "fontes": 2,
+    "projetos": 1,
+    "acoes": 2,
+    "projeto_acoes": 2,
+    "mapas": 1,
+    "versoes_mapa": 1,
+    "componentes": 37,
+    "indicadores": 12,
+    "relacoes_componentes": 6,
+    "indicador_componentes": 11,
+    "componente_acoes": 0,
+    "atores": 4,
+    "componente_atores": 8,
+    "medicoes": 0
+  }
+}
