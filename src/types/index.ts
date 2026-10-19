@@ -3,7 +3,9 @@
 // ============================================================================
 
 import type { ActionComplements, ComponentAssociation, OfficialFields, PlanningProposal } from './planning';
+import type { ProjectPlanningMap } from './projectMaps';
 export type * from './planning';
+export type * from './projectMaps';
 
 export type Perfil =
   | 'Consulta'
@@ -374,6 +376,7 @@ export interface AppState {
   actions: Action[];
   frameworks: LogicalFramework[];
   maps: ProcessMap[];
+  projectMaps?: ProjectPlanningMap[];
   budgetItems: BudgetItemOBZ[];
   links: CoherenceLink[];
   mirrors: Mirror[];

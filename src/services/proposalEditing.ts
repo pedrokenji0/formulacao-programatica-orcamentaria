@@ -2,6 +2,7 @@ import type { AppState, PlanningDataset, PlanningEntityKind, ProposalEvent } fro
 import type { EditableRecord } from './editingPolicy.ts';
 import { assertFieldPatch, canEditRecord, CLASSIFICATIONS, exclusionName, exclusionRequirement, localRecord, recordFields, officialProperties, linkedRecords, knownProgramUnit, unitNames } from './editingPolicy.ts';
 import { normalizedFlag, stableLocalId, changedFields, setOfficialField, mapComponents, associationValue } from './planningDomain.ts';
+import { enforceProjectMapUpdate } from './projectMapDomain.ts';
 
 const same = (before: unknown, after: unknown) => JSON.stringify(before) === JSON.stringify(after);
 export function proposalRecord(state: AppState, reference: PlanningDataset, kind: PlanningEntityKind, id: string): EditableRecord | undefined {
@@ -70,6 +71,7 @@ export function proposeAssociation(state: AppState, reference: PlanningDataset, 
 }
 export function enforceEditingUpdate(previous: AppState, next: AppState, reference: PlanningDataset) {
   if (!next.planning || !previous.planning) return;
+  enforceProjectMapUpdate(previous, next);
   if (['Consulta', 'Leitor'].includes(previous.perfil) && !same(previous.planning, next.planning)) throw new Error('Perfil Leitor: somente consulta.');
   if (next.planning.exercise !== previous.planning.exercise || next.planning.datasetId !== previous.planning.datasetId) throw new Error('Exercício e origem da referência são protegidos.');
   const events = (next.planning.history || []).filter((event) => !(previous.planning?.history || []).some((old) => old.id === event.id));

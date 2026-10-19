@@ -10,6 +10,11 @@ const localizer = reference.localizers.find((record: { actionId: string }) => re
 const TERRITORY_FIELDS = ['Código da Região Geográfica Intermediária', 'Região Geográfica Intermediária', 'Código do Município IBGE', 'Código do Município Sigplan', 'Município'];
 const button = async (page: Page, name: string) => page.getByRole('button', { name, exact: true }).click();
 const closeWindow = async (page: Page) => page.getByRole('dialog').getByRole('button', { name: 'Fechar janela', exact: true }).click();
+const openProgramMap = async (page: Page) => {
+  await button(page, 'Mapa de Processos e Resultados');
+  const picker = page.getByLabel('Mapa em edição', { exact: true });
+  if (await picker.count()) await picker.selectOption('programa');
+};
 const openSection = async (page: Page, name: string) => button(page, `Abrir ${name}`);
 const open = async (page: Page) => { await page.goto('./'); await expect(page.getByLabel('Programa ativo', { exact: true })).toBeVisible(); };
 const selectAction = async (page: Page, action: typeof sede) => {
@@ -77,7 +82,7 @@ test('edita fichas, causas, classificações, indicadores e localizadores e recu
   await button(page, 'Propor outro localizador');
   await chooseCatalog(page, 'Referência territorial', choice(alternative, TERRITORY_FIELDS));
   await closeWindow(page);
-  await button(page, 'Mapa de Processos e Resultados');
+  await openProgramMap(page);
   await button(page, 'Referências do PPO');
   await button(page, 'Confirmar atividade no mapa');
   await page.getByLabel('Resultado ou impacto proposto', { exact: true }).fill('Melhoria da segurança jurídica das famílias atendidas');
@@ -199,7 +204,7 @@ test('rascunha programa incompleto com ação, indicador e localizador sem códi
   await expect(page.getByLabel('Título da Ação', { exact: true })).toHaveValue('Ação local da nova proposta');
   await page.getByLabel('Código da Ação', { exact: true }).fill('90108');
   await chooseCatalog(page, 'Unidade Orçamentária Responsável pela Ação', choice(sede.officialFields, ['Código da Unidade Orçamentária Responsável pela Ação', 'Unidade Orçamentária Responsável pela Ação']));
-  await button(page, 'Mapa de Processos e Resultados');
+  await openProgramMap(page);
   await expect(page.locator('.mapflow')).toHaveCount(0);
   await button(page, 'Gerenciar ações');
   await page.getByLabel('Ação existente', { exact: true }).selectOption(action.id);
@@ -259,7 +264,7 @@ test('rascunha ação em programa existente e consulta não permite editar ou cr
 
 test('mapa permite edição direta por bloco, Ver mais e ocultação de contexto', async ({ page }) => {
   await open(page);
-  await button(page, 'Mapa de Processos e Resultados');
+  await openProgramMap(page);
   await button(page, 'Editar contexto');
   const context = 'Esta atuação considera condições territoriais, institucionais e operacionais que precisam ser analisadas em conjunto. '.repeat(12);
   await page.getByLabel('Novo item — Contexto', { exact: true }).fill(context);
@@ -284,7 +289,7 @@ test('mapa permite edição direta por bloco, Ver mais e ocultação de contexto
   await expect(page.locator('.mapflow')).toContainText('Equipe técnica e apoio municipal');
   await page.screenshot({ path: 'test-results/qualitative-map-integrated.png' });
   await page.reload();
-  await button(page, 'Mapa de Processos e Resultados');
+  await openProgramMap(page);
   await expect(page.locator('.mapflow')).toContainText('Equipe técnica e apoio municipal');
 });
 
@@ -298,7 +303,7 @@ test('aceita base gzip entregue sem Content-Encoding', async ({ page }) => {
 
 test('mapa cadastra múltiplas linhas por ação, separa entregas e persiste vínculos', async ({ page }) => {
   await open(page);
-  await button(page, 'Mapa de Processos e Resultados');
+  await openProgramMap(page);
   const addLine = async (label: string, text: string) => {
     await page.getByLabel(`Nova linha — ${label}`, { exact: true }).fill(text);
     await page.getByRole('dialog').getByRole('button', { name: 'Criar', exact: true }).click();
@@ -334,7 +339,7 @@ test('mapa cadastra múltiplas linhas por ação, separa entregas e persiste ví
   await expect(page.locator('.mapflow')).not.toContainText('Resultado da Sede 1');
   await page.getByLabel('Ação no mapa', { exact: true }).selectOption(sede.id);
   await page.reload();
-  await button(page, 'Mapa de Processos e Resultados');
+  await openProgramMap(page);
   await expect(page.locator('.mapflow')).toContainText('Impacto da Sede 2');
   await button(page, 'Editar recursos');
   await expect(page.getByRole('checkbox', { name: 'Vincular Equipe 1 → Atividade 1', exact: true })).toBeChecked();
@@ -350,7 +355,7 @@ test('mapa cadastra múltiplas linhas por ação, separa entregas e persiste ví
 
 test('atalhos do mapa têm destaque e tabelas de apoio são exclusivas do administrador', async ({ page }) => {
   await open(page);
-  await button(page, 'Mapa de Processos e Resultados');
+  await openProgramMap(page);
   await expect(page.getByRole('navigation', { name: 'Ferramentas do mapa' }).getByRole('button')).toHaveCount(3);
   await expect(page.getByRole('button', { name: 'Tabelas de apoio', exact: true })).toHaveCount(0);
   await button(page, 'Referências do PPO');
@@ -636,7 +641,7 @@ test('exclusão de importado novo não pede motivo; restauração e descarte tê
 
 test('reformular uma causa preserva identidade e associações já confirmadas no MaPR', async ({ page }) => {
   await open(page);
-  await button(page, 'Mapa de Processos e Resultados');
+  await openProgramMap(page);
   await button(page, 'Referências do PPO');
   await page.getByText('Causas do programa — organização opcional', { exact: true }).click();
   await page.getByRole('button', { name: 'Confirmar causa no mapa', exact: true }).first().click();
@@ -646,7 +651,7 @@ test('reformular uma causa preserva identidade e associações já confirmadas n
   const initial = (await stored(page)).collections.maps.upserts.find((map: { programId: string }) => map.programId === program125.id).causas[0];
   await button(page, 'Programa');
   await page.getByLabel('Causa 1', { exact: true }).fill('Causa reformulada sem perder a relação com a entrega');
-  await button(page, 'Mapa de Processos e Resultados');
+  await openProgramMap(page);
   await button(page, 'Referências do PPO');
   await page.getByText('Causas do programa — organização opcional', { exact: true }).click();
   await button(page, 'Atualizar causa no mapa');

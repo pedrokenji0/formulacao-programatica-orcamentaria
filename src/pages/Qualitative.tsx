@@ -1,4 +1,5 @@
 import { Tabs, ActionButton } from '../components/ui';
+import { useState } from 'react';
 import { CompactHelpContext, HelpTip } from '../components/HelpTip';
 import { ArrowLeft, Check, AlertCircle } from 'lucide-react';
 import { useApp } from '../store/AppStore';
@@ -16,6 +17,8 @@ const AREAS = [
   { id: 'qual-revisao', label: 'Revisão do Planejamento' },
 ];
 export function QualitativePage({ area, onNavigate }: { area: string; onNavigate: (route: string) => void }) {
+  const [projectMapId, setProjectMapId] = useState('');
+  const openProjectMap = (id: string) => { setProjectMapId(id); onNavigate('qual-mapa'); };
   const { state, reference, persistenceMessage, update, can, setCurrentProgram } = useApp();
   const program = state.programs.find((record) => record.id === state.currentProgramId);
   const saveError = persistenceMessage.startsWith('Não');
@@ -31,9 +34,9 @@ export function QualitativePage({ area, onNavigate }: { area: string; onNavigate
     {saveError && <div className="alert err" role="alert">{persistenceMessage}</div>}
     <Tabs tabs={AREAS} active={area} onChange={onNavigate} />
     {!program ? <div className="empty">Selecione um programa cadastrado.</div> : <div key={program.id}>
-      {area === 'qual-programa' && <ProgramArea program={program} />}
-      {area === 'qual-acoes' && <ActionsArea program={program} />}
-      {area === 'qual-mapa' && <MapaProcessosPage qualitative />}
+      {area === 'qual-programa' && <ProgramArea program={program} onOpenProjectMap={openProjectMap} />}
+      {area === 'qual-acoes' && <ActionsArea program={program} onOpenProjectMap={openProjectMap} />}
+      {area === 'qual-mapa' && <MapaProcessosPage qualitative initialProjectMapId={projectMapId} />}
       {area === 'qual-revisao' && <PlanningReview program={program} />}
     </div>}
   </div></CompactHelpContext.Provider>;

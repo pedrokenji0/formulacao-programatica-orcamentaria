@@ -92,11 +92,12 @@ export function exclusionRequirement(kind: PlanningEntityKind, record: EditableR
 }
 export function linkedRecords(state: AppState, kind: 'program' | 'action', id: string, reference: PlanningDataset): string[] {
   if (kind === 'program') return state.actions.filter((action) => action.programaId === id).map((action) => `Ação ${action.codigo || action.id}`)
-    .concat([...reference.indicators, ...(state.planning?.localIndicators || [])].filter((indicator) => indicator.programId === id).map((indicator) => `Indicador ${indicator.id}`), state.budgetItems.filter((item) => item.programaId === id).map((item) => `OBZ ${item.id}`));
+    .concat([...reference.indicators, ...(state.planning?.localIndicators || [])].filter((indicator) => indicator.programId === id).map((indicator) => `Indicador ${indicator.id}`), state.budgetItems.filter((item) => item.programaId === id).map((item) => `OBZ ${item.id}`), (state.projectMaps || []).filter((map) => map.ownerProgramId === id).map((map) => `Mapa do projeto ${map.projectCode}`));
   return [...new Set([
     ...state.budgetItems.filter((item) => item.actionId === id).map((item) => `OBZ ${item.id}`),
     ...[...reference.localizers, ...Object.values(state.planning?.localizerProposals || {})].filter((record) => record.actionId === id).map((record) => `Localizador ${record.id}`),
     ...state.maps.filter((map) => map.actions.some((action) => (action.catalogActionId || action.id) === id)).map((map) => `MaPR ${map.programId}`),
+    ...(state.projectMaps || []).filter((map) => map.actionIds.includes(id)).map((map) => `Mapa do projeto ${map.projectCode}`),
   ])];
 }
 export function knownProgramUnit(reference: PlanningDataset, fields: OfficialFields) {

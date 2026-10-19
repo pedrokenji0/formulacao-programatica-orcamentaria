@@ -4,17 +4,17 @@ import { normalizeCode, setOfficialField, programProperty, actionProperty } from
 export const STORAGE_KEY = 'fpo-state-v2';
 export const LEGACY_KEY = 'fpo-state-v1';
 const same = (left: unknown, right: unknown) => JSON.stringify(left) === JSON.stringify(right);
-const collectionKeys = ['programs', 'actions', 'frameworks', 'maps', 'budgetItems', 'links', 'mirrors'] as const;
+const collectionKeys = ['programs', 'actions', 'frameworks', 'maps', 'budgetItems', 'links', 'mirrors', 'projectMaps'] as const;
 const identity = (record: { id?: string; programId?: string }) => record.id || record.programId || '';
 
 export function encodeState(state: AppState, initial: AppState): string {
   const collections: Record<string, unknown> = {};
   for (const key of collectionKeys) {
-    const baseline = new Map(initial[key].map((record) => [identity(record), record] as const));
-    const current = new Set(state[key].map(identity));
+    const baseline = new Map((initial[key] || []).map((record) => [identity(record), record] as const));
+    const current = new Set((state[key] || []).map(identity));
     collections[key] = {
-      upserts: state[key].filter((record) => !same(record, baseline.get(identity(record)))),
-      removed: initial[key].filter((record) => !current.has(identity(record))).map(identity),
+      upserts: (state[key] || []).filter((record) => !same(record, baseline.get(identity(record)))),
+      removed: (initial[key] || []).filter((record) => !current.has(identity(record))).map(identity),
     };
   }
   return JSON.stringify({ schemaVersion: 2, datasetId: initial.planning?.datasetId, collections,
@@ -27,8 +27,9 @@ export function decodeState(raw: string, initial: AppState): AppState {
   const next = structuredClone(initial);
   for (const key of collectionKeys) {
     const change = parsed.collections[key];
+    if (key === 'projectMaps' && !change) continue; // v2 packages before project maps: retain the new reference.
     if (!change || !Array.isArray(change.upserts) || !Array.isArray(change.removed)) throw new Error(`Coleção inválida: ${key}.`);
-    const records = new Map(next[key].filter((record) => !change.removed.includes(identity(record))).map((record) => [identity(record), record]));
+    const records = new Map((next[key] || []).filter((record) => !change.removed.includes(identity(record))).map((record) => [identity(record), record]));
     for (const record of change.upserts) {
       if (!record || !identity(record)) throw new Error(`Identificador ausente em ${key}.`);
       const baseline = records.get(identity(record));

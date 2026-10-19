@@ -844,3 +844,31 @@ table.dt .rowacts{display:flex;gap:6px}
 @media(max-width:1050px){.compact-workspace .program-planning-grid{grid-template-columns:1fr}.compact-workspace #programa-causas,.compact-workspace #programa-estrategia{grid-column:auto;grid-row:auto}.compact-workspace #programa-objetivo>.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.compact-workspace .cause-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:760px){.qualitative-header{flex-wrap:wrap}.active-program{flex-basis:calc(100% - 65px)}.qualitative-header>.compact-save{margin-left:auto}.compact-workspace .action-picker-row{flex-wrap:wrap}.compact-workspace .action-picker-row>.field{flex-basis:100%}.record-meta{flex-wrap:wrap}.compact-workspace .program-id-fields{grid-template-columns:110px minmax(0,1fr)}.compact-workspace .program-id-fields>.field:last-child{grid-column:1/-1}.compact-workspace .sheet-index{flex-wrap:nowrap;overflow:auto;white-space:nowrap}}
 @media(max-width:600px){.content:has(>.compact-workspace){padding:12px}.compact-workspace .card{padding:16px 12px}.active-program{align-items:flex-start;flex-direction:column;gap:8px}.active-program select{flex:auto}.compact-workspace .sheet-section{scroll-margin-top:250px}.compact-workspace .cause-grid,:is(.compact-workspace,.qualitative-dialog) .grid.g2,:is(.compact-workspace,.qualitative-dialog) .grid.g3,.compact-workspace #programa-objetivo>.grid{grid-template-columns:1fr}.compact-workspace .action-id-fields{grid-template-columns:1fr}.compact-workspace #acao-responsabilidade,.compact-workspace #acao-produto{display:block}.compact-workspace .proposal-actions .record-meta{flex-basis:100%;margin-left:0}.compact-workspace .editable-activity{align-items:stretch;flex-direction:column}.compact-workspace .editable-activity .btn{align-self:flex-start}.compact-workspace .map-workspace-shortcuts{grid-template-columns:1fr}.help-tip{min-width:22px;min-height:22px}}
+/* Shared strategic-project maps: documentary reference and editable proposal. */
+.project-map-picker { display: flex; gap: 8px; align-items: center; margin: 8px 0 12px; font-weight: 600; }
+.project-map-picker select { flex: 1; min-width: 0; padding: 8px; border: 1px solid #ccd6dc; border-radius: 6px; }
+.project-map-links { margin: 0 0 8px; }
+.project-map-summary { display: flex; flex-wrap: wrap; gap: 8px 24px; align-items: baseline; margin-bottom: 12px; font-size: 12px; }
+.project-map-summary details { max-width: 100%; }
+.project-map-summary summary { cursor: pointer; color: var(--blue, #19609a); }
+.project-map-operations { margin: 10px 0 16px; }
+.project-map-context { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 16px; }
+.project-map-chain { display: grid; grid-template-columns: repeat(5, minmax(210px, 1fr)); gap: 12px; overflow-x: auto; padding-bottom: 12px; margin: 12px 0; align-items: start; }
+.project-map-column { min-width: 0; padding: 12px; background: #f3f7f8; border: 1px solid #dce4e8; border-radius: 8px; }
+.project-map-column h3 { display: flex; gap: 8px; align-items: center; font-size: 13px; margin: 0 0 12px; }
+.project-map-node { padding: 10px; background: white; border: 1px solid #dce4e8; border-radius: 6px; margin-bottom: 9px; overflow-wrap: anywhere; }
+.project-map-node p { font-size: 12px; line-height: 1.5; white-space: pre-wrap; margin: 0 0 10px; }
+.project-map-node .badge { white-space: normal; font-size: 10px; margin: 0 3px 8px 0; }
+.project-map-editor { scroll-margin-top: 20px; }
+.project-map-editor > .field select { width: 100%; padding: 9px; border: 1px solid #ccd6dc; border-radius: 6px; }
+.project-map-check { display: flex; align-items: flex-start; gap: 8px; margin: 10px 0; font-size: 12px; line-height: 1.5; }
+.project-map-check input { flex: 0 0 auto; width: auto; margin-top: 3px; }
+.project-map-check .badge { margin-left: 6px; white-space: normal; }
+.project-indicators-inline { border-top: 2px solid #6f9d91; margin-top: 18px; padding-top: 12px; }
+.project-indicators-inline h4 { font-size: 12px; line-height: 1.5; margin: 0 0 12px; }
+.project-indicators-inline .indicator-node { border-left: 3px solid #508675; background: #fafffc; }
+.project-linked-indicator { display: block; width: 100%; text-align: left; border: 1px solid #acc7bc; background: #f2faf5; color: #205e49; border-radius: 4px; padding: 5px; margin: 6px 0; font-size: 11px; cursor: pointer; }
+@media (max-width: 700px) {
+  .project-map-context { grid-template-columns: 1fr; }
+  .project-map-picker { align-items: stretch; flex-direction: column; }
+}

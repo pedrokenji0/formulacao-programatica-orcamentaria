@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "vite",
     "generate:data": "node scripts/planning-import.mjs --exercicio 2026",
-    "test:planning": "node --test scripts/planning.test.mjs",
+    "test:planning": "node --test scripts/planning.test.mjs scripts/project-maps.test.mjs",
+    "test:project-maps": "node --test scripts/project-maps.test.mjs",
     "test:e2e": "playwright test",
     "dev:local": "vite --host 127.0.0.1 --port 5173 --strictPort",
     "preview:local": "vite preview --host 127.0.0.1 --port 4173 --strictPort",

@@ -13,13 +13,14 @@ import { SearchableSelect } from '../../components/SearchableSelect';
 import { canEditRecord, canDraftRecord, editingContext, fieldRule } from '../../services/editingPolicy';
 import { changeSituation } from '../../services/proposalEditing';
 import { AssociationProposal } from '../../components/AssociationProposal';
+import { ProjectMapLinks } from './ProjectMapWorkspace';
 
 const SECTIONS = [
   { id: 'acao-identificacao', label: 'Identificação e classificações' }, { id: 'acao-responsabilidade', label: 'Responsabilidade' },
   { id: 'acao-finalidade', label: 'Finalidade, descrição e público-alvo' }, { id: 'acao-produto', label: 'Produto' }, { id: 'acao-base', label: 'Base legal' },
 ];
 
-export function ActionsArea({ program }: { program: Program }) {
+export function ActionsArea({ program, onOpenProjectMap }: { program: Program; onOpenProjectMap?: (id: string) => void }) {
   const { state, reference, update, can } = useApp();
   const records = state.actions.filter((record) => record.programaId === program.id);
   const [selected, setSelected] = useState(records.find((record) => normalizeCode(record.codigo) === '1082' && normalizeCode(record.codigoUnidadeOrcamentaria) === '1221')?.id || records[0]?.id || '');
@@ -44,6 +45,7 @@ export function ActionsArea({ program }: { program: Program }) {
   const setFields = (values: OfficialFields) => update((draft) => applyActionFields(draft, action.id, values, reference));
   const setField = (field: string, value: string) => setFields({ [field]: value });
   return <div className="ppo-sheet">
+    {action && <ProjectMapLinks programId={program.id} actionId={action.id} onOpen={onOpenProjectMap} />}
     <div className="action-picker-row"><SearchableSelect label="Ação" value={action?.id || ''} clearable={false} options={records.map((record) => ({ value: record.id, label: `${record.codigo || 'Sem código oficial'} · UO ${record.codigoUnidadeOrcamentaria || 'não informada'} · ${record.nome || 'Ação em rascunho'}` }))} disabled={!records.length} onChange={(id) => { setSelected(id); setTab('ficha'); }} /><ActionButton sm color="ghost" aria-expanded={showList} onClick={() => setShowList(!showList)}>{showList ? 'Ocultar lista de ações' : 'Ver lista de ações'} ({records.length})</ActionButton><ActionButton sm disabled={!canDraftRecord(state)} onClick={add}>Rascunhar ação</ActionButton></div>
     {showList && <Card>
       <FormField label="Pesquisar ações do programa" value={query} onChange={(value) => { setQuery(value); setPage(0); }} />

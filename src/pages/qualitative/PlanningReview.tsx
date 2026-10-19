@@ -8,6 +8,8 @@ import { principalProduct } from '../../services/mapDomain';
 import { HelpTip } from '../../components/HelpTip';
 import { canEditRecord, indicatorPending } from '../../services/editingPolicy';
 import { programPending, actionPending } from '../../services/proposalDomain';
+import { projectMapsForProgram, projectMapDifferences } from '../../services/projectMapDomain';
+import { originalProjectMap } from '../../services/projectMapReference';
 
 interface Difference { field: string; before: string; after: string }
 interface Revision { id: string; title: string; differences: Difference[] }
@@ -21,6 +23,11 @@ export function PlanningReview({ program }: { program: Program }) {
   const baselineLocalizers = useMemo(() => new Map(reference.localizers.map((record) => [record.id, record])), [reference]);
   const requests = (state.planning?.associationRequests || []).filter((request) => request.entityId === program.id || state.actions.some((action) => action.id === request.entityId && action.programaId === program.id));
   const revisions: Revision[] = [];
+  const projectMaps = projectMapsForProgram(state, program.id);
+  for (const map of projectMaps) {
+    const differences = projectMapDifferences(map);
+    if (differences.length) revisions.push({ id: map.id, title: `MaPR e indicadores — ${map.projectName} · projeto ${map.projectCode}`, differences });
+  }
   const currentMap = state.maps.find((map) => map.programId === program.id);
   const components = mapComponents(currentMap);
   const originalProgram = reference.programs.find((record) => record.id === program.id);
@@ -75,7 +82,8 @@ export function PlanningReview({ program }: { program: Program }) {
   const brokenIndicators = indicators.filter((indicator) => indicator.component && !components.some((component) => component.value === associationValue(indicator.component)));
   const download = () => {
     const payload = { reference: reference.manifest, program: { imported: originalProgram || null, proposal: program }, actions: state.actions.filter((record) => record.programaId === program.id).map((record) => ({ imported: reference.actions.find((original) => original.id === record.id) || null, proposal: record })), indicators: indicators.map((record) => ({ imported: reference.indicators.find((original) => original.id === record.id) || null, proposal: record })), localizers: Object.values(state.planning!.localizerProposals).filter((record) => record.programId === program.id).map((record) => ({ imported: baselineLocalizers.get(record.id) || null, proposal: record })), differences: revisions, justifications: state.planning!.justifications, review: state.planning!.review, history: state.planning!.history, associationRequests: state.planning!.associationRequests, intendedExercise: state.planning!.intendedExercise, map: state.maps.find((record) => record.programId === program.id) };
-    const url = URL.createObjectURL(new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' }));
+    const withProjectMaps = { ...payload, projectMaps: projectMaps.map((map) => ({ original: originalProjectMap(map), proposal: map })) };
+    const url = URL.createObjectURL(new Blob([JSON.stringify(withProjectMaps, null, 2)], { type: 'application/json' }));
     const link = document.createElement('a'); link.href = url; link.download = `revisao-programa-${program.codigo}.json`; link.click(); URL.revokeObjectURL(url);
   };
   const revision = revisions.find((record) => record.id === selected);

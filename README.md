@@ -49,6 +49,28 @@ Há duas combinações de ação com variantes divergentes: `705 / UO 2471 / 241
 - Indicadores oficiais sem código usam ID estável derivado de programa e nome; indicadores locais recebem UUID e indicação de origem.
 - Previsões orçamentárias, físicas e de indicadores não integram o cadastro qualitativo. Seus cabeçalhos originais permanecem apenas no manifesto de origem.
 
+## MaPR e mapa de indicadores do Minas Reurb
+
+Na Programação Qualitativa, abra **Mapa de Processos e Resultados**. O projeto estratégico **14 — Minas Reurb** abre com os **37 componentes do MaPR e 12 indicadores** da avaliação de 2025. Há duas abas: **MaPR — Processos e Resultados** e **Mapa de Indicadores**. Ambas organizam a cadeia de recursos, atividades, produtos, resultados e impactos. Clique num componente ou indicador para consultar ou editar sua ficha.
+
+As ações **1082 / UO 01221** e **4528 / UO 02461** abrem o mesmo `mapa-minas-reurb`; os componentes não são duplicados por ação. Há atalhos nas fichas de programa e ação. O mapa geral do programa continua disponível no seletor **Mapa em edição**, preservando o conteúdo anterior.
+
+- **Salvar proposta do mapa**, salvamento automático, **Ver original** e **Comparar com o original** usam o mesmo padrão de referência e proposta das fichas PPO.
+- A reversão pode restaurar um componente, um indicador, o MaPR completo ou todos os indicadores. Reverter o MaPR preserva as fichas dos indicadores; as operações ficam no histórico.
+- Leitor, Consulta e DCMEFO/SEPLAG consultam. A edição compartilhada segue a permissão do programa de referência; Gestor UA precisa estar na UO responsável pelo programa. IDs, fontes, códigos e vínculos da referência são protegidos. Essa regra de responsabilidade é uma decisão do mockup.
+- Fórmulas, unidades e demais campos ausentes na avaliação começam vazios. Sugestões de associação só se tornam vínculos confirmados por seleção explícita.
+- Estados anteriores recebem o mapa ao carregar; mapas de programa e alterações locais existentes são preservados. A revisão e o backup completo incluem os mapas de projeto.
+
+Os JSON em [`data/referencias/reurb/`](data/referencias/reurb/README.md) são lidos pelo adaptador `src/services/projectMapReference.ts` e incluídos no build, sem necessidade de importação manual pelo usuário ou de `generate:data` para o MaPR. Não são backups para restaurar em Espelhos.
+
+```powershell
+npm.cmd run test:project-maps
+npm.cmd run typecheck
+npm.cmd run build
+```
+
+Os testes de interface do novo fluxo estão em `tests/project-maps.spec.ts`. Execute `npm.cmd run test:e2e -- tests/project-maps.spec.ts` após o build, com Microsoft Edge instalado.
+
 ## Desenvolvimento local
 
 ```powershell

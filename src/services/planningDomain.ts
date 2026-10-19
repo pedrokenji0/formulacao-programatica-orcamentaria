@@ -1,4 +1,5 @@
 import type { AppState, Action, Program, PlanningDataset, PlanningIndicator, PlanningLocalizer, OfficialFields, ProcessMap, ComponentAssociation } from '../types';
+import { createProjectMapReferences } from './projectMapReference.ts';
 
 export const normalizeCode = (value: string | undefined) => String(value ?? '').trim().replace(/^0+(?=\d)/, '');
 export const normalizedFlag = (value: string | undefined): boolean | null => /^(sim|true|1)$/i.test(value?.trim() || '') ? true : /^(não|nao|false|0)$/i.test(value?.trim() || '') ? false : null;
@@ -43,7 +44,7 @@ export function createPlanningInitial(legacy: AppState, reference: PlanningDatas
     })),
   }));
   return {
-    ...structuredClone(legacy), schemaVersion: 2, programs, actions, maps, frameworks: [], mirrors: [], links: [],
+    ...structuredClone(legacy), schemaVersion: 2, programs, actions, maps, projectMaps: createProjectMapReferences(actions), frameworks: [], mirrors: [], links: [],
     currentProgramId: programs.find((program) => normalizeCode(program.codigo) === '125')?.id || programs[0]?.id || '',
     unidade: actions.find((action) => normalizeCode(action.codigo) === '1082' && normalizeCode(action.codigoUnidadeOrcamentaria) === '1221')?.unidadeOrcamentaria || '',
     budgetItems: legacy.budgetItems.map((item) => ({ ...item, programaId: programIds.get(item.programaId) || item.programaId, actionId: actionIds.get(item.actionId) || item.actionId })),

@@ -14,13 +14,14 @@ import { canEditRecord, editingContext, fieldRule } from '../../services/editing
 import { changeSituation } from '../../services/proposalEditing';
 import { AssociationProposal } from '../../components/AssociationProposal';
 import { Trash2 } from 'lucide-react';
+import { ProjectMapLinks } from './ProjectMapWorkspace';
 
 const SECTIONS = [
   { id: 'programa-identificacao', label: 'Identificação e responsabilidade' }, { id: 'programa-alinhamento', label: 'Alinhamento estratégico' },
   { id: 'programa-objetivo', label: 'Objetivo e justificativa' }, { id: 'programa-causas', label: 'Causas' }, { id: 'programa-estrategia', label: 'Implementação' },
   { id: 'programa-analise', label: 'Apoio à análise' },
 ];
-export function ProgramArea({ program }: { program: Program }) {
+export function ProgramArea({ program, onOpenProjectMap }: { program: Program; onOpenProjectMap?: (id: string) => void }) {
   const { state, reference, update } = useApp();
   const [tool, setTool] = useState('');
   const [tab, setTab] = useState('ficha');
@@ -44,6 +45,7 @@ export function ProgramArea({ program }: { program: Program }) {
   });
   const editLink = (values: OfficialFields) => update((draft) => { const target = draft.programs.find((record) => record.id === program.id)!; Object.assign(target.strategicLinks![selectedLink!], values); });
   return <div className="ppo-sheet">
+    <ProjectMapLinks programId={program.id} onOpen={onOpenProjectMap} />
     <Card>
       <div className="sheet-toolbar"><Tabs tabs={[{ id: 'ficha', label: 'Ficha do programa' }, { id: 'indicadores', label: 'Indicadores' }, ...(tab === 'exclusao' ? [{ id: 'exclusao', label: 'Justificativa de exclusão' }] : [])]} active={tab} onChange={setTab} />
       <ProposalActions record={program} position="início" editable={editable} onRestore={baseline ? () => setRestore(true) : undefined} onExclude={baseline ? () => setTab('exclusao') : undefined} metadata={<><ProposalOrigin record={program} baseline={baseline} /><SituationBadge value={fields['Exclusão Lógica do Programa']} /><PendingFields fields={programPending(program)} /></>} /></div>

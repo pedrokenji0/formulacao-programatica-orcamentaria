@@ -15,6 +15,8 @@ import { ValidationPanel, type Issue } from '../components/ValidationPanel';
 import { CoherenceScore } from '../components/CoherenceScore';
 import type { Action, ProcessMap, ProcessAction, MapItem } from '../types';
 import { Link2, Plus, Trash2, Save } from 'lucide-react';
+import { projectMapsForProgram } from '../services/projectMapDomain';
+import { ProjectMapWorkspace } from './qualitative/ProjectMapWorkspace';
 
 function emptyMap(programId: string, problema: string): ProcessMap {
   return { programId, problemaCentral: problema, contexto: [], premissas: [], resultados: [], impactos: [], actions: [], status: 'RASCUNHO' };
@@ -38,7 +40,21 @@ function AddRow({ categorias, onAdd, placeholder, disabled }: { categorias?: str
   );
 }
 
-export function MapaProcessosPage({ initialTab, qualitative = false }: { initialTab?: string; qualitative?: boolean }) {
+export function MapaProcessosPage({ initialTab, qualitative = false, initialProjectMapId }: { initialTab?: string; qualitative?: boolean; initialProjectMapId?: string }) {
+  const { state } = useApp();
+  const projects = projectMapsForProgram(state, state.currentProgramId);
+  const [selected, setSelected] = useState(initialProjectMapId || projects[0]?.id || 'programa');
+  const map = projects.find((record) => record.id === selected);
+  return <>
+    {!!projects.length && <label className="planning-selector project-map-picker">Mapa em edição<select aria-label="Mapa em edição" value={map?.id || 'programa'} onChange={(event) => setSelected(event.target.value)}>
+      {projects.map((project) => <option key={project.id} value={project.id}>{project.projectName} · Projeto estratégico {project.projectCode} · MaPR e indicadores</option>)}
+      <option value="programa">Mapa geral do programa · conteúdo anterior</option>
+    </select></label>}
+    {map ? <ProjectMapWorkspace key={map.id} map={map} /> : <ProgramMapEditor initialTab={initialTab} qualitative={qualitative} />}
+  </>;
+}
+
+function ProgramMapEditor({ initialTab, qualitative = false }: { initialTab?: string; qualitative?: boolean }) {
   const { state, update, can } = useApp();
   const toast = useToast();
   const [tab, setTab] = useState(initialTab || 'preenchimento');

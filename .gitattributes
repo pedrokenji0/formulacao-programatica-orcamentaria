@@ -1,0 +1,3 @@
+# The imported manifest hashes the PPO exports with their original CRLF endings.
+# Keep checkout bytes consistent on Windows and Linux without changing the data.
+data/raw/plan2026/*.txt text eol=crlf

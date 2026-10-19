@@ -2,11 +2,11 @@
 
 Base preparada a partir das figuras 2 e 3 da avaliação fornecida pelo usuário e das duas ações do projeto estratégico 14 na referência PPO plan2026, commit `eac7892`.
 
-Local no repositório: `data/referencias/reurb/`. O frontend e `npm run generate:data` ainda não consomem estes arquivos. Para inspecionar os dataframes a partir da raiz do repositório, com pandas instalado, execute `python data/referencias/reurb/carregar_dataframes.py`.
+Local no repositório: `data/referencias/reurb/`. O frontend consome estes arquivos por `src/services/projectMapReference.ts`, incluído no build. Não é necessário executar `generate:data` para carregar os mapas. Para inspecionar os dataframes em Python com pandas instalado, execute `python data/referencias/reurb/carregar_dataframes.py`.
 
 ## Regra central
 
-**Um projeto estratégico possui um único mapa lógico.** O MaPR e o MaInd são visões relacionadas desse mapa. As ações participantes entram por vínculo. Novas versões preservam o histórico no mesmo mapa, sem criar um mapa independente por ação, UO, programa ou ano.
+**Um projeto estratégico possui um único mapa lógico.** O MaPR e os indicadores são apresentados em duas abas do mesmo projeto. As ações participantes entram por vínculo. A aba Mapa de Indicadores tem fichas próprias, vinculáveis aos componentes do MaPR. A referência documental permanece disponível para comparação e reversão; alterações locais persistem no navegador.
 
 Neste exemplo:
 
@@ -94,7 +94,11 @@ assert df_participacao["acao_id"].nunique() == 2
 
 Uma junção expande linhas para consulta; não cria cópias no cadastro de mapas. Não somar indicadores ou recursos novamente porque aparecem em várias linhas dessa consulta. Razões como gastos/beneficiários precisam de numerador e denominador compatíveis; sua agregação não deve somar ou tirar média simples de razões locais.
 
-## Ajustes recomendados no frontend existente
+## Integração no frontend
+
+O cadastro `AppState.projectMaps` mantém o mapa compartilhado do projeto, seus componentes e indicadores. Os mapas anteriores em `AppState.maps` continuam preservados. `ProjectMapWorkspace` apresenta os dois conjuntos em abas do projeto, com fichas, original somente leitura, comparação, reversão e permissões. `planningPersistence` carrega estados anteriores sem substituir os mapas de programa já editados. `PlanningReview` inclui as diferenças e exporta original e proposta do projeto.
+
+As recomendações abaixo registram o desenho de dados para evolução do cadastro:
 
 Na versão analisada, `ProcessMap` pertence a `programId`, e `createPlanningInitial` cria um mapa por programa. Isso não representa corretamente um mapa exclusivo do Reurb quando o programa 125 contém outras frentes.
 
@@ -106,11 +110,11 @@ Na versão analisada, `ProcessMap` pertence a `programId`, e `createPlanningInit
 6. No MaInd, separar nome/ficha técnica, vínculo a componentes e valores observados. Associação individual é confirmada pelo usuário e pode ser múltipla.
 7. Na ficha do programa, listar seus projetos e permitir abrir seus mapas. Conservar mapas anteriores de programa em seu escopo original; não atribuir automaticamente o mapa inteiro do programa 125 ao Reurb.
 8. Atualizar consultas que usam somente `map.programId` para consultar o `mapaId` selecionado, inclusive MaPR, componentes de indicadores, revisão, espelhos e persistência. Migrar estados anteriores preservando IDs e vínculos; não agrupar componentes somente por semelhança textual.
-9. Acrescentar uma aba/visão “Indicadores” ao mapa único do projeto, com categorias da figura e vínculos aos componentes. O indicador oficial do programa continua em seu cadastro de origem; seu uso no projeto é uma associação explícita.
+9. Apresentar os indicadores em sua aba, nas categorias da figura, com vínculos explícitos aos componentes. O indicador oficial do programa continua em seu cadastro de origem; seu uso no projeto é uma associação explícita.
 
 Verificações mínimas: abrir pelas ações 1082/1221 e 4528/2461 resolve para o mesmo mapa; editar componente compartilhado aparece nas duas entradas; nenhuma outra ação do programa 125 é incluída por suposição; novas ações do projeto podem ser vinculadas sem criar outro mapa; recarregar preserva a identidade e as relações.
 
-Arquivos envolvidos na futura integração: `src/types/index.ts`, `src/types/planning.ts`, `planningDomain.ts`, `proposalDomain.ts`, `proposalEditing.ts`, `planningPersistence.ts`, `MapaProcessos.tsx`, `IntegratedMap.tsx`, `MapVisualizer.tsx`, `IndicatorsSection.tsx`, `PlanningReview.tsx`, `Espelho.tsx` e testes. Esta entrega acrescenta os dados e sua documentação ao repositório; a integração com as telas permanece pendente.
+Arquivos principais: `src/types/projectMaps.ts`, `projectMapReference.ts`, `projectMapDomain.ts`, `ProjectMapWorkspace.tsx`, `planningDomain.ts`, `planningPersistence.ts`, `MapaProcessos.tsx`, `PlanningReview.tsx` e os testes de domínio e interface. O backup completo em Espelhos já inclui `AppState.projectMaps`; não restaure os JSON de dataframes diretamente nele.
 
 ## Limites de interpretação a preservar
 

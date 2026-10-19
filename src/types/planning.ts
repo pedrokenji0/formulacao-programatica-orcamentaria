@@ -81,7 +81,7 @@ export type PlanningEntityKind = 'program' | 'action' | 'indicator' | 'localizer
 export interface ProposalEvent {
   id: string;
   entityId: string;
-  kind: PlanningEntityKind;
+  kind: PlanningEntityKind | 'projectMap';
   operation: 'exclusao' | 'restauracao' | 'descarte' | 'reversao' | 'vinculo';
   at: string;
   reason: string;
