@@ -1,0 +1,23 @@
+name: Atualizar referências territoriais PPO e FJP
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  source:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+      - run: npm ci
+      - name: Atualizar fontes públicas e gerar referências
+        run: node scripts/territory-targets-source.mjs
+      - uses: actions/upload-artifact@v4
+        with:
+          name: referencias-territoriais
+          path: |
+            data/territorio/fonte-regionalizacoes-fjp.json
+            data/territorio/regionalizacoes-fjp.json
+            data/territorio/metas-fisicas-reurb.json

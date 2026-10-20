@@ -10,8 +10,8 @@ const MUNICIPALITY_CODES = new Set(municipalityCatalog.map((m) => m.code));
 const same = (a: unknown, b: unknown) => JSON.stringify(a) === JSON.stringify(b);
 export const normalizeTerritoryText = (value: unknown) => String(value ?? '').trim().normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLocaleLowerCase('pt-BR');
 
-export function canEditTerritory(state: AppState, record?: { ownerUnit: string }) {
-  if (['Leitor', 'Consulta', 'DCMEFO/SEPLAG'].includes(state.perfil)) return false;
+export function canEditTerritory(state: AppState, record?: { ownerUnit: string; reference?: unknown }) {
+  if (record?.reference || ['Leitor', 'Consulta', 'DCMEFO/SEPLAG'].includes(state.perfil)) return false;
   const scope = unitCode(state.unidade);
   if (!record) return /^\d+$/.test(scope);
   return state.perfil !== 'Gestor UA' || !!scope && scope === record.ownerUnit;
@@ -111,6 +111,7 @@ export function enforceTerritoryUpdate(previous: AppState, next: AppState, refer
     for (const record of records) {
       const old = (before[key] as (Regionalization | TerritorialSeries)[]).find((item) => item.id === record.id);
       if (same(old, record)) continue;
+      if (record.reference) throw new Error('As referências territoriais importadas são protegidas. Cadastre uma proposta local.');
       if (!canEditTerritory(previous, old || undefined) || !/^\d+$/.test(record.ownerUnit) || !old && record.ownerUnit !== unitCode(previous.unidade)) throw new Error('Sem permissão para alterar os dados territoriais desta UO.');
       if (old && (!same(old.ownerUnit, record.ownerUnit) || !same(old.createdAt, record.createdAt))) throw new Error('Origem e UO responsável protegidas.');
       if (!record.name.trim()) throw new Error('Informe o nome do cadastro territorial.');

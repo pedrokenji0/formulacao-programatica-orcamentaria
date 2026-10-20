@@ -91,3 +91,42 @@ test('regionalizações por secretaria permanecem independentes e agregam com co
   await page.getByLabel('Secretaria da regionalização', { exact: true }).selectOption('SEE');
   await expect(page.getByRole('complementary', { name: 'Detalhes do município' })).toContainText('Metropolitana');
 });
+
+test('metas Reurb abrem na granularidade original e mantêm zeros separados de ausência', async ({ page }) => {
+  await open(page);
+  await expect(page.getByLabel('Indicador e período do mapa', { exact: true })).toHaveValue('ppo-meta-fisica-125-1221-1082-2026');
+  const summary = page.locator('.physical-target-summary');
+  await expect(summary).toContainText('17.166');
+  await expect(summary).toContainText('16.866');
+  await expect(summary).toContainText('300');
+  await expect(page.getByLabel('Leitura dos valores', { exact: true })).toHaveValue('region');
+  await expect(page.getByLabel('Valor do município selecionado', { exact: true })).toHaveCount(0);
+  const montes = page.locator('.territory-municipality[data-code="3143302"]');
+  await expect(montes).not.toHaveAttribute('fill', '#e6e9ed');
+  await expect(page.locator('.territory-municipality[data-code="3106200"]')).toHaveAttribute('fill', '#e6e9ed');
+  await page.getByLabel('Indicador e período do mapa', { exact: true }).selectOption('ppo-meta-fisica-125-2461-4528-2026');
+  await expect(summary).toContainText('1.500');
+  await expect(page.locator('.territory-municipality[data-code="3131307"]')).not.toHaveAttribute('fill', '#e6e9ed');
+  await expect(montes).toHaveAttribute('fill', '#e6e9ed');
+  await page.getByLabel('Indicador e período do mapa', { exact: true }).selectOption('ppo-meta-fisica-125-1221-1082-2027');
+  await expect(summary.locator('dl > div').nth(1).locator('dd')).toHaveText('0');
+  await expect(montes).toHaveAttribute('fill', '#e6e9ed');
+});
+
+test('regionalizações da FJP são consultáveis sem duplicar IBGE ou redistribuir metas', async ({ page }) => {
+  await open(page);
+  const scheme = page.getByLabel('Regionalização do mapa', { exact: true });
+  await expect(scheme.locator('option')).toHaveCount(7);
+  await scheme.selectOption('fjp-health-micro');
+  await expect(page.getByLabel('Destacar região', { exact: true }).locator('option')).toHaveCount(90);
+  await expect(page.getByLabel('Colorir mapa por', { exact: true })).toHaveValue('regions');
+  await expect(page.locator('.physical-target-summary')).toContainText('recorte diferente');
+  await expect(page.getByRole('button', { name: 'Editar regionalização', exact: true })).toHaveCount(0);
+  await scheme.selectOption('fjp-health-macro');
+  await expect(page.getByLabel('Destacar região', { exact: true }).locator('option')).toHaveCount(17);
+  await scheme.selectOption('fjp-education-sre');
+  await expect(page.getByLabel('Destacar região', { exact: true }).locator('option')).toHaveCount(48);
+  await page.getByRole('button', { name: 'Ver metas por região de origem', exact: true }).click();
+  await expect(scheme).toHaveValue('ibge-intermediate');
+  await expect(page.getByLabel('Leitura dos valores', { exact: true })).toHaveValue('region');
+});
