@@ -1,5 +1,7 @@
 # Formulação Programática-Orçamentária — PPO-MG
 
+Organização das fontes, regras de vínculo e desenho proposto para Postgres: [estrutura dos dados](docs/estrutura-dados.md).
+
 Mockup em **React 18, TypeScript e Vite**, executado no navegador. A Programação Qualitativa aproveita o cadastro existente do PPO para construir uma proposta local, mantendo a referência importada para comparação. Backend, Postgres, autenticação e IA ficam fora desta entrega.
 
 OBZ, coerência e espelhos continuam disponíveis. Valores orçamentários, previsões físicas e metas futuras não são importados para o novo fluxo qualitativo. Índice de referência dos indicadores e data de apuração são preservados.
@@ -228,4 +230,12 @@ src/pages/qualitative/             programa, ações, revisão e seções integr
 tests/qualitative.spec.ts          testes no navegador
 ```
 
-O seed antigo de saúde permanece para compatibilidade com a demonstração OBZ. O novo cadastro qualitativo usa as quatro exportações completas. Recursos administrativos ilustrativos anteriores, como importação JSON de tabelas e histórico, continuam com as limitações preexistentes.
+A base OBZ da Saúde preserva os 1.502 itens e suas cinco UOs de origem. Itens sem exercício ou correspondência confirmada ficam na base independente, disponíveis no filtro de pendências. O novo cadastro qualitativo usa as quatro exportações completas. Recursos administrativos ilustrativos anteriores, como importação JSON de tabelas e histórico, continuam com as limitações preexistentes.
+
+## Integridade OBZ e validação automática
+
+A importação preserva origem, exercício próprio, zero declarado e memória de cálculo. Lotes são identificados pelo conteúdo SHA-256; reimportar o mesmo arquivo/aba/linha preserva as alterações locais e não cria cópias. Vínculos com o planejamento exigem exercício, programa, UO e ação compatíveis. Pendências permanecem consultáveis, sem atribuição ao programa aberto na tela.
+
+As fichas OBZ seguem o padrão do planejamento e permitem salvar rascunhos incompletos. Exemplos FAOP ficam separados em `src/data/fixtures/`. A revisão inclui auditoria de integridade, com relações opcionais tratadas separadamente de erros.
+
+Execute `npm run check` para verificar tipos, testes de dados e build. O GitHub Actions também verifica os fluxos de mapas e importação com Chromium. O deploy só prossegue após os testes de tipos e dados passarem.

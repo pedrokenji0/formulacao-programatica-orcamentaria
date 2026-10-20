@@ -1,3 +1,4 @@
+import { auditPlanningData } from '../../services/dataIntegrity';
 import { useMemo, useState } from 'react';
 import { useApp } from '../../store/AppStore';
 import type { Program, MapItem } from '../../types';
@@ -19,6 +20,7 @@ export function PlanningReview({ program }: { program: Program }) {
   const [tab, setTab] = useState('alteracoes');
   const [selected, setSelected] = useState('');
   const { state, reference, update, can, persistenceMessage } = useApp();
+  const integrity = useMemo(() => auditPlanningData(state), [state]);
   const editable = can('editMarcoLogico') || can('editMapa');
   const baselineLocalizers = useMemo(() => new Map(reference.localizers.map((record) => [record.id, record])), [reference]);
   const requests = (state.planning?.associationRequests || []).filter((request) => request.entityId === program.id || state.actions.some((action) => action.id === request.entityId && action.programaId === program.id));
@@ -98,6 +100,10 @@ export function PlanningReview({ program }: { program: Program }) {
     </Card>}
     {revision && <Modal wide title={revision.title} sub="Comparação com a referência importada" onClose={() => setSelected('')}><div className="revision-record"><div className="table-wrap"><table className="dt revision-table"><thead><tr><th>Campo</th><th>Referência importada</th><th>Proposta local</th></tr></thead><tbody>{revision.differences.map((difference) => <tr key={difference.field}><th>{difference.field}</th><td className="preserve-text">{difference.before || 'Campo vazio / ausente'}</td><td className="preserve-text">{difference.after || 'Campo vazio / removido'}</td></tr>)}</tbody></table></div><FormField label={`Justificativa da alteração — ${revision.title}`} textarea value={state.planning?.justifications[revision.id] || ''} disabled={!editable} onChange={(value) => update((draft) => { draft.planning!.justifications[revision.id] = value; })} /></div></Modal>}
     {tab === 'integridade' && <Card title="Integridade das bases e vínculos" lead="Divergências são informadas sem escolher outra ação automaticamente.">
+      <div className="integrity-summary"><span>{state.programs.length} programas</span><span>{state.actions.length} ações</span><span>{state.projectMaps?.length || 0} mapas compartilhados de projetos</span><span>{state.budgetItems.length} itens OBZ</span></div>
+      {integrity.slice(0, 50).map((finding, index) => <div className={`alert ${finding.level === 'erro' ? 'err' : finding.level === 'aviso' ? 'warn' : 'info'}`} key={`${finding.code}-${finding.recordId}-${index}`}><strong>{finding.area === 'obz' ? 'Base OBZ' : finding.area === 'mapas' ? 'Mapas' : 'Planejamento'}</strong> · {finding.message}</div>)}
+      {integrity.length > 50 && <p className="small muted">Mostrando os primeiros 50 avisos de {integrity.length}.</p>}
+
       {pending.length > 0 && <details open><summary>Pendências de preenchimento ({pending.length})</summary><ul>{pending.map((message, index) => <li key={index}>{message}</li>)}</ul><p>Não impedem salvar e retomar o rascunho.</p></details>}
       {reference.issues.length === 0 && <p>Nenhuma divergência encontrada na importação.</p>}
       {reference.issues.map((issue) => <div className="alert warn" key={issue.id}>{issue.message}<div className="small muted">{issue.recordId}</div></div>)}

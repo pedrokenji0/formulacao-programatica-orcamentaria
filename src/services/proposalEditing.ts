@@ -1,3 +1,4 @@
+import { enforceBudgetUpdate, unitCode } from './obzData.ts';
 import type { AppState, PlanningDataset, PlanningEntityKind, ProposalEvent } from '../types/index.ts';
 import type { EditableRecord } from './editingPolicy.ts';
 import { assertFieldPatch, canEditRecord, CLASSIFICATIONS, exclusionName, exclusionRequirement, localRecord, recordFields, officialProperties, linkedRecords, knownProgramUnit, unitNames } from './editingPolicy.ts';
@@ -70,6 +71,7 @@ export function proposeAssociation(state: AppState, reference: PlanningDataset, 
   logOperation(state, kind, id, 'vinculo', request.before, request.after, reason);
 }
 export function enforceEditingUpdate(previous: AppState, next: AppState, reference: PlanningDataset) {
+  enforceBudgetUpdate(previous, next);
   if (!next.planning || !previous.planning) return;
   enforceProjectMapUpdate(previous, next);
   if (['Consulta', 'Leitor'].includes(previous.perfil) && !same(previous.planning, next.planning)) throw new Error('Perfil Leitor: somente consulta.');
@@ -175,7 +177,7 @@ export function enforceEditingUpdate(previous: AppState, next: AppState, referen
     }
     for (const item of next.budgetItems) if (!same(item, previous.budgetItems.find((record) => record.id === item.id))) {
       const target = next.actions.find((record) => record.id === item.actionId);
-      if (!target || !canEditRecord(previous, 'action', target)) throw new Error('Item OBZ fora do escopo da UO.');
+      if (unitCode(previous.unidade) !== unitCode(item.codigoUnidadeOrcamentaria || item.unidadeOrcamentaria) || (target && !canEditRecord(previous, 'action', target))) throw new Error('Item OBZ fora do escopo da UO.');
     }
   }
   if (!same(previous.planning.justifications, next.planning.justifications) && ['Consulta', 'Leitor'].includes(previous.perfil)) throw new Error('Perfil Leitor: somente consulta.');

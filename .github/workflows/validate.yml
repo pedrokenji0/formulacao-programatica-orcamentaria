@@ -1,0 +1,33 @@
+name: Validar dados e interface
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: validate-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+          cache: npm
+      - run: npm ci
+      - name: Tipos, regressões de dados e build
+        run: npm run check
+      - name: Instalar navegador de testes
+        run: npx playwright install --with-deps chromium
+      - name: Fluxos de mapas e importação OBZ
+        run: npx playwright test tests/project-maps.spec.ts tests/obz.spec.ts
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: testes-interface
+          path: |
+            test-results/
+            playwright-report/

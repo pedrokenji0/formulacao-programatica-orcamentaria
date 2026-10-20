@@ -71,6 +71,7 @@ export interface PlanningProposal {
   justifications: Record<string, string>;
   migrationNotices: string[];
   editingVersion?: number;
+  obzDataVersion?: number;
   review?: Record<string, { status: 'pendente' | 'revisado'; reviewedAt?: string }>;
   history?: ProposalEvent[];
   associationRequests?: AssociationRequest[];
@@ -81,7 +82,7 @@ export type PlanningEntityKind = 'program' | 'action' | 'indicator' | 'localizer
 export interface ProposalEvent {
   id: string;
   entityId: string;
-  kind: PlanningEntityKind | 'projectMap';
+  kind: PlanningEntityKind | 'projectMap' | 'budgetItem';
   operation: 'exclusao' | 'restauracao' | 'descarte' | 'reversao' | 'vinculo';
   at: string;
   reason: string;
