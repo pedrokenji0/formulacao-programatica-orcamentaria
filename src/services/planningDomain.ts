@@ -1,3 +1,4 @@
+import { migrateBudgetData } from './obzData.ts';
 import type { AppState, Action, Program, PlanningDataset, PlanningIndicator, PlanningLocalizer, OfficialFields, ProcessMap, ComponentAssociation } from '../types';
 import { createProjectMapReferences } from './projectMapReference.ts';
 
@@ -43,7 +44,7 @@ export function createPlanningInitial(legacy: AppState, reference: PlanningDatas
       recursos: [], atividades: [], produtos: action.produto ? [{ id: `produto-${action.id}`, texto: action.produto, categoria: action.unidadeMedida, origin: 'importado', sourceReference: 'Produto / Especificação do Produto' }] : [], pressupostos: [], riscos: [],
     })),
   }));
-  return {
+  const state: AppState = {
     ...structuredClone(legacy), schemaVersion: 2, programs, actions, maps, projectMaps: createProjectMapReferences(actions), frameworks: [], mirrors: [], links: [],
     currentProgramId: programs.find((program) => normalizeCode(program.codigo) === '125')?.id || programs[0]?.id || '',
     unidade: actions.find((action) => normalizeCode(action.codigo) === '1082' && normalizeCode(action.codigoUnidadeOrcamentaria) === '1221')?.unidadeOrcamentaria || '',
@@ -51,6 +52,7 @@ export function createPlanningInitial(legacy: AppState, reference: PlanningDatas
     lists: { ...legacy.lists, unidades: [...new Set(actions.map((action) => action.unidadeOrcamentaria))], programas: programs.map((program) => `${program.codigo} - ${program.nome}`), acoes: [...new Set(actions.map((action) => `${action.codigo} - ${action.nome}`))] },
     planning: { datasetId: reference.manifest.datasetId, exercise: reference.manifest.exercise, indicatorProposals: {}, localIndicators: [], localizerProposals: {}, justifications: {}, migrationNotices: [], editingVersion: 1, review: {}, history: [], associationRequests: [] },
   };
+  return migrateBudgetData(state, state);
 }
 export function indicatorsFor(state: AppState, reference: PlanningDataset, programId: string): PlanningIndicator[] {
   return [...reference.indicators.filter((indicator) => indicator.programId === programId).map((indicator) => state.planning?.indicatorProposals[indicator.id] || indicator), ...(state.planning?.localIndicators || []).filter((indicator) => indicator.programId === programId)];

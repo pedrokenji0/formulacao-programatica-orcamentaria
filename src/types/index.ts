@@ -230,10 +230,34 @@ export interface ProcessMap {
 }
 
 // ---- OBZ ----
-export type Cenario = 'LIMIAR' | 'INCREMENTAL';
+export type Cenario = 'LIMIAR' | 'INCREMENTAL' | 'NÃO INFORMADO';
+export interface BudgetSource {
+  kind: 'planilha' | 'seed-saude' | 'legado';
+  batchId: string; file: string; sheet: string; row: number;
+  unitLabel: string; programLabel: string; actionLabel: string; exercise: string | null;
+  raw: Record<string, unknown>;
+  numbers: Record<string, number | null>;
+}
+export interface BudgetLinkage {
+  status: 'vinculado' | 'pendente' | 'ambiguo' | 'sem-correspondencia' | 'outro-exercicio';
+  candidates: string[];
+  issues: string[];
+}
+
 
 export interface BudgetItemOBZ {
   id: string;
+  codigoUnidadeOrcamentaria?: string;
+  programaCodigo?: string;
+  exercise?: string | null;
+  source?: BudgetSource;
+  linkage?: BudgetLinkage;
+  totalMode?: 'declarado' | 'calculado' | 'ausente';
+  quantities?: { volume: number | null; precoUnitario: number | null; frequenciaPagamento: number | null };
+  legacyIdentity?: { programaId: string; actionId: string; unidadeOrcamentaria: string };
+  dataIssues?: string[];
+  parecerDcmefoOriginal?: unknown;
+  deliberacaoCofinOriginal?: unknown;
   unidadeOrcamentaria: string;
   programaId: string;
   actionId: string;

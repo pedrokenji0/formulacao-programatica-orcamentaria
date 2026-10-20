@@ -9,7 +9,7 @@ export default defineConfig({
   reporter: 'list',
   use: {
     browserName: 'chromium',
-    channel: 'msedge',
+    channel: process.env.CI ? undefined : 'msedge',
     headless: true,
     baseURL: 'http://127.0.0.1:4173/formulacao-programatica-orcamentaria/',
     viewport: { width: 1440, height: 1000 },

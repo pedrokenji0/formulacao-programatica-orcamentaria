@@ -19,7 +19,7 @@ const stripCode = (value) => String(value ?? '').replace(/^\s*[\w.]+\s*-\s*/, ''
 const codeLabel = (code, name) => `${code} - ${name}`;
 
 function readPipe(file) {
-  const raw = fs.readFileSync(path.join(root, file), 'latin1');
+  const raw = new TextDecoder('windows-1252').decode(fs.readFileSync(path.join(root, file)));
   const lines = raw.split(/\r?\n/).filter(Boolean);
   const headers = split(lines[0]);
   return lines.slice(1).map((line) => {
@@ -41,7 +41,7 @@ for (const r of healthRows) {
   const programaCodigo = normalizeProgramCode(r['Código do Programa']);
   const acaoCodigo = normalizeActionCode(r['Código da Ação']);
   if (!programaCodigo || !acaoCodigo) continue;
-  const key = `${programaCodigo}|${acaoCodigo}`;
+  const key = `${programaCodigo}|${onlyDigits(r['Código da Unidade Orçamentária Responsável pela Ação'])}|${acaoCodigo}`;
   if (seenActions.has(key)) continue;
   seenActions.add(key);
   healthActions.push({
@@ -84,7 +84,7 @@ for (const r of healthRows) {
 }
 
 const wb = XLSX.readFile(path.join(root, '4291.xlsx'), { cellDates: false });
-const obzRows = XLSX.utils.sheet_to_json(wb.Sheets['BASE OBZ'], { header: 1, blankrows: false, defval: '' });
+const obzRows = XLSX.utils.sheet_to_json(wb.Sheets['BASE OBZ'], { header: 1, blankrows: true, defval: '' });
 const obzHeader = obzRows[1];
 const idx = Object.fromEntries(obzHeader.map((h, i) => [String(h).trim(), i]));
 const get = (row, name) => row[idx[name]] ?? '';
@@ -93,10 +93,11 @@ const number = (value) => {
   return Number.isFinite(n) ? n : 0;
 };
 
-const obzItems = obzRows.slice(2).filter((row) => get(row, 'PROGRAMA') && get(row, 'AÇÃO')).map((row) => {
+const obzItems = obzRows.slice(2).map((row, index) => ({ row, sourceRow: index + 3 + XLSX.utils.decode_range(wb.Sheets['BASE OBZ']['!ref'] || 'A1').s.r })).filter(({ row }) => get(row, 'PROGRAMA') && get(row, 'AÇÃO')).map(({ row, sourceRow }) => {
   const programaCodigo = normalizeProgramCode(get(row, 'PROGRAMA'));
   const acaoCodigo = normalizeActionCode(get(row, 'AÇÃO'));
   return {
+    sourceRow,
     org: 'FES/SES',
     uo: String(get(row, 'UNIDADE ORÇAMENTÁRIA')).trim() || 'FES',
     n2: get(row, 'N2'),
@@ -129,7 +130,7 @@ const obzItems = obzRows.slice(2).filter((row) => get(row, 'PROGRAMA') && get(ro
 
 const acaoDetails = {};
 for (const item of healthActions) {
-  acaoDetails[item.acaoCodigo] = {
+  acaoDetails[`${item.programaCodigo}|${onlyDigits(item.codigoUnidadeAcao)}|${item.acaoCodigo}`] = {
     finalidade: item.finalidade,
     descricao: item.descricao,
     publicoAlvo: item.publicoAlvo,

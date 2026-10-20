@@ -1,4 +1,5 @@
-import type { AppState, Action, Program } from '../types/index.ts';
+import { migrateBudgetData, OBZ_BACKUP_KEY, OBZ_DATA_VERSION } from './obzData.ts';
+import type { AppState, Action, Program, BudgetItemOBZ } from '../types/index.ts';
 import { normalizeCode, setOfficialField, programProperty, actionProperty } from './planningDomain.ts';
 
 export const STORAGE_KEY = 'fpo-state-v2';
@@ -13,7 +14,12 @@ export function encodeState(state: AppState, initial: AppState): string {
     const baseline = new Map((initial[key] || []).map((record) => [identity(record), record] as const));
     const current = new Set((state[key] || []).map(identity));
     collections[key] = {
-      upserts: (state[key] || []).filter((record) => !same(record, baseline.get(identity(record)))),
+      upserts: (state[key] || []).filter((record) => !same(record, baseline.get(identity(record)))).map((record) => {
+        if (key === 'budgetItems' && same((record as BudgetItemOBZ).source, (baseline.get(identity(record)) as BudgetItemOBZ | undefined)?.source)) {
+          const { source, ...proposal } = record as BudgetItemOBZ; return proposal;
+        }
+        return record;
+      }),
       removed: (initial[key] || []).filter((record) => !current.has(identity(record))).map(identity),
     };
   }
@@ -30,16 +36,20 @@ export function decodeState(raw: string, initial: AppState): AppState {
     if (key === 'projectMaps' && !change) continue; // v2 packages before project maps: retain the new reference.
     if (!change || !Array.isArray(change.upserts) || !Array.isArray(change.removed)) throw new Error(`Coleção inválida: ${key}.`);
     const records = new Map((next[key] || []).filter((record) => !change.removed.includes(identity(record))).map((record) => [identity(record), record]));
+    const upsertIds = new Set<string>();
     for (const record of change.upserts) {
       if (!record || !identity(record)) throw new Error(`Identificador ausente em ${key}.`);
+      if (upsertIds.has(identity(record))) throw new Error(`Identificador duplicado em ${key}.`);
+      upsertIds.add(identity(record));
+      if (key === 'budgetItems' && parsed.values.planning.obzDataVersion !== OBZ_DATA_VERSION) record.legacyIdentity = { programaId: record.programaId || '', actionId: record.actionId || '', unidadeOrcamentaria: record.unidadeOrcamentaria || '' };
       const baseline = records.get(identity(record));
       records.set(identity(record), { ...baseline, ...record, ...('officialFields' in (baseline || {}) ? { officialFields: { ...(baseline as Program | Action)?.officialFields, ...record.officialFields } } : {}) });
     }
     (next[key] as unknown[]) = [...records.values()];
   }
-  Object.assign(next, parsed.values);
+  for (const key of ['perfil','unidade','currentProgramId','planning','support','lists'] as const) if (key in parsed.values) (next as unknown as Record<string, unknown>)[key] = parsed.values[key];
   next.schemaVersion = 2;
-  next.planning = { ...initial.planning!, ...parsed.values.planning };
+  next.planning = { ...initial.planning!, ...parsed.values.planning, obzDataVersion: parsed.values.planning.obzDataVersion };
   if (parsed.datasetId !== initial.planning?.datasetId) {
     next.planning!.migrationNotices = [...new Set([...(next.planning!.migrationNotices || []), 'A base importada foi atualizada. Propostas anteriores foram preservadas; confira os avisos e a comparação antes de reutilizá-las.'])];
   }
@@ -49,7 +59,7 @@ export function decodeState(raw: string, initial: AppState): AppState {
   next.planning!.review ||= {};
   next.planning!.history ||= [];
   next.planning!.associationRequests ||= [];
-  return next;
+  return migrateBudgetData(next, initial);
 }
 
 export function migrateLegacy(previous: AppState, initial: AppState, legacyBaseline: AppState): AppState {
@@ -102,13 +112,15 @@ export function migrateLegacy(previous: AppState, initial: AppState, legacyBasel
   if (previous.support) next.support = previous.support;
   if (previous.lists) for (const key of Object.keys(next.lists) as (keyof AppState['lists'])[]) next.lists[key] = [...new Set([...next.lists[key], ...(previous.lists[key] || [])])];
   next.planning!.migrationNotices = notices;
-  return next;
+  next.planning!.obzDataVersion = undefined;
+  return migrateBudgetData(next, initial);
 }
 
 export function readPersisted(storage: Pick<Storage, 'getItem' | 'setItem'>, initial: AppState, legacy: AppState): AppState {
   const current = storage.getItem(STORAGE_KEY);
   if (current) {
     try {
+      if (JSON.parse(current).values?.planning?.obzDataVersion !== OBZ_DATA_VERSION && !storage.getItem(OBZ_BACKUP_KEY)) storage.setItem(OBZ_BACKUP_KEY, current);
       const next = decodeState(current, initial);
       if (!JSON.parse(current).values?.planning?.editingVersion) {
         const backupKey = `${STORAGE_KEY}-before-editing-rules`;

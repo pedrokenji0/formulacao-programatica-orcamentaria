@@ -1,3 +1,4 @@
+import { migrateBudgetData } from '../services/obzData';
 import React, { createContext, useContext, useEffect, useMemo, useState } from 'react';
 import type { AppState, Perfil, Status, PlanningDataset } from '../types';
 import { initialState } from '../data/mockData';
@@ -99,7 +100,7 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
         const fresh = createPlanningInitial(initialState, reference);
         if (parsed.schemaVersion === 2 && parsed.planning) {
           if (parsed.planning.datasetId !== reference.manifest.datasetId) parsed.planning.migrationNotices = [...(parsed.planning.migrationNotices || []), 'Pacote de outra versão da base. Confira a comparação com a referência atual.'];
-          setState({ ...fresh, ...parsed, planning: { ...fresh.planning, ...parsed.planning } });
+          setState(migrateBudgetData({ ...fresh, ...parsed, planning: { ...fresh.planning, ...parsed.planning, obzDataVersion: parsed.planning.obzDataVersion } }, fresh));
         } else setState(migrateLegacy(parsed, fresh, initialState));
         return true;
       } catch { return false; }
