@@ -1,3 +1,4 @@
+import { TerritoryPage } from './qualitative/TerritoryPage';
 import { Tabs, ActionButton } from '../components/ui';
 import { useState } from 'react';
 import { CompactHelpContext, HelpTip } from '../components/HelpTip';
@@ -14,6 +15,7 @@ const AREAS = [
   { id: 'qual-programa', label: 'Programa' },
   { id: 'qual-acoes', label: 'Ações e Entregas' },
   { id: 'qual-mapa', label: 'Mapas de planejamento' },
+  { id: 'qual-territorio', label: 'Mapa territorial' },
   { id: 'qual-revisao', label: 'Revisão do Planejamento' },
 ];
 export function QualitativePage({ area, onNavigate }: { area: string; onNavigate: (route: string) => void }) {
@@ -37,6 +39,7 @@ export function QualitativePage({ area, onNavigate }: { area: string; onNavigate
       {area === 'qual-programa' && <ProgramArea program={program} onOpenProjectMap={openProjectMap} />}
       {area === 'qual-acoes' && <ActionsArea program={program} onOpenProjectMap={openProjectMap} />}
       {area === 'qual-mapa' && <MapaProcessosPage qualitative initialProjectMapId={projectMapId} />}
+      {area === 'qual-territorio' && <TerritoryPage />}
       {area === 'qual-revisao' && <PlanningReview program={program} />}
     </div>}
   </div></CompactHelpContext.Provider>;

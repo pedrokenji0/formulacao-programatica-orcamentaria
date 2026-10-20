@@ -23,7 +23,7 @@ jobs:
       - name: Instalar navegador de testes
         run: npx playwright install --with-deps chromium
       - name: Fluxos de mapas e importação OBZ
-        run: npx playwright test tests/project-maps.spec.ts tests/obz.spec.ts
+        run: npx playwright test tests/project-maps.spec.ts tests/obz.spec.ts tests/territory.spec.ts
       - uses: actions/upload-artifact@v4
         if: failure()
         with:
