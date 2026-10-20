@@ -89,8 +89,9 @@ const obzHeader = obzRows[1];
 const idx = Object.fromEntries(obzHeader.map((h, i) => [String(h).trim(), i]));
 const get = (row, name) => row[idx[name]] ?? '';
 const number = (value) => {
+  if (value == null || String(value).trim() === '') return null;
   const n = Number(value);
-  return Number.isFinite(n) ? n : 0;
+  return Number.isFinite(n) ? n : null;
 };
 
 const obzItems = obzRows.slice(2).map((row, index) => ({ row, sourceRow: index + 3 + XLSX.utils.decode_range(wb.Sheets['BASE OBZ']['!ref'] || 'A1').s.r })).filter(({ row }) => get(row, 'PROGRAMA') && get(row, 'AÇÃO')).map(({ row, sourceRow }) => {
@@ -98,8 +99,10 @@ const obzItems = obzRows.slice(2).map((row, index) => ({ row, sourceRow: index +
   const acaoCodigo = normalizeActionCode(get(row, 'AÇÃO'));
   return {
     sourceRow,
+    rawRow: row,
+    sourceHeaders: obzHeader,
     org: 'FES/SES',
-    uo: String(get(row, 'UNIDADE ORÇAMENTÁRIA')).trim() || 'FES',
+    uo: String(get(row, 'UNIDADE ORÇAMENTÁRIA')).trim(),
     n2: get(row, 'N2'),
     n3: get(row, 'N3'),
     programa: codeLabel(programaCodigo, stripCode(get(row, 'PROGRAMA'))),
@@ -187,7 +190,8 @@ const seed = {
   },
 };
 
-fs.writeFileSync(path.join(root, 'scripts/seed.health.json'), `${JSON.stringify(seed, null, 2)}\n`, 'utf8');
+const outputFile = process.env.FPO_SEED_OUTPUT || path.join(root, 'scripts/seed.health.json');
+fs.writeFileSync(outputFile, `${JSON.stringify(seed, null, 2)}\n`, 'utf8');
 console.log(JSON.stringify({
   healthActions: healthActions.length,
   programs: seed.lists.programas.length,

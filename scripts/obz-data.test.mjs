@@ -1,6 +1,9 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { readFileSync } from 'node:fs';
+import { readFileSync, mkdtempSync, rmSync } from 'node:fs';
+import { tmpdir } from 'node:os';
+import { join } from 'node:path';
+import { spawnSync } from 'node:child_process';
 import { parseBudgetNumber, calculateBudgetTotal, effectiveBudgetTotal, codeOf, unitCode, autoMapBudgetHeaders, buildBudgetImport, applyBudgetImport, reconcileBudgetItem, createHealthBudgetItems, migrateBudgetData, enforceBudgetUpdate, budgetPriorityIssues, OBZ_BACKUP_KEY } from '../src/services/obzData.ts';
 import { encodeState, decodeState, readPersisted, STORAGE_KEY } from '../src/services/planningPersistence.ts';
 
@@ -126,4 +129,23 @@ test('prioridade é única por exercício, programa, UO e ação, preservando un
   const b=structuredClone(a);b.id='outro';b.codigoUnidadeOrcamentaria='2461';b.unidadeOrcamentaria='02461 - ARMVA';
   assert.equal(budgetPriorityIssues([a,b]).length,0);
   b.codigoUnidadeOrcamentaria='1221';assert.equal(budgetPriorityIssues([a,b]).length,3);
+});
+
+test('gerador de Saúde lê a planilha real e registra linha e células sem sobrescrever o seed ativo',()=>{
+ const temp=mkdtempSync(join(tmpdir(),'fpo-seed-'));
+ try {
+   const output=join(temp,'seed.json');
+   const child=spawnSync(process.execPath,['scripts/build-health-seed.cjs'],{env:{...process.env,FPO_SEED_OUTPUT:output},encoding:'utf8'});
+   assert.equal(child.status,0,child.stderr);
+   const generated=JSON.parse(readFileSync(output,'utf8'));
+   assert.equal(generated.obzItems.length,1502);
+   assert.equal(new Set(generated.obzItems.map(item=>item.uo)).size,5);
+   assert.ok(generated.obzItems.every(item=>item.sourceRow>=3&&Array.isArray(item.rawRow)&&Array.isArray(item.sourceHeaders)));
+   const keys=generated.healthActions.map(action=>JSON.stringify([action.programaCodigo,unitCode(action.codigoUnidadeAcao),action.acaoCodigo]));
+   assert.equal(new Set(keys).size,keys.length);
+   const items=createHealthBudgetItems(generated);
+   assert.equal(items.length,1502);assert.ok(items.every(item=>item.source.row>=3));
+   const header=generated.obzItems[0].sourceHeaders,index=header.indexOf('FREQUÊNCIA PAGAMENTO');
+   for(const item of generated.obzItems)if(item.rawRow[index]==='')assert.equal(item.frequencia,null);
+ }finally{rmSync(temp,{recursive:true,force:true});}
 });
