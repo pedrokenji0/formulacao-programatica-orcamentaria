@@ -1,8 +1,6 @@
-name: Conferir fontes territoriais Reurb
+name: Atualizar referências territoriais PPO e FJP
 on:
-  push:
-    branches: [codex/metas-reurb-regionalizacoes]
-    paths: [.github/workflows/territory-targets-source.yml, scripts/territory-targets-source.mjs]
+  workflow_dispatch:
 permissions:
   contents: read
 jobs:
@@ -14,5 +12,12 @@ jobs:
         with:
           node-version: '24'
       - run: npm ci
-      - run: node scripts/territory-targets-source.mjs
-        name: Localizar arquivo público FJP
+      - name: Atualizar fontes públicas e gerar referências
+        run: node scripts/territory-targets-source.mjs
+      - uses: actions/upload-artifact@v4
+        with:
+          name: referencias-territoriais
+          path: |
+            data/territorio/fonte-regionalizacoes-fjp.json
+            data/territorio/regionalizacoes-fjp.json
+            data/territorio/metas-fisicas-reurb.json

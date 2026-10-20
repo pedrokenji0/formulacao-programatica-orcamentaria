@@ -939,3 +939,12 @@ table.dt .rowacts{display:flex;gap:6px}
 @media (max-width: 1150px) { .territory-filters { grid-template-columns: 1fr 1fr; } .territory-layout { grid-template-columns: minmax(0, 1fr) 260px; gap: 12px; } }
 @media (max-width: 850px) { .territory-layout { grid-template-columns: 1fr; } .territory-details { display: block; } .territory-canvas { min-height: 320px; } }
 @media (max-width: 600px) { .territory-filters { grid-template-columns: 1fr; } .territory-map-buttons { position: static; border: 0; border-bottom: 1px solid #dce5e9; border-radius: 0; max-width: 100%; } .territory-create-region { flex-direction: column; align-items: stretch; } }
+
+.physical-target-summary { margin: 8px 0 14px; padding: 14px 16px; border: 1px solid #d7e5e8; border-radius: 10px; background: #f7fafb; }
+.physical-target-summary h3 { margin: 8px 0 4px; color: #1b4d60; font-size: 16px; }
+.physical-target-summary p { font-size: 12px; line-height: 1.6; }
+.physical-target-summary dl { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; margin: 14px 0; }
+.physical-target-summary dl > div { padding: 10px 12px; border-radius: 8px; border: 1px solid #dfe9ec; background: #fff; }
+.physical-target-summary dt { color: #5e7683; font-size: 11px; line-height: 1.4; }
+.physical-target-summary dd { color: #1d5c6c; font-size: 23px; font-weight: 700; margin: 7px 0 0; }
+@media(max-width:850px) { .physical-target-summary dl { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
