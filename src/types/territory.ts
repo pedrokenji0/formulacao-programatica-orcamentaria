@@ -29,3 +29,17 @@ export interface TerritorialSeries {
   aggregation: 'none' | 'sum' | 'mean'; values: Record<string, number | null>;
 }
 export interface TerritoryState { schemaVersion: 1; regionalizations: Regionalization[]; series: TerritorialSeries[] }
+
+export interface PlanningTerritoryAction {
+  id: string; code: string; name: string; programCode: string; programName: string;
+  projectCode: string; projectName: string; ownerUnit: string; ownerUnitName: string;
+  productCode: string; product: string; unitCode: string; unit: string;
+  totals: Record<string, { physical: number | null; budget: number | null }>;
+  localizers: { code: string; scope: 'municipality' | 'intermediate' | 'state'; territoryCode: string; territoryName: string; sourceRow: number; forecasts: Record<string, { physical: number | null; budget: number | null }> }[];
+}
+export interface PlanningTerritoryCatalog {
+  schemaVersion: 1;
+  cycle: { revisionYear: string; preparedIn: string; years: string[] };
+  source: { localizers: { path: string; blobSha: string }; actions: { path: string; blobSha: string } };
+  projects: { code: string; name: string; actions: PlanningTerritoryAction[] }[];
+}

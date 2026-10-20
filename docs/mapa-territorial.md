@@ -72,3 +72,19 @@ Parcelas com valor positivo em localizador estadual recebem um aviso imediatamen
 A indicação também aparece na legenda, nos detalhes do município e no texto de consulta do mapa. O preenchimento estadual da base não permite concluir que todos os municípios serão atendidos. Nenhum valor municipal é calculado a partir dessa parcela. O cinza significa ausência de valor municipal/regional discriminado e não ausência de uma parcela estadual. A hachura continua abrangendo o estado inteiro ao destacar uma região; os valores regionais mantêm sua própria escala.
 
 Em 2026, a ação 1082 destaca R$ 47.501.208,00 (98,38%) no localizador estadual V41991 e mantém R$ 780.000,00 separados na região de Montes Claros. A ação 4528, sem parcela estadual, não recebe a hachura. Anos com valor estadual zero tampouco a recebem.
+
+## Catálogo de projetos e ciclo de revisão
+
+O catálogo data/territorio/planejamento-projetos.json reúne localizadores e previsões das ações vinculadas aos projetos 14 (Minas Reurb), 56 (Captação de recursos orçamentários e extraorçamentários), 64 (Trajeto Moda) e 20 (Percursos Gerais). A vinculação vem da fonte e preserva programa, ação e UO: são sete ações, inclusive 4155/UO 1071 no projeto 56 e 4412/UO 1481 no projeto 20. A escolha inicial de uma ação privilegia aquela com mais observações municipais positivas no ano.
+
+O armazenamento evita repetir a identidade do localizador em cada medida/ano: cada localizador contém suas previsões físicas e financeiras por ano. As séries de visualização são derivadas desse catálogo. As referências anteriores do Reurb continuam reproduzíveis e são comparadas nos testes para assegurar que os dados existentes não mudaram.
+
+A base atual foi elaborada em 2025 para a revisão de 2026. A interface usa o ano de revisão declarado no catálogo e os três seguintes: 2026, 2027, 2028 e 2029. Não usa o ano corrente nem o ano de elaboração para montar o slider. scripts/territory-planning-catalog.mjs aceita --revision-year, --prepared-in e --source-directory. Um novo ciclo precisa de valores das respectivas colunas; anos ausentes permanecem sem dados e os valores de outro ano não são reaproveitados.
+
+Os controles separam projeto, ação/UO, medida, ano e regionalização. Ao trocar o ano ou a medida da mesma ação, a seleção do município e a regionalização permanecem. As séries locais mantêm o período de importação e não são relabeladas pelo ciclo das referências.
+
+O primeiro nível mostra seleção, slider, totais por abrangência, mapa e consulta municipal. Critérios, origem, conferência de totais, produto e uso da hachura ficam em tooltips acessíveis por foco, clique e teclado. Divergências e recortes regionais incompatíveis continuam com avisos visíveis. Opções de cores, importação, comparação entre ações e localizadores ficam em seções sob demanda. A lista de localizadores possui pesquisa e páginas de 50 registros. A parcela estadual positiva conserva o valor e o percentual junto ao mapa.
+
+Valores municipais podem ser somados em regionalizações de Saúde, Ensino ou outras divisões. Parcelas regionais da fonte continuam restritas ao recorte de origem, e parcelas estaduais não são rateadas entre municípios. Comparações financeiras incluem somente ações do mesmo projeto e ano; metas físicas de produtos diferentes não são somadas entre ações.
+
+npm run generate:territorial-references atualiza também o catálogo consolidado. O fluxo manual Gerar catálogo territorial dos projetos disponibiliza o JSON gerado como artefato para conferência. O catálogo contém 28 séries físicas e 28 financeiras derivadas, todas de referência e protegidas.
