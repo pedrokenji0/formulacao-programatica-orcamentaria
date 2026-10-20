@@ -72,7 +72,7 @@ test('identidade de importação inclui conteúdo, aba e linha; reimportar prese
   const state=initial();assert.deepEqual(applyBudgetImport(state,[first]),{added:1,skipped:0});
   state.budgetItems[0].descricao='Revisão local';
   assert.deepEqual(applyBudgetImport(state,[again]),{added:0,skipped:1});assert.equal(state.budgetItems[0].descricao,'Revisão local');
-  const ua=initial();ua.perfil='Gestor UA';assert.throws(()=>applyBudgetImport(ua,[first,build([...row.slice(0,0),'02461 - ARMVA',...row.slice(1)]).items[0]]),/outra UO/);assert.equal(ua.budgetItems.length,0);
+  const ua=initial();ua.perfil='Gestor UA';assert.throws(()=>applyBudgetImport(ua,[first,build(['02461 - ARMVA',...row.slice(1)],{batchId:'hash-b'}).items[0]]),/outra UO/);assert.equal(ua.budgetItems.length,0);
   const reader=initial();reader.perfil='Leitor';assert.throws(()=>applyBudgetImport(reader,[first]),/permissão/);
 });
 test('linha e células originais são preservadas; mapeamento duplicado não importa dados cruzados', () => {

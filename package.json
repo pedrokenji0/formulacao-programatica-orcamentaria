@@ -16,7 +16,7 @@
     "typecheck": "tsc --noEmit",
     "preview": "vite preview",
     "test:obz": "node --test scripts/obz-data.test.mjs",
-    "test": "node --test scripts/planning.test.mjs scripts/project-maps.test.mjs scripts/obz-data.test.mjs",
+    "test": "node --test scripts/planning.test.mjs scripts/project-maps.test.mjs scripts/obz-data.test.mjs scripts/data-integrity.test.mjs",
     "check": "npm run typecheck && npm test && npm run build"
   },
   "dependencies": {

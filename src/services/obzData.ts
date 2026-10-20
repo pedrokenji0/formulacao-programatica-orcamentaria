@@ -199,6 +199,12 @@ export function migrateBudgetData(state: AppState, baseline: AppState): AppState
     };
     return reconcileBudgetItem(next, { programs: state.programs, actions: state.actions, exercise: state.planning?.exercise });
   });
+  const budgets = new Map(state.budgetItems.map((item) => [item.id, item]));
+  state.links = (state.links || []).map((link) => {
+    const item = budgets.get(link.budgetItemId);
+    if (item?.linkage?.status === 'vinculado' && item.actionId === link.actionId) return link;
+    return { ...link, status: 'Inconsistente', warnings: [...new Set([...(link.warnings || []), 'O item OBZ exige conferência de exercício, programa, UO e ação antes de confirmar esta associação.'])] };
+  });
   if (state.planning) {
     state.planning.obzDataVersion = OBZ_DATA_VERSION;
     state.planning.migrationNotices = [...new Set([...(state.planning.migrationNotices || []),
