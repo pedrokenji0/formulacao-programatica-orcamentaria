@@ -52,3 +52,15 @@ A referência contém 89 microrregiões e 16 macrorregiões de Saúde, 47 Superi
 Assistência Social e Segurança podem ser adicionadas como regionalizações independentes, sem alterar os municípios, os valores ou as divisões existentes. As referências FJP e PPO são consultáveis e exportáveis; cadastros locais continuam editáveis conforme perfil e UO.
 
 npm run generate:territorial-references reconstrói as metas a partir dos TXT versionados e as regionalizações a partir da fonte FJP salva. npm run update:regionalizations atualiza a planilha pública e reconstrói os artefatos; as mudanças devem ser conferidas antes de versionar.
+
+## Recursos orçamentários das ações do Reurb
+
+O botão Recursos orçamentários, no próprio Mapa territorial, alterna a leitura para as previsões orçamentárias das ações 1082/UO 1221 e 4528/UO 2461. A seleção de ano cobre 2026–2029 e preserva a ação ao alternar entre recursos e metas físicas. Um painel compara os totais e a participação de cada ação no mesmo ano. São recursos previstos no planejamento, em reais nominais; não são despesas executadas.
+
+Em 2026, os localizadores da ação 1082 somam R$ 48.281.208,00: R$ 47.501.208,00 em localizador estadual (98,38%) e R$ 780.000,00 na região intermediária de Montes Claros (1,62%). A ação 4528 tem R$ 16.545.637,00 na região intermediária de Ipatinga. O total das duas ações no ano é R$ 64.826.845,00.
+
+A parcela estadual aparece separadamente. As parcelas regionais colorem a região inteira, sem rateio ou repetição como valor municipal. Localizadores municipais sem valor continuam sem dados. A tabela apresenta os localizadores, a abrangência original, o valor e a participação no total da ação. Quando o total é zero ou desconhecido, não se calcula percentual. Regionalizações de Saúde ou Ensino não recebem redistribuição das parcelas regionais da origem.
+
+As oito séries orçamentárias são versionadas em data/territorio/recursos-reurb.json, separadas das oito séries físicas. O gerador scripts/territory-planning-targets.mjs lê as colunas Previsão Orçamentária dos mesmos TXT e confere os totais contra a ficha da ação nos testes. Mantêm-se exercício, programa, projeto, ação, UO, localizador e referência à linha de origem. As séries de referência são protegidas e não alteram as fichas qualitativas nem os cadastros de indicadores.
+
+O CSV de recursos exporta a ação/ano selecionados na granularidade dos localizadores. A exportação de dados territoriais em JSON inclui as séries físicas e orçamentárias. npm run generate:territorial-references regenera ambas as referências, além das regionalizações FJP.

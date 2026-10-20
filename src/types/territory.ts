@@ -19,8 +19,11 @@ export interface PhysicalTargetReference {
   observations: { localizerCode: string; scope: 'municipality' | 'intermediate' | 'state'; territoryCode: string; territoryName: string; value: number | null; sourceRow: number }[];
   sourceTotal: number | null; actionTotal: number | null;
 }
+export interface BudgetForecastReference extends Omit<PhysicalTargetReference, 'kind'> {
+  kind: 'budget-forecast';
+}
 export interface TerritorialSeries {
-  reference?: PhysicalTargetReference;
+  reference?: PhysicalTargetReference | BudgetForecastReference;
   id: string; name: string; period: string; unit: string; source: string; ownerUnit: string; createdAt: string;
   indicatorRef: { kind: 'project'; mapId: string; indicatorId: string } | { kind: 'ppo'; indicatorId: string } | null;
   aggregation: 'none' | 'sum' | 'mean'; values: Record<string, number | null>;

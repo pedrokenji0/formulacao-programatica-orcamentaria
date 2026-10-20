@@ -1,0 +1,747 @@
+{
+  "schemaVersion": 1,
+  "source": {
+    "localizers": {
+      "path": "data/raw/plan2026/localizadores_Todos_planejamento.txt",
+      "blobSha": "9c9c3076b539618b213a8a31d6893dc1d5702ffe"
+    },
+    "actions": {
+      "path": "data/raw/plan2026/acoes_planejamento.txt",
+      "blobSha": "f8ff9d8030ebb838f3593d7919c5c98f0696d683"
+    }
+  },
+  "series": [
+    {
+      "id": "ppo-orcamento-125-1221-1082-2026",
+      "name": "Previsão orçamentária — ação 1082 (MINAS REURB SEDE)",
+      "period": "2026",
+      "unit": "R$",
+      "source": "PPO · localizadores · Previsão Orçamentária 2026",
+      "ownerUnit": "1221",
+      "createdAt": "",
+      "indicatorRef": null,
+      "aggregation": "sum",
+      "values": {
+        "3144706": null,
+        "3145802": null,
+        "3145901": null,
+        "3146107": null
+      },
+      "reference": {
+        "kind": "budget-forecast",
+        "actionId": "ppo-acao-125-1221-1082",
+        "actionCode": "1082",
+        "programId": "ppo-programa-125",
+        "projectCode": "14",
+        "productCode": "12452",
+        "product": "TÍTULO DE PROPRIEDADE URBANA EMITIDO",
+        "unitCode": "BRL",
+        "field": "Previsão Orçamentária 2026",
+        "observations": [
+          {
+            "localizerCode": "V41991",
+            "scope": "state",
+            "territoryCode": "31",
+            "territoryName": "DIVERSOS MUNICÍPIOS - ESTADUAL",
+            "value": 47501208,
+            "sourceRow": 21206
+          },
+          {
+            "localizerCode": "V44628",
+            "scope": "municipality",
+            "territoryCode": "3145901",
+            "territoryName": "OURO BRANCO",
+            "value": null,
+            "sourceRow": 21207
+          },
+          {
+            "localizerCode": "V44629",
+            "scope": "municipality",
+            "territoryCode": "3146107",
+            "territoryName": "OURO PRETO",
+            "value": null,
+            "sourceRow": 21208
+          },
+          {
+            "localizerCode": "V44630",
+            "scope": "municipality",
+            "territoryCode": "3145802",
+            "territoryName": "ONÇA DE PITANGUI",
+            "value": null,
+            "sourceRow": 21209
+          },
+          {
+            "localizerCode": "V44631",
+            "scope": "intermediate",
+            "territoryCode": "3104",
+            "territoryName": "DIVERSOS MUNICÍPIOS - REGIÃO INTERMEDIÁRIA DE GOVERNADOR VALADARES",
+            "value": null,
+            "sourceRow": 21210
+          },
+          {
+            "localizerCode": "V44632",
+            "scope": "municipality",
+            "territoryCode": "3144706",
+            "territoryName": "NOVA ERA",
+            "value": null,
+            "sourceRow": 21211
+          },
+          {
+            "localizerCode": "V44633",
+            "scope": "intermediate",
+            "territoryCode": "3106",
+            "territoryName": "DIVERSOS MUNICÍPIOS - REGIÃO INTERMEDIÁRIA DE JUÍZ DE FORA",
+            "value": null,
+            "sourceRow": 21212
+          },
+          {
+            "localizerCode": "V44634",
+            "scope": "intermediate",
+            "territoryCode": "3102",
+            "territoryName": "DIVERSOS MUNICÍPIOS - REGIÃO INTERMEDIÁRIA DE MONTES CLAROS",
+            "value": 780000,
+            "sourceRow": 21213
+          },
+          {
+            "localizerCode": "V44635",
+            "scope": "intermediate",
+            "territoryCode": "3112",
+            "territoryName": "DIVERSOS MUNICÍPIOS - REGIÃO INTERMEDIÁRIA DE PATOS DE MINAS",
+            "value": null,
+            "sourceRow": 21214
+          },
+          {
+            "localizerCode": "V44636",
+            "scope": "intermediate",
+            "territoryCode": "3109",
+            "territoryName": "DIVERSOS MUNICÍPIOS - REGIÃO INTERMEDIÁRIA DE POUSO ALEGRE",
+            "value": null,
+            "sourceRow": 21215
+          },
+          {
+            "localizerCode": "V44637",
+            "scope": "intermediate",
+            "territoryCode": "3103",
+            "territoryName": "DIVERSOS MUNICÍPIOS - REGIÃO INTERMEDIÁRIA DE TEÓFILO OTONI",
+            "value": null,
+            "sourceRow": 21216
+          },
+          {
+            "localizerCode": "V44638",
+            "scope": "intermediate",
+            "territoryCode": "3110",
+            "territoryName": "DIVERSOS MUNICÍPIOS - REGIÃO INTERMEDIÁRIA DE UBERABA",
+            "value": null,
+            "sourceRow": 21217
+          },
+          {
+            "localizerCode": "V44639",
+            "scope": "intermediate",
+            "territoryCode": "3111",
+            "territoryName": "DIVERSOS MUNICÍPIOS - REGIÃO INTERMEDIÁRIA DE UBERLÂNDIA",
+            "value": null,
+            "sourceRow": 21218
+          },
+          {
+            "localizerCode": "V44640",
+            "scope": "intermediate",
+            "territoryCode": "3108",
+            "territoryName": "DIVERSOS MUNICÍPIOS - REGIÃO INTERMEDIÁRIA DE VARGINHA",
+            "value": null,
+            "sourceRow": 21219
+          }
+        ],
+        "sourceTotal": 48281208,
+        "actionTotal": 48281208,
+        "sourcePath": "data/raw/plan2026/localizadores_Todos_planejamento.txt",
+        "sourceBlobSha": "9c9c3076b539618b213a8a31d6893dc1d5702ffe"
+      }
+    },
+    {
+      "id": "ppo-orcamento-125-1221-1082-2027",
+      "name": "Previsão orçamentária — ação 1082 (MINAS REURB SEDE)",
+      "period": "2027",
+      "unit": "R$",
+      "source": "PPO · localizadores · Previsão Orçamentária 2027",
+      "ownerUnit": "1221",
+      "createdAt": "",
+      "indicatorRef": null,
+      "aggregation": "sum",
+      "values": {
+        "3144706": null,
+        "3145802": null,
+        "3145901": null,
+        "3146107": null
+      },
+      "reference": {
+        "kind": "budget-forecast",
+        "actionId": "ppo-acao-125-1221-1082",
+        "actionCode": "1082",
+        "programId": "ppo-programa-125",
+        "projectCode": "14",
+        "productCode": "12452",
+        "product": "TÍTULO DE PROPRIEDADE URBANA EMITIDO",
+        "unitCode": "BRL",
+        "field": "Previsão Orçamentária 2027",
+        "observations": [
+          {
+            "localizerCode": "V41991",
+            "scope": "state",
+            "territoryCode": "31",
+            "territoryName": "DIVERSOS MUNICÍPIOS - ESTADUAL",
+            "value": 0,
+            "sourceRow": 21206
+          },
+          {
+            "localizerCode": "V44628",
+            "scope": "municipality",
+            "territoryCode": "3145901",
+            "territoryName": "OURO BRANCO",
+            "value": null,
+            "sourceRow": 21207
+          },
+          {
+            "localizerCode": "V44629",
+            "scope": "municipality",
+            "territoryCode": "3146107",
+            "territoryName": "OURO PRETO",
+            "value": null,
+            "sourceRow": 21208
+          },
+          {
+            "localizerCode": "V44630",
+            "scope": "municipality",
+            "territoryCode": "3145802",
+            "territoryName": "ONÇA DE PITANGUI",
+            "value": null,
+            "sourceRow": 21209
+          },
+          {
+            "localizerCode": "V44631",
+            "scope": "intermediate",
+            "territoryCode": "3104",
+            "territoryName": "DIVERSOS MUNICÍPIOS - REGIÃO INTERMEDIÁRIA DE GOVERNADOR VALADARES",
+            "value": null,
+            "sourceRow": 21210
+          },
+          {
+            "localizerCode": "V44632",
+            "scope": "municipality",
+            "territoryCode": "3144706",
+            "territoryName": "NOVA ERA",
+            "value": null,
+            "sourceRow": 21211
+          },
+          {
+            "localizerCode": "V44633",
+            "scope": "intermediate",
+            "territoryCode": "3106",
+            "territoryName": "DIVERSOS MUNICÍPIOS - REGIÃO INTERMEDIÁRIA DE JUÍZ DE FORA",
+            "value": null,
+            "sourceRow": 21212
+          },
+          {
+            "localizerCode": "V44634",
+            "scope": "intermediate",
+            "territoryCode": "3102",
+            "territoryName": "DIVERSOS MUNICÍPIOS - REGIÃO INTERMEDIÁRIA DE MONTES CLAROS",
+            "value": null,
+            "sourceRow": 21213
+          },
+          {
+            "localizerCode": "V44635",
+            "scope": "intermediate",
+            "territoryCode": "3112",
+            "territoryName": "DIVERSOS MUNICÍPIOS - REGIÃO INTERMEDIÁRIA DE PATOS DE MINAS",
+            "value": null,
+            "sourceRow": 21214
+          },
+          {
+            "localizerCode": "V44636",
+            "scope": "intermediate",
+            "territoryCode": "3109",
+            "territoryName": "DIVERSOS MUNICÍPIOS - REGIÃO INTERMEDIÁRIA DE POUSO ALEGRE",
+            "value": null,
+            "sourceRow": 21215
+          },
+          {
+            "localizerCode": "V44637",
+            "scope": "intermediate",
+            "territoryCode": "3103",
+            "territoryName": "DIVERSOS MUNICÍPIOS - REGIÃO INTERMEDIÁRIA DE TEÓFILO OTONI",
+            "value": null,
+            "sourceRow": 21216
+          },
+          {
+            "localizerCode": "V44638",
+            "scope": "intermediate",
+            "territoryCode": "3110",
+            "territoryName": "DIVERSOS MUNICÍPIOS - REGIÃO INTERMEDIÁRIA DE UBERABA",
+            "value": null,
+            "sourceRow": 21217
+          },
+          {
+            "localizerCode": "V44639",
+            "scope": "intermediate",
+            "territoryCode": "3111",
+            "territoryName": "DIVERSOS MUNICÍPIOS - REGIÃO INTERMEDIÁRIA DE UBERLÂNDIA",
+            "value": null,
+            "sourceRow": 21218
+          },
+          {
+            "localizerCode": "V44640",
+            "scope": "intermediate",
+            "territoryCode": "3108",
+            "territoryName": "DIVERSOS MUNICÍPIOS - REGIÃO INTERMEDIÁRIA DE VARGINHA",
+            "value": null,
+            "sourceRow": 21219
+          }
+        ],
+        "sourceTotal": 0,
+        "actionTotal": 0,
+        "sourcePath": "data/raw/plan2026/localizadores_Todos_planejamento.txt",
+        "sourceBlobSha": "9c9c3076b539618b213a8a31d6893dc1d5702ffe"
+      }
+    },
+    {
+      "id": "ppo-orcamento-125-1221-1082-2028",
+      "name": "Previsão orçamentária — ação 1082 (MINAS REURB SEDE)",
+      "period": "2028",
+      "unit": "R$",
+      "source": "PPO · localizadores · Previsão Orçamentária 2028",
+      "ownerUnit": "1221",
+      "createdAt": "",
+      "indicatorRef": null,
+      "aggregation": "sum",
+      "values": {
+        "3144706": null,
+        "3145802": null,
+        "3145901": null,
+        "3146107": null
+      },
+      "reference": {
+        "kind": "budget-forecast",
+        "actionId": "ppo-acao-125-1221-1082",
+        "actionCode": "1082",
+        "programId": "ppo-programa-125",
+        "projectCode": "14",
+        "productCode": "12452",
+        "product": "TÍTULO DE PROPRIEDADE URBANA EMITIDO",
+        "unitCode": "BRL",
+        "field": "Previsão Orçamentária 2028",
+        "observations": [
+          {
+            "localizerCode": "V41991",
+            "scope": "state",
+            "territoryCode": "31",
+            "territoryName": "DIVERSOS MUNICÍPIOS - ESTADUAL",
+            "value": 0,
+            "sourceRow": 21206
+          },
+          {
+            "localizerCode": "V44628",
+            "scope": "municipality",
+            "territoryCode": "3145901",
+            "territoryName": "OURO BRANCO",
+            "value": null,
+            "sourceRow": 21207
+          },
+          {
+            "localizerCode": "V44629",
+            "scope": "municipality",
+            "territoryCode": "3146107",
+            "territoryName": "OURO PRETO",
+            "value": null,
+            "sourceRow": 21208
+          },
+          {
+            "localizerCode": "V44630",
+            "scope": "municipality",
+            "territoryCode": "3145802",
+            "territoryName": "ONÇA DE PITANGUI",
+            "value": null,
+            "sourceRow": 21209
+          },
+          {
+            "localizerCode": "V44631",
+            "scope": "intermediate",
+            "territoryCode": "3104",
+            "territoryName": "DIVERSOS MUNICÍPIOS - REGIÃO INTERMEDIÁRIA DE GOVERNADOR VALADARES",
+            "value": null,
+            "sourceRow": 21210
+          },
+          {
+            "localizerCode": "V44632",
+            "scope": "municipality",
+            "territoryCode": "3144706",
+            "territoryName": "NOVA ERA",
+            "value": null,
+            "sourceRow": 21211
+          },
+          {
+            "localizerCode": "V44633",
+            "scope": "intermediate",
+            "territoryCode": "3106",
+            "territoryName": "DIVERSOS MUNICÍPIOS - REGIÃO INTERMEDIÁRIA DE JUÍZ DE FORA",
+            "value": null,
+            "sourceRow": 21212
+          },
+          {
+            "localizerCode": "V44634",
+            "scope": "intermediate",
+            "territoryCode": "3102",
+            "territoryName": "DIVERSOS MUNICÍPIOS - REGIÃO INTERMEDIÁRIA DE MONTES CLAROS",
+            "value": null,
+            "sourceRow": 21213
+          },
+          {
+            "localizerCode": "V44635",
+            "scope": "intermediate",
+            "territoryCode": "3112",
+            "territoryName": "DIVERSOS MUNICÍPIOS - REGIÃO INTERMEDIÁRIA DE PATOS DE MINAS",
+            "value": null,
+            "sourceRow": 21214
+          },
+          {
+            "localizerCode": "V44636",
+            "scope": "intermediate",
+            "territoryCode": "3109",
+            "territoryName": "DIVERSOS MUNICÍPIOS - REGIÃO INTERMEDIÁRIA DE POUSO ALEGRE",
+            "value": null,
+            "sourceRow": 21215
+          },
+          {
+            "localizerCode": "V44637",
+            "scope": "intermediate",
+            "territoryCode": "3103",
+            "territoryName": "DIVERSOS MUNICÍPIOS - REGIÃO INTERMEDIÁRIA DE TEÓFILO OTONI",
+            "value": null,
+            "sourceRow": 21216
+          },
+          {
+            "localizerCode": "V44638",
+            "scope": "intermediate",
+            "territoryCode": "3110",
+            "territoryName": "DIVERSOS MUNICÍPIOS - REGIÃO INTERMEDIÁRIA DE UBERABA",
+            "value": null,
+            "sourceRow": 21217
+          },
+          {
+            "localizerCode": "V44639",
+            "scope": "intermediate",
+            "territoryCode": "3111",
+            "territoryName": "DIVERSOS MUNICÍPIOS - REGIÃO INTERMEDIÁRIA DE UBERLÂNDIA",
+            "value": null,
+            "sourceRow": 21218
+          },
+          {
+            "localizerCode": "V44640",
+            "scope": "intermediate",
+            "territoryCode": "3108",
+            "territoryName": "DIVERSOS MUNICÍPIOS - REGIÃO INTERMEDIÁRIA DE VARGINHA",
+            "value": null,
+            "sourceRow": 21219
+          }
+        ],
+        "sourceTotal": 0,
+        "actionTotal": 0,
+        "sourcePath": "data/raw/plan2026/localizadores_Todos_planejamento.txt",
+        "sourceBlobSha": "9c9c3076b539618b213a8a31d6893dc1d5702ffe"
+      }
+    },
+    {
+      "id": "ppo-orcamento-125-1221-1082-2029",
+      "name": "Previsão orçamentária — ação 1082 (MINAS REURB SEDE)",
+      "period": "2029",
+      "unit": "R$",
+      "source": "PPO · localizadores · Previsão Orçamentária 2029",
+      "ownerUnit": "1221",
+      "createdAt": "",
+      "indicatorRef": null,
+      "aggregation": "sum",
+      "values": {
+        "3144706": null,
+        "3145802": null,
+        "3145901": null,
+        "3146107": null
+      },
+      "reference": {
+        "kind": "budget-forecast",
+        "actionId": "ppo-acao-125-1221-1082",
+        "actionCode": "1082",
+        "programId": "ppo-programa-125",
+        "projectCode": "14",
+        "productCode": "12452",
+        "product": "TÍTULO DE PROPRIEDADE URBANA EMITIDO",
+        "unitCode": "BRL",
+        "field": "Previsão Orçamentária 2029",
+        "observations": [
+          {
+            "localizerCode": "V41991",
+            "scope": "state",
+            "territoryCode": "31",
+            "territoryName": "DIVERSOS MUNICÍPIOS - ESTADUAL",
+            "value": 0,
+            "sourceRow": 21206
+          },
+          {
+            "localizerCode": "V44628",
+            "scope": "municipality",
+            "territoryCode": "3145901",
+            "territoryName": "OURO BRANCO",
+            "value": null,
+            "sourceRow": 21207
+          },
+          {
+            "localizerCode": "V44629",
+            "scope": "municipality",
+            "territoryCode": "3146107",
+            "territoryName": "OURO PRETO",
+            "value": null,
+            "sourceRow": 21208
+          },
+          {
+            "localizerCode": "V44630",
+            "scope": "municipality",
+            "territoryCode": "3145802",
+            "territoryName": "ONÇA DE PITANGUI",
+            "value": null,
+            "sourceRow": 21209
+          },
+          {
+            "localizerCode": "V44631",
+            "scope": "intermediate",
+            "territoryCode": "3104",
+            "territoryName": "DIVERSOS MUNICÍPIOS - REGIÃO INTERMEDIÁRIA DE GOVERNADOR VALADARES",
+            "value": null,
+            "sourceRow": 21210
+          },
+          {
+            "localizerCode": "V44632",
+            "scope": "municipality",
+            "territoryCode": "3144706",
+            "territoryName": "NOVA ERA",
+            "value": null,
+            "sourceRow": 21211
+          },
+          {
+            "localizerCode": "V44633",
+            "scope": "intermediate",
+            "territoryCode": "3106",
+            "territoryName": "DIVERSOS MUNICÍPIOS - REGIÃO INTERMEDIÁRIA DE JUÍZ DE FORA",
+            "value": null,
+            "sourceRow": 21212
+          },
+          {
+            "localizerCode": "V44634",
+            "scope": "intermediate",
+            "territoryCode": "3102",
+            "territoryName": "DIVERSOS MUNICÍPIOS - REGIÃO INTERMEDIÁRIA DE MONTES CLAROS",
+            "value": null,
+            "sourceRow": 21213
+          },
+          {
+            "localizerCode": "V44635",
+            "scope": "intermediate",
+            "territoryCode": "3112",
+            "territoryName": "DIVERSOS MUNICÍPIOS - REGIÃO INTERMEDIÁRIA DE PATOS DE MINAS",
+            "value": null,
+            "sourceRow": 21214
+          },
+          {
+            "localizerCode": "V44636",
+            "scope": "intermediate",
+            "territoryCode": "3109",
+            "territoryName": "DIVERSOS MUNICÍPIOS - REGIÃO INTERMEDIÁRIA DE POUSO ALEGRE",
+            "value": null,
+            "sourceRow": 21215
+          },
+          {
+            "localizerCode": "V44637",
+            "scope": "intermediate",
+            "territoryCode": "3103",
+            "territoryName": "DIVERSOS MUNICÍPIOS - REGIÃO INTERMEDIÁRIA DE TEÓFILO OTONI",
+            "value": null,
+            "sourceRow": 21216
+          },
+          {
+            "localizerCode": "V44638",
+            "scope": "intermediate",
+            "territoryCode": "3110",
+            "territoryName": "DIVERSOS MUNICÍPIOS - REGIÃO INTERMEDIÁRIA DE UBERABA",
+            "value": null,
+            "sourceRow": 21217
+          },
+          {
+            "localizerCode": "V44639",
+            "scope": "intermediate",
+            "territoryCode": "3111",
+            "territoryName": "DIVERSOS MUNICÍPIOS - REGIÃO INTERMEDIÁRIA DE UBERLÂNDIA",
+            "value": null,
+            "sourceRow": 21218
+          },
+          {
+            "localizerCode": "V44640",
+            "scope": "intermediate",
+            "territoryCode": "3108",
+            "territoryName": "DIVERSOS MUNICÍPIOS - REGIÃO INTERMEDIÁRIA DE VARGINHA",
+            "value": null,
+            "sourceRow": 21219
+          }
+        ],
+        "sourceTotal": 0,
+        "actionTotal": 0,
+        "sourcePath": "data/raw/plan2026/localizadores_Todos_planejamento.txt",
+        "sourceBlobSha": "9c9c3076b539618b213a8a31d6893dc1d5702ffe"
+      }
+    },
+    {
+      "id": "ppo-orcamento-125-2461-4528-2026",
+      "name": "Previsão orçamentária — ação 4528 (MINAS REURB ARMVA)",
+      "period": "2026",
+      "unit": "R$",
+      "source": "PPO · localizadores · Previsão Orçamentária 2026",
+      "ownerUnit": "2461",
+      "createdAt": "",
+      "indicatorRef": null,
+      "aggregation": "sum",
+      "values": {},
+      "reference": {
+        "kind": "budget-forecast",
+        "actionId": "ppo-acao-125-2461-4528",
+        "actionCode": "4528",
+        "programId": "ppo-programa-125",
+        "projectCode": "14",
+        "productCode": "12452",
+        "product": "TÍTULO DE PROPRIEDADE URBANA EMITIDO",
+        "unitCode": "BRL",
+        "field": "Previsão Orçamentária 2026",
+        "observations": [
+          {
+            "localizerCode": "W44490",
+            "scope": "intermediate",
+            "territoryCode": "3105",
+            "territoryName": "DIVERSOS MUNICÍPIOS - REGIÃO INTERMEDIÁRIA DE IPATINGA",
+            "value": 16545637,
+            "sourceRow": 21222
+          }
+        ],
+        "sourceTotal": 16545637,
+        "actionTotal": 16545637,
+        "sourcePath": "data/raw/plan2026/localizadores_Todos_planejamento.txt",
+        "sourceBlobSha": "9c9c3076b539618b213a8a31d6893dc1d5702ffe"
+      }
+    },
+    {
+      "id": "ppo-orcamento-125-2461-4528-2027",
+      "name": "Previsão orçamentária — ação 4528 (MINAS REURB ARMVA)",
+      "period": "2027",
+      "unit": "R$",
+      "source": "PPO · localizadores · Previsão Orçamentária 2027",
+      "ownerUnit": "2461",
+      "createdAt": "",
+      "indicatorRef": null,
+      "aggregation": "sum",
+      "values": {},
+      "reference": {
+        "kind": "budget-forecast",
+        "actionId": "ppo-acao-125-2461-4528",
+        "actionCode": "4528",
+        "programId": "ppo-programa-125",
+        "projectCode": "14",
+        "productCode": "12452",
+        "product": "TÍTULO DE PROPRIEDADE URBANA EMITIDO",
+        "unitCode": "BRL",
+        "field": "Previsão Orçamentária 2027",
+        "observations": [
+          {
+            "localizerCode": "W44490",
+            "scope": "intermediate",
+            "territoryCode": "3105",
+            "territoryName": "DIVERSOS MUNICÍPIOS - REGIÃO INTERMEDIÁRIA DE IPATINGA",
+            "value": 3040033,
+            "sourceRow": 21222
+          }
+        ],
+        "sourceTotal": 3040033,
+        "actionTotal": 3040033,
+        "sourcePath": "data/raw/plan2026/localizadores_Todos_planejamento.txt",
+        "sourceBlobSha": "9c9c3076b539618b213a8a31d6893dc1d5702ffe"
+      }
+    },
+    {
+      "id": "ppo-orcamento-125-2461-4528-2028",
+      "name": "Previsão orçamentária — ação 4528 (MINAS REURB ARMVA)",
+      "period": "2028",
+      "unit": "R$",
+      "source": "PPO · localizadores · Previsão Orçamentária 2028",
+      "ownerUnit": "2461",
+      "createdAt": "",
+      "indicatorRef": null,
+      "aggregation": "sum",
+      "values": {},
+      "reference": {
+        "kind": "budget-forecast",
+        "actionId": "ppo-acao-125-2461-4528",
+        "actionCode": "4528",
+        "programId": "ppo-programa-125",
+        "projectCode": "14",
+        "productCode": "12452",
+        "product": "TÍTULO DE PROPRIEDADE URBANA EMITIDO",
+        "unitCode": "BRL",
+        "field": "Previsão Orçamentária 2028",
+        "observations": [
+          {
+            "localizerCode": "W44490",
+            "scope": "intermediate",
+            "territoryCode": "3105",
+            "territoryName": "DIVERSOS MUNICÍPIOS - REGIÃO INTERMEDIÁRIA DE IPATINGA",
+            "value": 3174098,
+            "sourceRow": 21222
+          }
+        ],
+        "sourceTotal": 3174098,
+        "actionTotal": 3174098,
+        "sourcePath": "data/raw/plan2026/localizadores_Todos_planejamento.txt",
+        "sourceBlobSha": "9c9c3076b539618b213a8a31d6893dc1d5702ffe"
+      }
+    },
+    {
+      "id": "ppo-orcamento-125-2461-4528-2029",
+      "name": "Previsão orçamentária — ação 4528 (MINAS REURB ARMVA)",
+      "period": "2029",
+      "unit": "R$",
+      "source": "PPO · localizadores · Previsão Orçamentária 2029",
+      "ownerUnit": "2461",
+      "createdAt": "",
+      "indicatorRef": null,
+      "aggregation": "sum",
+      "values": {},
+      "reference": {
+        "kind": "budget-forecast",
+        "actionId": "ppo-acao-125-2461-4528",
+        "actionCode": "4528",
+        "programId": "ppo-programa-125",
+        "projectCode": "14",
+        "productCode": "12452",
+        "product": "TÍTULO DE PROPRIEDADE URBANA EMITIDO",
+        "unitCode": "BRL",
+        "field": "Previsão Orçamentária 2029",
+        "observations": [
+          {
+            "localizerCode": "W44490",
+            "scope": "intermediate",
+            "territoryCode": "3105",
+            "territoryName": "DIVERSOS MUNICÍPIOS - REGIÃO INTERMEDIÁRIA DE IPATINGA",
+            "value": 3314076,
+            "sourceRow": 21222
+          }
+        ],
+        "sourceTotal": 3314076,
+        "actionTotal": 3314076,
+        "sourcePath": "data/raw/plan2026/localizadores_Todos_planejamento.txt",
+        "sourceBlobSha": "9c9c3076b539618b213a8a31d6893dc1d5702ffe"
+      }
+    }
+  ]
+}
