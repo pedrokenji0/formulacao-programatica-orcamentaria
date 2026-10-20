@@ -1,0 +1,23 @@
+name: Inventariar campos e fontes sem alterar o sistema
+on:
+  push:
+    branches: [codex/inventario-dados]
+    paths:
+      - docs/inventario/_coleta.mjs
+      - .github/workflows/inventario-leitura.yml
+permissions:
+  contents: read
+jobs:
+  inventory:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+          cache: npm
+      - run: npm ci
+      - name: Ler esquemas e perfilar fontes existentes
+        run: node docs/inventario/_coleta.mjs
