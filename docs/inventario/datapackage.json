@@ -12989,73 +12989,122 @@
         "fields": [
           {
             "name": "CODIGO_MUNICIPIO",
-            "type": "string",
-            "title": "CODIGO_MUNICIPIO"
+            "type": "integer",
+            "title": "CODIGO_MUNICIPIO",
+            "x-observed-types": [
+              "integer"
+            ],
+            "x-current-use": "Tipo da célula na planilha original. O cadastro territorial derivado usa códigos textuais como identificadores, sem somar estes códigos."
           },
           {
             "name": "NOME_MUNICIPIO",
             "type": "string",
-            "title": "NOME_MUNICIPIO"
+            "title": "NOME_MUNICIPIO",
+            "x-observed-types": [
+              "string"
+            ]
           },
           {
             "name": "CODIGO_RMRIDE",
             "type": "string",
-            "title": "CODIGO_RMRIDE"
+            "title": "CODIGO_RMRIDE",
+            "x-observed-types": [
+              "string"
+            ],
+            "x-current-use": "Tipo da célula na planilha original. O cadastro territorial derivado usa códigos textuais como identificadores, sem somar estes códigos."
           },
           {
             "name": "NOME_RMRIDE",
             "type": "string",
-            "title": "NOME_RMRIDE"
+            "title": "NOME_RMRIDE",
+            "x-observed-types": [
+              "string"
+            ]
           },
           {
             "name": "CODIGO_IMEDIATA",
-            "type": "string",
-            "title": "CODIGO_IMEDIATA"
+            "type": "integer",
+            "title": "CODIGO_IMEDIATA",
+            "x-observed-types": [
+              "integer"
+            ],
+            "x-current-use": "Tipo da célula na planilha original. O cadastro territorial derivado usa códigos textuais como identificadores, sem somar estes códigos."
           },
           {
             "name": "NOME_IMEDIATA",
             "type": "string",
-            "title": "NOME_IMEDIATA"
+            "title": "NOME_IMEDIATA",
+            "x-observed-types": [
+              "string"
+            ]
           },
           {
             "name": "CODIGO_INTERMEDIARIA",
-            "type": "string",
-            "title": "CODIGO_INTERMEDIARIA"
+            "type": "integer",
+            "title": "CODIGO_INTERMEDIARIA",
+            "x-observed-types": [
+              "integer"
+            ],
+            "x-current-use": "Tipo da célula na planilha original. O cadastro territorial derivado usa códigos textuais como identificadores, sem somar estes códigos."
           },
           {
             "name": "NOME_INTERMEDIARIA",
             "type": "string",
-            "title": "NOME_INTERMEDIARIA"
+            "title": "NOME_INTERMEDIARIA",
+            "x-observed-types": [
+              "string"
+            ]
           },
           {
             "name": "CODIGO_REGSAUD",
-            "type": "string",
-            "title": "CODIGO_REGSAUD"
+            "type": "integer",
+            "title": "CODIGO_REGSAUD",
+            "x-observed-types": [
+              "integer"
+            ],
+            "x-current-use": "Tipo da célula na planilha original. O cadastro territorial derivado usa códigos textuais como identificadores, sem somar estes códigos."
           },
           {
             "name": "NOME_REGSAUD",
             "type": "string",
-            "title": "NOME_REGSAUD"
+            "title": "NOME_REGSAUD",
+            "x-observed-types": [
+              "string"
+            ]
           },
           {
             "name": "CODIGO_MACSAUD",
-            "type": "string",
-            "title": "CODIGO_MACSAUD"
+            "type": "integer",
+            "title": "CODIGO_MACSAUD",
+            "x-observed-types": [
+              "integer"
+            ],
+            "x-current-use": "Tipo da célula na planilha original. O cadastro territorial derivado usa códigos textuais como identificadores, sem somar estes códigos."
           },
           {
             "name": "NOME_MACSAUD",
             "type": "string",
-            "title": "NOME_MACSAUD"
+            "title": "NOME_MACSAUD",
+            "x-observed-types": [
+              "string"
+            ]
           },
           {
             "name": "CODIGO_SRE",
-            "type": "string",
-            "title": "CODIGO_SRE"
+            "type": "integer",
+            "title": "CODIGO_SRE",
+            "x-observed-types": [
+              "integer"
+            ],
+            "x-current-use": "Tipo da célula na planilha original. O cadastro territorial derivado usa códigos textuais como identificadores, sem somar estes códigos."
           },
           {
             "name": "NOME_SRE",
             "type": "string",
-            "title": "NOME_SRE"
+            "title": "NOME_SRE",
+            "x-observed-types": [
+              "string"
+            ]
           }
         ],
         "missingValues": [
@@ -13087,27 +13136,42 @@
           {
             "name": "SIGLA",
             "type": "string",
-            "title": "SIGLA"
+            "title": "SIGLA",
+            "x-observed-types": [
+              "string"
+            ]
           },
           {
             "name": "DENOMINAÇÃO",
             "type": "string",
-            "title": "DENOMINAÇÃO"
+            "title": "DENOMINAÇÃO",
+            "x-observed-types": [
+              "string"
+            ]
           },
           {
             "name": "DESCRIÇÃO",
             "type": "string",
-            "title": "DESCRIÇÃO"
+            "title": "DESCRIÇÃO",
+            "x-observed-types": [
+              "string"
+            ]
           },
           {
             "name": "FINALIDADE",
             "type": "string",
-            "title": "FINALIDADE"
+            "title": "FINALIDADE",
+            "x-observed-types": [
+              "string"
+            ]
           },
           {
             "name": "FONTE",
             "type": "string",
-            "title": "FONTE"
+            "title": "FONTE",
+            "x-observed-types": [
+              "string"
+            ]
           }
         ],
         "missingValues": [

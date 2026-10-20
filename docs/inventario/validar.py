@@ -171,6 +171,18 @@ with (HERE / "fontes.csv").open(encoding="utf-8", newline="") as handle:
     source_csv = list(csv.DictReader(handle))
 check(len(source_csv) == len(PACKAGE["x-source-status"]), "CSV de fontes incompleto")
 
+fjp = json.loads((ROOT / "data/territorio/fonte-regionalizacoes-fjp.json").read_text())
+for sheet in fjp["sheets"]:
+    name = ("fjp-regionalizacao-origem" if sheet["name"] == "Regionalização"
+            else "fjp-dicionario-origem")
+    resource = RESOURCES[name]
+    check(sheet["rows"][0] == fields(resource), f"Cabeçalho FJP: {name}")
+    check(len(sheet["rows"]) - 1 == resource["x-observed"]["rows"], f"Contagem FJP: {name}")
+    for index, field in enumerate(resource["schema"]["fields"]):
+        types = {("integer" if isinstance(row[index], int) else "string")
+                 for row in sheet["rows"][1:] if row[index] not in ("", None)}
+        check(types == set(field["x-observed-types"]), f"Tipo FJP: {field['name']}")
+
 parser = argparse.ArgumentParser(description=__doc__)
 parser.add_argument("--padrao", action="store_true",
                     help="Requer datapackage==1.15.4; usa os esquemas oficiais distribuídos na biblioteca.")
