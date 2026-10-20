@@ -1,12 +1,14 @@
-import { useMemo, useRef, useState } from 'react';
+import { useId, useMemo, useRef, useState } from 'react';
 import { Minus, Plus, LocateFixed } from 'lucide-react';
 import { ActionButton } from './ui';
 import type { Regionalization, TerritoryDataset } from '../types';
 import { regionBoundaryPaths } from '../services/territoryDomain';
 
-export function TerritoryMap({ data, scheme, color, valueLabel, selected, onSelect, regionFilter }: { data: TerritoryDataset; scheme?: Regionalization; color: (code: string) => string; valueLabel: (code: string) => string; selected: string; onSelect: (code: string) => void; regionFilter: string }) {
+export function TerritoryMap({ data, scheme, color, valueLabel, selected, onSelect, regionFilter, statewideLabel }: { data: TerritoryDataset; scheme?: Regionalization; color: (code: string) => string; valueLabel: (code: string) => string; selected: string; onSelect: (code: string) => void; regionFilter: string; statewideLabel?: string }) {
   const [view, setView] = useState({ x: 0, y: 0, w: data.width, h: data.height });
   const [hover, setHover] = useState('');
+  const statewidePatternId = 'statewide-' + useId().replace(/:/g, '');
+  const statewidePath = useMemo(() => data.municipalities.map((m) => m.path).join(' '), [data]);
   const drag = useRef<{ x: number; y: number; startX: number; startY: number; view: typeof view; moved: boolean } | null>(null);
   const moved = useRef(false);
   const boundaries = useMemo(() => regionBoundaryPaths(data, scheme), [data, scheme]);
@@ -50,10 +52,12 @@ export function TerritoryMap({ data, scheme, color, valueLabel, selected, onSele
       }}
       onPointerUp={() => { drag.current = null; }} onPointerCancel={() => { drag.current = null; }} onDoubleClick={() => zoom(0.7)}>
       <title>Minas Gerais: municípios e regionalizações</title>
+      <defs><pattern id={statewidePatternId} width="9" height="9" patternUnits="userSpaceOnUse" patternTransform="rotate(35)"><line x1="0" y1="0" x2="0" y2="9" stroke="#9b6a13" strokeWidth="2" opacity="0.5" /></pattern></defs>
       <g className="territory-municipalities">{data.municipalities.map((m) => <path key={m.code} data-code={m.code} className="territory-municipality" d={m.path} fill={color(m.code)} fillRule="evenodd" stroke={m.code === selected || m.code === hover ? '#102e41' : '#fff'} strokeWidth={m.code === selected || m.code === hover ? 1.8 : 0.5} vectorEffect="non-scaling-stroke" opacity={regionFilter && scheme?.memberships[m.code] !== regionFilter ? 0.18 : 1} role="button" aria-label={m.name + ' · IBGE ' + m.code} aria-pressed={selected === m.code} tabIndex={selected === m.code ? 0 : -1}
         onMouseEnter={() => setHover(m.code)} onMouseLeave={() => setHover('')} onClick={() => { if (!moved.current) onSelect(m.code); }} onKeyDown={(event) => { if (event.key === 'Enter' || event.key === ' ') { onSelect(m.code); event.preventDefault(); } }}>
         <title>{m.name} · {m.code} — {valueLabel(m.code)}{scheme ? ' · ' + (scheme.regions.find((region) => region.id === scheme.memberships[m.code])?.name || 'Sem região atribuída') : ''}</title>
       </path>)}</g>
+      {statewideLabel && <g className="territory-statewide-coverage" role="img" aria-label={statewideLabel} pointerEvents="none"><title>{statewideLabel}</title><path d={statewidePath} fill={'url(#' + statewidePatternId + ')'} fillRule="evenodd" /></g>}
       <g className="territory-region-boundaries" pointerEvents="none" fill="none" stroke="#39596b" strokeWidth={1.2} vectorEffect="non-scaling-stroke">{boundaries.map((path, i) => <path key={i} d={path} vectorEffect="non-scaling-stroke" />)}</g>
       {selected && <path d={data.municipalities.find((m) => m.code === selected)?.path} fill="none" stroke="#112d40" strokeWidth={2.5} vectorEffect="non-scaling-stroke" pointerEvents="none" />}
     </svg>

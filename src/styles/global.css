@@ -969,3 +969,16 @@ table.dt .rowacts{display:flex;gap:6px}
 .budget-summary dl { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .budget-summary dd { font-size: clamp(17px, 2vw, 23px); overflow-wrap: anywhere; }
 @media(max-width:600px) { .budget-action-cards, .budget-summary dl { grid-template-columns: 1fr; } .budget-comparison { padding: 12px; } }
+
+/* A abrangência estadual é indicada sem atribuir recursos a municípios. */
+.statewide-map-notice { padding: 14px 16px; border: 1px solid #e5c784; border-radius: 10px; background: #fffaf0; margin-bottom: 12px; color: #684c22; }
+.statewide-map-heading { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.statewide-map-heading > .statewide-pattern-key { width: 32px; height: 32px; border: 1px solid #caa55b; border-radius: 5px; flex-shrink: 0; }
+.statewide-map-heading > div { flex: 1; min-width: 180px; }
+.statewide-map-heading span { display: block; font-size: 11px; margin-bottom: 4px; }
+.statewide-map-heading strong { display: block; font-size: clamp(20px, 2.4vw, 26px); }
+.statewide-map-heading b { font-size: 13px; }
+.statewide-map-notice p { font-size: 12px; line-height: 1.6; margin: 10px 0 6px; }
+.statewide-map-notice small { display: block; font-size: 11px; line-height: 1.5; margin-top: 4px; }
+.statewide-pattern-key { display: inline-block; background: repeating-linear-gradient(125deg, #fff7df 0 5px, #a87d39 5px 7px, #fff7df 7px 10px); }
+.territory-details .statewide-municipality-note { background: #fff8e8; padding: 9px; border: 1px solid #ead5a3; border-radius: 6px; margin-top: 8px; }
