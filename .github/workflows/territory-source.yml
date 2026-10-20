@@ -2,7 +2,7 @@ name: Preparar malha municipal
 on:
   push:
     branches: [codex/mapa-territorial-minas-gerais]
-    paths: [.github/workflows/territory-source.yml]
+    paths: [.github/workflows/territory-source.yml, scripts/territory-source.mjs]
 permissions:
   contents: read
 jobs:

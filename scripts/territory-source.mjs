@@ -11,7 +11,7 @@ async function get(url) {
   throw last;
 }
 const [mesh, places] = await Promise.all([
-  get(base + '/v3/malhas/estados/31?formato=application%2Fjson&qualidade=minima&intrarregiao=municipio&periodo=2024'),
+  get(base + '/v3/malhas/estados/31?formato=application%2Fjson&qualidade=minima&intrarregiao=municipio'),
   get(base + '/v1/localidades/estados/31/municipios?orderBy=nome')
 ]);
 const objects = Object.values(mesh.data.objects || {});
