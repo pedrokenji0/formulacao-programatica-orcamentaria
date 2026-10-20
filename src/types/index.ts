@@ -285,6 +285,7 @@ export interface BudgetItemOBZ {
   observacoes: string;
   motivoValidacao?: string;
   cotaAprovada?: boolean;
+  validationNeedsReview?: boolean;
   statusValidacao: Status;
 }
 

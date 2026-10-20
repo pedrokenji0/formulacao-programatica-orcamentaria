@@ -197,6 +197,7 @@ export function migrateBudgetData(state: AppState, baseline: AppState): AppState
       unitLabel: next.unidadeOrcamentaria, programLabel: '', actionLabel: next.acaoLabel,
       exercise: null, raw: { legacyIdentity: next.legacyIdentity }, numbers: {},
     };
+    if (next.source.kind === 'seed-saude' && next.cotaAprovada != null && next.statusValidacao !== 'VALIDADO DCMEFO/SEPLAG') next.validationNeedsReview = true;
     return reconcileBudgetItem(next, { programs: state.programs, actions: state.actions, exercise: state.planning?.exercise });
   });
   const budgets = new Map(state.budgetItems.map((item) => [item.id, item]));
@@ -250,6 +251,7 @@ export function createHealthBudgetItems(seed: { obzItems: Record<string, any>[];
 }
 export function budgetItemIssues(item: BudgetItemOBZ): string[] {
   const issues = [...(item.linkage?.issues || [])];
+  if (item.validationNeedsReview) issues.push('Cota anterior exige conferência: a versão antiga podia inferir aprovação da deliberação numérica.');
   if (!item.descricao.trim()) issues.push('Descrição não informada.');
   if (!item.grupo) issues.push('Grupo não informado.');
   if (!item.elementoItem) issues.push('Elemento-item não informado.');

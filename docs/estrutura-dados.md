@@ -44,7 +44,7 @@ A planilha 4291.xlsx contém registros de cinco unidades. O nome do arquivo e o 
 | HEMOMINAS | 2321 | 326 |
 | Total | | 1.502 |
 
-O adaptador mantém o texto original da UO, o código reconciliado, a linha completa do seed e os pareceres/deliberações originais. A deliberação numérica COFIN não é convertida automaticamente em uma aprovação booleana.
+O adaptador mantém o texto original da UO, o código reconciliado, a linha completa do seed e os pareceres/deliberações originais. A deliberação numérica COFIN não é convertida automaticamente em uma aprovação booleana. Decisões antigas que podem ter sido inferidas pelo adaptador permanecem preservadas, mas exigem conferência; a tela não as apresenta como aprovação confirmada automaticamente.
 
 O seed existente não informa exercício e não mantém todos os números físicos de linha da planilha. Esses dados permanecem desconhecidos. A posição no seed é preservada, sem fingir que equivale à linha física do Excel. O gerador foi preparado para registrar a linha, os cabeçalhos e as células em futuras regenerações, preservando números ausentes como nulos. Há teste de integração que o executa contra a planilha real em arquivo temporário, sem sobrescrever o seed ativo.
 

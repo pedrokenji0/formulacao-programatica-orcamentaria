@@ -38,6 +38,8 @@ export function auditPlanningData(state: AppState): DataFinding[] {
       add('obz-vinculo-incompativel','erro','obz',item.id,'Item OBZ com vínculo confirmado incompatível com exercício, programa, UO ou ação.');
     }
   }
+  const uncertain = state.budgetItems.filter((item) => item.validationNeedsReview).length;
+  if (uncertain) add('cofin-sem-origem','aviso','obz','base-obz',uncertain + ' decisões de cota anteriores precisam de conferência. Os valores antigos estão preservados, sem confirmação automática.');
   if (totals.pending) add('obz-pendente','informacao','obz','base-obz',totals.pending + ' itens OBZ sem vínculo confirmado. Permanecem na base independente e não bloqueiam o planejamento qualitativo.');
   if (totals.missingYear) add('obz-sem-exercicio','aviso','obz','base-obz',totals.missingYear + ' itens OBZ com exercício não informado na origem ou na proposta.');
   if (totals.missingTotal) add('obz-sem-total','aviso','obz','base-obz',totals.missingTotal + ' itens OBZ sem valor total informado.');

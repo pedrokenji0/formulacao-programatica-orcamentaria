@@ -6,6 +6,7 @@ const root = path.resolve(__dirname, '..');
 
 const split = (line) => line.replace(/^\uFEFF/, '').split('|');
 const onlyDigits = (value) => String(value ?? '').match(/\d+/)?.[0] || '';
+const normalizeUnitCode = (value) => onlyDigits(value).replace(/^0+(?=\d)/, '');
 const normalizeProgramCode = (value) => {
   const digits = onlyDigits(value);
   if (!digits) return '';
@@ -41,7 +42,7 @@ for (const r of healthRows) {
   const programaCodigo = normalizeProgramCode(r['Código do Programa']);
   const acaoCodigo = normalizeActionCode(r['Código da Ação']);
   if (!programaCodigo || !acaoCodigo) continue;
-  const key = `${programaCodigo}|${onlyDigits(r['Código da Unidade Orçamentária Responsável pela Ação'])}|${acaoCodigo}`;
+  const key = `${programaCodigo}|${normalizeUnitCode(r['Código da Unidade Orçamentária Responsável pela Ação'])}|${acaoCodigo}`;
   if (seenActions.has(key)) continue;
   seenActions.add(key);
   healthActions.push({
@@ -133,7 +134,7 @@ const obzItems = obzRows.slice(2).map((row, index) => ({ row, sourceRow: index +
 
 const acaoDetails = {};
 for (const item of healthActions) {
-  acaoDetails[`${item.programaCodigo}|${onlyDigits(item.codigoUnidadeAcao)}|${item.acaoCodigo}`] = {
+  acaoDetails[`${item.programaCodigo}|${normalizeUnitCode(item.codigoUnidadeAcao)}|${item.acaoCodigo}`] = {
     finalidade: item.finalidade,
     descricao: item.descricao,
     publicoAlvo: item.publicoAlvo,

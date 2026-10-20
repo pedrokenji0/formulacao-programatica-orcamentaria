@@ -149,3 +149,11 @@ test('gerador de Saúde lê a planilha real e registra linha e células sem sobr
    for(const item of generated.obzItems)if(item.rawRow[index]==='')assert.equal(item.frequencia,null);
  }finally{rmSync(temp,{recursive:true,force:true});}
 });
+
+test('aprovação possivelmente inferida na versão anterior exige conferência sem apagar a decisão',()=>{
+ const baseline=initial();const item=build().items[0];item.source.kind='seed-saude';baseline.budgetItems=[item];
+ const next=structuredClone(baseline);delete next.planning.obzDataVersion;next.budgetItems[0].cotaAprovada=true;
+ migrateBudgetData(next,baseline);assert.equal(next.budgetItems[0].cotaAprovada,true);assert.equal(next.budgetItems[0].validationNeedsReview,true);
+ const validated=structuredClone(baseline);delete validated.planning.obzDataVersion;validated.budgetItems[0].cotaAprovada=true;validated.budgetItems[0].statusValidacao='VALIDADO DCMEFO/SEPLAG';
+ migrateBudgetData(validated,baseline);assert.equal(validated.budgetItems[0].validationNeedsReview,undefined);
+});
