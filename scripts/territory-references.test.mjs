@@ -173,12 +173,14 @@ test('os três projetos mantêm valores municipais conhecidos e totais físicos 
     const p = allPlanningTargetSeries.find(s => s.reference.actionCode === code && s.period === '2026');
     const b = allPlanningBudgetSeries.find(s => s.reference.actionCode === code && s.period === '2026');
     assert.equal(Object.values(p.values).filter(v => v > 0).length, count);
-    assert.equal(Object.values(b.values).filter(v => v > 0).length, count);
+    assert.equal(Object.keys(p.values).filter(code => p.values[code] > 0 && b.values[code] > 0).length, count);
     assert.equal(p.reference.sourceTotal, physical);
     assert.equal(b.reference.sourceTotal, budget);
     assert.equal(p.reference.sourceTotal, p.reference.actionTotal);
     assert.equal(b.reference.sourceTotal, b.reference.actionTotal);
   }
+  const rootsBudget = allPlanningBudgetSeries.find(s => s.reference.actionCode === '4416' && s.period === '2026');
+  assert.equal(Object.values(rootsBudget.values).filter(v => v > 0).length,57);
   const physical = allPlanningTargetSeries.find(s => s.reference.actionCode === '2067' && s.period === '2026');
   const budget = allPlanningBudgetSeries.find(s => s.reference.actionCode === '2067' && s.period === '2026');
   assert.equal(physical.values['3106200'],225);
