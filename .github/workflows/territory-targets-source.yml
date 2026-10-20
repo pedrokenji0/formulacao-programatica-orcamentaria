@@ -13,5 +13,6 @@ jobs:
       - uses: actions/setup-node@v6
         with:
           node-version: '24'
+      - run: npm ci
       - run: node scripts/territory-targets-source.mjs
         name: Localizar arquivo público FJP
