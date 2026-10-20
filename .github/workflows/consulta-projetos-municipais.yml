@@ -1,0 +1,21 @@
+name: Consultar projetos com metas e recursos municipais
+on:
+  push:
+    branches: [codex/consulta-projetos-municipais]
+    paths:
+      - scripts/consulta-projetos-municipais.mjs
+      - .github/workflows/consulta-projetos-municipais.yml
+permissions:
+  contents: read
+jobs:
+  consultar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+      - name: Consultar bases versionadas sem alterar arquivos
+        run: node scripts/consulta-projetos-municipais.mjs
