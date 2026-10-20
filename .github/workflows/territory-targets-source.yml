@@ -14,3 +14,4 @@ jobs:
         with:
           node-version: '24'
       - run: node scripts/territory-targets-source.mjs
+        name: Localizar arquivo público FJP
