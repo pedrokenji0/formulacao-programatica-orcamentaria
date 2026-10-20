@@ -39,7 +39,7 @@ function TerritoryWorkspace({ data }: { data: TerritoryDataset }) {
   const regionalMode = level === 'region' && !!scheme && !!series && series.aggregation !== 'none';
   const numericValue = (code: string) => regionalMode ? regional[scheme!.memberships[code]]?.value : series?.values[code];
   const scale = colorScale(regionalMode ? Object.values(regional).map((record) => record.value) : Object.values(series?.values || {}), method, reversed);
-  const regionColor = (id: string | undefined) => !scheme || !id ? NO_DATA_COLOR : REGION_PALETTE[scheme.regions.findIndex((region) => region.id === id) % REGION_PALETTE.length] || NO_DATA_COLOR;
+  const regionColor = (id: string | undefined) => { const index = scheme?.regions.findIndex((region) => region.id === id) ?? -1; return index < 0 ? NO_DATA_COLOR : REGION_PALETTE[index] || `hsl(${(index * 137.508) % 360} 40% 58%)`; };
   const fill = (code: string) => colorMode === 'regions' ? regionColor(scheme?.memberships[code]) : scale.color(numericValue(code));
   const valueLabel = (code: string) => colorMode === 'regions' ? scheme?.regions.find((region) => region.id === scheme.memberships[code])?.name || 'Sem região atribuída' : number(numericValue(code)) + (numericValue(code) !== null && numericValue(code) !== undefined ? ' ' + (series?.unit || '') : '');
   const activeRegion = scheme?.regions.find((region) => region.id === scheme.memberships[selected]);

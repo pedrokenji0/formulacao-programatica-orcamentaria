@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useApp } from '../../store/AppStore';
 import { ActionButton, FormField, Modal } from '../../components/ui';
 import { assignMunicipalities, canEditTerritory, normalizeTerritoryText } from '../../services/territoryDomain';
-import type { TerritoryDataset } from '../../types';
+import type { Regionalization, TerritoryDataset } from '../../types';
 
 export function RegionalizationEditor({ id, data, initialCode, onClose }: { id: string; data: TerritoryDataset; initialCode: string; onClose: () => void }) {
   const { state, update, saveNow } = useApp();
@@ -13,7 +13,7 @@ export function RegionalizationEditor({ id, data, initialCode, onClose }: { id: 
   if (!scheme) return null;
   const editable = canEditTerritory(state, scheme);
   const filtered = data.municipalities.filter((m) => (!query || normalizeTerritoryText(m.name + ' ' + m.code).includes(normalizeTerritoryText(query))) && (!filter || (filter === 'unassigned' ? !scheme.memberships[m.code] : scheme.memberships[m.code] === filter)));
-  const change = (apply: (target: typeof scheme) => void) => update((draft) => { const target = draft.territory?.regionalizations.find((record) => record.id === id); if (target) apply(target); });
+  const change = (apply: (target: Regionalization) => void) => update((draft) => { const target = draft.territory?.regionalizations.find((record) => record.id === id); if (target) apply(target); });
   const addRegion = () => {
     if (!regionName.trim()) return;
     if (scheme.regions.some((region) => normalizeTerritoryText(region.name) === normalizeTerritoryText(regionName))) { setError('Já existe uma região com esse nome.'); return; }
