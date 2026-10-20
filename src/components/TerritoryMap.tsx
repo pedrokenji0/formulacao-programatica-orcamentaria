@@ -1,6 +1,7 @@
 import { useId, useMemo, useRef, useState } from 'react';
 import { Minus, Plus, LocateFixed } from 'lucide-react';
 import { ActionButton } from './ui';
+import { HelpTip } from './HelpTip';
 import type { Regionalization, TerritoryDataset } from '../types';
 import { regionBoundaryPaths } from '../services/territoryDomain';
 
@@ -31,7 +32,7 @@ export function TerritoryMap({ data, scheme, color, valueLabel, selected, onSele
       <ActionButton sm color="ghost" aria-label="Ampliar mapa" onClick={() => zoom(0.7)}><Plus size={17} /></ActionButton>
       <ActionButton sm color="ghost" aria-label="Reduzir mapa" onClick={() => zoom(1 / 0.7)}><Minus size={17} /></ActionButton>
       <ActionButton sm color="ghost" onClick={reset}>Ver Minas Gerais</ActionButton>
-      <ActionButton sm color="ghost" disabled={!selected} onClick={center}><LocateFixed size={16} />Localizar seleção</ActionButton>
+      <ActionButton sm color="ghost" disabled={!selected} onClick={center}><LocateFixed size={16} />Localizar seleção</ActionButton><HelpTip label="Como navegar no mapa" text="Arraste para mover. Use + e − para ampliar ou reduzir, Home para enquadrar Minas Gerais e as setas do teclado para deslocar. Clique no município para consultar." />
     </div>
     <svg className="territory-canvas" role="group" aria-label="Mapa interativo dos 853 municípios de Minas Gerais" tabIndex={0} viewBox={`${view.x} ${view.y} ${view.w} ${view.h}`}
       onKeyDown={(event) => {
@@ -61,6 +62,6 @@ export function TerritoryMap({ data, scheme, color, valueLabel, selected, onSele
       <g className="territory-region-boundaries" pointerEvents="none" fill="none" stroke="#39596b" strokeWidth={1.2} vectorEffect="non-scaling-stroke">{boundaries.map((path, i) => <path key={i} d={path} vectorEffect="non-scaling-stroke" />)}</g>
       {selected && <path d={data.municipalities.find((m) => m.code === selected)?.path} fill="none" stroke="#112d40" strokeWidth={2.5} vectorEffect="non-scaling-stroke" pointerEvents="none" />}
     </svg>
-    <div className="territory-map-caption"><span>{active ? active.name + ' · ' + valueLabel(active.code) : 'Passe o cursor ou clique em um município'}</span><small>Arraste para mover · + e − para ampliar/reduzir · Home para enquadrar MG</small></div>
+    <div className="territory-map-caption"><span>{active ? active.name + ' · ' + valueLabel(active.code) : 'Passe o cursor ou clique em um município'}</span></div>
   </div>;
 }

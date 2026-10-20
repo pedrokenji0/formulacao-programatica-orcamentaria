@@ -949,36 +949,53 @@ table.dt .rowacts{display:flex;gap:6px}
 .physical-target-summary dd { color: #1d5c6c; font-size: 23px; font-weight: 700; margin: 7px 0 0; }
 @media(max-width:850px) { .physical-target-summary dl { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 
-/* Recursos do Reurb: comparação anual e detalhe territorial na mesma ficha. */
-.territory-measures { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 14px; }
-.budget-comparison { border: 1px solid #d7e5e8; border-radius: 10px; background: #f7fafb; padding: 16px; margin: 8px 0 14px; }
-.budget-comparison > header { display: flex; gap: 16px; align-items: center; justify-content: space-between; flex-wrap: wrap; }
-.budget-comparison h3 { margin: 5px 0; color: #1b4d60; font-size: 17px; }
-.budget-comparison > header .field { margin: 0; min-width: 110px; }
-.budget-comparison-total small { display: block; color: #5e7683; font-size: 11px; margin-bottom: 5px; }
-.budget-comparison-total strong { color: #17495e; font-size: 23px; }
-.budget-action-cards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-top: 14px; }
-.budget-action-cards article { border: 1px solid #d7e3e8; border-radius: 9px; padding: 14px; background: #fff; }
-.budget-action-cards article.selected { border-color: #278293; box-shadow: inset 0 3px #278293; }
-.budget-action-cards article > span { font-size: 11px; color: #5e7683; }
-.budget-action-cards h4 { margin: 5px 0 10px; color: #234c60; font-size: 15px; }
-.budget-action-cards article > strong { font-size: clamp(18px, 2vw, 24px); color: #146a70; }
-.budget-action-cards p { font-size: 12px; color: #456675; margin: 7px 0 12px; }
-.budget-share-bar { height: 8px; margin-top: 12px; border-radius: 4px; background: #e8eef1; overflow: hidden; }
-.budget-share-bar i { display: block; height: 100%; background: #278293; border-radius: 4px; }
-.budget-summary dl { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-.budget-summary dd { font-size: clamp(17px, 2vw, 23px); overflow-wrap: anywhere; }
-@media(max-width:600px) { .budget-action-cards, .budget-summary dl { grid-template-columns: 1fr; } .budget-comparison { padding: 12px; } }
 
-/* A abrangência estadual é indicada sem atribuir recursos a municípios. */
-.statewide-map-notice { padding: 14px 16px; border: 1px solid #e5c784; border-radius: 10px; background: #fffaf0; margin-bottom: 12px; color: #684c22; }
-.statewide-map-heading { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
-.statewide-map-heading > .statewide-pattern-key { width: 32px; height: 32px; border: 1px solid #caa55b; border-radius: 5px; flex-shrink: 0; }
-.statewide-map-heading > div { flex: 1; min-width: 180px; }
-.statewide-map-heading span { display: block; font-size: 11px; margin-bottom: 4px; }
-.statewide-map-heading strong { display: block; font-size: clamp(20px, 2.4vw, 26px); }
-.statewide-map-heading b { font-size: 13px; }
-.statewide-map-notice p { font-size: 12px; line-height: 1.6; margin: 10px 0 6px; }
-.statewide-map-notice small { display: block; font-size: 11px; line-height: 1.5; margin-top: 4px; }
-.statewide-pattern-key { display: inline-block; background: repeating-linear-gradient(125deg, #fff7df 0 5px, #a87d39 5px 7px, #fff7df 7px 10px); }
-.territory-details .statewide-municipality-note { background: #fff8e8; padding: 9px; border: 1px solid #ead5a3; border-radius: 6px; margin-top: 8px; }
+/* Território: seleção, ciclo e valores no primeiro nível; detalhes sob demanda. */
+.territory-compact .territory-heading { margin-bottom: 14px; }
+.territory-heading .help-tip { margin-left: auto; flex-shrink: 0; }
+.territory-selection { display: grid; grid-template-columns: 1.1fr 1.4fr 1fr; gap: 12px; margin: 12px 0; }
+.territory-selection .field { margin: 0; min-width: 0; }
+.territory-selection select { width: 100%; min-width: 0; text-overflow: ellipsis; }
+.territory-cycle-bar { display: flex; align-items: center; gap: 24px; justify-content: space-between; padding: 12px 0 16px; border-bottom: 1px solid #dce5e9; }
+.territory-measures { display: flex; gap: 6px; flex-wrap: wrap; }
+.territory-year-control { flex: 1; max-width: 480px; min-width: 230px; }
+.territory-year-control > div:first-child { display: flex; align-items: center; gap: 8px; font-size: 11px; color: #617985; }
+.territory-year-control output { font-size: 18px; font-weight: 700; color: #205c72; margin-left: auto; }
+.territory-year-control input[type="range"] { width: 100%; accent-color: #247f91; height: 18px; padding: 0; margin: 4px 0; cursor: pointer; }
+.territory-year-ticks { display: flex; justify-content: space-between; }
+.territory-year-ticks button { font: inherit; font-size: 11px; padding: 3px 6px; color: #6b808c; border: 0; background: transparent; border-radius: 4px; cursor: pointer; }
+.territory-year-ticks button[aria-pressed="true"] { color: #125d72; font-weight: 700; background: #e7f1f4; }
+.territory-compact .physical-target-summary { background: transparent; border: 0; padding: 12px 0 0; margin: 0; }
+.territory-summary-heading { display: flex; align-items: center; gap: 10px; font-size: 11px; color: #607683; }
+.territory-summary-heading strong { color: #2a5266; font-size: 12px; }
+.territory-compact .physical-target-summary dl { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 9px; margin: 9px 0 6px; }
+.territory-compact .physical-target-summary dl > div { background: #f6f9fa; border: 1px solid #e0e8ec; padding: 10px 12px; border-radius: 8px; }
+.territory-compact .physical-target-summary dd { margin-top: 5px; font-size: clamp(15px, 1.6vw, 21px); overflow-wrap: anywhere; }
+.territory-compact .physical-target-summary dt { font-size: 11px; }
+.territory-map-toolbar { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; padding: 9px 0; }
+.territory-compact .territory-source-line { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; flex: 1; padding: 0; margin: 0; border: 0; background: transparent; color: #667d88; font-size: 11px; }
+.territory-options { font-size: 12px; }
+.territory-options > summary { cursor: pointer; padding: 6px 9px; color: #315e71; border: 1px solid #dce5e9; border-radius: 6px; }
+.territory-options[open] { flex-basis: 100%; order: 3; }
+.territory-options .territory-secondary-tools { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: end; gap: 12px; padding: 14px; margin-top: 6px; background: #f8fafb; border: 1px solid #dce5e9; border-radius: 8px; }
+.territory-options .field { max-width: none; min-width: 0; }
+.territory-options select { width: 100%; min-width: 0; }
+.territory-scope-warning { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; padding: 8px 10px; margin-top: 10px; border: 1px solid #ead7ad; background: #fffaf0; border-radius: 6px; font-size: 12px; color: #795b29; }
+.statewide-map-notice { display: flex; align-items: center; gap: 8px 10px; flex-wrap: wrap; padding: 10px 12px; border: 1px solid #e5c784; border-radius: 8px; background: #fffaf0; margin-bottom: 10px; color: #684c22; font-size: 11px; }
+.statewide-map-notice strong { font-size: 16px; }
+.statewide-map-notice b { font-size: 12px; }
+.statewide-map-notice .territory-check { margin-left: auto; font-size: 11px; min-height: 24px; }
+.statewide-pattern-key { display: inline-block; width: 17px; height: 14px; border: 1px solid #caa55b; border-radius: 3px; background: repeating-linear-gradient(125deg, #fff7df 0 5px, #a87d39 5px 7px, #fff7df 7px 10px); flex-shrink: 0; }
+.territory-details .statewide-municipality-note { background: #fff8e8; padding: 8px; border: 1px solid #ead5a3; border-radius: 6px; margin-top: 8px; }
+.territory-details dt { display: flex; gap: 5px; align-items: center; }
+.territory-compact .territory-municipality-results { max-height: 190px; }
+.territory-comparison-heading { display: flex; align-items: center; gap: 8px; margin: 12px 0; color: #24556b; }
+.territory-comparison td small { display: block; margin-top: 4px; color: #6d818b; }
+.territory-localizer-tools { display: flex; align-items: center; gap: 15px; margin: 12px 0; font-size: 11px; color: #697e88; }
+.territory-localizer-tools .field { margin: 0; max-width: 330px; flex: 1; }
+.territory-localizers .table-wrap { max-height: 450px; overflow: auto; }
+.territory-pagination { display: flex; justify-content: flex-end; align-items: center; gap: 12px; margin-top: 10px; font-size: 11px; color: #6b808c; }
+.territory-compact .reference-panel > summary { font-size: 12px; }
+@media(max-width:1050px) { .territory-selection { grid-template-columns: 1fr 1fr; } .territory-selection .field:first-child { grid-column: 1 / -1; } }
+@media(max-width:850px) { .territory-compact .physical-target-summary dl { grid-template-columns: repeat(2, minmax(0, 1fr)); } .territory-cycle-bar { gap: 14px; flex-wrap: wrap; } .territory-year-control { max-width: none; } .territory-options .territory-secondary-tools { grid-template-columns: 1fr 1fr; } }
+@media(max-width:600px) { .territory-selection { grid-template-columns: 1fr; } .territory-cycle-bar { display: block; } .territory-year-control { margin-top: 12px; min-width: 0; } .territory-options .territory-secondary-tools { grid-template-columns: 1fr; } .statewide-map-notice .territory-check { margin-left: 0; } }

@@ -20,7 +20,7 @@
     "check": "npm run typecheck && npm test && npm run build",
     "generate:territory": "node scripts/territory-build.mjs",
     "update:territory": "node scripts/territory-source.mjs",
-    "generate:territorial-references": "node scripts/territory-planning-targets.mjs && node scripts/territory-fjp-regionalizations.mjs",
+    "generate:territorial-references": "node scripts/territory-planning-targets.mjs && node scripts/territory-planning-catalog.mjs && node scripts/territory-fjp-regionalizations.mjs",
     "update:regionalizations": "node scripts/territory-targets-source.mjs"
   },
   "dependencies": {

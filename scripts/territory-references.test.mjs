@@ -2,10 +2,13 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { readPlanningTargetReference, readPlanningBudgetReference } from './territory-planning-targets.mjs';
+import { readPlanningTerritoryCatalog, buildPlanningTerritoryCatalog, planningCycleYears } from './territory-planning-catalog.mjs';
 import { buildFjpRegionalizations } from './territory-fjp-regionalizations.mjs';
-import { planningTargetSeries, planningBudgetSeries, planningReferenceTotals, planningRegionalValues, isIntermediateScheme, budgetComparison, formatBudget } from '../src/services/planningTerritoryReference.ts';
+import { planningTargetSeries as allPlanningTargetSeries, planningBudgetSeries as allPlanningBudgetSeries, planningYears, planningCycle, planningTerritoryCatalog, catalogSeries, planningReferenceTotals, planningRegionalValues, isIntermediateScheme, budgetComparison, formatBudget } from '../src/services/planningTerritoryReference.ts';
 import { referenceRegionalizations } from '../src/services/fjpTerritoryReference.ts';
 import { canEditTerritory, enforceTerritoryUpdate } from '../src/services/territoryDomain.ts';
+const planningTargetSeries = allPlanningTargetSeries.filter(s => s.reference.projectCode === '14');
+const planningBudgetSeries = allPlanningBudgetSeries.filter(s => s.reference.projectCode === '14');
 const data = JSON.parse(readFileSync('public/data/mg-municipios.json', 'utf8'));
 const targetReference = JSON.parse(readFileSync('data/territorio/metas-fisicas-reurb.json', 'utf8'));
 const source = JSON.parse(readFileSync('data/territorio/fonte-regionalizacoes-fjp.json', 'utf8'));
@@ -145,4 +148,66 @@ test('participação compara somente o mesmo ano e não divide por zero nem omit
   assert.equal(formatBudget(null), 'Sem dados');
   assert.match(formatBudget(0), /0,00/);
   assert.match(formatBudget(48281208), /48\.281\.208,00/);
+});
+
+test('catálogo reproduz os TXT e preserva projetos, programas, ações, UOs e localizadores', () => {
+  assert.deepEqual(readPlanningTerritoryCatalog(), planningTerritoryCatalog);
+  assert.deepEqual(planningTerritoryCatalog.projects.map(p => p.code), ['14','56','64','20']);
+  assert.equal(planningTerritoryCatalog.projects.flatMap(p => p.actions).length, 7);
+  assert.equal(allPlanningTargetSeries.length, 28);
+  assert.equal(allPlanningBudgetSeries.length, 28);
+  assert.equal(new Set([...allPlanningTargetSeries,...allPlanningBudgetSeries].map(s => s.id)).size, 56);
+  assert.deepEqual(planningTargetSeries, targetReference.series);
+  assert.deepEqual(planningBudgetSeries, JSON.parse(readFileSync('data/territorio/recursos-reurb.json','utf8')).series);
+  const capture = planningTerritoryCatalog.projects.find(p => p.code === '56');
+  assert.deepEqual(capture.actions.map(a => [a.code,a.ownerUnit]), [['2067','1261'],['4155','1071']]);
+  for (const s of [...allPlanningTargetSeries,...allPlanningBudgetSeries]) {
+    assert.equal(new Set(s.reference.observations.map(o => o.localizerCode)).size, s.reference.observations.length);
+    assert.equal(canEditTerritory({perfil:'Administrador',unidade:'1261 — SEE'}, s), false);
+  }
+});
+
+test('os três projetos mantêm valores municipais conhecidos e totais físicos e financeiros', () => {
+  const expected = [['2067',852,3408,15000000],['4157',87,1305,419732],['4416',56,56,320760]];
+  for (const [code,count,physical,budget] of expected) {
+    const p = allPlanningTargetSeries.find(s => s.reference.actionCode === code && s.period === '2026');
+    const b = allPlanningBudgetSeries.find(s => s.reference.actionCode === code && s.period === '2026');
+    assert.equal(Object.values(p.values).filter(v => v > 0).length, count);
+    assert.equal(Object.values(b.values).filter(v => v > 0).length, count);
+    assert.equal(p.reference.sourceTotal, physical);
+    assert.equal(b.reference.sourceTotal, budget);
+    assert.equal(p.reference.sourceTotal, p.reference.actionTotal);
+    assert.equal(b.reference.sourceTotal, b.reference.actionTotal);
+  }
+  const physical = allPlanningTargetSeries.find(s => s.reference.actionCode === '2067' && s.period === '2026');
+  const budget = allPlanningBudgetSeries.find(s => s.reference.actionCode === '2067' && s.period === '2026');
+  assert.equal(physical.values['3106200'],225);
+  assert.equal(budget.values['3106200'],990316);
+  const health = referenceRegionalizations(data).find(s => s.id === 'fjp-health-micro');
+  const sums = planningRegionalValues(data,budget,health);
+  assert.equal(Object.values(sums).reduce((total,row) => total + (row.value ?? 0),0),15000000);
+});
+
+test('comparação financeira permanece dentro do projeto e não soma metas de produtos diferentes', () => {
+  const capture = budgetComparison('2026',undefined,'56');
+  assert.equal(capture.actions.length,2);
+  assert.equal(capture.total,16731000);
+  assert.ok(capture.actions.every(a => a.series.reference.projectCode === '56'));
+  assert.equal(budgetComparison('2026',undefined,'64').total,419732);
+  assert.equal(budgetComparison('2026',undefined,'20').total,344480);
+});
+
+test('ciclo parte da revisão, distingue elaboração e muda de ano sem reaproveitar valores antigos', () => {
+  assert.deepEqual(planningCycle,{revisionYear:'2026',preparedIn:'2025',years:['2026','2027','2028','2029']});
+  assert.deepEqual(planningYears('2030'),['2030','2031','2032','2033']);
+  assert.deepEqual(planningCycleYears('2030'),planningYears('2030'));
+  assert.throws(() => planningYears(''),/revisão/);
+  const action = {'Código do Programa':'0005','Código da Unidade Orçamentária Responsável pela Ação':'01261','Código da Ação':'2067','Título da Ação':'Teste','Código do Identificador de Ação Governamental (IAG)':'1','Código do Projeto Estratégico':'56','Projeto Estratégico':'Projeto de teste','Produto':'Escola atendida','Código do Produto':'10664','Código da Unidade de Medida do Produto':'1','Unidade de Medida do Produto':'ESCOLA','Previsão Física 2030':'2','Previsão Orçamentária 2030':'100'};
+  const row = {...action,'Código do Localizador':'teste','Código do Município IBGE':'3106200','Código da Região Geográfica Intermediária':'1',Município:'Belo Horizonte','Previsão Física 2026':'999','Previsão Orçamentária 2026':'999'};
+  const next = buildPlanningTerritoryCatalog([row],[action],planningTerritoryCatalog.source,{revisionYear:'2030',preparedIn:'2029'},['3106200']);
+  const series = catalogSeries(next,'physical-target');
+  assert.deepEqual(series.map(s => s.period),['2030','2031','2032','2033']);
+  assert.equal(series[0].values['3106200'],2);
+  assert.equal(series[1].values['3106200'],null);
+  assert.equal(planningReferenceTotals(series[1]).reconciled,false);
 });

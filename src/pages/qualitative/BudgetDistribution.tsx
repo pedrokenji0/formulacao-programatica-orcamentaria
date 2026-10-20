@@ -1,19 +1,19 @@
 import { ActionButton } from '../../components/ui';
-import { budgetComparison, formatBudget, planningBudgetSeries } from '../../services/planningTerritoryReference';
+import { HelpTip } from '../../components/HelpTip';
+import { budgetComparison, formatBudget, planningProjects } from '../../services/planningTerritoryReference';
 
-const percent = (value: number | null) => value === null ? 'Sem percentual' : value.toLocaleString('pt-BR', { maximumFractionDigits: 2 }) + '%';
-
-export function BudgetDistribution({ period, selectedId, onSelect }: { period: string; selectedId: string; onSelect: (id: string) => void }) {
-  const comparison = budgetComparison(period);
-  const selected = planningBudgetSeries.find((record) => record.id === selectedId);
-  const years = [...new Set(planningBudgetSeries.map((record) => record.period))].sort();
-  return <section className="budget-comparison" aria-label="Comparação dos recursos das duas ações">
-    <header><div><span className="planning-eyebrow">Recursos previstos · {period}</span><h3>Distribuição entre as ações do Reurb</h3></div><label className="field">Ano dos recursos<select aria-label="Ano dos recursos" value={period} onChange={(event) => { const next = planningBudgetSeries.find((record) => record.period === event.target.value && record.reference?.actionCode === selected?.reference?.actionCode); if (next) onSelect(next.id); }}>{years.map((year) => <option key={year}>{year}</option>)}</select></label><div className="budget-comparison-total"><small>{comparison.complete ? 'Total das duas ações' : 'Total conhecido · base incompleta'}</small><strong>{formatBudget(comparison.total)}</strong></div></header>
-    <div className="budget-action-cards">{comparison.actions.map(({ series, total, share }) => <article key={series.id} className={series.id === selectedId ? 'selected' : ''}>
-      <span>Ação {series.reference!.actionCode} · UO {series.ownerUnit}</span><h4>{series.reference!.actionCode === '1082' ? 'Minas Reurb SEDE' : 'Minas Reurb ARMVA'}</h4><strong>{formatBudget(total)}</strong>
-      <div className="budget-share-bar" aria-hidden="true"><i style={{ width: (share ?? 0) + '%' }} /></div><p>{percent(share)} do total das duas ações em {period}</p>
-      <ActionButton sm color={series.id === selectedId ? 'blue' : 'ghost'} onClick={() => onSelect(series.id)}>{series.id === selectedId ? 'Exibindo ação ' : 'Ver recursos da ação '}{series.reference!.actionCode}</ActionButton>
-    </article>)}</div>
-    <p className="small muted">Previsão orçamentária do planejamento, em reais nominais. Os valores representam recursos previstos para cada ano. Consulte as parcelas estaduais, regionais e municipais abaixo.</p>
-  </section>;
+export function BudgetDistribution({ period, projectCode, selectedId, onSelect }: { period: string; projectCode: string; selectedId: string; onSelect: (id: string) => void }) {
+  const comparison = budgetComparison(period, undefined, projectCode);
+  const project = planningProjects.find((project) => project.code === projectCode);
+  if (comparison.actions.length < 2) return null;
+  return <details className="territory-comparison reference-panel">
+    <summary>Comparar recursos entre ações do projeto · {period}</summary>
+    <section aria-label="Comparação dos recursos do projeto">
+      <div className="territory-comparison-heading"><strong>Total {formatBudget(comparison.total)}</strong><HelpTip label="Critério da comparação de recursos" text="Somente ações deste projeto no mesmo ano. Valores previstos no planejamento, em reais nominais. Percentuais exigem valores conhecidos para todas as ações." /></div>
+      <div className="table-wrap"><table className="dt"><thead><tr><th>Ação / UO</th><th>Previsão</th><th>Participação</th><th /></tr></thead><tbody>{comparison.actions.map(({ series, total, share }) => {
+        const action = project?.actions.find((action) => action.id === series.reference!.actionId);
+        return <tr key={series.id}><td><strong>{series.reference!.actionCode} · UO {series.ownerUnit}</strong><small>{action?.name}</small></td><td>{formatBudget(total)}</td><td>{share === null ? '—' : share.toLocaleString('pt-BR', { maximumFractionDigits: 2 }) + '%'}</td><td><ActionButton sm color={series.id === selectedId ? 'blue' : 'ghost'} onClick={() => onSelect(series.id)}>{series.id === selectedId ? 'Selecionada' : 'Ver ação ' + series.reference!.actionCode}</ActionButton></td></tr>;
+      })}</tbody></table></div>
+    </section>
+  </details>;
 }
