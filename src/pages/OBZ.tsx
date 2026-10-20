@@ -110,7 +110,7 @@ function CenariosTab({ items }: { items: BudgetItemOBZ[] }) {
   const filtered = items.filter((b) => (!fCen || b.classificacaoCenario === fCen) && (!fGrupo || b.grupo === fGrupo));
   const grupos = Array.from(new Set(items.map((b) => b.grupo)));
   const groupBy = (key: (b: BudgetItemOBZ) => string) => {
-    const m: Record<string, number> = {}; for (const b of filtered) m[key(b)] = (m[key(b)] || 0) + b.valorTotal; return m;
+    const m: Record<string, number> = Object.create(null); for (const b of filtered) m[key(b)] = (m[key(b)] || 0) + b.valorTotal; return m;
   };
   const totalAll = filtered.reduce((s, b) => s + b.valorTotal, 0) || 1;
   const Bars = ({ title, data }: { title: string; data: Record<string, number> }) => (

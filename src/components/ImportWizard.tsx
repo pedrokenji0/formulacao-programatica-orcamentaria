@@ -3,7 +3,7 @@ import * as XLSX from 'xlsx';
 import { Upload, FileSpreadsheet, CheckCircle2 } from 'lucide-react';
 import { useApp } from '../store/AppStore';
 import { ActionButton, FormField, useToast } from './ui';
-import { OBZ_FIELD_ALIASES, OBZ_FIELD_LABELS, autoMapBudgetHeaders, buildBudgetImport, normalizeHeader } from '../services/obzData';
+import { OBZ_FIELD_ALIASES, OBZ_FIELD_LABELS, applyBudgetImport, autoMapBudgetHeaders, buildBudgetImport, normalizeHeader } from '../services/obzData';
 import type { BudgetItemOBZ, SelectionLists } from '../types';
 
 export function ImportWizard({ onImport, editable = true }: { onImport: (items: BudgetItemOBZ[], lists: Partial<SelectionLists>) => void; editable?: boolean }) {
@@ -64,7 +64,7 @@ export function ImportWizard({ onImport, editable = true }: { onImport: (items: 
         <div className="alert info" role="status">{preview.result.items.length} itens válidos · {preview.result.linked} com vínculo confirmado · {preview.result.items.length - preview.result.linked} pendentes · {duplicates} já importados.</div>
         {!!preview.result.issues.length && <details><summary>Linhas não importadas ({preview.result.ignored})</summary><ul>{preview.result.issues.map((message) => <li key={message}>{message}</li>)}</ul></details>}
         <div className="table-wrap"><table className="dt"><thead><tr><th>UO de origem</th><th>Programa</th><th>Ação</th><th>Descrição</th><th>Exercício</th><th>Vínculo</th></tr></thead><tbody>{preview.result.items.slice(0,8).map((item) => <tr key={item.id}><td>{item.source?.unitLabel || 'Não informada'}</td><td>{item.source?.programLabel || 'Não informado'}</td><td>{item.acaoLabel}</td><td>{item.descricao}</td><td>{item.exercise || 'Não informado'}</td><td>{item.linkage?.status === 'vinculado' ? 'Confirmado' : 'Pendente'}</td></tr>)}</tbody></table></div>
-        <div className="row"><ActionButton icon={<CheckCircle2 size={16} />} disabled={!editable || imported || !preview.result.items.length || duplicates === preview.result.items.length} onClick={() => { onImport(preview.result!.items, preview.result!.lists); setImported(true); toast('Importação processada. Itens já existentes foram preservados.', 'ok'); }}>{imported ? 'Lote processado' : 'Confirmar importação'}</ActionButton></div>
+        <div className="row"><ActionButton icon={<CheckCircle2 size={16} />} disabled={!editable || imported || !preview.result.items.length || duplicates === preview.result.items.length} onClick={() => { try { const outcome = applyBudgetImport({ ...state, budgetItems: [...state.budgetItems] }, preview.result!.items); onImport(preview.result!.items, preview.result!.lists); setImported(true); setError(''); toast(`${outcome.added} itens importados; ${outcome.skipped} já existentes preservados.`, 'ok'); } catch (reason) { setError(String(reason)); toast('Importação não aplicada. Confira a mensagem.', 'err'); } }}>{imported ? 'Lote processado' : 'Confirmar importação'}</ActionButton></div>
       </>}
     </>}
   </div>;
