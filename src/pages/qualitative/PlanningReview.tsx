@@ -1,3 +1,4 @@
+import { formatUnitCode, formatUnitLabel } from '../../services/budgetUnits';
 import { auditPlanningData } from '../../services/dataIntegrity';
 import { useMemo, useState } from 'react';
 import { useApp } from '../../store/AppStore';
@@ -43,7 +44,7 @@ export function PlanningReview({ program }: { program: Program }) {
     labels.etapasImplementacao = 'Etapas e temas da implementação (local)';
     for (const [field, label] of Object.entries(labels)) differences.push(...valueChange(label, original?.local?.[field as keyof typeof original.local] ?? (field === 'atividades' || field === 'etapasImplementacao' ? [] : ''), action.local?.[field as keyof typeof action.local] ?? (field === 'atividades' || field === 'etapasImplementacao' ? [] : '')));
     if (!original) differences.unshift({ field: 'Inclusão proposta', before: 'Sem cadastro importado de referência', after: `Nova ação em rascunho local. Identificador: ${action.id}` });
-    if (differences.length) revisions.push({ id: action.id, title: `Ação ${action.codigo || 'Sem código oficial'} · UO ${action.codigoUnidadeOrcamentaria || action.unidadeOrcamentaria || 'não informada'}`, differences });
+    if (differences.length) revisions.push({ id: action.id, title: `Ação ${action.codigo || 'Sem código oficial'} · UO ${formatUnitCode(action.codigoUnidadeOrcamentaria) || formatUnitLabel(action.unidadeOrcamentaria) || 'não informada'}`, differences });
   }
   const indicators = indicatorsFor(state, reference, program.id);
   for (const indicator of indicators) {
@@ -63,7 +64,7 @@ export function PlanningReview({ program }: { program: Program }) {
     }
     if (!original) differences.unshift({ field: 'Inclusão proposta', before: 'Sem cadastro importado de referência', after: 'Novo localizador em rascunho local, sem código oficial presumido.' });
     const action = state.actions.find((record) => record.id === localizer.actionId);
-    if (differences.length) revisions.push({ id: localizer.id, title: `Localizador ${localizer.fields['Código do Localizador'] || 'Sem código oficial'} · ação ${action?.codigo || localizer.fields['Código da Ação'] || 'Sem código oficial'} · UO ${action?.codigoUnidadeOrcamentaria || localizer.fields['Código da Unidade Orçamentária Responsável pela Ação'] || 'não informada'}`, differences });
+    if (differences.length) revisions.push({ id: localizer.id, title: `Localizador ${localizer.fields['Código do Localizador'] || 'Sem código oficial'} · ação ${action?.codigo || localizer.fields['Código da Ação'] || 'Sem código oficial'} · UO ${formatUnitCode(action?.codigoUnidadeOrcamentaria || localizer.fields['Código da Unidade Orçamentária Responsável pela Ação']) || 'não informada'}`, differences });
   }
   if (currentMap) {
     const differences: Difference[] = [];
@@ -71,12 +72,12 @@ export function PlanningReview({ program }: { program: Program }) {
     differences.push(...valueChange('Problema ou necessidade de atuação (local)', '', currentMap.problemaCentral));
     for (const section of ['contexto', 'premissas', 'causas', 'resultados', 'impactos'] as const) if (currentMap[section]?.length) differences.push({ field: `${section} (MaPR local)`, before: '', after: describe(currentMap[section]!) });
     for (const mapped of currentMap.actions) {
-      for (const section of ['recursos', 'atividades', 'resultados', 'impactos', 'pressupostos', 'riscos'] as const) if (mapped[section]?.length) differences.push({ field: `Ação ${mapped.codigo} / UO ${mapped.codigoUnidadeOrcamentaria || 'local'} — ${section}`, before: '', after: describe(mapped[section]!) });
+      for (const section of ['recursos', 'atividades', 'resultados', 'impactos', 'pressupostos', 'riscos'] as const) if (mapped[section]?.length) differences.push({ field: `Ação ${mapped.codigo} / UO ${formatUnitCode(mapped.codigoUnidadeOrcamentaria) || 'local'} — ${section}`, before: '', after: describe(mapped[section]!) });
       const importedAction = reference.actions.find((record) => record.id === (mapped.catalogActionId || mapped.id));
       const importedProducts: MapItem[] = importedAction?.produto ? [{ id: `produto-${importedAction.id}`, texto: importedAction.produto, origin: 'importado' }] : [];
-      differences.push(...valueChange(`Ação ${mapped.codigo} / UO ${mapped.codigoUnidadeOrcamentaria || 'local'} — produtos`, describe(importedProducts), describe(mapped.produtos)));
+      differences.push(...valueChange(`Ação ${mapped.codigo} / UO ${formatUnitCode(mapped.codigoUnidadeOrcamentaria) || 'local'} — produtos`, describe(importedProducts), describe(mapped.produtos)));
       const describeRoles = (items: MapItem[], principalId: string | undefined) => items.map((item) => `${item.id === principalId ? 'Principal' : 'Secundário'}: ${item.texto}`).join('\n');
-      differences.push(...valueChange(`Ação ${mapped.codigo} / UO ${mapped.codigoUnidadeOrcamentaria || 'local'} — organização local das entregas`, describeRoles(importedProducts, importedProducts[0]?.id), describeRoles(mapped.produtos, principalProduct(mapped)?.id)));
+      differences.push(...valueChange(`Ação ${mapped.codigo} / UO ${formatUnitCode(mapped.codigoUnidadeOrcamentaria) || 'local'} — organização local das entregas`, describeRoles(importedProducts, importedProducts[0]?.id), describeRoles(mapped.produtos, principalProduct(mapped)?.id)));
     }
     if (differences.length) revisions.push({ id: `mapa-${program.id}`, title: `MaPR do programa ${program.codigo}`, differences });
   }

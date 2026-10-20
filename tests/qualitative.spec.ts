@@ -14,16 +14,18 @@ const openProgramMap = async (page: Page) => {
   await button(page, 'Mapas de planejamento');
   const picker = page.getByLabel('Mapa em edição', { exact: true });
   if (await picker.count()) await picker.selectOption('programa');
+  await page.getByText('Conteúdo anterior do programa', { exact: true }).click();
+  await button(page, 'Abrir editor anterior');
 };
 const openSection = async (page: Page, name: string) => button(page, `Abrir ${name}`);
 const open = async (page: Page) => { await page.goto('./'); await expect(page.getByLabel('Programa ativo', { exact: true })).toBeVisible(); };
 const selectAction = async (page: Page, action: typeof sede) => {
-  const label = `${action.codigo || 'Sem código oficial'} · UO ${action.codigoUnidadeOrcamentaria || 'não informada'} · ${action.nome || 'Ação em rascunho'}`;
+  const label = `${action.codigo || 'Sem código oficial'} · UO ${String(action.codigoUnidadeOrcamentaria || '').replace(/^0+(?=\d)/, '') || 'não informada'} · ${action.nome || 'Ação em rascunho'}`;
   await page.getByRole('combobox', { name: 'Ação', exact: true }).fill(label);
   await page.getByRole('option', { name: label, exact: true }).click();
 };
 const choice = (fields: Record<string, string>, names: string[]) => JSON.stringify(Object.fromEntries(names.map((name) => [name, fields[name] || ''])));
-const choiceLabel = (value: string) => Object.values(JSON.parse(value)).filter(Boolean).join(' — ');
+const choiceLabel = (value: string) => Object.entries(JSON.parse(value) as Record<string, string>).map(([key, text]) => key.startsWith('Código da Unidade Orçamentária') ? text.replace(/^0+(?=\d)/, '') : text).filter(Boolean).join(' — ');
 const chooseCatalog = async (page: Page, label: string, value: string) => {
   const text = choiceLabel(value);
   await page.getByRole('combobox', { name: label, exact: true }).fill(text);
@@ -529,7 +531,7 @@ test('ficha completa usa espaçamento PPO, distribui conteúdo e mostra ajuda so
   await page.screenshot({ path: 'test-results/ppo-reference-action.png' });
   await page.getByRole('button', { name: /^Ver lista de ações/ }).click();
   await page.getByLabel('Pesquisar ações do programa', { exact: true }).fill(armva.codigo);
-  await expect(page.getByRole('button', { name: `Selecionar ação ${armva.codigo} · UO ${armva.codigoUnidadeOrcamentaria} · ${armva.nome}`, exact: true })).toBeVisible();
+  await expect(page.getByRole('button', { name: `Selecionar ação ${armva.codigo} · UO ${String(armva.codigoUnidadeOrcamentaria).replace(/^0+(?=\d)/, '')} · ${armva.nome}`, exact: true })).toBeVisible();
 });
 
 test('ajuda funciona por toque e falhas de salvamento continuam visíveis', async ({ page }) => {

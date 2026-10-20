@@ -1,3 +1,4 @@
+import { budgetUnitOptions, formatUnitCode, formatUnitLabel } from '../services/budgetUnits';
 import { useState, type CSSProperties } from 'react';
 import { useApp } from '../store/AppStore';
 import { Card, Tabs, FormField, SelectField, ActionButton, StatusBadge, Modal, Stat, useToast, brl, uid } from '../components/ui';
@@ -54,7 +55,7 @@ export function ObzPage({ initialTab }: { initialTab?: string }) {
       <div className="grid g4"><Stat k="Itens nesta seleção" v={items.length} /><Stat k="Total informado" v={brl(items.reduce((sum, item) => sum + (effectiveBudgetTotal(item) ?? 0), 0))} /><Stat k="Vínculos pendentes" v={items.filter((item) => item.linkage?.status !== 'vinculado').length} color="orange" /><Stat k="Valor não informado" v={items.filter((item) => effectiveBudgetTotal(item) == null).length} /></div>
       <DataTable<BudgetItemOBZ> pageSize={25} searchLabel="Pesquisar itens OBZ" searchText={(item) => [item.descricao,item.unidadeOrcamentaria,item.acaoLabel,item.programaCodigo,item.elementoItem,item.fonte].join(' ')} empty="Nenhum item nesta seleção. Consulte toda a base ou importe uma planilha." rows={items} columns={[
         { key: 'descricao', header: 'Descrição', render: (item) => <div><strong>{item.descricao || 'Item em rascunho'}</strong><div className="small muted">{item.elementoItem} · fonte {item.fonte || 'não informada'}</div></div> },
-        { key: 'unidadeOrcamentaria', header: 'UO / exercício', render: (item) => <div>{item.unidadeOrcamentaria || 'UO não informada'}<div className="small muted">{item.exercise || 'Exercício não informado'}</div></div> },
+        { key: 'unidadeOrcamentaria', header: 'UO / exercício', render: (item) => <div>{formatUnitLabel(item.unidadeOrcamentaria) || 'UO não informada'}<div className="small muted">{item.exercise || 'Exercício não informado'}</div></div> },
         { key: 'acaoLabel', header: 'Programa / ação', render: (item) => <div>Programa {item.programaCodigo || codeOf(item.source?.programLabel) || 'não identificado'}<div className="small muted">{item.acaoLabel || 'Ação não informada'}</div></div> },
         { key: 'linkage', header: 'Vínculo', render: (item) => <span className={'badge ' + (item.linkage?.status === 'vinculado' ? 'green' : 'orange')}>{item.linkage?.status === 'vinculado' ? 'Confirmado' : 'Pendente'}</span> },
         { key: 'classificacaoCenario', header: 'Cenário', render: (item) => item.classificacaoCenario },
@@ -74,6 +75,7 @@ export function ObzPage({ initialTab }: { initialTab?: string }) {
 }
 
 function ItemModal({ it, setIt, onSave, state, editable }: { it: BudgetItemOBZ; setIt: (item: BudgetItemOBZ | null) => void; onSave: (item: BudgetItemOBZ) => void; state: AppState; editable: boolean }) {
+  const { reference } = useApp();
   const set = (key: keyof BudgetItemOBZ, value: any) => setIt({ ...it, [key]: value });
   const quantities = it.quantities || { volume: it.volume, precoUnitario: it.precoUnitario, frequenciaPagamento: it.frequenciaPagamento };
   const calculated = calculateBudgetTotal(quantities.volume, quantities.precoUnitario, quantities.frequenciaPagamento);
@@ -89,8 +91,8 @@ function ItemModal({ it, setIt, onSave, state, editable }: { it: BudgetItemOBZ; 
       <section className="sheet-section"><h2>Identificação e vínculo com o planejamento</h2>
         <FormField label="Exercício do item OBZ" value={it.exercise || ''} placeholder="Não informado" onChange={(value) => set('exercise', value || null)} />
         <SearchableSelect disabled={!editable} label="Programa do item OBZ" value={programCode} options={state.programs.map((record) => ({ value: codeOf(record.codigo), label: record.codigo + ' — ' + record.nome }))} onChange={(value) => setIt({ ...it, programaCodigo: value, programaId: '', actionId: '' })} />
-        <SelectField label="Unidade orçamentária do item" value={it.unidadeOrcamentaria} options={[...new Set([it.unidadeOrcamentaria, ...state.lists.unidades].filter(Boolean))]} onChange={(value) => setIt({ ...it, unidadeOrcamentaria: value, codigoUnidadeOrcamentaria: unitCode(value), actionId: '' })} />
-        <SearchableSelect disabled={!editable} label="Ação do item OBZ" value={selectedAction?.id || ''} options={candidates.map((action) => ({ value: action.id, label: action.codigo + ' · UO ' + action.codigoUnidadeOrcamentaria + ' · ' + action.nome }))} onChange={(value) => { const action = candidates.find((record) => record.id === value); setIt({ ...it, actionId: value, acaoLabel: action ? action.codigo + ' - ' + action.nome : '' }); }} />
+        <SelectField label="Unidade orçamentária do item" value={formatUnitLabel(it.unidadeOrcamentaria)} options={[...new Set([formatUnitLabel(it.unidadeOrcamentaria), ...budgetUnitOptions(reference)].filter(Boolean))]} onChange={(value) => setIt({ ...it, unidadeOrcamentaria: value, codigoUnidadeOrcamentaria: unitCode(value), actionId: '' })} />
+        <SearchableSelect disabled={!editable} label="Ação do item OBZ" value={selectedAction?.id || ''} options={candidates.map((action) => ({ value: action.id, label: action.codigo + ' · UO ' + formatUnitCode(action.codigoUnidadeOrcamentaria) + ' · ' + action.nome }))} onChange={(value) => { const action = candidates.find((record) => record.id === value); setIt({ ...it, actionId: value, acaoLabel: action ? action.codigo + ' - ' + action.nome : '' }); }} />
         <p className="small muted">Ação declarada na proposta: {it.acaoLabel || 'Não informada'}</p>
         <div className={'alert ' + (projection.linkage?.status === 'vinculado' ? 'info' : 'warn')} role="status">{projection.linkage?.status === 'vinculado' ? 'Correspondência exata: o vínculo será confirmado ao salvar.' : projection.linkage?.issues.join(' ')}</div>
       </section>
@@ -135,7 +137,7 @@ function CenariosTab({ items }: { items: BudgetItemOBZ[] }) {
         </div>
       </Card>
       <div className="grid g2">
-        <Bars title="Total por ação" data={groupBy((b) => b.unidadeOrcamentaria + ' · ' + b.acaoLabel)} />
+        <Bars title="Total por ação" data={groupBy((b) => formatUnitLabel(b.unidadeOrcamentaria) + ' · ' + b.acaoLabel)} />
         <Bars title="Total por agrupamento" data={groupBy((b) => b.agrupamento)} />
         <Bars title="Total por elemento-item" data={groupBy((b) => b.elementoItem)} />
         <Bars title="Total por fonte" data={groupBy((b) => 'Fonte ' + b.fonte)} />
@@ -188,7 +190,7 @@ function ValidacaoObzTab({ items }: { items: BudgetItemOBZ[] }) {
       </Card>
       <Card title="Validação de cota pela DCMEFO" lead="Apenas DCMEFO/SEPLAG e Administrador deveriam interagir aqui. Quando a cota não for aprovada, registre motivo e comentário específico por item OBZ.">
         <DataTable<BudgetItemOBZ> rows={items} pageSize={25} searchLabel="Pesquisar cotas OBZ" columns={[
-          { key:'descricao', header:'Item OBZ', render:(item)=><div><strong>{item.descricao || 'Item sem descrição'}</strong><div className="small muted">{item.unidadeOrcamentaria} · {item.elementoItem}</div></div> },
+          { key:'descricao', header:'Item OBZ', render:(item)=><div><strong>{item.descricao || 'Item sem descrição'}</strong><div className="small muted">{formatUnitLabel(item.unidadeOrcamentaria)} · {item.elementoItem}</div></div> },
           { key:'valorTotal', header:'Valor', num:true, render:money },
           { key:'cota', header:'Cota', render:(item)=><select aria-label={'Cota: '+item.descricao} value={item.validationNeedsReview || item.linkage?.status !== 'vinculado' || item.cotaAprovada == null ? '' : item.cotaAprovada ? 'sim' : 'nao'} disabled={!dcmefoCanEdit || item.linkage?.status !== 'vinculado'} onChange={(event)=>setItemValidation(item.id,'cotaAprovada',event.target.value === '' ? undefined : event.target.value === 'sim')} style={cellInput}><option value="">{item.validationNeedsReview ? 'Conferir decisão anterior' : 'Em análise'}</option><option value="sim">Aprovada</option><option value="nao">Não aprovada</option></select> },
           { key:'motivo', header:'Motivo', render:(item)=><select aria-label={'Motivo: '+item.descricao} value={item.motivoValidacao || ''} disabled={!dcmefoCanEdit || item.linkage?.status !== 'vinculado'} onChange={(event)=>setItemValidation(item.id,'motivoValidacao',event.target.value)} style={cellInput}><option value="">Selecionar motivo</option>{motivos.map((motivo)=><option key={motivo}>{motivo}</option>)}</select> },

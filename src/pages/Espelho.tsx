@@ -1,3 +1,4 @@
+import { formatUnitCode, formatUnitLabel } from '../services/budgetUnits';
 import { useState } from 'react';
 import { useApp } from '../store/AppStore';
 import { Card, Tabs, ActionButton, FormField, SelectField, useToast, brl, uid } from '../components/ui';
@@ -86,7 +87,7 @@ function AcaoMirrorTab({ pid }: { pid: string }) {
     tipoAcao: a.tipoAcao, iag: a.iag, publicoAlvo: a.publicoAlvo, relacaoMulher: '', produto: a.produto, especificacaoProduto: a.especificacaoProduto,
     unidadeMedida: a.unidadeMedida, finalidade: a.finalidade, descricao: a.descricao, baseLegal: a.baseLegal, regionalizacao: '', valorTotalObz: valorObz, itensObz: obz.length,
   };
-  const kv = (k: string, v: any) => <div className="kv"><span>{k}</span><span className="v" style={{ maxWidth: 520, textAlign: 'right' }}>{v || '—'}</span></div>;
+  const kv = (k: string, v: any) => <div className="kv"><span>{k}</span><span className="v" style={{ maxWidth: 520, textAlign: 'right' }}>{(k === 'Código UO' ? formatUnitCode(v) : k.includes('Unidade Orçamentária') || k === 'Unidade responsável' ? formatUnitLabel(v) : v) || '—'}</span></div>;
   return (
     <Card title="Simulação de Preenchimento da Ação"
       actions={<select value={selId} onChange={(e) => setSelId(e.target.value)} style={{ border: '1px solid #ccd6dc', borderRadius: 8, padding: '7px 10px' }}>{actions.map((x) => <option key={x.id} value={x.id}>{x.codigo} — {x.nome.slice(0, 30)}</option>)}</select>}

@@ -37,6 +37,9 @@ export interface ProjectIndicator {
   links: { componentId: string; status: 'sugerido' | 'confirmado' }[];
 }
 export interface ProjectPlanningMap {
+  origin?: 'referencia' | 'local';
+  projectType?: 'estrategico' | 'demais' | 'programa';
+  createdAt?: string;
   id: string;
   projectId: string;
   projectCode: string;

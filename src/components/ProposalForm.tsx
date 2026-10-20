@@ -1,5 +1,6 @@
 import { useMemo, type ReactNode } from 'react';
 import type { OfficialFields, Program, Action } from '../types';
+import { formatUnitCode } from '../services/budgetUnits';
 import { useApp } from '../store/AppStore';
 import { catalogOptions } from '../services/proposalDomain';
 import { changedFields, normalizedFlag } from '../services/planningDomain';
@@ -27,7 +28,7 @@ export function CatalogField({ label, names, fields, onChange, disabled, localVa
   const current = Object.fromEntries(names.map((name) => [name, fields[name] || '']));
   const value = names.some((name) => current[name]) ? JSON.stringify(current) : '';
   const all = value && !options.some((option) => JSON.stringify(option) === value) ? [current, ...options] : options;
-  return <SearchableSelect label={label} hint={hint} disabled={disabled} value={value} options={all.map((option) => ({ value: JSON.stringify(option), label: names.map((name) => option[name]).filter(Boolean).join(' — ') }))}
+  return <SearchableSelect label={label} hint={hint} disabled={disabled} value={value} options={all.map((option) => ({ value: JSON.stringify(option), label: names.map((name) => name.startsWith('Código da Unidade Orçamentária') ? formatUnitCode(option[name]) : option[name]).filter(Boolean).join(' — ') }))}
     onChange={(value) => onChange(value ? JSON.parse(value) : Object.fromEntries(names.map((name) => [name, ''])))}
     allowLocal={localValue} onLocal={(value) => onChange(Object.fromEntries(names.map((name, index) => [name, index === names.length - 1 ? value : ''])))} />;
 }
