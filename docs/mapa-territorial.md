@@ -64,3 +64,11 @@ A parcela estadual aparece separadamente. As parcelas regionais colorem a regiã
 As oito séries orçamentárias são versionadas em data/territorio/recursos-reurb.json, separadas das oito séries físicas. O gerador scripts/territory-planning-targets.mjs lê as colunas Previsão Orçamentária dos mesmos TXT e confere os totais contra a ficha da ação nos testes. Mantêm-se exercício, programa, projeto, ação, UO, localizador e referência à linha de origem. As séries de referência são protegidas e não alteram as fichas qualitativas nem os cadastros de indicadores.
 
 O CSV de recursos exporta a ação/ano selecionados na granularidade dos localizadores. A exportação de dados territoriais em JSON inclui as séries físicas e orçamentárias. npm run generate:territorial-references regenera ambas as referências, além das regionalizações FJP.
+
+## Indicação de localizadores estaduais no mapa
+
+Parcelas com valor positivo em localizador estadual recebem um aviso imediatamente acima da cartografia: valor, percentual da ação, ano e códigos dos localizadores. Uma hachura visível por padrão cobre o contorno de Minas Gerais. É uma camada categórica de abrangência, independente da escala de valores regionais/municipais, e pode ser ocultada sem remover o aviso ou o valor da legenda. A mesma leitura vale para recursos orçamentários e metas físicas.
+
+A indicação também aparece na legenda, nos detalhes do município e no texto de consulta do mapa. O preenchimento estadual da base não permite concluir que todos os municípios serão atendidos. Nenhum valor municipal é calculado a partir dessa parcela. O cinza significa ausência de valor municipal/regional discriminado e não ausência de uma parcela estadual. A hachura continua abrangendo o estado inteiro ao destacar uma região; os valores regionais mantêm sua própria escala.
+
+Em 2026, a ação 1082 destaca R$ 47.501.208,00 (98,38%) no localizador estadual V41991 e mantém R$ 780.000,00 separados na região de Montes Claros. A ação 4528, sem parcela estadual, não recebe a hachura. Anos com valor estadual zero tampouco a recebem.
