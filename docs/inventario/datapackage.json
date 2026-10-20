@@ -9504,7 +9504,10 @@
       "format": "csv",
       "encoding": "windows-1252",
       "dialect": {
-        "delimiter": "|"
+        "delimiter": "|",
+        "doubleQuote": true,
+        "quoteChar": "\"",
+        "header": true
       },
       "schema": {
         "fields": [
@@ -9712,7 +9715,10 @@
       "format": "csv",
       "encoding": "windows-1252",
       "dialect": {
-        "delimiter": "|"
+        "delimiter": "|",
+        "doubleQuote": true,
+        "quoteChar": "\"",
+        "header": true
       },
       "schema": {
         "fields": [
@@ -10042,7 +10048,10 @@
       "format": "csv",
       "encoding": "windows-1252",
       "dialect": {
-        "delimiter": "|"
+        "delimiter": "|",
+        "doubleQuote": true,
+        "quoteChar": "\"",
+        "header": true
       },
       "schema": {
         "fields": [
@@ -10233,7 +10242,10 @@
       "format": "csv",
       "encoding": "windows-1252",
       "dialect": {
-        "delimiter": "|"
+        "delimiter": "|",
+        "doubleQuote": true,
+        "quoteChar": "\"",
+        "header": true
       },
       "schema": {
         "fields": [
@@ -13204,7 +13216,10 @@
       "format": "csv",
       "encoding": "utf-8",
       "dialect": {
-        "delimiter": ","
+        "delimiter": ",",
+        "doubleQuote": true,
+        "quoteChar": "\"",
+        "header": true
       },
       "schema": {
         "fields": [
@@ -13246,7 +13261,10 @@
       "format": "csv",
       "encoding": "utf-8",
       "dialect": {
-        "delimiter": ","
+        "delimiter": ",",
+        "doubleQuote": true,
+        "quoteChar": "\"",
+        "header": true
       },
       "schema": {
         "fields": [
@@ -13293,7 +13311,10 @@
       "format": "csv",
       "encoding": "utf-8",
       "dialect": {
-        "delimiter": ","
+        "delimiter": ",",
+        "doubleQuote": true,
+        "quoteChar": "\"",
+        "header": true
       },
       "schema": {
         "fields": [
@@ -13345,7 +13366,10 @@
       "format": "csv",
       "encoding": "utf-8",
       "dialect": {
-        "delimiter": ","
+        "delimiter": ",",
+        "doubleQuote": true,
+        "quoteChar": "\"",
+        "header": true
       },
       "schema": {
         "fields": [
@@ -13387,7 +13411,10 @@
       "format": "csv",
       "encoding": "utf-8",
       "dialect": {
-        "delimiter": ","
+        "delimiter": ",",
+        "doubleQuote": true,
+        "quoteChar": "\"",
+        "header": true
       },
       "schema": {
         "fields": [
@@ -13429,7 +13456,10 @@
       "format": "csv",
       "encoding": "utf-8",
       "dialect": {
-        "delimiter": ","
+        "delimiter": ",",
+        "doubleQuote": true,
+        "quoteChar": "\"",
+        "header": true
       },
       "schema": {
         "fields": [
@@ -13471,7 +13501,10 @@
       "format": "csv",
       "encoding": "utf-8",
       "dialect": {
-        "delimiter": ","
+        "delimiter": ",",
+        "doubleQuote": true,
+        "quoteChar": "\"",
+        "header": true
       },
       "schema": {
         "fields": [
@@ -13513,7 +13546,10 @@
       "format": "csv",
       "encoding": "utf-8",
       "dialect": {
-        "delimiter": ","
+        "delimiter": ",",
+        "doubleQuote": true,
+        "quoteChar": "\"",
+        "header": true
       },
       "schema": {
         "fields": [
@@ -13560,7 +13596,10 @@
       "format": "csv",
       "encoding": "utf-8",
       "dialect": {
-        "delimiter": ","
+        "delimiter": ",",
+        "doubleQuote": true,
+        "quoteChar": "\"",
+        "header": true
       },
       "schema": {
         "fields": [
@@ -13697,7 +13736,10 @@
       "format": "csv",
       "encoding": "utf-8",
       "dialect": {
-        "delimiter": ","
+        "delimiter": ",",
+        "doubleQuote": true,
+        "quoteChar": "\"",
+        "header": true
       },
       "schema": {
         "fields": [
@@ -13839,7 +13881,10 @@
       "format": "csv",
       "encoding": "utf-8",
       "dialect": {
-        "delimiter": ","
+        "delimiter": ",",
+        "doubleQuote": true,
+        "quoteChar": "\"",
+        "header": true
       },
       "schema": {
         "fields": [
@@ -13906,7 +13951,10 @@
       "format": "csv",
       "encoding": "utf-8",
       "dialect": {
-        "delimiter": ","
+        "delimiter": ",",
+        "doubleQuote": true,
+        "quoteChar": "\"",
+        "header": true
       },
       "schema": {
         "fields": [
@@ -13988,7 +14036,10 @@
       "format": "csv",
       "encoding": "utf-8",
       "dialect": {
-        "delimiter": ","
+        "delimiter": ",",
+        "doubleQuote": true,
+        "quoteChar": "\"",
+        "header": true
       },
       "schema": {
         "fields": [
