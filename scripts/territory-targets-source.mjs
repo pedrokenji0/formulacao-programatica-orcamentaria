@@ -1,0 +1,12 @@
+import { readFileSync } from 'node:fs';
+import { parsePipe } from './planning-import.mjs';
+const decode = path => parsePipe(new TextDecoder('windows-1252').decode(readFileSync(path)));
+const loc = decode('data/raw/plan2026/localizadores_Todos_planejamento.txt');
+const selected = loc.rows.filter(row => ['1082','4528'].includes(String(Number(row['Código da Ação']))));
+const actions = decode('data/raw/plan2026/acoes_planejamento.txt').rows.filter(row => ['1082','4528'].includes(String(Number(row['Código da Ação']))));
+console.log('TARGET_SUMMARY:' + JSON.stringify({ headers:loc.headers, count:selected.length, byAction:Object.fromEntries(['1082','4528'].map(code=>[code,selected.filter(r=>String(Number(r['Código da Ação']))===code).length])), actions }));
+for (const row of selected) console.log('TARGET_ROW:' + JSON.stringify(row));
+const response=await fetch('https://imrs.fjp.mg.gov.br/repositorio/acervo/',{signal:AbortSignal.timeout(45000)});
+if(!response.ok) throw new Error('FJP ' + response.status);
+const html=await response.text();
+console.log('FJP_HTML:' + html.slice(0,90000).replace(/\n/g,' '));

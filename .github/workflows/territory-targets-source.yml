@@ -1,0 +1,16 @@
+name: Conferir fontes territoriais Reurb
+on:
+  push:
+    branches: [codex/metas-reurb-regionalizacoes]
+    paths: [.github/workflows/territory-targets-source.yml, scripts/territory-targets-source.mjs]
+permissions:
+  contents: read
+jobs:
+  source:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+      - run: node scripts/territory-targets-source.mjs
