@@ -29,7 +29,11 @@ Origem não define uma árvore obrigatória. Um item OBZ pode continuar sem aç�
 
 O exercício OBZ não é deduzido do arquivo, da ação encontrada ou da base PPO. Quando ausente na origem, pode ser informado explicitamente pelo usuário na proposta.
 
-O registro genérico de novos projetos/processos transversais ainda requer evolução do modelo. O protótipo já usa o projeto como núcleo dos mapas do Reurb; isso não significa que todos os cadastros transversais propostos já estejam implementados.
+O comando Criar mapa do zero cadastra Demais projetos/processos nomeados ou um mapa geral do programa. Cada cadastro recebe identidades próprias de projeto e mapa, origem local, data de criação e uma lista explícita de ações participantes. As ações podem pertencer a programas e UOs diferentes. O programa responsável define a permissão de edição. Uma ação pode participar de vários projetos; os atalhos exibem todos eles.
+
+Novos mapas usam o mesmo editor do Reurb, mas começam sem componentes ou indicadores. Apenas o mapa de referência do Reurb recebe o conteúdo da avaliação. A limpeza de uma aba preserva a outra e registra histórico. O editor anterior continua acessível para consultar ou editar o conteúdo já existente, sem convertê-lo silenciosamente.
+
+O seletor global de UOs deriva exclusivamente do catálogo PPO, deduplicado pelo código sem zeros à esquerda. Opções antigas do protótipo não são agregadas. Os códigos 4741, 4441, 4451 e 1991 ficam fora desse seletor por solicitação do usuário; registros importados e vínculos existentes permanecem preservados. A identificação FAOP é 2171; a antiga opção fictícia FAOP 1481 não é reutilizada. Os arquivos de origem mantêm sua grafia para rastreabilidade.
 
 ## Tratamento da base de Saúde
 
