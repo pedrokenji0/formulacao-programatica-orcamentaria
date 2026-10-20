@@ -1,0 +1,26 @@
+name: Gerar catálogo territorial dos projetos
+on:
+  push:
+    branches: [codex/territorio-projetos-ciclo]
+    paths:
+      - scripts/territory-planning-catalog.mjs
+      - .github/workflows/territory-catalog.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  catalog:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+      - run: node scripts/territory-planning-catalog.mjs
+      - name: Consultar catálogo gerado
+        run: |
+          echo CATALOGO_TERRITORIAL_INICIO
+          cat data/territorio/planejamento-projetos.json
+          echo CATALOGO_TERRITORIAL_FIM
