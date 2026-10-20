@@ -3,6 +3,8 @@
 // ============================================================================
 
 import type { ActionComplements, ComponentAssociation, OfficialFields, PlanningProposal } from './planning';
+import type { TerritoryState } from './territory';
+export type * from './territory';
 import type { ProjectPlanningMap } from './projectMaps';
 export type * from './planning';
 export type * from './projectMaps';
@@ -392,6 +394,7 @@ export interface SupportList {
 
 // ---- Estado global ----
 export interface AppState {
+  territory?: TerritoryState;
   schemaVersion?: number;
   planning?: PlanningProposal;
   perfil: Perfil;

@@ -13,6 +13,7 @@ const MENU: NavNode[] = [
           { id: 'qual-programa', label: 'Programa', route: 'qual-programa' },
           { id: 'qual-acoes', label: 'Ações e Entregas', route: 'qual-acoes' },
           { id: 'qual-mapa', label: 'Mapas de planejamento', route: 'qual-mapa' },
+          { id: 'qual-territorio', label: 'Mapa territorial', route: 'qual-territorio' },
           { id: 'qual-revisao', label: 'Revisão do Planejamento', route: 'qual-revisao' },
         ],
       },

@@ -1,3 +1,4 @@
+import { enforceTerritoryUpdate } from './territoryDomain.ts';
 import { enforceBudgetUpdate, unitCode } from './obzData.ts';
 import type { AppState, PlanningDataset, PlanningEntityKind, ProposalEvent } from '../types/index.ts';
 import type { EditableRecord } from './editingPolicy.ts';
@@ -71,6 +72,7 @@ export function proposeAssociation(state: AppState, reference: PlanningDataset, 
   logOperation(state, kind, id, 'vinculo', request.before, request.after, reason);
 }
 export function enforceEditingUpdate(previous: AppState, next: AppState, reference: PlanningDataset) {
+  enforceTerritoryUpdate(previous, next, reference);
   enforceBudgetUpdate(previous, next);
   if (!next.planning || !previous.planning) return;
   enforceProjectMapUpdate(previous, next);

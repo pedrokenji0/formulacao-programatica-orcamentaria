@@ -1,0 +1,10238 @@
+[
+  {
+    "code": "3100104",
+    "name": "Abadia dos Dourados",
+    "immediate": {
+      "code": "310061",
+      "name": "Monte Carmelo"
+    },
+    "intermediate": {
+      "code": "3111",
+      "name": "Uberlândia"
+    }
+  },
+  {
+    "code": "3100203",
+    "name": "Abaeté",
+    "immediate": {
+      "code": "310070",
+      "name": "Abaeté"
+    },
+    "intermediate": {
+      "code": "3113",
+      "name": "Divinópolis"
+    }
+  },
+  {
+    "code": "3100302",
+    "name": "Abre Campo",
+    "immediate": {
+      "code": "310028",
+      "name": "Manhuaçu"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3100401",
+    "name": "Acaiaca",
+    "immediate": {
+      "code": "310030",
+      "name": "Ponte Nova"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3100500",
+    "name": "Açucena",
+    "immediate": {
+      "code": "310024",
+      "name": "Ipatinga"
+    },
+    "intermediate": {
+      "code": "3105",
+      "name": "Ipatinga"
+    }
+  },
+  {
+    "code": "3100609",
+    "name": "Água Boa",
+    "immediate": {
+      "code": "310014",
+      "name": "Capelinha"
+    },
+    "intermediate": {
+      "code": "3103",
+      "name": "Teófilo Otoni"
+    }
+  },
+  {
+    "code": "3100708",
+    "name": "Água Comprida",
+    "immediate": {
+      "code": "310055",
+      "name": "Uberaba"
+    },
+    "intermediate": {
+      "code": "3110",
+      "name": "Uberaba"
+    }
+  },
+  {
+    "code": "3100807",
+    "name": "Aguanil",
+    "immediate": {
+      "code": "310048",
+      "name": "Campo Belo"
+    },
+    "intermediate": {
+      "code": "3108",
+      "name": "Varginha"
+    }
+  },
+  {
+    "code": "3100906",
+    "name": "Águas Formosas",
+    "immediate": {
+      "code": "310019",
+      "name": "Águas Formosas"
+    },
+    "intermediate": {
+      "code": "3103",
+      "name": "Teófilo Otoni"
+    }
+  },
+  {
+    "code": "3101003",
+    "name": "Águas Vermelhas",
+    "immediate": {
+      "code": "310018",
+      "name": "Pedra Azul"
+    },
+    "intermediate": {
+      "code": "3103",
+      "name": "Teófilo Otoni"
+    }
+  },
+  {
+    "code": "3101102",
+    "name": "Aimorés",
+    "immediate": {
+      "code": "310023",
+      "name": "Aimorés - Resplendor"
+    },
+    "intermediate": {
+      "code": "3104",
+      "name": "Governador Valadares"
+    }
+  },
+  {
+    "code": "3101201",
+    "name": "Aiuruoca",
+    "immediate": {
+      "code": "310054",
+      "name": "Caxambu - Baependi"
+    },
+    "intermediate": {
+      "code": "3109",
+      "name": "Pouso Alegre"
+    }
+  },
+  {
+    "code": "3101300",
+    "name": "Alagoa",
+    "immediate": {
+      "code": "310053",
+      "name": "São Lourenço"
+    },
+    "intermediate": {
+      "code": "3109",
+      "name": "Pouso Alegre"
+    }
+  },
+  {
+    "code": "3101409",
+    "name": "Albertina",
+    "immediate": {
+      "code": "310050",
+      "name": "Pouso Alegre"
+    },
+    "intermediate": {
+      "code": "3109",
+      "name": "Pouso Alegre"
+    }
+  },
+  {
+    "code": "3101508",
+    "name": "Além Paraíba",
+    "immediate": {
+      "code": "310036",
+      "name": "Além Paraíba"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3101607",
+    "name": "Alfenas",
+    "immediate": {
+      "code": "310042",
+      "name": "Alfenas"
+    },
+    "intermediate": {
+      "code": "3108",
+      "name": "Varginha"
+    }
+  },
+  {
+    "code": "3101631",
+    "name": "Alfredo Vasconcelos",
+    "immediate": {
+      "code": "310037",
+      "name": "Barbacena"
+    },
+    "intermediate": {
+      "code": "3107",
+      "name": "Barbacena"
+    }
+  },
+  {
+    "code": "3101706",
+    "name": "Almenara",
+    "immediate": {
+      "code": "310015",
+      "name": "Almenara"
+    },
+    "intermediate": {
+      "code": "3103",
+      "name": "Teófilo Otoni"
+    }
+  },
+  {
+    "code": "3101805",
+    "name": "Alpercata",
+    "immediate": {
+      "code": "310020",
+      "name": "Governador Valadares"
+    },
+    "intermediate": {
+      "code": "3104",
+      "name": "Governador Valadares"
+    }
+  },
+  {
+    "code": "3101904",
+    "name": "Alpinópolis",
+    "immediate": {
+      "code": "310041",
+      "name": "Passos"
+    },
+    "intermediate": {
+      "code": "3108",
+      "name": "Varginha"
+    }
+  },
+  {
+    "code": "3102001",
+    "name": "Alterosa",
+    "immediate": {
+      "code": "310042",
+      "name": "Alfenas"
+    },
+    "intermediate": {
+      "code": "3108",
+      "name": "Varginha"
+    }
+  },
+  {
+    "code": "3102050",
+    "name": "Alto Caparaó",
+    "immediate": {
+      "code": "310028",
+      "name": "Manhuaçu"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3102100",
+    "name": "Alto Rio Doce",
+    "immediate": {
+      "code": "310037",
+      "name": "Barbacena"
+    },
+    "intermediate": {
+      "code": "3107",
+      "name": "Barbacena"
+    }
+  },
+  {
+    "code": "3102209",
+    "name": "Alvarenga",
+    "immediate": {
+      "code": "310025",
+      "name": "Caratinga"
+    },
+    "intermediate": {
+      "code": "3105",
+      "name": "Ipatinga"
+    }
+  },
+  {
+    "code": "3102308",
+    "name": "Alvinópolis",
+    "immediate": {
+      "code": "310030",
+      "name": "Ponte Nova"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3102407",
+    "name": "Alvorada de Minas",
+    "immediate": {
+      "code": "310016",
+      "name": "Diamantina"
+    },
+    "intermediate": {
+      "code": "3103",
+      "name": "Teófilo Otoni"
+    }
+  },
+  {
+    "code": "3102506",
+    "name": "Amparo do Serra",
+    "immediate": {
+      "code": "310030",
+      "name": "Ponte Nova"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3102605",
+    "name": "Andradas",
+    "immediate": {
+      "code": "310051",
+      "name": "Poços de Caldas"
+    },
+    "intermediate": {
+      "code": "3109",
+      "name": "Pouso Alegre"
+    }
+  },
+  {
+    "code": "3102704",
+    "name": "Cachoeira de Pajeú",
+    "immediate": {
+      "code": "310018",
+      "name": "Pedra Azul"
+    },
+    "intermediate": {
+      "code": "3103",
+      "name": "Teófilo Otoni"
+    }
+  },
+  {
+    "code": "3102803",
+    "name": "Andrelândia",
+    "immediate": {
+      "code": "310027",
+      "name": "Juiz de Fora"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3102852",
+    "name": "Angelândia",
+    "immediate": {
+      "code": "310014",
+      "name": "Capelinha"
+    },
+    "intermediate": {
+      "code": "3103",
+      "name": "Teófilo Otoni"
+    }
+  },
+  {
+    "code": "3102902",
+    "name": "Antônio Carlos",
+    "immediate": {
+      "code": "310037",
+      "name": "Barbacena"
+    },
+    "intermediate": {
+      "code": "3107",
+      "name": "Barbacena"
+    }
+  },
+  {
+    "code": "3103009",
+    "name": "Antônio Dias",
+    "immediate": {
+      "code": "310024",
+      "name": "Ipatinga"
+    },
+    "intermediate": {
+      "code": "3105",
+      "name": "Ipatinga"
+    }
+  },
+  {
+    "code": "3103108",
+    "name": "Antônio Prado de Minas",
+    "immediate": {
+      "code": "310031",
+      "name": "Muriaé"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3103207",
+    "name": "Araçaí",
+    "immediate": {
+      "code": "310002",
+      "name": "Sete Lagoas"
+    },
+    "intermediate": {
+      "code": "3101",
+      "name": "Belo Horizonte"
+    }
+  },
+  {
+    "code": "3103306",
+    "name": "Aracitaba",
+    "immediate": {
+      "code": "310027",
+      "name": "Juiz de Fora"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3103405",
+    "name": "Araçuaí",
+    "immediate": {
+      "code": "310017",
+      "name": "Araçuaí"
+    },
+    "intermediate": {
+      "code": "3103",
+      "name": "Teófilo Otoni"
+    }
+  },
+  {
+    "code": "3103504",
+    "name": "Araguari",
+    "immediate": {
+      "code": "310059",
+      "name": "Uberlândia"
+    },
+    "intermediate": {
+      "code": "3111",
+      "name": "Uberlândia"
+    }
+  },
+  {
+    "code": "3103603",
+    "name": "Arantina",
+    "immediate": {
+      "code": "310027",
+      "name": "Juiz de Fora"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3103702",
+    "name": "Araponga",
+    "immediate": {
+      "code": "310033",
+      "name": "Viçosa"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3103751",
+    "name": "Araporã",
+    "immediate": {
+      "code": "310059",
+      "name": "Uberlândia"
+    },
+    "intermediate": {
+      "code": "3111",
+      "name": "Uberlândia"
+    }
+  },
+  {
+    "code": "3103801",
+    "name": "Arapuá",
+    "immediate": {
+      "code": "310062",
+      "name": "Patos de Minas"
+    },
+    "intermediate": {
+      "code": "3112",
+      "name": "Patos de Minas"
+    }
+  },
+  {
+    "code": "3103900",
+    "name": "Araújos",
+    "immediate": {
+      "code": "310065",
+      "name": "Divinópolis"
+    },
+    "intermediate": {
+      "code": "3113",
+      "name": "Divinópolis"
+    }
+  },
+  {
+    "code": "3104007",
+    "name": "Araxá",
+    "immediate": {
+      "code": "310056",
+      "name": "Araxá"
+    },
+    "intermediate": {
+      "code": "3110",
+      "name": "Uberaba"
+    }
+  },
+  {
+    "code": "3104106",
+    "name": "Arceburgo",
+    "immediate": {
+      "code": "310044",
+      "name": "Guaxupé"
+    },
+    "intermediate": {
+      "code": "3108",
+      "name": "Varginha"
+    }
+  },
+  {
+    "code": "3104205",
+    "name": "Arcos",
+    "immediate": {
+      "code": "310066",
+      "name": "Formiga"
+    },
+    "intermediate": {
+      "code": "3113",
+      "name": "Divinópolis"
+    }
+  },
+  {
+    "code": "3104304",
+    "name": "Areado",
+    "immediate": {
+      "code": "310042",
+      "name": "Alfenas"
+    },
+    "intermediate": {
+      "code": "3108",
+      "name": "Varginha"
+    }
+  },
+  {
+    "code": "3104403",
+    "name": "Argirita",
+    "immediate": {
+      "code": "310032",
+      "name": "Cataguases"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3104452",
+    "name": "Aricanduva",
+    "immediate": {
+      "code": "310014",
+      "name": "Capelinha"
+    },
+    "intermediate": {
+      "code": "3103",
+      "name": "Teófilo Otoni"
+    }
+  },
+  {
+    "code": "3104502",
+    "name": "Arinos",
+    "immediate": {
+      "code": "310063",
+      "name": "Unaí"
+    },
+    "intermediate": {
+      "code": "3112",
+      "name": "Patos de Minas"
+    }
+  },
+  {
+    "code": "3104601",
+    "name": "Astolfo Dutra",
+    "immediate": {
+      "code": "310032",
+      "name": "Cataguases"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3104700",
+    "name": "Ataléia",
+    "immediate": {
+      "code": "310013",
+      "name": "Teófilo Otoni"
+    },
+    "intermediate": {
+      "code": "3103",
+      "name": "Teófilo Otoni"
+    }
+  },
+  {
+    "code": "3104809",
+    "name": "Augusto de Lima",
+    "immediate": {
+      "code": "310004",
+      "name": "Curvelo"
+    },
+    "intermediate": {
+      "code": "3101",
+      "name": "Belo Horizonte"
+    }
+  },
+  {
+    "code": "3104908",
+    "name": "Baependi",
+    "immediate": {
+      "code": "310054",
+      "name": "Caxambu - Baependi"
+    },
+    "intermediate": {
+      "code": "3109",
+      "name": "Pouso Alegre"
+    }
+  },
+  {
+    "code": "3105004",
+    "name": "Baldim",
+    "immediate": {
+      "code": "310002",
+      "name": "Sete Lagoas"
+    },
+    "intermediate": {
+      "code": "3101",
+      "name": "Belo Horizonte"
+    }
+  },
+  {
+    "code": "3105103",
+    "name": "Bambuí",
+    "immediate": {
+      "code": "310066",
+      "name": "Formiga"
+    },
+    "intermediate": {
+      "code": "3113",
+      "name": "Divinópolis"
+    }
+  },
+  {
+    "code": "3105202",
+    "name": "Bandeira",
+    "immediate": {
+      "code": "310015",
+      "name": "Almenara"
+    },
+    "intermediate": {
+      "code": "3103",
+      "name": "Teófilo Otoni"
+    }
+  },
+  {
+    "code": "3105301",
+    "name": "Bandeira do Sul",
+    "immediate": {
+      "code": "310051",
+      "name": "Poços de Caldas"
+    },
+    "intermediate": {
+      "code": "3109",
+      "name": "Pouso Alegre"
+    }
+  },
+  {
+    "code": "3105400",
+    "name": "Barão de Cocais",
+    "immediate": {
+      "code": "310003",
+      "name": "Santa Bárbara - Ouro Preto"
+    },
+    "intermediate": {
+      "code": "3101",
+      "name": "Belo Horizonte"
+    }
+  },
+  {
+    "code": "3105509",
+    "name": "Barão do Monte Alto",
+    "immediate": {
+      "code": "310031",
+      "name": "Muriaé"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3105608",
+    "name": "Barbacena",
+    "immediate": {
+      "code": "310037",
+      "name": "Barbacena"
+    },
+    "intermediate": {
+      "code": "3107",
+      "name": "Barbacena"
+    }
+  },
+  {
+    "code": "3105707",
+    "name": "Barra Longa",
+    "immediate": {
+      "code": "310030",
+      "name": "Ponte Nova"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3105905",
+    "name": "Barroso",
+    "immediate": {
+      "code": "310037",
+      "name": "Barbacena"
+    },
+    "intermediate": {
+      "code": "3107",
+      "name": "Barbacena"
+    }
+  },
+  {
+    "code": "3106002",
+    "name": "Bela Vista de Minas",
+    "immediate": {
+      "code": "310026",
+      "name": "João Monlevade"
+    },
+    "intermediate": {
+      "code": "3105",
+      "name": "Ipatinga"
+    }
+  },
+  {
+    "code": "3106101",
+    "name": "Belmiro Braga",
+    "immediate": {
+      "code": "310027",
+      "name": "Juiz de Fora"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3106200",
+    "name": "Belo Horizonte",
+    "immediate": {
+      "code": "310001",
+      "name": "Belo Horizonte"
+    },
+    "intermediate": {
+      "code": "3101",
+      "name": "Belo Horizonte"
+    }
+  },
+  {
+    "code": "3106309",
+    "name": "Belo Oriente",
+    "immediate": {
+      "code": "310024",
+      "name": "Ipatinga"
+    },
+    "intermediate": {
+      "code": "3105",
+      "name": "Ipatinga"
+    }
+  },
+  {
+    "code": "3106408",
+    "name": "Belo Vale",
+    "immediate": {
+      "code": "310038",
+      "name": "Conselheiro Lafaiete"
+    },
+    "intermediate": {
+      "code": "3107",
+      "name": "Barbacena"
+    }
+  },
+  {
+    "code": "3106507",
+    "name": "Berilo",
+    "immediate": {
+      "code": "310017",
+      "name": "Araçuaí"
+    },
+    "intermediate": {
+      "code": "3103",
+      "name": "Teófilo Otoni"
+    }
+  },
+  {
+    "code": "3106606",
+    "name": "Bertópolis",
+    "immediate": {
+      "code": "310019",
+      "name": "Águas Formosas"
+    },
+    "intermediate": {
+      "code": "3103",
+      "name": "Teófilo Otoni"
+    }
+  },
+  {
+    "code": "3106655",
+    "name": "Berizal",
+    "immediate": {
+      "code": "310008",
+      "name": "Salinas"
+    },
+    "intermediate": {
+      "code": "3102",
+      "name": "Montes Claros"
+    }
+  },
+  {
+    "code": "3106705",
+    "name": "Betim",
+    "immediate": {
+      "code": "310001",
+      "name": "Belo Horizonte"
+    },
+    "intermediate": {
+      "code": "3101",
+      "name": "Belo Horizonte"
+    }
+  },
+  {
+    "code": "3106804",
+    "name": "Bias Fortes",
+    "immediate": {
+      "code": "310027",
+      "name": "Juiz de Fora"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3106903",
+    "name": "Bicas",
+    "immediate": {
+      "code": "310035",
+      "name": "São João Nepomuceno - Bicas"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3107000",
+    "name": "Biquinhas",
+    "immediate": {
+      "code": "310070",
+      "name": "Abaeté"
+    },
+    "intermediate": {
+      "code": "3113",
+      "name": "Divinópolis"
+    }
+  },
+  {
+    "code": "3107109",
+    "name": "Boa Esperança",
+    "immediate": {
+      "code": "310046",
+      "name": "Três Pontas - Boa Esperança"
+    },
+    "intermediate": {
+      "code": "3108",
+      "name": "Varginha"
+    }
+  },
+  {
+    "code": "3107208",
+    "name": "Bocaina de Minas",
+    "immediate": {
+      "code": "310027",
+      "name": "Juiz de Fora"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3107307",
+    "name": "Bocaiúva",
+    "immediate": {
+      "code": "310006",
+      "name": "Montes Claros"
+    },
+    "intermediate": {
+      "code": "3102",
+      "name": "Montes Claros"
+    }
+  },
+  {
+    "code": "3107406",
+    "name": "Bom Despacho",
+    "immediate": {
+      "code": "310067",
+      "name": "Dores do Indaiá"
+    },
+    "intermediate": {
+      "code": "3113",
+      "name": "Divinópolis"
+    }
+  },
+  {
+    "code": "3107505",
+    "name": "Bom Jardim de Minas",
+    "immediate": {
+      "code": "310027",
+      "name": "Juiz de Fora"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3107604",
+    "name": "Bom Jesus da Penha",
+    "immediate": {
+      "code": "310041",
+      "name": "Passos"
+    },
+    "intermediate": {
+      "code": "3108",
+      "name": "Varginha"
+    }
+  },
+  {
+    "code": "3107703",
+    "name": "Bom Jesus do Amparo",
+    "immediate": {
+      "code": "310005",
+      "name": "Itabira"
+    },
+    "intermediate": {
+      "code": "3101",
+      "name": "Belo Horizonte"
+    }
+  },
+  {
+    "code": "3107802",
+    "name": "Bom Jesus do Galho",
+    "immediate": {
+      "code": "310025",
+      "name": "Caratinga"
+    },
+    "intermediate": {
+      "code": "3105",
+      "name": "Ipatinga"
+    }
+  },
+  {
+    "code": "3107901",
+    "name": "Bom Repouso",
+    "immediate": {
+      "code": "310050",
+      "name": "Pouso Alegre"
+    },
+    "intermediate": {
+      "code": "3109",
+      "name": "Pouso Alegre"
+    }
+  },
+  {
+    "code": "3108008",
+    "name": "Bom Sucesso",
+    "immediate": {
+      "code": "310043",
+      "name": "Lavras"
+    },
+    "intermediate": {
+      "code": "3108",
+      "name": "Varginha"
+    }
+  },
+  {
+    "code": "3108107",
+    "name": "Bonfim",
+    "immediate": {
+      "code": "310069",
+      "name": "Oliveira"
+    },
+    "intermediate": {
+      "code": "3113",
+      "name": "Divinópolis"
+    }
+  },
+  {
+    "code": "3108206",
+    "name": "Bonfinópolis de Minas",
+    "immediate": {
+      "code": "310063",
+      "name": "Unaí"
+    },
+    "intermediate": {
+      "code": "3112",
+      "name": "Patos de Minas"
+    }
+  },
+  {
+    "code": "3108255",
+    "name": "Bonito de Minas",
+    "immediate": {
+      "code": "310009",
+      "name": "Januária"
+    },
+    "intermediate": {
+      "code": "3102",
+      "name": "Montes Claros"
+    }
+  },
+  {
+    "code": "3108305",
+    "name": "Borda da Mata",
+    "immediate": {
+      "code": "310050",
+      "name": "Pouso Alegre"
+    },
+    "intermediate": {
+      "code": "3109",
+      "name": "Pouso Alegre"
+    }
+  },
+  {
+    "code": "3108404",
+    "name": "Botelhos",
+    "immediate": {
+      "code": "310051",
+      "name": "Poços de Caldas"
+    },
+    "intermediate": {
+      "code": "3109",
+      "name": "Pouso Alegre"
+    }
+  },
+  {
+    "code": "3108503",
+    "name": "Botumirim",
+    "immediate": {
+      "code": "310006",
+      "name": "Montes Claros"
+    },
+    "intermediate": {
+      "code": "3102",
+      "name": "Montes Claros"
+    }
+  },
+  {
+    "code": "3108552",
+    "name": "Brasilândia de Minas",
+    "immediate": {
+      "code": "310062",
+      "name": "Patos de Minas"
+    },
+    "intermediate": {
+      "code": "3112",
+      "name": "Patos de Minas"
+    }
+  },
+  {
+    "code": "3108602",
+    "name": "Brasília de Minas",
+    "immediate": {
+      "code": "310006",
+      "name": "Montes Claros"
+    },
+    "intermediate": {
+      "code": "3102",
+      "name": "Montes Claros"
+    }
+  },
+  {
+    "code": "3108701",
+    "name": "Brás Pires",
+    "immediate": {
+      "code": "310029",
+      "name": "Ubá"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3108800",
+    "name": "Braúnas",
+    "immediate": {
+      "code": "310024",
+      "name": "Ipatinga"
+    },
+    "intermediate": {
+      "code": "3105",
+      "name": "Ipatinga"
+    }
+  },
+  {
+    "code": "3108909",
+    "name": "Brazópolis",
+    "immediate": {
+      "code": "310052",
+      "name": "Itajubá"
+    },
+    "intermediate": {
+      "code": "3109",
+      "name": "Pouso Alegre"
+    }
+  },
+  {
+    "code": "3109006",
+    "name": "Brumadinho",
+    "immediate": {
+      "code": "310001",
+      "name": "Belo Horizonte"
+    },
+    "intermediate": {
+      "code": "3101",
+      "name": "Belo Horizonte"
+    }
+  },
+  {
+    "code": "3109105",
+    "name": "Bueno Brandão",
+    "immediate": {
+      "code": "310050",
+      "name": "Pouso Alegre"
+    },
+    "intermediate": {
+      "code": "3109",
+      "name": "Pouso Alegre"
+    }
+  },
+  {
+    "code": "3109204",
+    "name": "Buenópolis",
+    "immediate": {
+      "code": "310004",
+      "name": "Curvelo"
+    },
+    "intermediate": {
+      "code": "3101",
+      "name": "Belo Horizonte"
+    }
+  },
+  {
+    "code": "3109253",
+    "name": "Bugre",
+    "immediate": {
+      "code": "310024",
+      "name": "Ipatinga"
+    },
+    "intermediate": {
+      "code": "3105",
+      "name": "Ipatinga"
+    }
+  },
+  {
+    "code": "3109303",
+    "name": "Buritis",
+    "immediate": {
+      "code": "310063",
+      "name": "Unaí"
+    },
+    "intermediate": {
+      "code": "3112",
+      "name": "Patos de Minas"
+    }
+  },
+  {
+    "code": "3109402",
+    "name": "Buritizeiro",
+    "immediate": {
+      "code": "310010",
+      "name": "Pirapora"
+    },
+    "intermediate": {
+      "code": "3102",
+      "name": "Montes Claros"
+    }
+  },
+  {
+    "code": "3109451",
+    "name": "Cabeceira Grande",
+    "immediate": {
+      "code": "310063",
+      "name": "Unaí"
+    },
+    "intermediate": {
+      "code": "3112",
+      "name": "Patos de Minas"
+    }
+  },
+  {
+    "code": "3109501",
+    "name": "Cabo Verde",
+    "immediate": {
+      "code": "310044",
+      "name": "Guaxupé"
+    },
+    "intermediate": {
+      "code": "3108",
+      "name": "Varginha"
+    }
+  },
+  {
+    "code": "3109600",
+    "name": "Cachoeira da Prata",
+    "immediate": {
+      "code": "310002",
+      "name": "Sete Lagoas"
+    },
+    "intermediate": {
+      "code": "3101",
+      "name": "Belo Horizonte"
+    }
+  },
+  {
+    "code": "3109709",
+    "name": "Cachoeira de Minas",
+    "immediate": {
+      "code": "310050",
+      "name": "Pouso Alegre"
+    },
+    "intermediate": {
+      "code": "3109",
+      "name": "Pouso Alegre"
+    }
+  },
+  {
+    "code": "3109808",
+    "name": "Cachoeira Dourada",
+    "immediate": {
+      "code": "310060",
+      "name": "Ituiutaba"
+    },
+    "intermediate": {
+      "code": "3111",
+      "name": "Uberlândia"
+    }
+  },
+  {
+    "code": "3109907",
+    "name": "Caetanópolis",
+    "immediate": {
+      "code": "310002",
+      "name": "Sete Lagoas"
+    },
+    "intermediate": {
+      "code": "3101",
+      "name": "Belo Horizonte"
+    }
+  },
+  {
+    "code": "3110004",
+    "name": "Caeté",
+    "immediate": {
+      "code": "310001",
+      "name": "Belo Horizonte"
+    },
+    "intermediate": {
+      "code": "3101",
+      "name": "Belo Horizonte"
+    }
+  },
+  {
+    "code": "3110103",
+    "name": "Caiana",
+    "immediate": {
+      "code": "310034",
+      "name": "Carangola"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3110202",
+    "name": "Cajuri",
+    "immediate": {
+      "code": "310033",
+      "name": "Viçosa"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3110301",
+    "name": "Caldas",
+    "immediate": {
+      "code": "310051",
+      "name": "Poços de Caldas"
+    },
+    "intermediate": {
+      "code": "3109",
+      "name": "Pouso Alegre"
+    }
+  },
+  {
+    "code": "3110400",
+    "name": "Camacho",
+    "immediate": {
+      "code": "310065",
+      "name": "Divinópolis"
+    },
+    "intermediate": {
+      "code": "3113",
+      "name": "Divinópolis"
+    }
+  },
+  {
+    "code": "3110509",
+    "name": "Camanducaia",
+    "immediate": {
+      "code": "310050",
+      "name": "Pouso Alegre"
+    },
+    "intermediate": {
+      "code": "3109",
+      "name": "Pouso Alegre"
+    }
+  },
+  {
+    "code": "3110608",
+    "name": "Cambuí",
+    "immediate": {
+      "code": "310050",
+      "name": "Pouso Alegre"
+    },
+    "intermediate": {
+      "code": "3109",
+      "name": "Pouso Alegre"
+    }
+  },
+  {
+    "code": "3110707",
+    "name": "Cambuquira",
+    "immediate": {
+      "code": "310045",
+      "name": "Três Corações"
+    },
+    "intermediate": {
+      "code": "3108",
+      "name": "Varginha"
+    }
+  },
+  {
+    "code": "3110806",
+    "name": "Campanário",
+    "immediate": {
+      "code": "310013",
+      "name": "Teófilo Otoni"
+    },
+    "intermediate": {
+      "code": "3103",
+      "name": "Teófilo Otoni"
+    }
+  },
+  {
+    "code": "3110905",
+    "name": "Campanha",
+    "immediate": {
+      "code": "310045",
+      "name": "Três Corações"
+    },
+    "intermediate": {
+      "code": "3108",
+      "name": "Varginha"
+    }
+  },
+  {
+    "code": "3111002",
+    "name": "Campestre",
+    "immediate": {
+      "code": "310051",
+      "name": "Poços de Caldas"
+    },
+    "intermediate": {
+      "code": "3109",
+      "name": "Pouso Alegre"
+    }
+  },
+  {
+    "code": "3111101",
+    "name": "Campina Verde",
+    "immediate": {
+      "code": "310059",
+      "name": "Uberlândia"
+    },
+    "intermediate": {
+      "code": "3111",
+      "name": "Uberlândia"
+    }
+  },
+  {
+    "code": "3111150",
+    "name": "Campo Azul",
+    "immediate": {
+      "code": "310006",
+      "name": "Montes Claros"
+    },
+    "intermediate": {
+      "code": "3102",
+      "name": "Montes Claros"
+    }
+  },
+  {
+    "code": "3111200",
+    "name": "Campo Belo",
+    "immediate": {
+      "code": "310048",
+      "name": "Campo Belo"
+    },
+    "intermediate": {
+      "code": "3108",
+      "name": "Varginha"
+    }
+  },
+  {
+    "code": "3111309",
+    "name": "Campo do Meio",
+    "immediate": {
+      "code": "310042",
+      "name": "Alfenas"
+    },
+    "intermediate": {
+      "code": "3108",
+      "name": "Varginha"
+    }
+  },
+  {
+    "code": "3111408",
+    "name": "Campo Florido",
+    "immediate": {
+      "code": "310055",
+      "name": "Uberaba"
+    },
+    "intermediate": {
+      "code": "3110",
+      "name": "Uberaba"
+    }
+  },
+  {
+    "code": "3111507",
+    "name": "Campos Altos",
+    "immediate": {
+      "code": "310056",
+      "name": "Araxá"
+    },
+    "intermediate": {
+      "code": "3110",
+      "name": "Uberaba"
+    }
+  },
+  {
+    "code": "3111606",
+    "name": "Campos Gerais",
+    "immediate": {
+      "code": "310042",
+      "name": "Alfenas"
+    },
+    "intermediate": {
+      "code": "3108",
+      "name": "Varginha"
+    }
+  },
+  {
+    "code": "3111705",
+    "name": "Canaã",
+    "immediate": {
+      "code": "310033",
+      "name": "Viçosa"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3111804",
+    "name": "Canápolis",
+    "immediate": {
+      "code": "310059",
+      "name": "Uberlândia"
+    },
+    "intermediate": {
+      "code": "3111",
+      "name": "Uberlândia"
+    }
+  },
+  {
+    "code": "3111903",
+    "name": "Cana Verde",
+    "immediate": {
+      "code": "310043",
+      "name": "Lavras"
+    },
+    "intermediate": {
+      "code": "3108",
+      "name": "Varginha"
+    }
+  },
+  {
+    "code": "3112000",
+    "name": "Candeias",
+    "immediate": {
+      "code": "310048",
+      "name": "Campo Belo"
+    },
+    "intermediate": {
+      "code": "3108",
+      "name": "Varginha"
+    }
+  },
+  {
+    "code": "3112059",
+    "name": "Cantagalo",
+    "immediate": {
+      "code": "310021",
+      "name": "Guanhães"
+    },
+    "intermediate": {
+      "code": "3104",
+      "name": "Governador Valadares"
+    }
+  },
+  {
+    "code": "3112109",
+    "name": "Caparaó",
+    "immediate": {
+      "code": "310028",
+      "name": "Manhuaçu"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3112208",
+    "name": "Capela Nova",
+    "immediate": {
+      "code": "310038",
+      "name": "Conselheiro Lafaiete"
+    },
+    "intermediate": {
+      "code": "3107",
+      "name": "Barbacena"
+    }
+  },
+  {
+    "code": "3112307",
+    "name": "Capelinha",
+    "immediate": {
+      "code": "310014",
+      "name": "Capelinha"
+    },
+    "intermediate": {
+      "code": "3103",
+      "name": "Teófilo Otoni"
+    }
+  },
+  {
+    "code": "3112406",
+    "name": "Capetinga",
+    "immediate": {
+      "code": "310041",
+      "name": "Passos"
+    },
+    "intermediate": {
+      "code": "3108",
+      "name": "Varginha"
+    }
+  },
+  {
+    "code": "3112505",
+    "name": "Capim Branco",
+    "immediate": {
+      "code": "310002",
+      "name": "Sete Lagoas"
+    },
+    "intermediate": {
+      "code": "3101",
+      "name": "Belo Horizonte"
+    }
+  },
+  {
+    "code": "3112604",
+    "name": "Capinópolis",
+    "immediate": {
+      "code": "310060",
+      "name": "Ituiutaba"
+    },
+    "intermediate": {
+      "code": "3111",
+      "name": "Uberlândia"
+    }
+  },
+  {
+    "code": "3112653",
+    "name": "Capitão Andrade",
+    "immediate": {
+      "code": "310020",
+      "name": "Governador Valadares"
+    },
+    "intermediate": {
+      "code": "3104",
+      "name": "Governador Valadares"
+    }
+  },
+  {
+    "code": "3112703",
+    "name": "Capitão Enéas",
+    "immediate": {
+      "code": "310006",
+      "name": "Montes Claros"
+    },
+    "intermediate": {
+      "code": "3102",
+      "name": "Montes Claros"
+    }
+  },
+  {
+    "code": "3112802",
+    "name": "Capitólio",
+    "immediate": {
+      "code": "310049",
+      "name": "Piumhi"
+    },
+    "intermediate": {
+      "code": "3108",
+      "name": "Varginha"
+    }
+  },
+  {
+    "code": "3112901",
+    "name": "Caputira",
+    "immediate": {
+      "code": "310028",
+      "name": "Manhuaçu"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3113008",
+    "name": "Caraí",
+    "immediate": {
+      "code": "310013",
+      "name": "Teófilo Otoni"
+    },
+    "intermediate": {
+      "code": "3103",
+      "name": "Teófilo Otoni"
+    }
+  },
+  {
+    "code": "3113107",
+    "name": "Caranaíba",
+    "immediate": {
+      "code": "310038",
+      "name": "Conselheiro Lafaiete"
+    },
+    "intermediate": {
+      "code": "3107",
+      "name": "Barbacena"
+    }
+  },
+  {
+    "code": "3113206",
+    "name": "Carandaí",
+    "immediate": {
+      "code": "310038",
+      "name": "Conselheiro Lafaiete"
+    },
+    "intermediate": {
+      "code": "3107",
+      "name": "Barbacena"
+    }
+  },
+  {
+    "code": "3113305",
+    "name": "Carangola",
+    "immediate": {
+      "code": "310034",
+      "name": "Carangola"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3113404",
+    "name": "Caratinga",
+    "immediate": {
+      "code": "310025",
+      "name": "Caratinga"
+    },
+    "intermediate": {
+      "code": "3105",
+      "name": "Ipatinga"
+    }
+  },
+  {
+    "code": "3113503",
+    "name": "Carbonita",
+    "immediate": {
+      "code": "310016",
+      "name": "Diamantina"
+    },
+    "intermediate": {
+      "code": "3103",
+      "name": "Teófilo Otoni"
+    }
+  },
+  {
+    "code": "3113602",
+    "name": "Careaçu",
+    "immediate": {
+      "code": "310050",
+      "name": "Pouso Alegre"
+    },
+    "intermediate": {
+      "code": "3109",
+      "name": "Pouso Alegre"
+    }
+  },
+  {
+    "code": "3113701",
+    "name": "Carlos Chagas",
+    "immediate": {
+      "code": "310013",
+      "name": "Teófilo Otoni"
+    },
+    "intermediate": {
+      "code": "3103",
+      "name": "Teófilo Otoni"
+    }
+  },
+  {
+    "code": "3113800",
+    "name": "Carmésia",
+    "immediate": {
+      "code": "310005",
+      "name": "Itabira"
+    },
+    "intermediate": {
+      "code": "3101",
+      "name": "Belo Horizonte"
+    }
+  },
+  {
+    "code": "3113909",
+    "name": "Carmo da Cachoeira",
+    "immediate": {
+      "code": "310045",
+      "name": "Três Corações"
+    },
+    "intermediate": {
+      "code": "3108",
+      "name": "Varginha"
+    }
+  },
+  {
+    "code": "3114006",
+    "name": "Carmo da Mata",
+    "immediate": {
+      "code": "310065",
+      "name": "Divinópolis"
+    },
+    "intermediate": {
+      "code": "3113",
+      "name": "Divinópolis"
+    }
+  },
+  {
+    "code": "3114105",
+    "name": "Carmo de Minas",
+    "immediate": {
+      "code": "310053",
+      "name": "São Lourenço"
+    },
+    "intermediate": {
+      "code": "3109",
+      "name": "Pouso Alegre"
+    }
+  },
+  {
+    "code": "3114204",
+    "name": "Carmo do Cajuru",
+    "immediate": {
+      "code": "310065",
+      "name": "Divinópolis"
+    },
+    "intermediate": {
+      "code": "3113",
+      "name": "Divinópolis"
+    }
+  },
+  {
+    "code": "3114303",
+    "name": "Carmo do Paranaíba",
+    "immediate": {
+      "code": "310062",
+      "name": "Patos de Minas"
+    },
+    "intermediate": {
+      "code": "3112",
+      "name": "Patos de Minas"
+    }
+  },
+  {
+    "code": "3114402",
+    "name": "Carmo do Rio Claro",
+    "immediate": {
+      "code": "310041",
+      "name": "Passos"
+    },
+    "intermediate": {
+      "code": "3108",
+      "name": "Varginha"
+    }
+  },
+  {
+    "code": "3114501",
+    "name": "Carmópolis de Minas",
+    "immediate": {
+      "code": "310069",
+      "name": "Oliveira"
+    },
+    "intermediate": {
+      "code": "3113",
+      "name": "Divinópolis"
+    }
+  },
+  {
+    "code": "3114550",
+    "name": "Carneirinho",
+    "immediate": {
+      "code": "310058",
+      "name": "Iturama"
+    },
+    "intermediate": {
+      "code": "3110",
+      "name": "Uberaba"
+    }
+  },
+  {
+    "code": "3114600",
+    "name": "Carrancas",
+    "immediate": {
+      "code": "310043",
+      "name": "Lavras"
+    },
+    "intermediate": {
+      "code": "3108",
+      "name": "Varginha"
+    }
+  },
+  {
+    "code": "3114709",
+    "name": "Carvalhópolis",
+    "immediate": {
+      "code": "310042",
+      "name": "Alfenas"
+    },
+    "intermediate": {
+      "code": "3108",
+      "name": "Varginha"
+    }
+  },
+  {
+    "code": "3114808",
+    "name": "Carvalhos",
+    "immediate": {
+      "code": "310054",
+      "name": "Caxambu - Baependi"
+    },
+    "intermediate": {
+      "code": "3109",
+      "name": "Pouso Alegre"
+    }
+  },
+  {
+    "code": "3114907",
+    "name": "Casa Grande",
+    "immediate": {
+      "code": "310038",
+      "name": "Conselheiro Lafaiete"
+    },
+    "intermediate": {
+      "code": "3107",
+      "name": "Barbacena"
+    }
+  },
+  {
+    "code": "3115003",
+    "name": "Cascalho Rico",
+    "immediate": {
+      "code": "310059",
+      "name": "Uberlândia"
+    },
+    "intermediate": {
+      "code": "3111",
+      "name": "Uberlândia"
+    }
+  },
+  {
+    "code": "3115102",
+    "name": "Cássia",
+    "immediate": {
+      "code": "310041",
+      "name": "Passos"
+    },
+    "intermediate": {
+      "code": "3108",
+      "name": "Varginha"
+    }
+  },
+  {
+    "code": "3115201",
+    "name": "Conceição da Barra de Minas",
+    "immediate": {
+      "code": "310039",
+      "name": "São João del Rei"
+    },
+    "intermediate": {
+      "code": "3107",
+      "name": "Barbacena"
+    }
+  },
+  {
+    "code": "3115300",
+    "name": "Cataguases",
+    "immediate": {
+      "code": "310032",
+      "name": "Cataguases"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3115359",
+    "name": "Catas Altas",
+    "immediate": {
+      "code": "310003",
+      "name": "Santa Bárbara - Ouro Preto"
+    },
+    "intermediate": {
+      "code": "3101",
+      "name": "Belo Horizonte"
+    }
+  },
+  {
+    "code": "3115409",
+    "name": "Catas Altas da Noruega",
+    "immediate": {
+      "code": "310038",
+      "name": "Conselheiro Lafaiete"
+    },
+    "intermediate": {
+      "code": "3107",
+      "name": "Barbacena"
+    }
+  },
+  {
+    "code": "3115458",
+    "name": "Catuji",
+    "immediate": {
+      "code": "310013",
+      "name": "Teófilo Otoni"
+    },
+    "intermediate": {
+      "code": "3103",
+      "name": "Teófilo Otoni"
+    }
+  },
+  {
+    "code": "3115474",
+    "name": "Catuti",
+    "immediate": {
+      "code": "310012",
+      "name": "Espinosa"
+    },
+    "intermediate": {
+      "code": "3102",
+      "name": "Montes Claros"
+    }
+  },
+  {
+    "code": "3115508",
+    "name": "Caxambu",
+    "immediate": {
+      "code": "310054",
+      "name": "Caxambu - Baependi"
+    },
+    "intermediate": {
+      "code": "3109",
+      "name": "Pouso Alegre"
+    }
+  },
+  {
+    "code": "3115607",
+    "name": "Cedro do Abaeté",
+    "immediate": {
+      "code": "310070",
+      "name": "Abaeté"
+    },
+    "intermediate": {
+      "code": "3113",
+      "name": "Divinópolis"
+    }
+  },
+  {
+    "code": "3115706",
+    "name": "Central de Minas",
+    "immediate": {
+      "code": "310022",
+      "name": "Mantena"
+    },
+    "intermediate": {
+      "code": "3104",
+      "name": "Governador Valadares"
+    }
+  },
+  {
+    "code": "3115805",
+    "name": "Centralina",
+    "immediate": {
+      "code": "310059",
+      "name": "Uberlândia"
+    },
+    "intermediate": {
+      "code": "3111",
+      "name": "Uberlândia"
+    }
+  },
+  {
+    "code": "3115904",
+    "name": "Chácara",
+    "immediate": {
+      "code": "310027",
+      "name": "Juiz de Fora"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3116001",
+    "name": "Chalé",
+    "immediate": {
+      "code": "310028",
+      "name": "Manhuaçu"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3116100",
+    "name": "Chapada do Norte",
+    "immediate": {
+      "code": "310014",
+      "name": "Capelinha"
+    },
+    "intermediate": {
+      "code": "3103",
+      "name": "Teófilo Otoni"
+    }
+  },
+  {
+    "code": "3116159",
+    "name": "Chapada Gaúcha",
+    "immediate": {
+      "code": "310011",
+      "name": "São Francisco"
+    },
+    "intermediate": {
+      "code": "3102",
+      "name": "Montes Claros"
+    }
+  },
+  {
+    "code": "3116209",
+    "name": "Chiador",
+    "immediate": {
+      "code": "310027",
+      "name": "Juiz de Fora"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3116308",
+    "name": "Cipotânea",
+    "immediate": {
+      "code": "310037",
+      "name": "Barbacena"
+    },
+    "intermediate": {
+      "code": "3107",
+      "name": "Barbacena"
+    }
+  },
+  {
+    "code": "3116407",
+    "name": "Claraval",
+    "immediate": {
+      "code": "310041",
+      "name": "Passos"
+    },
+    "intermediate": {
+      "code": "3108",
+      "name": "Varginha"
+    }
+  },
+  {
+    "code": "3116506",
+    "name": "Claro dos Poções",
+    "immediate": {
+      "code": "310006",
+      "name": "Montes Claros"
+    },
+    "intermediate": {
+      "code": "3102",
+      "name": "Montes Claros"
+    }
+  },
+  {
+    "code": "3116605",
+    "name": "Cláudio",
+    "immediate": {
+      "code": "310065",
+      "name": "Divinópolis"
+    },
+    "intermediate": {
+      "code": "3113",
+      "name": "Divinópolis"
+    }
+  },
+  {
+    "code": "3116704",
+    "name": "Coimbra",
+    "immediate": {
+      "code": "310033",
+      "name": "Viçosa"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3116803",
+    "name": "Coluna",
+    "immediate": {
+      "code": "310021",
+      "name": "Guanhães"
+    },
+    "intermediate": {
+      "code": "3104",
+      "name": "Governador Valadares"
+    }
+  },
+  {
+    "code": "3116902",
+    "name": "Comendador Gomes",
+    "immediate": {
+      "code": "310057",
+      "name": "Frutal"
+    },
+    "intermediate": {
+      "code": "3110",
+      "name": "Uberaba"
+    }
+  },
+  {
+    "code": "3117009",
+    "name": "Comercinho",
+    "immediate": {
+      "code": "310018",
+      "name": "Pedra Azul"
+    },
+    "intermediate": {
+      "code": "3103",
+      "name": "Teófilo Otoni"
+    }
+  },
+  {
+    "code": "3117108",
+    "name": "Conceição da Aparecida",
+    "immediate": {
+      "code": "310042",
+      "name": "Alfenas"
+    },
+    "intermediate": {
+      "code": "3108",
+      "name": "Varginha"
+    }
+  },
+  {
+    "code": "3117207",
+    "name": "Conceição das Pedras",
+    "immediate": {
+      "code": "310052",
+      "name": "Itajubá"
+    },
+    "intermediate": {
+      "code": "3109",
+      "name": "Pouso Alegre"
+    }
+  },
+  {
+    "code": "3117306",
+    "name": "Conceição das Alagoas",
+    "immediate": {
+      "code": "310055",
+      "name": "Uberaba"
+    },
+    "intermediate": {
+      "code": "3110",
+      "name": "Uberaba"
+    }
+  },
+  {
+    "code": "3117405",
+    "name": "Conceição de Ipanema",
+    "immediate": {
+      "code": "310028",
+      "name": "Manhuaçu"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3117504",
+    "name": "Conceição do Mato Dentro",
+    "immediate": {
+      "code": "310002",
+      "name": "Sete Lagoas"
+    },
+    "intermediate": {
+      "code": "3101",
+      "name": "Belo Horizonte"
+    }
+  },
+  {
+    "code": "3117603",
+    "name": "Conceição do Pará",
+    "immediate": {
+      "code": "310065",
+      "name": "Divinópolis"
+    },
+    "intermediate": {
+      "code": "3113",
+      "name": "Divinópolis"
+    }
+  },
+  {
+    "code": "3117702",
+    "name": "Conceição do Rio Verde",
+    "immediate": {
+      "code": "310053",
+      "name": "São Lourenço"
+    },
+    "intermediate": {
+      "code": "3109",
+      "name": "Pouso Alegre"
+    }
+  },
+  {
+    "code": "3117801",
+    "name": "Conceição dos Ouros",
+    "immediate": {
+      "code": "310050",
+      "name": "Pouso Alegre"
+    },
+    "intermediate": {
+      "code": "3109",
+      "name": "Pouso Alegre"
+    }
+  },
+  {
+    "code": "3117836",
+    "name": "Cônego Marinho",
+    "immediate": {
+      "code": "310009",
+      "name": "Januária"
+    },
+    "intermediate": {
+      "code": "3102",
+      "name": "Montes Claros"
+    }
+  },
+  {
+    "code": "3117876",
+    "name": "Confins",
+    "immediate": {
+      "code": "310001",
+      "name": "Belo Horizonte"
+    },
+    "intermediate": {
+      "code": "3101",
+      "name": "Belo Horizonte"
+    }
+  },
+  {
+    "code": "3117900",
+    "name": "Congonhal",
+    "immediate": {
+      "code": "310050",
+      "name": "Pouso Alegre"
+    },
+    "intermediate": {
+      "code": "3109",
+      "name": "Pouso Alegre"
+    }
+  },
+  {
+    "code": "3118007",
+    "name": "Congonhas",
+    "immediate": {
+      "code": "310038",
+      "name": "Conselheiro Lafaiete"
+    },
+    "intermediate": {
+      "code": "3107",
+      "name": "Barbacena"
+    }
+  },
+  {
+    "code": "3118106",
+    "name": "Congonhas do Norte",
+    "immediate": {
+      "code": "310002",
+      "name": "Sete Lagoas"
+    },
+    "intermediate": {
+      "code": "3101",
+      "name": "Belo Horizonte"
+    }
+  },
+  {
+    "code": "3118205",
+    "name": "Conquista",
+    "immediate": {
+      "code": "310055",
+      "name": "Uberaba"
+    },
+    "intermediate": {
+      "code": "3110",
+      "name": "Uberaba"
+    }
+  },
+  {
+    "code": "3118304",
+    "name": "Conselheiro Lafaiete",
+    "immediate": {
+      "code": "310038",
+      "name": "Conselheiro Lafaiete"
+    },
+    "intermediate": {
+      "code": "3107",
+      "name": "Barbacena"
+    }
+  },
+  {
+    "code": "3118403",
+    "name": "Conselheiro Pena",
+    "immediate": {
+      "code": "310020",
+      "name": "Governador Valadares"
+    },
+    "intermediate": {
+      "code": "3104",
+      "name": "Governador Valadares"
+    }
+  },
+  {
+    "code": "3118502",
+    "name": "Consolação",
+    "immediate": {
+      "code": "310050",
+      "name": "Pouso Alegre"
+    },
+    "intermediate": {
+      "code": "3109",
+      "name": "Pouso Alegre"
+    }
+  },
+  {
+    "code": "3118601",
+    "name": "Contagem",
+    "immediate": {
+      "code": "310001",
+      "name": "Belo Horizonte"
+    },
+    "intermediate": {
+      "code": "3101",
+      "name": "Belo Horizonte"
+    }
+  },
+  {
+    "code": "3118700",
+    "name": "Coqueiral",
+    "immediate": {
+      "code": "310046",
+      "name": "Três Pontas - Boa Esperança"
+    },
+    "intermediate": {
+      "code": "3108",
+      "name": "Varginha"
+    }
+  },
+  {
+    "code": "3118809",
+    "name": "Coração de Jesus",
+    "immediate": {
+      "code": "310006",
+      "name": "Montes Claros"
+    },
+    "intermediate": {
+      "code": "3102",
+      "name": "Montes Claros"
+    }
+  },
+  {
+    "code": "3118908",
+    "name": "Cordisburgo",
+    "immediate": {
+      "code": "310002",
+      "name": "Sete Lagoas"
+    },
+    "intermediate": {
+      "code": "3101",
+      "name": "Belo Horizonte"
+    }
+  },
+  {
+    "code": "3119005",
+    "name": "Cordislândia",
+    "immediate": {
+      "code": "310040",
+      "name": "Varginha"
+    },
+    "intermediate": {
+      "code": "3108",
+      "name": "Varginha"
+    }
+  },
+  {
+    "code": "3119104",
+    "name": "Corinto",
+    "immediate": {
+      "code": "310004",
+      "name": "Curvelo"
+    },
+    "intermediate": {
+      "code": "3101",
+      "name": "Belo Horizonte"
+    }
+  },
+  {
+    "code": "3119203",
+    "name": "Coroaci",
+    "immediate": {
+      "code": "310020",
+      "name": "Governador Valadares"
+    },
+    "intermediate": {
+      "code": "3104",
+      "name": "Governador Valadares"
+    }
+  },
+  {
+    "code": "3119302",
+    "name": "Coromandel",
+    "immediate": {
+      "code": "310064",
+      "name": "Patrocínio"
+    },
+    "intermediate": {
+      "code": "3112",
+      "name": "Patos de Minas"
+    }
+  },
+  {
+    "code": "3119401",
+    "name": "Coronel Fabriciano",
+    "immediate": {
+      "code": "310024",
+      "name": "Ipatinga"
+    },
+    "intermediate": {
+      "code": "3105",
+      "name": "Ipatinga"
+    }
+  },
+  {
+    "code": "3119500",
+    "name": "Coronel Murta",
+    "immediate": {
+      "code": "310017",
+      "name": "Araçuaí"
+    },
+    "intermediate": {
+      "code": "3103",
+      "name": "Teófilo Otoni"
+    }
+  },
+  {
+    "code": "3119609",
+    "name": "Coronel Pacheco",
+    "immediate": {
+      "code": "310027",
+      "name": "Juiz de Fora"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3119708",
+    "name": "Coronel Xavier Chaves",
+    "immediate": {
+      "code": "310039",
+      "name": "São João del Rei"
+    },
+    "intermediate": {
+      "code": "3107",
+      "name": "Barbacena"
+    }
+  },
+  {
+    "code": "3119807",
+    "name": "Córrego Danta",
+    "immediate": {
+      "code": "310066",
+      "name": "Formiga"
+    },
+    "intermediate": {
+      "code": "3113",
+      "name": "Divinópolis"
+    }
+  },
+  {
+    "code": "3119906",
+    "name": "Córrego do Bom Jesus",
+    "immediate": {
+      "code": "310050",
+      "name": "Pouso Alegre"
+    },
+    "intermediate": {
+      "code": "3109",
+      "name": "Pouso Alegre"
+    }
+  },
+  {
+    "code": "3119955",
+    "name": "Córrego Fundo",
+    "immediate": {
+      "code": "310066",
+      "name": "Formiga"
+    },
+    "intermediate": {
+      "code": "3113",
+      "name": "Divinópolis"
+    }
+  },
+  {
+    "code": "3120003",
+    "name": "Córrego Novo",
+    "immediate": {
+      "code": "310025",
+      "name": "Caratinga"
+    },
+    "intermediate": {
+      "code": "3105",
+      "name": "Ipatinga"
+    }
+  },
+  {
+    "code": "3120102",
+    "name": "Couto de Magalhães de Minas",
+    "immediate": {
+      "code": "310016",
+      "name": "Diamantina"
+    },
+    "intermediate": {
+      "code": "3103",
+      "name": "Teófilo Otoni"
+    }
+  },
+  {
+    "code": "3120151",
+    "name": "Crisólita",
+    "immediate": {
+      "code": "310019",
+      "name": "Águas Formosas"
+    },
+    "intermediate": {
+      "code": "3103",
+      "name": "Teófilo Otoni"
+    }
+  },
+  {
+    "code": "3120201",
+    "name": "Cristais",
+    "immediate": {
+      "code": "310048",
+      "name": "Campo Belo"
+    },
+    "intermediate": {
+      "code": "3108",
+      "name": "Varginha"
+    }
+  },
+  {
+    "code": "3120300",
+    "name": "Cristália",
+    "immediate": {
+      "code": "310006",
+      "name": "Montes Claros"
+    },
+    "intermediate": {
+      "code": "3102",
+      "name": "Montes Claros"
+    }
+  },
+  {
+    "code": "3120409",
+    "name": "Cristiano Otoni",
+    "immediate": {
+      "code": "310038",
+      "name": "Conselheiro Lafaiete"
+    },
+    "intermediate": {
+      "code": "3107",
+      "name": "Barbacena"
+    }
+  },
+  {
+    "code": "3120508",
+    "name": "Cristina",
+    "immediate": {
+      "code": "310053",
+      "name": "São Lourenço"
+    },
+    "intermediate": {
+      "code": "3109",
+      "name": "Pouso Alegre"
+    }
+  },
+  {
+    "code": "3120607",
+    "name": "Crucilândia",
+    "immediate": {
+      "code": "310069",
+      "name": "Oliveira"
+    },
+    "intermediate": {
+      "code": "3113",
+      "name": "Divinópolis"
+    }
+  },
+  {
+    "code": "3120706",
+    "name": "Cruzeiro da Fortaleza",
+    "immediate": {
+      "code": "310064",
+      "name": "Patrocínio"
+    },
+    "intermediate": {
+      "code": "3112",
+      "name": "Patos de Minas"
+    }
+  },
+  {
+    "code": "3120805",
+    "name": "Cruzília",
+    "immediate": {
+      "code": "310054",
+      "name": "Caxambu - Baependi"
+    },
+    "intermediate": {
+      "code": "3109",
+      "name": "Pouso Alegre"
+    }
+  },
+  {
+    "code": "3120839",
+    "name": "Cuparaque",
+    "immediate": {
+      "code": "310023",
+      "name": "Aimorés - Resplendor"
+    },
+    "intermediate": {
+      "code": "3104",
+      "name": "Governador Valadares"
+    }
+  },
+  {
+    "code": "3120870",
+    "name": "Curral de Dentro",
+    "immediate": {
+      "code": "310008",
+      "name": "Salinas"
+    },
+    "intermediate": {
+      "code": "3102",
+      "name": "Montes Claros"
+    }
+  },
+  {
+    "code": "3120904",
+    "name": "Curvelo",
+    "immediate": {
+      "code": "310004",
+      "name": "Curvelo"
+    },
+    "intermediate": {
+      "code": "3101",
+      "name": "Belo Horizonte"
+    }
+  },
+  {
+    "code": "3121001",
+    "name": "Datas",
+    "immediate": {
+      "code": "310016",
+      "name": "Diamantina"
+    },
+    "intermediate": {
+      "code": "3103",
+      "name": "Teófilo Otoni"
+    }
+  },
+  {
+    "code": "3121100",
+    "name": "Delfim Moreira",
+    "immediate": {
+      "code": "310052",
+      "name": "Itajubá"
+    },
+    "intermediate": {
+      "code": "3109",
+      "name": "Pouso Alegre"
+    }
+  },
+  {
+    "code": "3121209",
+    "name": "Delfinópolis",
+    "immediate": {
+      "code": "310041",
+      "name": "Passos"
+    },
+    "intermediate": {
+      "code": "3108",
+      "name": "Varginha"
+    }
+  },
+  {
+    "code": "3121258",
+    "name": "Delta",
+    "immediate": {
+      "code": "310055",
+      "name": "Uberaba"
+    },
+    "intermediate": {
+      "code": "3110",
+      "name": "Uberaba"
+    }
+  },
+  {
+    "code": "3121308",
+    "name": "Descoberto",
+    "immediate": {
+      "code": "310035",
+      "name": "São João Nepomuceno - Bicas"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3121407",
+    "name": "Desterro de Entre Rios",
+    "immediate": {
+      "code": "310038",
+      "name": "Conselheiro Lafaiete"
+    },
+    "intermediate": {
+      "code": "3107",
+      "name": "Barbacena"
+    }
+  },
+  {
+    "code": "3121506",
+    "name": "Desterro do Melo",
+    "immediate": {
+      "code": "310037",
+      "name": "Barbacena"
+    },
+    "intermediate": {
+      "code": "3107",
+      "name": "Barbacena"
+    }
+  },
+  {
+    "code": "3121605",
+    "name": "Diamantina",
+    "immediate": {
+      "code": "310016",
+      "name": "Diamantina"
+    },
+    "intermediate": {
+      "code": "3103",
+      "name": "Teófilo Otoni"
+    }
+  },
+  {
+    "code": "3121704",
+    "name": "Diogo de Vasconcelos",
+    "immediate": {
+      "code": "310030",
+      "name": "Ponte Nova"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3121803",
+    "name": "Dionísio",
+    "immediate": {
+      "code": "310024",
+      "name": "Ipatinga"
+    },
+    "intermediate": {
+      "code": "3105",
+      "name": "Ipatinga"
+    }
+  },
+  {
+    "code": "3121902",
+    "name": "Divinésia",
+    "immediate": {
+      "code": "310029",
+      "name": "Ubá"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3122009",
+    "name": "Divino",
+    "immediate": {
+      "code": "310034",
+      "name": "Carangola"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3122108",
+    "name": "Divino das Laranjeiras",
+    "immediate": {
+      "code": "310020",
+      "name": "Governador Valadares"
+    },
+    "intermediate": {
+      "code": "3104",
+      "name": "Governador Valadares"
+    }
+  },
+  {
+    "code": "3122207",
+    "name": "Divinolândia de Minas",
+    "immediate": {
+      "code": "310021",
+      "name": "Guanhães"
+    },
+    "intermediate": {
+      "code": "3104",
+      "name": "Governador Valadares"
+    }
+  },
+  {
+    "code": "3122306",
+    "name": "Divinópolis",
+    "immediate": {
+      "code": "310065",
+      "name": "Divinópolis"
+    },
+    "intermediate": {
+      "code": "3113",
+      "name": "Divinópolis"
+    }
+  },
+  {
+    "code": "3122355",
+    "name": "Divisa Alegre",
+    "immediate": {
+      "code": "310018",
+      "name": "Pedra Azul"
+    },
+    "intermediate": {
+      "code": "3103",
+      "name": "Teófilo Otoni"
+    }
+  },
+  {
+    "code": "3122405",
+    "name": "Divisa Nova",
+    "immediate": {
+      "code": "310042",
+      "name": "Alfenas"
+    },
+    "intermediate": {
+      "code": "3108",
+      "name": "Varginha"
+    }
+  },
+  {
+    "code": "3122454",
+    "name": "Divisópolis",
+    "immediate": {
+      "code": "310018",
+      "name": "Pedra Azul"
+    },
+    "intermediate": {
+      "code": "3103",
+      "name": "Teófilo Otoni"
+    }
+  },
+  {
+    "code": "3122470",
+    "name": "Dom Bosco",
+    "immediate": {
+      "code": "310063",
+      "name": "Unaí"
+    },
+    "intermediate": {
+      "code": "3112",
+      "name": "Patos de Minas"
+    }
+  },
+  {
+    "code": "3122504",
+    "name": "Dom Cavati",
+    "immediate": {
+      "code": "310024",
+      "name": "Ipatinga"
+    },
+    "intermediate": {
+      "code": "3105",
+      "name": "Ipatinga"
+    }
+  },
+  {
+    "code": "3122603",
+    "name": "Dom Joaquim",
+    "immediate": {
+      "code": "310021",
+      "name": "Guanhães"
+    },
+    "intermediate": {
+      "code": "3104",
+      "name": "Governador Valadares"
+    }
+  },
+  {
+    "code": "3122702",
+    "name": "Dom Silvério",
+    "immediate": {
+      "code": "310030",
+      "name": "Ponte Nova"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3122801",
+    "name": "Dom Viçoso",
+    "immediate": {
+      "code": "310053",
+      "name": "São Lourenço"
+    },
+    "intermediate": {
+      "code": "3109",
+      "name": "Pouso Alegre"
+    }
+  },
+  {
+    "code": "3122900",
+    "name": "Dona Euzébia",
+    "immediate": {
+      "code": "310032",
+      "name": "Cataguases"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3123007",
+    "name": "Dores de Campos",
+    "immediate": {
+      "code": "310037",
+      "name": "Barbacena"
+    },
+    "intermediate": {
+      "code": "3107",
+      "name": "Barbacena"
+    }
+  },
+  {
+    "code": "3123106",
+    "name": "Dores de Guanhães",
+    "immediate": {
+      "code": "310021",
+      "name": "Guanhães"
+    },
+    "intermediate": {
+      "code": "3104",
+      "name": "Governador Valadares"
+    }
+  },
+  {
+    "code": "3123205",
+    "name": "Dores do Indaiá",
+    "immediate": {
+      "code": "310067",
+      "name": "Dores do Indaiá"
+    },
+    "intermediate": {
+      "code": "3113",
+      "name": "Divinópolis"
+    }
+  },
+  {
+    "code": "3123304",
+    "name": "Dores do Turvo",
+    "immediate": {
+      "code": "310029",
+      "name": "Ubá"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3123403",
+    "name": "Doresópolis",
+    "immediate": {
+      "code": "310049",
+      "name": "Piumhi"
+    },
+    "intermediate": {
+      "code": "3108",
+      "name": "Varginha"
+    }
+  },
+  {
+    "code": "3123502",
+    "name": "Douradoquara",
+    "immediate": {
+      "code": "310061",
+      "name": "Monte Carmelo"
+    },
+    "intermediate": {
+      "code": "3111",
+      "name": "Uberlândia"
+    }
+  },
+  {
+    "code": "3123528",
+    "name": "Durandé",
+    "immediate": {
+      "code": "310028",
+      "name": "Manhuaçu"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3123601",
+    "name": "Elói Mendes",
+    "immediate": {
+      "code": "310040",
+      "name": "Varginha"
+    },
+    "intermediate": {
+      "code": "3108",
+      "name": "Varginha"
+    }
+  },
+  {
+    "code": "3123700",
+    "name": "Engenheiro Caldas",
+    "immediate": {
+      "code": "310020",
+      "name": "Governador Valadares"
+    },
+    "intermediate": {
+      "code": "3104",
+      "name": "Governador Valadares"
+    }
+  },
+  {
+    "code": "3123809",
+    "name": "Engenheiro Navarro",
+    "immediate": {
+      "code": "310006",
+      "name": "Montes Claros"
+    },
+    "intermediate": {
+      "code": "3102",
+      "name": "Montes Claros"
+    }
+  },
+  {
+    "code": "3123858",
+    "name": "Entre Folhas",
+    "immediate": {
+      "code": "310025",
+      "name": "Caratinga"
+    },
+    "intermediate": {
+      "code": "3105",
+      "name": "Ipatinga"
+    }
+  },
+  {
+    "code": "3123908",
+    "name": "Entre Rios de Minas",
+    "immediate": {
+      "code": "310038",
+      "name": "Conselheiro Lafaiete"
+    },
+    "intermediate": {
+      "code": "3107",
+      "name": "Barbacena"
+    }
+  },
+  {
+    "code": "3124005",
+    "name": "Ervália",
+    "immediate": {
+      "code": "310033",
+      "name": "Viçosa"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3124104",
+    "name": "Esmeraldas",
+    "immediate": {
+      "code": "310001",
+      "name": "Belo Horizonte"
+    },
+    "intermediate": {
+      "code": "3101",
+      "name": "Belo Horizonte"
+    }
+  },
+  {
+    "code": "3124203",
+    "name": "Espera Feliz",
+    "immediate": {
+      "code": "310034",
+      "name": "Carangola"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3124302",
+    "name": "Espinosa",
+    "immediate": {
+      "code": "310012",
+      "name": "Espinosa"
+    },
+    "intermediate": {
+      "code": "3102",
+      "name": "Montes Claros"
+    }
+  },
+  {
+    "code": "3124401",
+    "name": "Espírito Santo do Dourado",
+    "immediate": {
+      "code": "310050",
+      "name": "Pouso Alegre"
+    },
+    "intermediate": {
+      "code": "3109",
+      "name": "Pouso Alegre"
+    }
+  },
+  {
+    "code": "3124500",
+    "name": "Estiva",
+    "immediate": {
+      "code": "310050",
+      "name": "Pouso Alegre"
+    },
+    "intermediate": {
+      "code": "3109",
+      "name": "Pouso Alegre"
+    }
+  },
+  {
+    "code": "3124609",
+    "name": "Estrela Dalva",
+    "immediate": {
+      "code": "310036",
+      "name": "Além Paraíba"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3124708",
+    "name": "Estrela do Indaiá",
+    "immediate": {
+      "code": "310067",
+      "name": "Dores do Indaiá"
+    },
+    "intermediate": {
+      "code": "3113",
+      "name": "Divinópolis"
+    }
+  },
+  {
+    "code": "3124807",
+    "name": "Estrela do Sul",
+    "immediate": {
+      "code": "310061",
+      "name": "Monte Carmelo"
+    },
+    "intermediate": {
+      "code": "3111",
+      "name": "Uberlândia"
+    }
+  },
+  {
+    "code": "3124906",
+    "name": "Eugenópolis",
+    "immediate": {
+      "code": "310031",
+      "name": "Muriaé"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3125002",
+    "name": "Ewbank da Câmara",
+    "immediate": {
+      "code": "310027",
+      "name": "Juiz de Fora"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3125101",
+    "name": "Extrema",
+    "immediate": {
+      "code": "310050",
+      "name": "Pouso Alegre"
+    },
+    "intermediate": {
+      "code": "3109",
+      "name": "Pouso Alegre"
+    }
+  },
+  {
+    "code": "3125200",
+    "name": "Fama",
+    "immediate": {
+      "code": "310042",
+      "name": "Alfenas"
+    },
+    "intermediate": {
+      "code": "3108",
+      "name": "Varginha"
+    }
+  },
+  {
+    "code": "3125309",
+    "name": "Faria Lemos",
+    "immediate": {
+      "code": "310034",
+      "name": "Carangola"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3125408",
+    "name": "Felício dos Santos",
+    "immediate": {
+      "code": "310016",
+      "name": "Diamantina"
+    },
+    "intermediate": {
+      "code": "3103",
+      "name": "Teófilo Otoni"
+    }
+  },
+  {
+    "code": "3125507",
+    "name": "São Gonçalo do Rio Preto",
+    "immediate": {
+      "code": "310016",
+      "name": "Diamantina"
+    },
+    "intermediate": {
+      "code": "3103",
+      "name": "Teófilo Otoni"
+    }
+  },
+  {
+    "code": "3125606",
+    "name": "Felisburgo",
+    "immediate": {
+      "code": "310015",
+      "name": "Almenara"
+    },
+    "intermediate": {
+      "code": "3103",
+      "name": "Teófilo Otoni"
+    }
+  },
+  {
+    "code": "3125705",
+    "name": "Felixlândia",
+    "immediate": {
+      "code": "310004",
+      "name": "Curvelo"
+    },
+    "intermediate": {
+      "code": "3101",
+      "name": "Belo Horizonte"
+    }
+  },
+  {
+    "code": "3125804",
+    "name": "Fernandes Tourinho",
+    "immediate": {
+      "code": "310020",
+      "name": "Governador Valadares"
+    },
+    "intermediate": {
+      "code": "3104",
+      "name": "Governador Valadares"
+    }
+  },
+  {
+    "code": "3125903",
+    "name": "Ferros",
+    "immediate": {
+      "code": "310005",
+      "name": "Itabira"
+    },
+    "intermediate": {
+      "code": "3101",
+      "name": "Belo Horizonte"
+    }
+  },
+  {
+    "code": "3125952",
+    "name": "Fervedouro",
+    "immediate": {
+      "code": "310031",
+      "name": "Muriaé"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3126000",
+    "name": "Florestal",
+    "immediate": {
+      "code": "310001",
+      "name": "Belo Horizonte"
+    },
+    "intermediate": {
+      "code": "3101",
+      "name": "Belo Horizonte"
+    }
+  },
+  {
+    "code": "3126109",
+    "name": "Formiga",
+    "immediate": {
+      "code": "310066",
+      "name": "Formiga"
+    },
+    "intermediate": {
+      "code": "3113",
+      "name": "Divinópolis"
+    }
+  },
+  {
+    "code": "3126208",
+    "name": "Formoso",
+    "immediate": {
+      "code": "310063",
+      "name": "Unaí"
+    },
+    "intermediate": {
+      "code": "3112",
+      "name": "Patos de Minas"
+    }
+  },
+  {
+    "code": "3126307",
+    "name": "Fortaleza de Minas",
+    "immediate": {
+      "code": "310041",
+      "name": "Passos"
+    },
+    "intermediate": {
+      "code": "3108",
+      "name": "Varginha"
+    }
+  },
+  {
+    "code": "3126406",
+    "name": "Fortuna de Minas",
+    "immediate": {
+      "code": "310002",
+      "name": "Sete Lagoas"
+    },
+    "intermediate": {
+      "code": "3101",
+      "name": "Belo Horizonte"
+    }
+  },
+  {
+    "code": "3126505",
+    "name": "Francisco Badaró",
+    "immediate": {
+      "code": "310017",
+      "name": "Araçuaí"
+    },
+    "intermediate": {
+      "code": "3103",
+      "name": "Teófilo Otoni"
+    }
+  },
+  {
+    "code": "3126604",
+    "name": "Francisco Dumont",
+    "immediate": {
+      "code": "310006",
+      "name": "Montes Claros"
+    },
+    "intermediate": {
+      "code": "3102",
+      "name": "Montes Claros"
+    }
+  },
+  {
+    "code": "3126703",
+    "name": "Francisco Sá",
+    "immediate": {
+      "code": "310006",
+      "name": "Montes Claros"
+    },
+    "intermediate": {
+      "code": "3102",
+      "name": "Montes Claros"
+    }
+  },
+  {
+    "code": "3126752",
+    "name": "Franciscópolis",
+    "immediate": {
+      "code": "310013",
+      "name": "Teófilo Otoni"
+    },
+    "intermediate": {
+      "code": "3103",
+      "name": "Teófilo Otoni"
+    }
+  },
+  {
+    "code": "3126802",
+    "name": "Frei Gaspar",
+    "immediate": {
+      "code": "310013",
+      "name": "Teófilo Otoni"
+    },
+    "intermediate": {
+      "code": "3103",
+      "name": "Teófilo Otoni"
+    }
+  },
+  {
+    "code": "3126901",
+    "name": "Frei Inocêncio",
+    "immediate": {
+      "code": "310020",
+      "name": "Governador Valadares"
+    },
+    "intermediate": {
+      "code": "3104",
+      "name": "Governador Valadares"
+    }
+  },
+  {
+    "code": "3126950",
+    "name": "Frei Lagonegro",
+    "immediate": {
+      "code": "310021",
+      "name": "Guanhães"
+    },
+    "intermediate": {
+      "code": "3104",
+      "name": "Governador Valadares"
+    }
+  },
+  {
+    "code": "3127008",
+    "name": "Fronteira",
+    "immediate": {
+      "code": "310057",
+      "name": "Frutal"
+    },
+    "intermediate": {
+      "code": "3110",
+      "name": "Uberaba"
+    }
+  },
+  {
+    "code": "3127057",
+    "name": "Fronteira dos Vales",
+    "immediate": {
+      "code": "310019",
+      "name": "Águas Formosas"
+    },
+    "intermediate": {
+      "code": "3103",
+      "name": "Teófilo Otoni"
+    }
+  },
+  {
+    "code": "3127073",
+    "name": "Fruta de Leite",
+    "immediate": {
+      "code": "310008",
+      "name": "Salinas"
+    },
+    "intermediate": {
+      "code": "3102",
+      "name": "Montes Claros"
+    }
+  },
+  {
+    "code": "3127107",
+    "name": "Frutal",
+    "immediate": {
+      "code": "310057",
+      "name": "Frutal"
+    },
+    "intermediate": {
+      "code": "3110",
+      "name": "Uberaba"
+    }
+  },
+  {
+    "code": "3127206",
+    "name": "Funilândia",
+    "immediate": {
+      "code": "310002",
+      "name": "Sete Lagoas"
+    },
+    "intermediate": {
+      "code": "3101",
+      "name": "Belo Horizonte"
+    }
+  },
+  {
+    "code": "3127305",
+    "name": "Galiléia",
+    "immediate": {
+      "code": "310020",
+      "name": "Governador Valadares"
+    },
+    "intermediate": {
+      "code": "3104",
+      "name": "Governador Valadares"
+    }
+  },
+  {
+    "code": "3127339",
+    "name": "Gameleiras",
+    "immediate": {
+      "code": "310012",
+      "name": "Espinosa"
+    },
+    "intermediate": {
+      "code": "3102",
+      "name": "Montes Claros"
+    }
+  },
+  {
+    "code": "3127354",
+    "name": "Glaucilândia",
+    "immediate": {
+      "code": "310006",
+      "name": "Montes Claros"
+    },
+    "intermediate": {
+      "code": "3102",
+      "name": "Montes Claros"
+    }
+  },
+  {
+    "code": "3127370",
+    "name": "Goiabeira",
+    "immediate": {
+      "code": "310020",
+      "name": "Governador Valadares"
+    },
+    "intermediate": {
+      "code": "3104",
+      "name": "Governador Valadares"
+    }
+  },
+  {
+    "code": "3127388",
+    "name": "Goianá",
+    "immediate": {
+      "code": "310027",
+      "name": "Juiz de Fora"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3127404",
+    "name": "Gonçalves",
+    "immediate": {
+      "code": "310052",
+      "name": "Itajubá"
+    },
+    "intermediate": {
+      "code": "3109",
+      "name": "Pouso Alegre"
+    }
+  },
+  {
+    "code": "3127503",
+    "name": "Gonzaga",
+    "immediate": {
+      "code": "310020",
+      "name": "Governador Valadares"
+    },
+    "intermediate": {
+      "code": "3104",
+      "name": "Governador Valadares"
+    }
+  },
+  {
+    "code": "3127602",
+    "name": "Gouveia",
+    "immediate": {
+      "code": "310016",
+      "name": "Diamantina"
+    },
+    "intermediate": {
+      "code": "3103",
+      "name": "Teófilo Otoni"
+    }
+  },
+  {
+    "code": "3127701",
+    "name": "Governador Valadares",
+    "immediate": {
+      "code": "310020",
+      "name": "Governador Valadares"
+    },
+    "intermediate": {
+      "code": "3104",
+      "name": "Governador Valadares"
+    }
+  },
+  {
+    "code": "3127800",
+    "name": "Grão Mogol",
+    "immediate": {
+      "code": "310006",
+      "name": "Montes Claros"
+    },
+    "intermediate": {
+      "code": "3102",
+      "name": "Montes Claros"
+    }
+  },
+  {
+    "code": "3127909",
+    "name": "Grupiara",
+    "immediate": {
+      "code": "310061",
+      "name": "Monte Carmelo"
+    },
+    "intermediate": {
+      "code": "3111",
+      "name": "Uberlândia"
+    }
+  },
+  {
+    "code": "3128006",
+    "name": "Guanhães",
+    "immediate": {
+      "code": "310021",
+      "name": "Guanhães"
+    },
+    "intermediate": {
+      "code": "3104",
+      "name": "Governador Valadares"
+    }
+  },
+  {
+    "code": "3128105",
+    "name": "Guapé",
+    "immediate": {
+      "code": "310041",
+      "name": "Passos"
+    },
+    "intermediate": {
+      "code": "3108",
+      "name": "Varginha"
+    }
+  },
+  {
+    "code": "3128204",
+    "name": "Guaraciaba",
+    "immediate": {
+      "code": "310030",
+      "name": "Ponte Nova"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3128253",
+    "name": "Guaraciama",
+    "immediate": {
+      "code": "310006",
+      "name": "Montes Claros"
+    },
+    "intermediate": {
+      "code": "3102",
+      "name": "Montes Claros"
+    }
+  },
+  {
+    "code": "3128303",
+    "name": "Guaranésia",
+    "immediate": {
+      "code": "310044",
+      "name": "Guaxupé"
+    },
+    "intermediate": {
+      "code": "3108",
+      "name": "Varginha"
+    }
+  },
+  {
+    "code": "3128402",
+    "name": "Guarani",
+    "immediate": {
+      "code": "310029",
+      "name": "Ubá"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3128501",
+    "name": "Guarará",
+    "immediate": {
+      "code": "310035",
+      "name": "São João Nepomuceno - Bicas"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3128600",
+    "name": "Guarda-Mor",
+    "immediate": {
+      "code": "310062",
+      "name": "Patos de Minas"
+    },
+    "intermediate": {
+      "code": "3112",
+      "name": "Patos de Minas"
+    }
+  },
+  {
+    "code": "3128709",
+    "name": "Guaxupé",
+    "immediate": {
+      "code": "310044",
+      "name": "Guaxupé"
+    },
+    "intermediate": {
+      "code": "3108",
+      "name": "Varginha"
+    }
+  },
+  {
+    "code": "3128808",
+    "name": "Guidoval",
+    "immediate": {
+      "code": "310029",
+      "name": "Ubá"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3128907",
+    "name": "Guimarânia",
+    "immediate": {
+      "code": "310064",
+      "name": "Patrocínio"
+    },
+    "intermediate": {
+      "code": "3112",
+      "name": "Patos de Minas"
+    }
+  },
+  {
+    "code": "3129004",
+    "name": "Guiricema",
+    "immediate": {
+      "code": "310029",
+      "name": "Ubá"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3129103",
+    "name": "Gurinhatã",
+    "immediate": {
+      "code": "310060",
+      "name": "Ituiutaba"
+    },
+    "intermediate": {
+      "code": "3111",
+      "name": "Uberlândia"
+    }
+  },
+  {
+    "code": "3129202",
+    "name": "Heliodora",
+    "immediate": {
+      "code": "310050",
+      "name": "Pouso Alegre"
+    },
+    "intermediate": {
+      "code": "3109",
+      "name": "Pouso Alegre"
+    }
+  },
+  {
+    "code": "3129301",
+    "name": "Iapu",
+    "immediate": {
+      "code": "310024",
+      "name": "Ipatinga"
+    },
+    "intermediate": {
+      "code": "3105",
+      "name": "Ipatinga"
+    }
+  },
+  {
+    "code": "3129400",
+    "name": "Ibertioga",
+    "immediate": {
+      "code": "310037",
+      "name": "Barbacena"
+    },
+    "intermediate": {
+      "code": "3107",
+      "name": "Barbacena"
+    }
+  },
+  {
+    "code": "3129509",
+    "name": "Ibiá",
+    "immediate": {
+      "code": "310056",
+      "name": "Araxá"
+    },
+    "intermediate": {
+      "code": "3110",
+      "name": "Uberaba"
+    }
+  },
+  {
+    "code": "3129608",
+    "name": "Ibiaí",
+    "immediate": {
+      "code": "310010",
+      "name": "Pirapora"
+    },
+    "intermediate": {
+      "code": "3102",
+      "name": "Montes Claros"
+    }
+  },
+  {
+    "code": "3129657",
+    "name": "Ibiracatu",
+    "immediate": {
+      "code": "310006",
+      "name": "Montes Claros"
+    },
+    "intermediate": {
+      "code": "3102",
+      "name": "Montes Claros"
+    }
+  },
+  {
+    "code": "3129707",
+    "name": "Ibiraci",
+    "immediate": {
+      "code": "310041",
+      "name": "Passos"
+    },
+    "intermediate": {
+      "code": "3108",
+      "name": "Varginha"
+    }
+  },
+  {
+    "code": "3129806",
+    "name": "Ibirité",
+    "immediate": {
+      "code": "310001",
+      "name": "Belo Horizonte"
+    },
+    "intermediate": {
+      "code": "3101",
+      "name": "Belo Horizonte"
+    }
+  },
+  {
+    "code": "3129905",
+    "name": "Ibitiúra de Minas",
+    "immediate": {
+      "code": "310051",
+      "name": "Poços de Caldas"
+    },
+    "intermediate": {
+      "code": "3109",
+      "name": "Pouso Alegre"
+    }
+  },
+  {
+    "code": "3130002",
+    "name": "Ibituruna",
+    "immediate": {
+      "code": "310043",
+      "name": "Lavras"
+    },
+    "intermediate": {
+      "code": "3108",
+      "name": "Varginha"
+    }
+  },
+  {
+    "code": "3130051",
+    "name": "Icaraí de Minas",
+    "immediate": {
+      "code": "310011",
+      "name": "São Francisco"
+    },
+    "intermediate": {
+      "code": "3102",
+      "name": "Montes Claros"
+    }
+  },
+  {
+    "code": "3130101",
+    "name": "Igarapé",
+    "immediate": {
+      "code": "310001",
+      "name": "Belo Horizonte"
+    },
+    "intermediate": {
+      "code": "3101",
+      "name": "Belo Horizonte"
+    }
+  },
+  {
+    "code": "3130200",
+    "name": "Igaratinga",
+    "immediate": {
+      "code": "310068",
+      "name": "Pará de Minas"
+    },
+    "intermediate": {
+      "code": "3113",
+      "name": "Divinópolis"
+    }
+  },
+  {
+    "code": "3130309",
+    "name": "Iguatama",
+    "immediate": {
+      "code": "310066",
+      "name": "Formiga"
+    },
+    "intermediate": {
+      "code": "3113",
+      "name": "Divinópolis"
+    }
+  },
+  {
+    "code": "3130408",
+    "name": "Ijaci",
+    "immediate": {
+      "code": "310043",
+      "name": "Lavras"
+    },
+    "intermediate": {
+      "code": "3108",
+      "name": "Varginha"
+    }
+  },
+  {
+    "code": "3130507",
+    "name": "Ilicínea",
+    "immediate": {
+      "code": "310046",
+      "name": "Três Pontas - Boa Esperança"
+    },
+    "intermediate": {
+      "code": "3108",
+      "name": "Varginha"
+    }
+  },
+  {
+    "code": "3130556",
+    "name": "Imbé de Minas",
+    "immediate": {
+      "code": "310025",
+      "name": "Caratinga"
+    },
+    "intermediate": {
+      "code": "3105",
+      "name": "Ipatinga"
+    }
+  },
+  {
+    "code": "3130606",
+    "name": "Inconfidentes",
+    "immediate": {
+      "code": "310050",
+      "name": "Pouso Alegre"
+    },
+    "intermediate": {
+      "code": "3109",
+      "name": "Pouso Alegre"
+    }
+  },
+  {
+    "code": "3130655",
+    "name": "Indaiabira",
+    "immediate": {
+      "code": "310008",
+      "name": "Salinas"
+    },
+    "intermediate": {
+      "code": "3102",
+      "name": "Montes Claros"
+    }
+  },
+  {
+    "code": "3130705",
+    "name": "Indianópolis",
+    "immediate": {
+      "code": "310059",
+      "name": "Uberlândia"
+    },
+    "intermediate": {
+      "code": "3111",
+      "name": "Uberlândia"
+    }
+  },
+  {
+    "code": "3130804",
+    "name": "Ingaí",
+    "immediate": {
+      "code": "310043",
+      "name": "Lavras"
+    },
+    "intermediate": {
+      "code": "3108",
+      "name": "Varginha"
+    }
+  },
+  {
+    "code": "3130903",
+    "name": "Inhapim",
+    "immediate": {
+      "code": "310025",
+      "name": "Caratinga"
+    },
+    "intermediate": {
+      "code": "3105",
+      "name": "Ipatinga"
+    }
+  },
+  {
+    "code": "3131000",
+    "name": "Inhaúma",
+    "immediate": {
+      "code": "310002",
+      "name": "Sete Lagoas"
+    },
+    "intermediate": {
+      "code": "3101",
+      "name": "Belo Horizonte"
+    }
+  },
+  {
+    "code": "3131109",
+    "name": "Inimutaba",
+    "immediate": {
+      "code": "310004",
+      "name": "Curvelo"
+    },
+    "intermediate": {
+      "code": "3101",
+      "name": "Belo Horizonte"
+    }
+  },
+  {
+    "code": "3131158",
+    "name": "Ipaba",
+    "immediate": {
+      "code": "310024",
+      "name": "Ipatinga"
+    },
+    "intermediate": {
+      "code": "3105",
+      "name": "Ipatinga"
+    }
+  },
+  {
+    "code": "3131208",
+    "name": "Ipanema",
+    "immediate": {
+      "code": "310028",
+      "name": "Manhuaçu"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3131307",
+    "name": "Ipatinga",
+    "immediate": {
+      "code": "310024",
+      "name": "Ipatinga"
+    },
+    "intermediate": {
+      "code": "3105",
+      "name": "Ipatinga"
+    }
+  },
+  {
+    "code": "3131406",
+    "name": "Ipiaçu",
+    "immediate": {
+      "code": "310060",
+      "name": "Ituiutaba"
+    },
+    "intermediate": {
+      "code": "3111",
+      "name": "Uberlândia"
+    }
+  },
+  {
+    "code": "3131505",
+    "name": "Ipuiúna",
+    "immediate": {
+      "code": "310050",
+      "name": "Pouso Alegre"
+    },
+    "intermediate": {
+      "code": "3109",
+      "name": "Pouso Alegre"
+    }
+  },
+  {
+    "code": "3131604",
+    "name": "Iraí de Minas",
+    "immediate": {
+      "code": "310061",
+      "name": "Monte Carmelo"
+    },
+    "intermediate": {
+      "code": "3111",
+      "name": "Uberlândia"
+    }
+  },
+  {
+    "code": "3131703",
+    "name": "Itabira",
+    "immediate": {
+      "code": "310005",
+      "name": "Itabira"
+    },
+    "intermediate": {
+      "code": "3101",
+      "name": "Belo Horizonte"
+    }
+  },
+  {
+    "code": "3131802",
+    "name": "Itabirinha",
+    "immediate": {
+      "code": "310022",
+      "name": "Mantena"
+    },
+    "intermediate": {
+      "code": "3104",
+      "name": "Governador Valadares"
+    }
+  },
+  {
+    "code": "3131901",
+    "name": "Itabirito",
+    "immediate": {
+      "code": "310003",
+      "name": "Santa Bárbara - Ouro Preto"
+    },
+    "intermediate": {
+      "code": "3101",
+      "name": "Belo Horizonte"
+    }
+  },
+  {
+    "code": "3132008",
+    "name": "Itacambira",
+    "immediate": {
+      "code": "310006",
+      "name": "Montes Claros"
+    },
+    "intermediate": {
+      "code": "3102",
+      "name": "Montes Claros"
+    }
+  },
+  {
+    "code": "3132107",
+    "name": "Itacarambi",
+    "immediate": {
+      "code": "310009",
+      "name": "Januária"
+    },
+    "intermediate": {
+      "code": "3102",
+      "name": "Montes Claros"
+    }
+  },
+  {
+    "code": "3132206",
+    "name": "Itaguara",
+    "immediate": {
+      "code": "310069",
+      "name": "Oliveira"
+    },
+    "intermediate": {
+      "code": "3113",
+      "name": "Divinópolis"
+    }
+  },
+  {
+    "code": "3132305",
+    "name": "Itaipé",
+    "immediate": {
+      "code": "310013",
+      "name": "Teófilo Otoni"
+    },
+    "intermediate": {
+      "code": "3103",
+      "name": "Teófilo Otoni"
+    }
+  },
+  {
+    "code": "3132404",
+    "name": "Itajubá",
+    "immediate": {
+      "code": "310052",
+      "name": "Itajubá"
+    },
+    "intermediate": {
+      "code": "3109",
+      "name": "Pouso Alegre"
+    }
+  },
+  {
+    "code": "3132503",
+    "name": "Itamarandiba",
+    "immediate": {
+      "code": "310014",
+      "name": "Capelinha"
+    },
+    "intermediate": {
+      "code": "3103",
+      "name": "Teófilo Otoni"
+    }
+  },
+  {
+    "code": "3132602",
+    "name": "Itamarati de Minas",
+    "immediate": {
+      "code": "310032",
+      "name": "Cataguases"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3132701",
+    "name": "Itambacuri",
+    "immediate": {
+      "code": "310013",
+      "name": "Teófilo Otoni"
+    },
+    "intermediate": {
+      "code": "3103",
+      "name": "Teófilo Otoni"
+    }
+  },
+  {
+    "code": "3132800",
+    "name": "Itambé do Mato Dentro",
+    "immediate": {
+      "code": "310005",
+      "name": "Itabira"
+    },
+    "intermediate": {
+      "code": "3101",
+      "name": "Belo Horizonte"
+    }
+  },
+  {
+    "code": "3132909",
+    "name": "Itamogi",
+    "immediate": {
+      "code": "310047",
+      "name": "São Sebastião do Paraíso"
+    },
+    "intermediate": {
+      "code": "3108",
+      "name": "Varginha"
+    }
+  },
+  {
+    "code": "3133006",
+    "name": "Itamonte",
+    "immediate": {
+      "code": "310053",
+      "name": "São Lourenço"
+    },
+    "intermediate": {
+      "code": "3109",
+      "name": "Pouso Alegre"
+    }
+  },
+  {
+    "code": "3133105",
+    "name": "Itanhandu",
+    "immediate": {
+      "code": "310053",
+      "name": "São Lourenço"
+    },
+    "intermediate": {
+      "code": "3109",
+      "name": "Pouso Alegre"
+    }
+  },
+  {
+    "code": "3133204",
+    "name": "Itanhomi",
+    "immediate": {
+      "code": "310020",
+      "name": "Governador Valadares"
+    },
+    "intermediate": {
+      "code": "3104",
+      "name": "Governador Valadares"
+    }
+  },
+  {
+    "code": "3133303",
+    "name": "Itaobim",
+    "immediate": {
+      "code": "310013",
+      "name": "Teófilo Otoni"
+    },
+    "intermediate": {
+      "code": "3103",
+      "name": "Teófilo Otoni"
+    }
+  },
+  {
+    "code": "3133402",
+    "name": "Itapagipe",
+    "immediate": {
+      "code": "310057",
+      "name": "Frutal"
+    },
+    "intermediate": {
+      "code": "3110",
+      "name": "Uberaba"
+    }
+  },
+  {
+    "code": "3133501",
+    "name": "Itapecerica",
+    "immediate": {
+      "code": "310065",
+      "name": "Divinópolis"
+    },
+    "intermediate": {
+      "code": "3113",
+      "name": "Divinópolis"
+    }
+  },
+  {
+    "code": "3133600",
+    "name": "Itapeva",
+    "immediate": {
+      "code": "310050",
+      "name": "Pouso Alegre"
+    },
+    "intermediate": {
+      "code": "3109",
+      "name": "Pouso Alegre"
+    }
+  },
+  {
+    "code": "3133709",
+    "name": "Itatiaiuçu",
+    "immediate": {
+      "code": "310065",
+      "name": "Divinópolis"
+    },
+    "intermediate": {
+      "code": "3113",
+      "name": "Divinópolis"
+    }
+  },
+  {
+    "code": "3133758",
+    "name": "Itaú de Minas",
+    "immediate": {
+      "code": "310041",
+      "name": "Passos"
+    },
+    "intermediate": {
+      "code": "3108",
+      "name": "Varginha"
+    }
+  },
+  {
+    "code": "3133808",
+    "name": "Itaúna",
+    "immediate": {
+      "code": "310065",
+      "name": "Divinópolis"
+    },
+    "intermediate": {
+      "code": "3113",
+      "name": "Divinópolis"
+    }
+  },
+  {
+    "code": "3133907",
+    "name": "Itaverava",
+    "immediate": {
+      "code": "310038",
+      "name": "Conselheiro Lafaiete"
+    },
+    "intermediate": {
+      "code": "3107",
+      "name": "Barbacena"
+    }
+  },
+  {
+    "code": "3134004",
+    "name": "Itinga",
+    "immediate": {
+      "code": "310017",
+      "name": "Araçuaí"
+    },
+    "intermediate": {
+      "code": "3103",
+      "name": "Teófilo Otoni"
+    }
+  },
+  {
+    "code": "3134103",
+    "name": "Itueta",
+    "immediate": {
+      "code": "310023",
+      "name": "Aimorés - Resplendor"
+    },
+    "intermediate": {
+      "code": "3104",
+      "name": "Governador Valadares"
+    }
+  },
+  {
+    "code": "3134202",
+    "name": "Ituiutaba",
+    "immediate": {
+      "code": "310060",
+      "name": "Ituiutaba"
+    },
+    "intermediate": {
+      "code": "3111",
+      "name": "Uberlândia"
+    }
+  },
+  {
+    "code": "3134301",
+    "name": "Itumirim",
+    "immediate": {
+      "code": "310043",
+      "name": "Lavras"
+    },
+    "intermediate": {
+      "code": "3108",
+      "name": "Varginha"
+    }
+  },
+  {
+    "code": "3134400",
+    "name": "Iturama",
+    "immediate": {
+      "code": "310058",
+      "name": "Iturama"
+    },
+    "intermediate": {
+      "code": "3110",
+      "name": "Uberaba"
+    }
+  },
+  {
+    "code": "3134509",
+    "name": "Itutinga",
+    "immediate": {
+      "code": "310043",
+      "name": "Lavras"
+    },
+    "intermediate": {
+      "code": "3108",
+      "name": "Varginha"
+    }
+  },
+  {
+    "code": "3134608",
+    "name": "Jaboticatubas",
+    "immediate": {
+      "code": "310001",
+      "name": "Belo Horizonte"
+    },
+    "intermediate": {
+      "code": "3101",
+      "name": "Belo Horizonte"
+    }
+  },
+  {
+    "code": "3134707",
+    "name": "Jacinto",
+    "immediate": {
+      "code": "310015",
+      "name": "Almenara"
+    },
+    "intermediate": {
+      "code": "3103",
+      "name": "Teófilo Otoni"
+    }
+  },
+  {
+    "code": "3134806",
+    "name": "Jacuí",
+    "immediate": {
+      "code": "310047",
+      "name": "São Sebastião do Paraíso"
+    },
+    "intermediate": {
+      "code": "3108",
+      "name": "Varginha"
+    }
+  },
+  {
+    "code": "3134905",
+    "name": "Jacutinga",
+    "immediate": {
+      "code": "310050",
+      "name": "Pouso Alegre"
+    },
+    "intermediate": {
+      "code": "3109",
+      "name": "Pouso Alegre"
+    }
+  },
+  {
+    "code": "3135001",
+    "name": "Jaguaraçu",
+    "immediate": {
+      "code": "310024",
+      "name": "Ipatinga"
+    },
+    "intermediate": {
+      "code": "3105",
+      "name": "Ipatinga"
+    }
+  },
+  {
+    "code": "3135050",
+    "name": "Jaíba",
+    "immediate": {
+      "code": "310007",
+      "name": "Janaúba"
+    },
+    "intermediate": {
+      "code": "3102",
+      "name": "Montes Claros"
+    }
+  },
+  {
+    "code": "3135076",
+    "name": "Jampruca",
+    "immediate": {
+      "code": "310020",
+      "name": "Governador Valadares"
+    },
+    "intermediate": {
+      "code": "3104",
+      "name": "Governador Valadares"
+    }
+  },
+  {
+    "code": "3135100",
+    "name": "Janaúba",
+    "immediate": {
+      "code": "310007",
+      "name": "Janaúba"
+    },
+    "intermediate": {
+      "code": "3102",
+      "name": "Montes Claros"
+    }
+  },
+  {
+    "code": "3135209",
+    "name": "Januária",
+    "immediate": {
+      "code": "310009",
+      "name": "Januária"
+    },
+    "intermediate": {
+      "code": "3102",
+      "name": "Montes Claros"
+    }
+  },
+  {
+    "code": "3135308",
+    "name": "Japaraíba",
+    "immediate": {
+      "code": "310065",
+      "name": "Divinópolis"
+    },
+    "intermediate": {
+      "code": "3113",
+      "name": "Divinópolis"
+    }
+  },
+  {
+    "code": "3135357",
+    "name": "Japonvar",
+    "immediate": {
+      "code": "310006",
+      "name": "Montes Claros"
+    },
+    "intermediate": {
+      "code": "3102",
+      "name": "Montes Claros"
+    }
+  },
+  {
+    "code": "3135407",
+    "name": "Jeceaba",
+    "immediate": {
+      "code": "310038",
+      "name": "Conselheiro Lafaiete"
+    },
+    "intermediate": {
+      "code": "3107",
+      "name": "Barbacena"
+    }
+  },
+  {
+    "code": "3135456",
+    "name": "Jenipapo de Minas",
+    "immediate": {
+      "code": "310017",
+      "name": "Araçuaí"
+    },
+    "intermediate": {
+      "code": "3103",
+      "name": "Teófilo Otoni"
+    }
+  },
+  {
+    "code": "3135506",
+    "name": "Jequeri",
+    "immediate": {
+      "code": "310030",
+      "name": "Ponte Nova"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3135605",
+    "name": "Jequitaí",
+    "immediate": {
+      "code": "310006",
+      "name": "Montes Claros"
+    },
+    "intermediate": {
+      "code": "3102",
+      "name": "Montes Claros"
+    }
+  },
+  {
+    "code": "3135704",
+    "name": "Jequitibá",
+    "immediate": {
+      "code": "310002",
+      "name": "Sete Lagoas"
+    },
+    "intermediate": {
+      "code": "3101",
+      "name": "Belo Horizonte"
+    }
+  },
+  {
+    "code": "3135803",
+    "name": "Jequitinhonha",
+    "immediate": {
+      "code": "310015",
+      "name": "Almenara"
+    },
+    "intermediate": {
+      "code": "3103",
+      "name": "Teófilo Otoni"
+    }
+  },
+  {
+    "code": "3135902",
+    "name": "Jesuânia",
+    "immediate": {
+      "code": "310053",
+      "name": "São Lourenço"
+    },
+    "intermediate": {
+      "code": "3109",
+      "name": "Pouso Alegre"
+    }
+  },
+  {
+    "code": "3136009",
+    "name": "Joaíma",
+    "immediate": {
+      "code": "310015",
+      "name": "Almenara"
+    },
+    "intermediate": {
+      "code": "3103",
+      "name": "Teófilo Otoni"
+    }
+  },
+  {
+    "code": "3136108",
+    "name": "Joanésia",
+    "immediate": {
+      "code": "310024",
+      "name": "Ipatinga"
+    },
+    "intermediate": {
+      "code": "3105",
+      "name": "Ipatinga"
+    }
+  },
+  {
+    "code": "3136207",
+    "name": "João Monlevade",
+    "immediate": {
+      "code": "310026",
+      "name": "João Monlevade"
+    },
+    "intermediate": {
+      "code": "3105",
+      "name": "Ipatinga"
+    }
+  },
+  {
+    "code": "3136306",
+    "name": "João Pinheiro",
+    "immediate": {
+      "code": "310062",
+      "name": "Patos de Minas"
+    },
+    "intermediate": {
+      "code": "3112",
+      "name": "Patos de Minas"
+    }
+  },
+  {
+    "code": "3136405",
+    "name": "Joaquim Felício",
+    "immediate": {
+      "code": "310006",
+      "name": "Montes Claros"
+    },
+    "intermediate": {
+      "code": "3102",
+      "name": "Montes Claros"
+    }
+  },
+  {
+    "code": "3136504",
+    "name": "Jordânia",
+    "immediate": {
+      "code": "310015",
+      "name": "Almenara"
+    },
+    "intermediate": {
+      "code": "3103",
+      "name": "Teófilo Otoni"
+    }
+  },
+  {
+    "code": "3136520",
+    "name": "José Gonçalves de Minas",
+    "immediate": {
+      "code": "310017",
+      "name": "Araçuaí"
+    },
+    "intermediate": {
+      "code": "3103",
+      "name": "Teófilo Otoni"
+    }
+  },
+  {
+    "code": "3136553",
+    "name": "José Raydan",
+    "immediate": {
+      "code": "310021",
+      "name": "Guanhães"
+    },
+    "intermediate": {
+      "code": "3104",
+      "name": "Governador Valadares"
+    }
+  },
+  {
+    "code": "3136579",
+    "name": "Josenópolis",
+    "immediate": {
+      "code": "310006",
+      "name": "Montes Claros"
+    },
+    "intermediate": {
+      "code": "3102",
+      "name": "Montes Claros"
+    }
+  },
+  {
+    "code": "3136603",
+    "name": "Nova União",
+    "immediate": {
+      "code": "310001",
+      "name": "Belo Horizonte"
+    },
+    "intermediate": {
+      "code": "3101",
+      "name": "Belo Horizonte"
+    }
+  },
+  {
+    "code": "3136652",
+    "name": "Juatuba",
+    "immediate": {
+      "code": "310001",
+      "name": "Belo Horizonte"
+    },
+    "intermediate": {
+      "code": "3101",
+      "name": "Belo Horizonte"
+    }
+  },
+  {
+    "code": "3136702",
+    "name": "Juiz de Fora",
+    "immediate": {
+      "code": "310027",
+      "name": "Juiz de Fora"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3136801",
+    "name": "Juramento",
+    "immediate": {
+      "code": "310006",
+      "name": "Montes Claros"
+    },
+    "intermediate": {
+      "code": "3102",
+      "name": "Montes Claros"
+    }
+  },
+  {
+    "code": "3136900",
+    "name": "Juruaia",
+    "immediate": {
+      "code": "310044",
+      "name": "Guaxupé"
+    },
+    "intermediate": {
+      "code": "3108",
+      "name": "Varginha"
+    }
+  },
+  {
+    "code": "3136959",
+    "name": "Juvenília",
+    "immediate": {
+      "code": "310009",
+      "name": "Januária"
+    },
+    "intermediate": {
+      "code": "3102",
+      "name": "Montes Claros"
+    }
+  },
+  {
+    "code": "3137007",
+    "name": "Ladainha",
+    "immediate": {
+      "code": "310013",
+      "name": "Teófilo Otoni"
+    },
+    "intermediate": {
+      "code": "3103",
+      "name": "Teófilo Otoni"
+    }
+  },
+  {
+    "code": "3137106",
+    "name": "Lagamar",
+    "immediate": {
+      "code": "310062",
+      "name": "Patos de Minas"
+    },
+    "intermediate": {
+      "code": "3112",
+      "name": "Patos de Minas"
+    }
+  },
+  {
+    "code": "3137205",
+    "name": "Lagoa da Prata",
+    "immediate": {
+      "code": "310065",
+      "name": "Divinópolis"
+    },
+    "intermediate": {
+      "code": "3113",
+      "name": "Divinópolis"
+    }
+  },
+  {
+    "code": "3137304",
+    "name": "Lagoa dos Patos",
+    "immediate": {
+      "code": "310006",
+      "name": "Montes Claros"
+    },
+    "intermediate": {
+      "code": "3102",
+      "name": "Montes Claros"
+    }
+  },
+  {
+    "code": "3137403",
+    "name": "Lagoa Dourada",
+    "immediate": {
+      "code": "310039",
+      "name": "São João del Rei"
+    },
+    "intermediate": {
+      "code": "3107",
+      "name": "Barbacena"
+    }
+  },
+  {
+    "code": "3137502",
+    "name": "Lagoa Formosa",
+    "immediate": {
+      "code": "310062",
+      "name": "Patos de Minas"
+    },
+    "intermediate": {
+      "code": "3112",
+      "name": "Patos de Minas"
+    }
+  },
+  {
+    "code": "3137536",
+    "name": "Lagoa Grande",
+    "immediate": {
+      "code": "310062",
+      "name": "Patos de Minas"
+    },
+    "intermediate": {
+      "code": "3112",
+      "name": "Patos de Minas"
+    }
+  },
+  {
+    "code": "3137601",
+    "name": "Lagoa Santa",
+    "immediate": {
+      "code": "310001",
+      "name": "Belo Horizonte"
+    },
+    "intermediate": {
+      "code": "3101",
+      "name": "Belo Horizonte"
+    }
+  },
+  {
+    "code": "3137700",
+    "name": "Lajinha",
+    "immediate": {
+      "code": "310028",
+      "name": "Manhuaçu"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3137809",
+    "name": "Lambari",
+    "immediate": {
+      "code": "310053",
+      "name": "São Lourenço"
+    },
+    "intermediate": {
+      "code": "3109",
+      "name": "Pouso Alegre"
+    }
+  },
+  {
+    "code": "3137908",
+    "name": "Lamim",
+    "immediate": {
+      "code": "310038",
+      "name": "Conselheiro Lafaiete"
+    },
+    "intermediate": {
+      "code": "3107",
+      "name": "Barbacena"
+    }
+  },
+  {
+    "code": "3138005",
+    "name": "Laranjal",
+    "immediate": {
+      "code": "310032",
+      "name": "Cataguases"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3138104",
+    "name": "Lassance",
+    "immediate": {
+      "code": "310010",
+      "name": "Pirapora"
+    },
+    "intermediate": {
+      "code": "3102",
+      "name": "Montes Claros"
+    }
+  },
+  {
+    "code": "3138203",
+    "name": "Lavras",
+    "immediate": {
+      "code": "310043",
+      "name": "Lavras"
+    },
+    "intermediate": {
+      "code": "3108",
+      "name": "Varginha"
+    }
+  },
+  {
+    "code": "3138302",
+    "name": "Leandro Ferreira",
+    "immediate": {
+      "code": "310065",
+      "name": "Divinópolis"
+    },
+    "intermediate": {
+      "code": "3113",
+      "name": "Divinópolis"
+    }
+  },
+  {
+    "code": "3138351",
+    "name": "Leme do Prado",
+    "immediate": {
+      "code": "310014",
+      "name": "Capelinha"
+    },
+    "intermediate": {
+      "code": "3103",
+      "name": "Teófilo Otoni"
+    }
+  },
+  {
+    "code": "3138401",
+    "name": "Leopoldina",
+    "immediate": {
+      "code": "310032",
+      "name": "Cataguases"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3138500",
+    "name": "Liberdade",
+    "immediate": {
+      "code": "310027",
+      "name": "Juiz de Fora"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3138609",
+    "name": "Lima Duarte",
+    "immediate": {
+      "code": "310027",
+      "name": "Juiz de Fora"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3138625",
+    "name": "Limeira do Oeste",
+    "immediate": {
+      "code": "310058",
+      "name": "Iturama"
+    },
+    "intermediate": {
+      "code": "3110",
+      "name": "Uberaba"
+    }
+  },
+  {
+    "code": "3138658",
+    "name": "Lontra",
+    "immediate": {
+      "code": "310006",
+      "name": "Montes Claros"
+    },
+    "intermediate": {
+      "code": "3102",
+      "name": "Montes Claros"
+    }
+  },
+  {
+    "code": "3138674",
+    "name": "Luisburgo",
+    "immediate": {
+      "code": "310028",
+      "name": "Manhuaçu"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3138682",
+    "name": "Luislândia",
+    "immediate": {
+      "code": "310006",
+      "name": "Montes Claros"
+    },
+    "intermediate": {
+      "code": "3102",
+      "name": "Montes Claros"
+    }
+  },
+  {
+    "code": "3138708",
+    "name": "Luminárias",
+    "immediate": {
+      "code": "310043",
+      "name": "Lavras"
+    },
+    "intermediate": {
+      "code": "3108",
+      "name": "Varginha"
+    }
+  },
+  {
+    "code": "3138807",
+    "name": "Luz",
+    "immediate": {
+      "code": "310067",
+      "name": "Dores do Indaiá"
+    },
+    "intermediate": {
+      "code": "3113",
+      "name": "Divinópolis"
+    }
+  },
+  {
+    "code": "3138906",
+    "name": "Machacalis",
+    "immediate": {
+      "code": "310019",
+      "name": "Águas Formosas"
+    },
+    "intermediate": {
+      "code": "3103",
+      "name": "Teófilo Otoni"
+    }
+  },
+  {
+    "code": "3139003",
+    "name": "Machado",
+    "immediate": {
+      "code": "310042",
+      "name": "Alfenas"
+    },
+    "intermediate": {
+      "code": "3108",
+      "name": "Varginha"
+    }
+  },
+  {
+    "code": "3139102",
+    "name": "Madre de Deus de Minas",
+    "immediate": {
+      "code": "310039",
+      "name": "São João del Rei"
+    },
+    "intermediate": {
+      "code": "3107",
+      "name": "Barbacena"
+    }
+  },
+  {
+    "code": "3139201",
+    "name": "Malacacheta",
+    "immediate": {
+      "code": "310013",
+      "name": "Teófilo Otoni"
+    },
+    "intermediate": {
+      "code": "3103",
+      "name": "Teófilo Otoni"
+    }
+  },
+  {
+    "code": "3139250",
+    "name": "Mamonas",
+    "immediate": {
+      "code": "310012",
+      "name": "Espinosa"
+    },
+    "intermediate": {
+      "code": "3102",
+      "name": "Montes Claros"
+    }
+  },
+  {
+    "code": "3139300",
+    "name": "Manga",
+    "immediate": {
+      "code": "310007",
+      "name": "Janaúba"
+    },
+    "intermediate": {
+      "code": "3102",
+      "name": "Montes Claros"
+    }
+  },
+  {
+    "code": "3139409",
+    "name": "Manhuaçu",
+    "immediate": {
+      "code": "310028",
+      "name": "Manhuaçu"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3139508",
+    "name": "Manhumirim",
+    "immediate": {
+      "code": "310028",
+      "name": "Manhuaçu"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3139607",
+    "name": "Mantena",
+    "immediate": {
+      "code": "310022",
+      "name": "Mantena"
+    },
+    "intermediate": {
+      "code": "3104",
+      "name": "Governador Valadares"
+    }
+  },
+  {
+    "code": "3139706",
+    "name": "Maravilhas",
+    "immediate": {
+      "code": "310068",
+      "name": "Pará de Minas"
+    },
+    "intermediate": {
+      "code": "3113",
+      "name": "Divinópolis"
+    }
+  },
+  {
+    "code": "3139805",
+    "name": "Mar de Espanha",
+    "immediate": {
+      "code": "310035",
+      "name": "São João Nepomuceno - Bicas"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3139904",
+    "name": "Maria da Fé",
+    "immediate": {
+      "code": "310052",
+      "name": "Itajubá"
+    },
+    "intermediate": {
+      "code": "3109",
+      "name": "Pouso Alegre"
+    }
+  },
+  {
+    "code": "3140001",
+    "name": "Mariana",
+    "immediate": {
+      "code": "310003",
+      "name": "Santa Bárbara - Ouro Preto"
+    },
+    "intermediate": {
+      "code": "3101",
+      "name": "Belo Horizonte"
+    }
+  },
+  {
+    "code": "3140100",
+    "name": "Marilac",
+    "immediate": {
+      "code": "310020",
+      "name": "Governador Valadares"
+    },
+    "intermediate": {
+      "code": "3104",
+      "name": "Governador Valadares"
+    }
+  },
+  {
+    "code": "3140159",
+    "name": "Mário Campos",
+    "immediate": {
+      "code": "310001",
+      "name": "Belo Horizonte"
+    },
+    "intermediate": {
+      "code": "3101",
+      "name": "Belo Horizonte"
+    }
+  },
+  {
+    "code": "3140209",
+    "name": "Maripá de Minas",
+    "immediate": {
+      "code": "310035",
+      "name": "São João Nepomuceno - Bicas"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3140308",
+    "name": "Marliéria",
+    "immediate": {
+      "code": "310024",
+      "name": "Ipatinga"
+    },
+    "intermediate": {
+      "code": "3105",
+      "name": "Ipatinga"
+    }
+  },
+  {
+    "code": "3140407",
+    "name": "Marmelópolis",
+    "immediate": {
+      "code": "310052",
+      "name": "Itajubá"
+    },
+    "intermediate": {
+      "code": "3109",
+      "name": "Pouso Alegre"
+    }
+  },
+  {
+    "code": "3140506",
+    "name": "Martinho Campos",
+    "immediate": {
+      "code": "310067",
+      "name": "Dores do Indaiá"
+    },
+    "intermediate": {
+      "code": "3113",
+      "name": "Divinópolis"
+    }
+  },
+  {
+    "code": "3140530",
+    "name": "Martins Soares",
+    "immediate": {
+      "code": "310028",
+      "name": "Manhuaçu"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3140555",
+    "name": "Mata Verde",
+    "immediate": {
+      "code": "310015",
+      "name": "Almenara"
+    },
+    "intermediate": {
+      "code": "3103",
+      "name": "Teófilo Otoni"
+    }
+  },
+  {
+    "code": "3140605",
+    "name": "Materlândia",
+    "immediate": {
+      "code": "310021",
+      "name": "Guanhães"
+    },
+    "intermediate": {
+      "code": "3104",
+      "name": "Governador Valadares"
+    }
+  },
+  {
+    "code": "3140704",
+    "name": "Mateus Leme",
+    "immediate": {
+      "code": "310001",
+      "name": "Belo Horizonte"
+    },
+    "intermediate": {
+      "code": "3101",
+      "name": "Belo Horizonte"
+    }
+  },
+  {
+    "code": "3140803",
+    "name": "Matias Barbosa",
+    "immediate": {
+      "code": "310027",
+      "name": "Juiz de Fora"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3140852",
+    "name": "Matias Cardoso",
+    "immediate": {
+      "code": "310007",
+      "name": "Janaúba"
+    },
+    "intermediate": {
+      "code": "3102",
+      "name": "Montes Claros"
+    }
+  },
+  {
+    "code": "3140902",
+    "name": "Matipó",
+    "immediate": {
+      "code": "310028",
+      "name": "Manhuaçu"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3141009",
+    "name": "Mato Verde",
+    "immediate": {
+      "code": "310012",
+      "name": "Espinosa"
+    },
+    "intermediate": {
+      "code": "3102",
+      "name": "Montes Claros"
+    }
+  },
+  {
+    "code": "3141108",
+    "name": "Matozinhos",
+    "immediate": {
+      "code": "310002",
+      "name": "Sete Lagoas"
+    },
+    "intermediate": {
+      "code": "3101",
+      "name": "Belo Horizonte"
+    }
+  },
+  {
+    "code": "3141207",
+    "name": "Matutina",
+    "immediate": {
+      "code": "310062",
+      "name": "Patos de Minas"
+    },
+    "intermediate": {
+      "code": "3112",
+      "name": "Patos de Minas"
+    }
+  },
+  {
+    "code": "3141306",
+    "name": "Medeiros",
+    "immediate": {
+      "code": "310066",
+      "name": "Formiga"
+    },
+    "intermediate": {
+      "code": "3113",
+      "name": "Divinópolis"
+    }
+  },
+  {
+    "code": "3141405",
+    "name": "Medina",
+    "immediate": {
+      "code": "310018",
+      "name": "Pedra Azul"
+    },
+    "intermediate": {
+      "code": "3103",
+      "name": "Teófilo Otoni"
+    }
+  },
+  {
+    "code": "3141504",
+    "name": "Mendes Pimentel",
+    "immediate": {
+      "code": "310022",
+      "name": "Mantena"
+    },
+    "intermediate": {
+      "code": "3104",
+      "name": "Governador Valadares"
+    }
+  },
+  {
+    "code": "3141603",
+    "name": "Mercês",
+    "immediate": {
+      "code": "310029",
+      "name": "Ubá"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3141702",
+    "name": "Mesquita",
+    "immediate": {
+      "code": "310024",
+      "name": "Ipatinga"
+    },
+    "intermediate": {
+      "code": "3105",
+      "name": "Ipatinga"
+    }
+  },
+  {
+    "code": "3141801",
+    "name": "Minas Novas",
+    "immediate": {
+      "code": "310014",
+      "name": "Capelinha"
+    },
+    "intermediate": {
+      "code": "3103",
+      "name": "Teófilo Otoni"
+    }
+  },
+  {
+    "code": "3141900",
+    "name": "Minduri",
+    "immediate": {
+      "code": "310054",
+      "name": "Caxambu - Baependi"
+    },
+    "intermediate": {
+      "code": "3109",
+      "name": "Pouso Alegre"
+    }
+  },
+  {
+    "code": "3142007",
+    "name": "Mirabela",
+    "immediate": {
+      "code": "310006",
+      "name": "Montes Claros"
+    },
+    "intermediate": {
+      "code": "3102",
+      "name": "Montes Claros"
+    }
+  },
+  {
+    "code": "3142106",
+    "name": "Miradouro",
+    "immediate": {
+      "code": "310031",
+      "name": "Muriaé"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3142205",
+    "name": "Miraí",
+    "immediate": {
+      "code": "310031",
+      "name": "Muriaé"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3142254",
+    "name": "Miravânia",
+    "immediate": {
+      "code": "310007",
+      "name": "Janaúba"
+    },
+    "intermediate": {
+      "code": "3102",
+      "name": "Montes Claros"
+    }
+  },
+  {
+    "code": "3142304",
+    "name": "Moeda",
+    "immediate": {
+      "code": "310001",
+      "name": "Belo Horizonte"
+    },
+    "intermediate": {
+      "code": "3101",
+      "name": "Belo Horizonte"
+    }
+  },
+  {
+    "code": "3142403",
+    "name": "Moema",
+    "immediate": {
+      "code": "310067",
+      "name": "Dores do Indaiá"
+    },
+    "intermediate": {
+      "code": "3113",
+      "name": "Divinópolis"
+    }
+  },
+  {
+    "code": "3142502",
+    "name": "Monjolos",
+    "immediate": {
+      "code": "310004",
+      "name": "Curvelo"
+    },
+    "intermediate": {
+      "code": "3101",
+      "name": "Belo Horizonte"
+    }
+  },
+  {
+    "code": "3142601",
+    "name": "Monsenhor Paulo",
+    "immediate": {
+      "code": "310040",
+      "name": "Varginha"
+    },
+    "intermediate": {
+      "code": "3108",
+      "name": "Varginha"
+    }
+  },
+  {
+    "code": "3142700",
+    "name": "Montalvânia",
+    "immediate": {
+      "code": "310009",
+      "name": "Januária"
+    },
+    "intermediate": {
+      "code": "3102",
+      "name": "Montes Claros"
+    }
+  },
+  {
+    "code": "3142809",
+    "name": "Monte Alegre de Minas",
+    "immediate": {
+      "code": "310059",
+      "name": "Uberlândia"
+    },
+    "intermediate": {
+      "code": "3111",
+      "name": "Uberlândia"
+    }
+  },
+  {
+    "code": "3142908",
+    "name": "Monte Azul",
+    "immediate": {
+      "code": "310012",
+      "name": "Espinosa"
+    },
+    "intermediate": {
+      "code": "3102",
+      "name": "Montes Claros"
+    }
+  },
+  {
+    "code": "3143005",
+    "name": "Monte Belo",
+    "immediate": {
+      "code": "310044",
+      "name": "Guaxupé"
+    },
+    "intermediate": {
+      "code": "3108",
+      "name": "Varginha"
+    }
+  },
+  {
+    "code": "3143104",
+    "name": "Monte Carmelo",
+    "immediate": {
+      "code": "310061",
+      "name": "Monte Carmelo"
+    },
+    "intermediate": {
+      "code": "3111",
+      "name": "Uberlândia"
+    }
+  },
+  {
+    "code": "3143153",
+    "name": "Monte Formoso",
+    "immediate": {
+      "code": "310013",
+      "name": "Teófilo Otoni"
+    },
+    "intermediate": {
+      "code": "3103",
+      "name": "Teófilo Otoni"
+    }
+  },
+  {
+    "code": "3143203",
+    "name": "Monte Santo de Minas",
+    "immediate": {
+      "code": "310047",
+      "name": "São Sebastião do Paraíso"
+    },
+    "intermediate": {
+      "code": "3108",
+      "name": "Varginha"
+    }
+  },
+  {
+    "code": "3143302",
+    "name": "Montes Claros",
+    "immediate": {
+      "code": "310006",
+      "name": "Montes Claros"
+    },
+    "intermediate": {
+      "code": "3102",
+      "name": "Montes Claros"
+    }
+  },
+  {
+    "code": "3143401",
+    "name": "Monte Sião",
+    "immediate": {
+      "code": "310050",
+      "name": "Pouso Alegre"
+    },
+    "intermediate": {
+      "code": "3109",
+      "name": "Pouso Alegre"
+    }
+  },
+  {
+    "code": "3143450",
+    "name": "Montezuma",
+    "immediate": {
+      "code": "310012",
+      "name": "Espinosa"
+    },
+    "intermediate": {
+      "code": "3102",
+      "name": "Montes Claros"
+    }
+  },
+  {
+    "code": "3143500",
+    "name": "Morada Nova de Minas",
+    "immediate": {
+      "code": "310070",
+      "name": "Abaeté"
+    },
+    "intermediate": {
+      "code": "3113",
+      "name": "Divinópolis"
+    }
+  },
+  {
+    "code": "3143609",
+    "name": "Morro da Garça",
+    "immediate": {
+      "code": "310004",
+      "name": "Curvelo"
+    },
+    "intermediate": {
+      "code": "3101",
+      "name": "Belo Horizonte"
+    }
+  },
+  {
+    "code": "3143708",
+    "name": "Morro do Pilar",
+    "immediate": {
+      "code": "310002",
+      "name": "Sete Lagoas"
+    },
+    "intermediate": {
+      "code": "3101",
+      "name": "Belo Horizonte"
+    }
+  },
+  {
+    "code": "3143807",
+    "name": "Munhoz",
+    "immediate": {
+      "code": "310050",
+      "name": "Pouso Alegre"
+    },
+    "intermediate": {
+      "code": "3109",
+      "name": "Pouso Alegre"
+    }
+  },
+  {
+    "code": "3143906",
+    "name": "Muriaé",
+    "immediate": {
+      "code": "310031",
+      "name": "Muriaé"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3144003",
+    "name": "Mutum",
+    "immediate": {
+      "code": "310028",
+      "name": "Manhuaçu"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3144102",
+    "name": "Muzambinho",
+    "immediate": {
+      "code": "310044",
+      "name": "Guaxupé"
+    },
+    "intermediate": {
+      "code": "3108",
+      "name": "Varginha"
+    }
+  },
+  {
+    "code": "3144201",
+    "name": "Nacip Raydan",
+    "immediate": {
+      "code": "310020",
+      "name": "Governador Valadares"
+    },
+    "intermediate": {
+      "code": "3104",
+      "name": "Governador Valadares"
+    }
+  },
+  {
+    "code": "3144300",
+    "name": "Nanuque",
+    "immediate": {
+      "code": "310013",
+      "name": "Teófilo Otoni"
+    },
+    "intermediate": {
+      "code": "3103",
+      "name": "Teófilo Otoni"
+    }
+  },
+  {
+    "code": "3144359",
+    "name": "Naque",
+    "immediate": {
+      "code": "310024",
+      "name": "Ipatinga"
+    },
+    "intermediate": {
+      "code": "3105",
+      "name": "Ipatinga"
+    }
+  },
+  {
+    "code": "3144375",
+    "name": "Natalândia",
+    "immediate": {
+      "code": "310063",
+      "name": "Unaí"
+    },
+    "intermediate": {
+      "code": "3112",
+      "name": "Patos de Minas"
+    }
+  },
+  {
+    "code": "3144409",
+    "name": "Natércia",
+    "immediate": {
+      "code": "310050",
+      "name": "Pouso Alegre"
+    },
+    "intermediate": {
+      "code": "3109",
+      "name": "Pouso Alegre"
+    }
+  },
+  {
+    "code": "3144508",
+    "name": "Nazareno",
+    "immediate": {
+      "code": "310039",
+      "name": "São João del Rei"
+    },
+    "intermediate": {
+      "code": "3107",
+      "name": "Barbacena"
+    }
+  },
+  {
+    "code": "3144607",
+    "name": "Nepomuceno",
+    "immediate": {
+      "code": "310043",
+      "name": "Lavras"
+    },
+    "intermediate": {
+      "code": "3108",
+      "name": "Varginha"
+    }
+  },
+  {
+    "code": "3144656",
+    "name": "Ninheira",
+    "immediate": {
+      "code": "310008",
+      "name": "Salinas"
+    },
+    "intermediate": {
+      "code": "3102",
+      "name": "Montes Claros"
+    }
+  },
+  {
+    "code": "3144672",
+    "name": "Nova Belém",
+    "immediate": {
+      "code": "310022",
+      "name": "Mantena"
+    },
+    "intermediate": {
+      "code": "3104",
+      "name": "Governador Valadares"
+    }
+  },
+  {
+    "code": "3144706",
+    "name": "Nova Era",
+    "immediate": {
+      "code": "310026",
+      "name": "João Monlevade"
+    },
+    "intermediate": {
+      "code": "3105",
+      "name": "Ipatinga"
+    }
+  },
+  {
+    "code": "3144805",
+    "name": "Nova Lima",
+    "immediate": {
+      "code": "310001",
+      "name": "Belo Horizonte"
+    },
+    "intermediate": {
+      "code": "3101",
+      "name": "Belo Horizonte"
+    }
+  },
+  {
+    "code": "3144904",
+    "name": "Nova Módica",
+    "immediate": {
+      "code": "310013",
+      "name": "Teófilo Otoni"
+    },
+    "intermediate": {
+      "code": "3103",
+      "name": "Teófilo Otoni"
+    }
+  },
+  {
+    "code": "3145000",
+    "name": "Nova Ponte",
+    "immediate": {
+      "code": "310055",
+      "name": "Uberaba"
+    },
+    "intermediate": {
+      "code": "3110",
+      "name": "Uberaba"
+    }
+  },
+  {
+    "code": "3145059",
+    "name": "Nova Porteirinha",
+    "immediate": {
+      "code": "310007",
+      "name": "Janaúba"
+    },
+    "intermediate": {
+      "code": "3102",
+      "name": "Montes Claros"
+    }
+  },
+  {
+    "code": "3145109",
+    "name": "Nova Resende",
+    "immediate": {
+      "code": "310044",
+      "name": "Guaxupé"
+    },
+    "intermediate": {
+      "code": "3108",
+      "name": "Varginha"
+    }
+  },
+  {
+    "code": "3145208",
+    "name": "Nova Serrana",
+    "immediate": {
+      "code": "310065",
+      "name": "Divinópolis"
+    },
+    "intermediate": {
+      "code": "3113",
+      "name": "Divinópolis"
+    }
+  },
+  {
+    "code": "3145307",
+    "name": "Novo Cruzeiro",
+    "immediate": {
+      "code": "310013",
+      "name": "Teófilo Otoni"
+    },
+    "intermediate": {
+      "code": "3103",
+      "name": "Teófilo Otoni"
+    }
+  },
+  {
+    "code": "3145356",
+    "name": "Novo Oriente de Minas",
+    "immediate": {
+      "code": "310013",
+      "name": "Teófilo Otoni"
+    },
+    "intermediate": {
+      "code": "3103",
+      "name": "Teófilo Otoni"
+    }
+  },
+  {
+    "code": "3145372",
+    "name": "Novorizonte",
+    "immediate": {
+      "code": "310008",
+      "name": "Salinas"
+    },
+    "intermediate": {
+      "code": "3102",
+      "name": "Montes Claros"
+    }
+  },
+  {
+    "code": "3145406",
+    "name": "Olaria",
+    "immediate": {
+      "code": "310027",
+      "name": "Juiz de Fora"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3145455",
+    "name": "Olhos-d'Água",
+    "immediate": {
+      "code": "310006",
+      "name": "Montes Claros"
+    },
+    "intermediate": {
+      "code": "3102",
+      "name": "Montes Claros"
+    }
+  },
+  {
+    "code": "3145505",
+    "name": "Olímpio Noronha",
+    "immediate": {
+      "code": "310053",
+      "name": "São Lourenço"
+    },
+    "intermediate": {
+      "code": "3109",
+      "name": "Pouso Alegre"
+    }
+  },
+  {
+    "code": "3145604",
+    "name": "Oliveira",
+    "immediate": {
+      "code": "310069",
+      "name": "Oliveira"
+    },
+    "intermediate": {
+      "code": "3113",
+      "name": "Divinópolis"
+    }
+  },
+  {
+    "code": "3145703",
+    "name": "Oliveira Fortes",
+    "immediate": {
+      "code": "310027",
+      "name": "Juiz de Fora"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3145802",
+    "name": "Onça de Pitangui",
+    "immediate": {
+      "code": "310068",
+      "name": "Pará de Minas"
+    },
+    "intermediate": {
+      "code": "3113",
+      "name": "Divinópolis"
+    }
+  },
+  {
+    "code": "3145851",
+    "name": "Oratórios",
+    "immediate": {
+      "code": "310030",
+      "name": "Ponte Nova"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3145877",
+    "name": "Orizânia",
+    "immediate": {
+      "code": "310034",
+      "name": "Carangola"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3145901",
+    "name": "Ouro Branco",
+    "immediate": {
+      "code": "310038",
+      "name": "Conselheiro Lafaiete"
+    },
+    "intermediate": {
+      "code": "3107",
+      "name": "Barbacena"
+    }
+  },
+  {
+    "code": "3146008",
+    "name": "Ouro Fino",
+    "immediate": {
+      "code": "310050",
+      "name": "Pouso Alegre"
+    },
+    "intermediate": {
+      "code": "3109",
+      "name": "Pouso Alegre"
+    }
+  },
+  {
+    "code": "3146107",
+    "name": "Ouro Preto",
+    "immediate": {
+      "code": "310003",
+      "name": "Santa Bárbara - Ouro Preto"
+    },
+    "intermediate": {
+      "code": "3101",
+      "name": "Belo Horizonte"
+    }
+  },
+  {
+    "code": "3146206",
+    "name": "Ouro Verde de Minas",
+    "immediate": {
+      "code": "310013",
+      "name": "Teófilo Otoni"
+    },
+    "intermediate": {
+      "code": "3103",
+      "name": "Teófilo Otoni"
+    }
+  },
+  {
+    "code": "3146255",
+    "name": "Padre Carvalho",
+    "immediate": {
+      "code": "310008",
+      "name": "Salinas"
+    },
+    "intermediate": {
+      "code": "3102",
+      "name": "Montes Claros"
+    }
+  },
+  {
+    "code": "3146305",
+    "name": "Padre Paraíso",
+    "immediate": {
+      "code": "310013",
+      "name": "Teófilo Otoni"
+    },
+    "intermediate": {
+      "code": "3103",
+      "name": "Teófilo Otoni"
+    }
+  },
+  {
+    "code": "3146404",
+    "name": "Paineiras",
+    "immediate": {
+      "code": "310070",
+      "name": "Abaeté"
+    },
+    "intermediate": {
+      "code": "3113",
+      "name": "Divinópolis"
+    }
+  },
+  {
+    "code": "3146503",
+    "name": "Pains",
+    "immediate": {
+      "code": "310066",
+      "name": "Formiga"
+    },
+    "intermediate": {
+      "code": "3113",
+      "name": "Divinópolis"
+    }
+  },
+  {
+    "code": "3146552",
+    "name": "Pai Pedro",
+    "immediate": {
+      "code": "310007",
+      "name": "Janaúba"
+    },
+    "intermediate": {
+      "code": "3102",
+      "name": "Montes Claros"
+    }
+  },
+  {
+    "code": "3146602",
+    "name": "Paiva",
+    "immediate": {
+      "code": "310027",
+      "name": "Juiz de Fora"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3146701",
+    "name": "Palma",
+    "immediate": {
+      "code": "310032",
+      "name": "Cataguases"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3146750",
+    "name": "Palmópolis",
+    "immediate": {
+      "code": "310015",
+      "name": "Almenara"
+    },
+    "intermediate": {
+      "code": "3103",
+      "name": "Teófilo Otoni"
+    }
+  },
+  {
+    "code": "3146909",
+    "name": "Papagaios",
+    "immediate": {
+      "code": "310068",
+      "name": "Pará de Minas"
+    },
+    "intermediate": {
+      "code": "3113",
+      "name": "Divinópolis"
+    }
+  },
+  {
+    "code": "3147006",
+    "name": "Paracatu",
+    "immediate": {
+      "code": "310062",
+      "name": "Patos de Minas"
+    },
+    "intermediate": {
+      "code": "3112",
+      "name": "Patos de Minas"
+    }
+  },
+  {
+    "code": "3147105",
+    "name": "Pará de Minas",
+    "immediate": {
+      "code": "310068",
+      "name": "Pará de Minas"
+    },
+    "intermediate": {
+      "code": "3113",
+      "name": "Divinópolis"
+    }
+  },
+  {
+    "code": "3147204",
+    "name": "Paraguaçu",
+    "immediate": {
+      "code": "310042",
+      "name": "Alfenas"
+    },
+    "intermediate": {
+      "code": "3108",
+      "name": "Varginha"
+    }
+  },
+  {
+    "code": "3147303",
+    "name": "Paraisópolis",
+    "immediate": {
+      "code": "310052",
+      "name": "Itajubá"
+    },
+    "intermediate": {
+      "code": "3109",
+      "name": "Pouso Alegre"
+    }
+  },
+  {
+    "code": "3147402",
+    "name": "Paraopeba",
+    "immediate": {
+      "code": "310002",
+      "name": "Sete Lagoas"
+    },
+    "intermediate": {
+      "code": "3101",
+      "name": "Belo Horizonte"
+    }
+  },
+  {
+    "code": "3147501",
+    "name": "Passabém",
+    "immediate": {
+      "code": "310005",
+      "name": "Itabira"
+    },
+    "intermediate": {
+      "code": "3101",
+      "name": "Belo Horizonte"
+    }
+  },
+  {
+    "code": "3147600",
+    "name": "Passa Quatro",
+    "immediate": {
+      "code": "310053",
+      "name": "São Lourenço"
+    },
+    "intermediate": {
+      "code": "3109",
+      "name": "Pouso Alegre"
+    }
+  },
+  {
+    "code": "3147709",
+    "name": "Passa Tempo",
+    "immediate": {
+      "code": "310069",
+      "name": "Oliveira"
+    },
+    "intermediate": {
+      "code": "3113",
+      "name": "Divinópolis"
+    }
+  },
+  {
+    "code": "3147808",
+    "name": "Passa Vinte",
+    "immediate": {
+      "code": "310027",
+      "name": "Juiz de Fora"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3147907",
+    "name": "Passos",
+    "immediate": {
+      "code": "310041",
+      "name": "Passos"
+    },
+    "intermediate": {
+      "code": "3108",
+      "name": "Varginha"
+    }
+  },
+  {
+    "code": "3147956",
+    "name": "Patis",
+    "immediate": {
+      "code": "310006",
+      "name": "Montes Claros"
+    },
+    "intermediate": {
+      "code": "3102",
+      "name": "Montes Claros"
+    }
+  },
+  {
+    "code": "3148004",
+    "name": "Patos de Minas",
+    "immediate": {
+      "code": "310062",
+      "name": "Patos de Minas"
+    },
+    "intermediate": {
+      "code": "3112",
+      "name": "Patos de Minas"
+    }
+  },
+  {
+    "code": "3148103",
+    "name": "Patrocínio",
+    "immediate": {
+      "code": "310064",
+      "name": "Patrocínio"
+    },
+    "intermediate": {
+      "code": "3112",
+      "name": "Patos de Minas"
+    }
+  },
+  {
+    "code": "3148202",
+    "name": "Patrocínio do Muriaé",
+    "immediate": {
+      "code": "310031",
+      "name": "Muriaé"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3148301",
+    "name": "Paula Cândido",
+    "immediate": {
+      "code": "310033",
+      "name": "Viçosa"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3148400",
+    "name": "Paulistas",
+    "immediate": {
+      "code": "310021",
+      "name": "Guanhães"
+    },
+    "intermediate": {
+      "code": "3104",
+      "name": "Governador Valadares"
+    }
+  },
+  {
+    "code": "3148509",
+    "name": "Pavão",
+    "immediate": {
+      "code": "310013",
+      "name": "Teófilo Otoni"
+    },
+    "intermediate": {
+      "code": "3103",
+      "name": "Teófilo Otoni"
+    }
+  },
+  {
+    "code": "3148608",
+    "name": "Peçanha",
+    "immediate": {
+      "code": "310021",
+      "name": "Guanhães"
+    },
+    "intermediate": {
+      "code": "3104",
+      "name": "Governador Valadares"
+    }
+  },
+  {
+    "code": "3148707",
+    "name": "Pedra Azul",
+    "immediate": {
+      "code": "310018",
+      "name": "Pedra Azul"
+    },
+    "intermediate": {
+      "code": "3103",
+      "name": "Teófilo Otoni"
+    }
+  },
+  {
+    "code": "3148756",
+    "name": "Pedra Bonita",
+    "immediate": {
+      "code": "310034",
+      "name": "Carangola"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3148806",
+    "name": "Pedra do Anta",
+    "immediate": {
+      "code": "310033",
+      "name": "Viçosa"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3148905",
+    "name": "Pedra do Indaiá",
+    "immediate": {
+      "code": "310065",
+      "name": "Divinópolis"
+    },
+    "intermediate": {
+      "code": "3113",
+      "name": "Divinópolis"
+    }
+  },
+  {
+    "code": "3149002",
+    "name": "Pedra Dourada",
+    "immediate": {
+      "code": "310034",
+      "name": "Carangola"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3149101",
+    "name": "Pedralva",
+    "immediate": {
+      "code": "310052",
+      "name": "Itajubá"
+    },
+    "intermediate": {
+      "code": "3109",
+      "name": "Pouso Alegre"
+    }
+  },
+  {
+    "code": "3149150",
+    "name": "Pedras de Maria da Cruz",
+    "immediate": {
+      "code": "310009",
+      "name": "Januária"
+    },
+    "intermediate": {
+      "code": "3102",
+      "name": "Montes Claros"
+    }
+  },
+  {
+    "code": "3149200",
+    "name": "Pedrinópolis",
+    "immediate": {
+      "code": "310056",
+      "name": "Araxá"
+    },
+    "intermediate": {
+      "code": "3110",
+      "name": "Uberaba"
+    }
+  },
+  {
+    "code": "3149309",
+    "name": "Pedro Leopoldo",
+    "immediate": {
+      "code": "310001",
+      "name": "Belo Horizonte"
+    },
+    "intermediate": {
+      "code": "3101",
+      "name": "Belo Horizonte"
+    }
+  },
+  {
+    "code": "3149408",
+    "name": "Pedro Teixeira",
+    "immediate": {
+      "code": "310027",
+      "name": "Juiz de Fora"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3149507",
+    "name": "Pequeri",
+    "immediate": {
+      "code": "310035",
+      "name": "São João Nepomuceno - Bicas"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3149606",
+    "name": "Pequi",
+    "immediate": {
+      "code": "310068",
+      "name": "Pará de Minas"
+    },
+    "intermediate": {
+      "code": "3113",
+      "name": "Divinópolis"
+    }
+  },
+  {
+    "code": "3149705",
+    "name": "Perdigão",
+    "immediate": {
+      "code": "310065",
+      "name": "Divinópolis"
+    },
+    "intermediate": {
+      "code": "3113",
+      "name": "Divinópolis"
+    }
+  },
+  {
+    "code": "3149804",
+    "name": "Perdizes",
+    "immediate": {
+      "code": "310056",
+      "name": "Araxá"
+    },
+    "intermediate": {
+      "code": "3110",
+      "name": "Uberaba"
+    }
+  },
+  {
+    "code": "3149903",
+    "name": "Perdões",
+    "immediate": {
+      "code": "310043",
+      "name": "Lavras"
+    },
+    "intermediate": {
+      "code": "3108",
+      "name": "Varginha"
+    }
+  },
+  {
+    "code": "3149952",
+    "name": "Periquito",
+    "immediate": {
+      "code": "310024",
+      "name": "Ipatinga"
+    },
+    "intermediate": {
+      "code": "3105",
+      "name": "Ipatinga"
+    }
+  },
+  {
+    "code": "3150000",
+    "name": "Pescador",
+    "immediate": {
+      "code": "310013",
+      "name": "Teófilo Otoni"
+    },
+    "intermediate": {
+      "code": "3103",
+      "name": "Teófilo Otoni"
+    }
+  },
+  {
+    "code": "3150109",
+    "name": "Piau",
+    "immediate": {
+      "code": "310027",
+      "name": "Juiz de Fora"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3150158",
+    "name": "Piedade de Caratinga",
+    "immediate": {
+      "code": "310025",
+      "name": "Caratinga"
+    },
+    "intermediate": {
+      "code": "3105",
+      "name": "Ipatinga"
+    }
+  },
+  {
+    "code": "3150208",
+    "name": "Piedade de Ponte Nova",
+    "immediate": {
+      "code": "310030",
+      "name": "Ponte Nova"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3150307",
+    "name": "Piedade do Rio Grande",
+    "immediate": {
+      "code": "310039",
+      "name": "São João del Rei"
+    },
+    "intermediate": {
+      "code": "3107",
+      "name": "Barbacena"
+    }
+  },
+  {
+    "code": "3150406",
+    "name": "Piedade dos Gerais",
+    "immediate": {
+      "code": "310069",
+      "name": "Oliveira"
+    },
+    "intermediate": {
+      "code": "3113",
+      "name": "Divinópolis"
+    }
+  },
+  {
+    "code": "3150505",
+    "name": "Pimenta",
+    "immediate": {
+      "code": "310066",
+      "name": "Formiga"
+    },
+    "intermediate": {
+      "code": "3113",
+      "name": "Divinópolis"
+    }
+  },
+  {
+    "code": "3150539",
+    "name": "Pingo-d'Água",
+    "immediate": {
+      "code": "310024",
+      "name": "Ipatinga"
+    },
+    "intermediate": {
+      "code": "3105",
+      "name": "Ipatinga"
+    }
+  },
+  {
+    "code": "3150570",
+    "name": "Pintópolis",
+    "immediate": {
+      "code": "310011",
+      "name": "São Francisco"
+    },
+    "intermediate": {
+      "code": "3102",
+      "name": "Montes Claros"
+    }
+  },
+  {
+    "code": "3150604",
+    "name": "Piracema",
+    "immediate": {
+      "code": "310069",
+      "name": "Oliveira"
+    },
+    "intermediate": {
+      "code": "3113",
+      "name": "Divinópolis"
+    }
+  },
+  {
+    "code": "3150703",
+    "name": "Pirajuba",
+    "immediate": {
+      "code": "310057",
+      "name": "Frutal"
+    },
+    "intermediate": {
+      "code": "3110",
+      "name": "Uberaba"
+    }
+  },
+  {
+    "code": "3150802",
+    "name": "Piranga",
+    "immediate": {
+      "code": "310038",
+      "name": "Conselheiro Lafaiete"
+    },
+    "intermediate": {
+      "code": "3107",
+      "name": "Barbacena"
+    }
+  },
+  {
+    "code": "3150901",
+    "name": "Piranguçu",
+    "immediate": {
+      "code": "310052",
+      "name": "Itajubá"
+    },
+    "intermediate": {
+      "code": "3109",
+      "name": "Pouso Alegre"
+    }
+  },
+  {
+    "code": "3151008",
+    "name": "Piranguinho",
+    "immediate": {
+      "code": "310052",
+      "name": "Itajubá"
+    },
+    "intermediate": {
+      "code": "3109",
+      "name": "Pouso Alegre"
+    }
+  },
+  {
+    "code": "3151107",
+    "name": "Pirapetinga",
+    "immediate": {
+      "code": "310036",
+      "name": "Além Paraíba"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3151206",
+    "name": "Pirapora",
+    "immediate": {
+      "code": "310010",
+      "name": "Pirapora"
+    },
+    "intermediate": {
+      "code": "3102",
+      "name": "Montes Claros"
+    }
+  },
+  {
+    "code": "3151305",
+    "name": "Piraúba",
+    "immediate": {
+      "code": "310029",
+      "name": "Ubá"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3151404",
+    "name": "Pitangui",
+    "immediate": {
+      "code": "310065",
+      "name": "Divinópolis"
+    },
+    "intermediate": {
+      "code": "3113",
+      "name": "Divinópolis"
+    }
+  },
+  {
+    "code": "3151503",
+    "name": "Piumhi",
+    "immediate": {
+      "code": "310049",
+      "name": "Piumhi"
+    },
+    "intermediate": {
+      "code": "3108",
+      "name": "Varginha"
+    }
+  },
+  {
+    "code": "3151602",
+    "name": "Planura",
+    "immediate": {
+      "code": "310057",
+      "name": "Frutal"
+    },
+    "intermediate": {
+      "code": "3110",
+      "name": "Uberaba"
+    }
+  },
+  {
+    "code": "3151701",
+    "name": "Poço Fundo",
+    "immediate": {
+      "code": "310042",
+      "name": "Alfenas"
+    },
+    "intermediate": {
+      "code": "3108",
+      "name": "Varginha"
+    }
+  },
+  {
+    "code": "3151800",
+    "name": "Poços de Caldas",
+    "immediate": {
+      "code": "310051",
+      "name": "Poços de Caldas"
+    },
+    "intermediate": {
+      "code": "3109",
+      "name": "Pouso Alegre"
+    }
+  },
+  {
+    "code": "3151909",
+    "name": "Pocrane",
+    "immediate": {
+      "code": "310028",
+      "name": "Manhuaçu"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3152006",
+    "name": "Pompéu",
+    "immediate": {
+      "code": "310067",
+      "name": "Dores do Indaiá"
+    },
+    "intermediate": {
+      "code": "3113",
+      "name": "Divinópolis"
+    }
+  },
+  {
+    "code": "3152105",
+    "name": "Ponte Nova",
+    "immediate": {
+      "code": "310030",
+      "name": "Ponte Nova"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3152131",
+    "name": "Ponto Chique",
+    "immediate": {
+      "code": "310010",
+      "name": "Pirapora"
+    },
+    "intermediate": {
+      "code": "3102",
+      "name": "Montes Claros"
+    }
+  },
+  {
+    "code": "3152170",
+    "name": "Ponto dos Volantes",
+    "immediate": {
+      "code": "310013",
+      "name": "Teófilo Otoni"
+    },
+    "intermediate": {
+      "code": "3103",
+      "name": "Teófilo Otoni"
+    }
+  },
+  {
+    "code": "3152204",
+    "name": "Porteirinha",
+    "immediate": {
+      "code": "310007",
+      "name": "Janaúba"
+    },
+    "intermediate": {
+      "code": "3102",
+      "name": "Montes Claros"
+    }
+  },
+  {
+    "code": "3152303",
+    "name": "Porto Firme",
+    "immediate": {
+      "code": "310033",
+      "name": "Viçosa"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3152402",
+    "name": "Poté",
+    "immediate": {
+      "code": "310013",
+      "name": "Teófilo Otoni"
+    },
+    "intermediate": {
+      "code": "3103",
+      "name": "Teófilo Otoni"
+    }
+  },
+  {
+    "code": "3152501",
+    "name": "Pouso Alegre",
+    "immediate": {
+      "code": "310050",
+      "name": "Pouso Alegre"
+    },
+    "intermediate": {
+      "code": "3109",
+      "name": "Pouso Alegre"
+    }
+  },
+  {
+    "code": "3152600",
+    "name": "Pouso Alto",
+    "immediate": {
+      "code": "310053",
+      "name": "São Lourenço"
+    },
+    "intermediate": {
+      "code": "3109",
+      "name": "Pouso Alegre"
+    }
+  },
+  {
+    "code": "3152709",
+    "name": "Prados",
+    "immediate": {
+      "code": "310039",
+      "name": "São João del Rei"
+    },
+    "intermediate": {
+      "code": "3107",
+      "name": "Barbacena"
+    }
+  },
+  {
+    "code": "3152808",
+    "name": "Prata",
+    "immediate": {
+      "code": "310059",
+      "name": "Uberlândia"
+    },
+    "intermediate": {
+      "code": "3111",
+      "name": "Uberlândia"
+    }
+  },
+  {
+    "code": "3152907",
+    "name": "Pratápolis",
+    "immediate": {
+      "code": "310041",
+      "name": "Passos"
+    },
+    "intermediate": {
+      "code": "3108",
+      "name": "Varginha"
+    }
+  },
+  {
+    "code": "3153004",
+    "name": "Pratinha",
+    "immediate": {
+      "code": "310056",
+      "name": "Araxá"
+    },
+    "intermediate": {
+      "code": "3110",
+      "name": "Uberaba"
+    }
+  },
+  {
+    "code": "3153103",
+    "name": "Presidente Bernardes",
+    "immediate": {
+      "code": "310033",
+      "name": "Viçosa"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3153202",
+    "name": "Presidente Juscelino",
+    "immediate": {
+      "code": "310004",
+      "name": "Curvelo"
+    },
+    "intermediate": {
+      "code": "3101",
+      "name": "Belo Horizonte"
+    }
+  },
+  {
+    "code": "3153301",
+    "name": "Presidente Kubitschek",
+    "immediate": {
+      "code": "310016",
+      "name": "Diamantina"
+    },
+    "intermediate": {
+      "code": "3103",
+      "name": "Teófilo Otoni"
+    }
+  },
+  {
+    "code": "3153400",
+    "name": "Presidente Olegário",
+    "immediate": {
+      "code": "310062",
+      "name": "Patos de Minas"
+    },
+    "intermediate": {
+      "code": "3112",
+      "name": "Patos de Minas"
+    }
+  },
+  {
+    "code": "3153509",
+    "name": "Alto Jequitibá",
+    "immediate": {
+      "code": "310028",
+      "name": "Manhuaçu"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3153608",
+    "name": "Prudente de Morais",
+    "immediate": {
+      "code": "310002",
+      "name": "Sete Lagoas"
+    },
+    "intermediate": {
+      "code": "3101",
+      "name": "Belo Horizonte"
+    }
+  },
+  {
+    "code": "3153707",
+    "name": "Quartel Geral",
+    "immediate": {
+      "code": "310067",
+      "name": "Dores do Indaiá"
+    },
+    "intermediate": {
+      "code": "3113",
+      "name": "Divinópolis"
+    }
+  },
+  {
+    "code": "3153806",
+    "name": "Queluzito",
+    "immediate": {
+      "code": "310038",
+      "name": "Conselheiro Lafaiete"
+    },
+    "intermediate": {
+      "code": "3107",
+      "name": "Barbacena"
+    }
+  },
+  {
+    "code": "3153905",
+    "name": "Raposos",
+    "immediate": {
+      "code": "310001",
+      "name": "Belo Horizonte"
+    },
+    "intermediate": {
+      "code": "3101",
+      "name": "Belo Horizonte"
+    }
+  },
+  {
+    "code": "3154002",
+    "name": "Raul Soares",
+    "immediate": {
+      "code": "310025",
+      "name": "Caratinga"
+    },
+    "intermediate": {
+      "code": "3105",
+      "name": "Ipatinga"
+    }
+  },
+  {
+    "code": "3154101",
+    "name": "Recreio",
+    "immediate": {
+      "code": "310032",
+      "name": "Cataguases"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3154150",
+    "name": "Reduto",
+    "immediate": {
+      "code": "310028",
+      "name": "Manhuaçu"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3154200",
+    "name": "Resende Costa",
+    "immediate": {
+      "code": "310039",
+      "name": "São João del Rei"
+    },
+    "intermediate": {
+      "code": "3107",
+      "name": "Barbacena"
+    }
+  },
+  {
+    "code": "3154309",
+    "name": "Resplendor",
+    "immediate": {
+      "code": "310023",
+      "name": "Aimorés - Resplendor"
+    },
+    "intermediate": {
+      "code": "3104",
+      "name": "Governador Valadares"
+    }
+  },
+  {
+    "code": "3154408",
+    "name": "Ressaquinha",
+    "immediate": {
+      "code": "310037",
+      "name": "Barbacena"
+    },
+    "intermediate": {
+      "code": "3107",
+      "name": "Barbacena"
+    }
+  },
+  {
+    "code": "3154457",
+    "name": "Riachinho",
+    "immediate": {
+      "code": "310063",
+      "name": "Unaí"
+    },
+    "intermediate": {
+      "code": "3112",
+      "name": "Patos de Minas"
+    }
+  },
+  {
+    "code": "3154507",
+    "name": "Riacho dos Machados",
+    "immediate": {
+      "code": "310007",
+      "name": "Janaúba"
+    },
+    "intermediate": {
+      "code": "3102",
+      "name": "Montes Claros"
+    }
+  },
+  {
+    "code": "3154606",
+    "name": "Ribeirão das Neves",
+    "immediate": {
+      "code": "310001",
+      "name": "Belo Horizonte"
+    },
+    "intermediate": {
+      "code": "3101",
+      "name": "Belo Horizonte"
+    }
+  },
+  {
+    "code": "3154705",
+    "name": "Ribeirão Vermelho",
+    "immediate": {
+      "code": "310043",
+      "name": "Lavras"
+    },
+    "intermediate": {
+      "code": "3108",
+      "name": "Varginha"
+    }
+  },
+  {
+    "code": "3154804",
+    "name": "Rio Acima",
+    "immediate": {
+      "code": "310001",
+      "name": "Belo Horizonte"
+    },
+    "intermediate": {
+      "code": "3101",
+      "name": "Belo Horizonte"
+    }
+  },
+  {
+    "code": "3154903",
+    "name": "Rio Casca",
+    "immediate": {
+      "code": "310030",
+      "name": "Ponte Nova"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3155009",
+    "name": "Rio Doce",
+    "immediate": {
+      "code": "310030",
+      "name": "Ponte Nova"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3155108",
+    "name": "Rio do Prado",
+    "immediate": {
+      "code": "310015",
+      "name": "Almenara"
+    },
+    "intermediate": {
+      "code": "3103",
+      "name": "Teófilo Otoni"
+    }
+  },
+  {
+    "code": "3155207",
+    "name": "Rio Espera",
+    "immediate": {
+      "code": "310038",
+      "name": "Conselheiro Lafaiete"
+    },
+    "intermediate": {
+      "code": "3107",
+      "name": "Barbacena"
+    }
+  },
+  {
+    "code": "3155306",
+    "name": "Rio Manso",
+    "immediate": {
+      "code": "310069",
+      "name": "Oliveira"
+    },
+    "intermediate": {
+      "code": "3113",
+      "name": "Divinópolis"
+    }
+  },
+  {
+    "code": "3155405",
+    "name": "Rio Novo",
+    "immediate": {
+      "code": "310027",
+      "name": "Juiz de Fora"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3155504",
+    "name": "Rio Paranaíba",
+    "immediate": {
+      "code": "310062",
+      "name": "Patos de Minas"
+    },
+    "intermediate": {
+      "code": "3112",
+      "name": "Patos de Minas"
+    }
+  },
+  {
+    "code": "3155603",
+    "name": "Rio Pardo de Minas",
+    "immediate": {
+      "code": "310008",
+      "name": "Salinas"
+    },
+    "intermediate": {
+      "code": "3102",
+      "name": "Montes Claros"
+    }
+  },
+  {
+    "code": "3155702",
+    "name": "Rio Piracicaba",
+    "immediate": {
+      "code": "310026",
+      "name": "João Monlevade"
+    },
+    "intermediate": {
+      "code": "3105",
+      "name": "Ipatinga"
+    }
+  },
+  {
+    "code": "3155801",
+    "name": "Rio Pomba",
+    "immediate": {
+      "code": "310029",
+      "name": "Ubá"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3155900",
+    "name": "Rio Preto",
+    "immediate": {
+      "code": "310027",
+      "name": "Juiz de Fora"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3156007",
+    "name": "Rio Vermelho",
+    "immediate": {
+      "code": "310021",
+      "name": "Guanhães"
+    },
+    "intermediate": {
+      "code": "3104",
+      "name": "Governador Valadares"
+    }
+  },
+  {
+    "code": "3156106",
+    "name": "Ritápolis",
+    "immediate": {
+      "code": "310039",
+      "name": "São João del Rei"
+    },
+    "intermediate": {
+      "code": "3107",
+      "name": "Barbacena"
+    }
+  },
+  {
+    "code": "3156205",
+    "name": "Rochedo de Minas",
+    "immediate": {
+      "code": "310035",
+      "name": "São João Nepomuceno - Bicas"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3156304",
+    "name": "Rodeiro",
+    "immediate": {
+      "code": "310029",
+      "name": "Ubá"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3156403",
+    "name": "Romaria",
+    "immediate": {
+      "code": "310061",
+      "name": "Monte Carmelo"
+    },
+    "intermediate": {
+      "code": "3111",
+      "name": "Uberlândia"
+    }
+  },
+  {
+    "code": "3156452",
+    "name": "Rosário da Limeira",
+    "immediate": {
+      "code": "310031",
+      "name": "Muriaé"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3156502",
+    "name": "Rubelita",
+    "immediate": {
+      "code": "310008",
+      "name": "Salinas"
+    },
+    "intermediate": {
+      "code": "3102",
+      "name": "Montes Claros"
+    }
+  },
+  {
+    "code": "3156601",
+    "name": "Rubim",
+    "immediate": {
+      "code": "310015",
+      "name": "Almenara"
+    },
+    "intermediate": {
+      "code": "3103",
+      "name": "Teófilo Otoni"
+    }
+  },
+  {
+    "code": "3156700",
+    "name": "Sabará",
+    "immediate": {
+      "code": "310001",
+      "name": "Belo Horizonte"
+    },
+    "intermediate": {
+      "code": "3101",
+      "name": "Belo Horizonte"
+    }
+  },
+  {
+    "code": "3156809",
+    "name": "Sabinópolis",
+    "immediate": {
+      "code": "310021",
+      "name": "Guanhães"
+    },
+    "intermediate": {
+      "code": "3104",
+      "name": "Governador Valadares"
+    }
+  },
+  {
+    "code": "3156908",
+    "name": "Sacramento",
+    "immediate": {
+      "code": "310055",
+      "name": "Uberaba"
+    },
+    "intermediate": {
+      "code": "3110",
+      "name": "Uberaba"
+    }
+  },
+  {
+    "code": "3157005",
+    "name": "Salinas",
+    "immediate": {
+      "code": "310008",
+      "name": "Salinas"
+    },
+    "intermediate": {
+      "code": "3102",
+      "name": "Montes Claros"
+    }
+  },
+  {
+    "code": "3157104",
+    "name": "Salto da Divisa",
+    "immediate": {
+      "code": "310015",
+      "name": "Almenara"
+    },
+    "intermediate": {
+      "code": "3103",
+      "name": "Teófilo Otoni"
+    }
+  },
+  {
+    "code": "3157203",
+    "name": "Santa Bárbara",
+    "immediate": {
+      "code": "310003",
+      "name": "Santa Bárbara - Ouro Preto"
+    },
+    "intermediate": {
+      "code": "3101",
+      "name": "Belo Horizonte"
+    }
+  },
+  {
+    "code": "3157252",
+    "name": "Santa Bárbara do Leste",
+    "immediate": {
+      "code": "310025",
+      "name": "Caratinga"
+    },
+    "intermediate": {
+      "code": "3105",
+      "name": "Ipatinga"
+    }
+  },
+  {
+    "code": "3157278",
+    "name": "Santa Bárbara do Monte Verde",
+    "immediate": {
+      "code": "310027",
+      "name": "Juiz de Fora"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3157302",
+    "name": "Santa Bárbara do Tugúrio",
+    "immediate": {
+      "code": "310037",
+      "name": "Barbacena"
+    },
+    "intermediate": {
+      "code": "3107",
+      "name": "Barbacena"
+    }
+  },
+  {
+    "code": "3157336",
+    "name": "Santa Cruz de Minas",
+    "immediate": {
+      "code": "310039",
+      "name": "São João del Rei"
+    },
+    "intermediate": {
+      "code": "3107",
+      "name": "Barbacena"
+    }
+  },
+  {
+    "code": "3157377",
+    "name": "Santa Cruz de Salinas",
+    "immediate": {
+      "code": "310008",
+      "name": "Salinas"
+    },
+    "intermediate": {
+      "code": "3102",
+      "name": "Montes Claros"
+    }
+  },
+  {
+    "code": "3157401",
+    "name": "Santa Cruz do Escalvado",
+    "immediate": {
+      "code": "310030",
+      "name": "Ponte Nova"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3157500",
+    "name": "Santa Efigênia de Minas",
+    "immediate": {
+      "code": "310020",
+      "name": "Governador Valadares"
+    },
+    "intermediate": {
+      "code": "3104",
+      "name": "Governador Valadares"
+    }
+  },
+  {
+    "code": "3157609",
+    "name": "Santa Fé de Minas",
+    "immediate": {
+      "code": "310010",
+      "name": "Pirapora"
+    },
+    "intermediate": {
+      "code": "3102",
+      "name": "Montes Claros"
+    }
+  },
+  {
+    "code": "3157658",
+    "name": "Santa Helena de Minas",
+    "immediate": {
+      "code": "310019",
+      "name": "Águas Formosas"
+    },
+    "intermediate": {
+      "code": "3103",
+      "name": "Teófilo Otoni"
+    }
+  },
+  {
+    "code": "3157708",
+    "name": "Santa Juliana",
+    "immediate": {
+      "code": "310055",
+      "name": "Uberaba"
+    },
+    "intermediate": {
+      "code": "3110",
+      "name": "Uberaba"
+    }
+  },
+  {
+    "code": "3157807",
+    "name": "Santa Luzia",
+    "immediate": {
+      "code": "310001",
+      "name": "Belo Horizonte"
+    },
+    "intermediate": {
+      "code": "3101",
+      "name": "Belo Horizonte"
+    }
+  },
+  {
+    "code": "3157906",
+    "name": "Santa Margarida",
+    "immediate": {
+      "code": "310028",
+      "name": "Manhuaçu"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3158003",
+    "name": "Santa Maria de Itabira",
+    "immediate": {
+      "code": "310005",
+      "name": "Itabira"
+    },
+    "intermediate": {
+      "code": "3101",
+      "name": "Belo Horizonte"
+    }
+  },
+  {
+    "code": "3158102",
+    "name": "Santa Maria do Salto",
+    "immediate": {
+      "code": "310015",
+      "name": "Almenara"
+    },
+    "intermediate": {
+      "code": "3103",
+      "name": "Teófilo Otoni"
+    }
+  },
+  {
+    "code": "3158201",
+    "name": "Santa Maria do Suaçuí",
+    "immediate": {
+      "code": "310021",
+      "name": "Guanhães"
+    },
+    "intermediate": {
+      "code": "3104",
+      "name": "Governador Valadares"
+    }
+  },
+  {
+    "code": "3158300",
+    "name": "Santana da Vargem",
+    "immediate": {
+      "code": "310046",
+      "name": "Três Pontas - Boa Esperança"
+    },
+    "intermediate": {
+      "code": "3108",
+      "name": "Varginha"
+    }
+  },
+  {
+    "code": "3158409",
+    "name": "Santana de Cataguases",
+    "immediate": {
+      "code": "310032",
+      "name": "Cataguases"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3158508",
+    "name": "Santana de Pirapama",
+    "immediate": {
+      "code": "310002",
+      "name": "Sete Lagoas"
+    },
+    "intermediate": {
+      "code": "3101",
+      "name": "Belo Horizonte"
+    }
+  },
+  {
+    "code": "3158607",
+    "name": "Santana do Deserto",
+    "immediate": {
+      "code": "310027",
+      "name": "Juiz de Fora"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3158706",
+    "name": "Santana do Garambéu",
+    "immediate": {
+      "code": "310037",
+      "name": "Barbacena"
+    },
+    "intermediate": {
+      "code": "3107",
+      "name": "Barbacena"
+    }
+  },
+  {
+    "code": "3158805",
+    "name": "Santana do Jacaré",
+    "immediate": {
+      "code": "310048",
+      "name": "Campo Belo"
+    },
+    "intermediate": {
+      "code": "3108",
+      "name": "Varginha"
+    }
+  },
+  {
+    "code": "3158904",
+    "name": "Santana do Manhuaçu",
+    "immediate": {
+      "code": "310028",
+      "name": "Manhuaçu"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3158953",
+    "name": "Santana do Paraíso",
+    "immediate": {
+      "code": "310024",
+      "name": "Ipatinga"
+    },
+    "intermediate": {
+      "code": "3105",
+      "name": "Ipatinga"
+    }
+  },
+  {
+    "code": "3159001",
+    "name": "Santana do Riacho",
+    "immediate": {
+      "code": "310002",
+      "name": "Sete Lagoas"
+    },
+    "intermediate": {
+      "code": "3101",
+      "name": "Belo Horizonte"
+    }
+  },
+  {
+    "code": "3159100",
+    "name": "Santana dos Montes",
+    "immediate": {
+      "code": "310038",
+      "name": "Conselheiro Lafaiete"
+    },
+    "intermediate": {
+      "code": "3107",
+      "name": "Barbacena"
+    }
+  },
+  {
+    "code": "3159209",
+    "name": "Santa Rita de Caldas",
+    "immediate": {
+      "code": "310051",
+      "name": "Poços de Caldas"
+    },
+    "intermediate": {
+      "code": "3109",
+      "name": "Pouso Alegre"
+    }
+  },
+  {
+    "code": "3159308",
+    "name": "Santa Rita de Jacutinga",
+    "immediate": {
+      "code": "310027",
+      "name": "Juiz de Fora"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3159357",
+    "name": "Santa Rita de Minas",
+    "immediate": {
+      "code": "310025",
+      "name": "Caratinga"
+    },
+    "intermediate": {
+      "code": "3105",
+      "name": "Ipatinga"
+    }
+  },
+  {
+    "code": "3159407",
+    "name": "Santa Rita de Ibitipoca",
+    "immediate": {
+      "code": "310037",
+      "name": "Barbacena"
+    },
+    "intermediate": {
+      "code": "3107",
+      "name": "Barbacena"
+    }
+  },
+  {
+    "code": "3159506",
+    "name": "Santa Rita do Itueto",
+    "immediate": {
+      "code": "310023",
+      "name": "Aimorés - Resplendor"
+    },
+    "intermediate": {
+      "code": "3104",
+      "name": "Governador Valadares"
+    }
+  },
+  {
+    "code": "3159605",
+    "name": "Santa Rita do Sapucaí",
+    "immediate": {
+      "code": "310050",
+      "name": "Pouso Alegre"
+    },
+    "intermediate": {
+      "code": "3109",
+      "name": "Pouso Alegre"
+    }
+  },
+  {
+    "code": "3159704",
+    "name": "Santa Rosa da Serra",
+    "immediate": {
+      "code": "310056",
+      "name": "Araxá"
+    },
+    "intermediate": {
+      "code": "3110",
+      "name": "Uberaba"
+    }
+  },
+  {
+    "code": "3159803",
+    "name": "Santa Vitória",
+    "immediate": {
+      "code": "310060",
+      "name": "Ituiutaba"
+    },
+    "intermediate": {
+      "code": "3111",
+      "name": "Uberlândia"
+    }
+  },
+  {
+    "code": "3159902",
+    "name": "Santo Antônio do Amparo",
+    "immediate": {
+      "code": "310043",
+      "name": "Lavras"
+    },
+    "intermediate": {
+      "code": "3108",
+      "name": "Varginha"
+    }
+  },
+  {
+    "code": "3160009",
+    "name": "Santo Antônio do Aventureiro",
+    "immediate": {
+      "code": "310036",
+      "name": "Além Paraíba"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3160108",
+    "name": "Santo Antônio do Grama",
+    "immediate": {
+      "code": "310030",
+      "name": "Ponte Nova"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3160207",
+    "name": "Santo Antônio do Itambé",
+    "immediate": {
+      "code": "310016",
+      "name": "Diamantina"
+    },
+    "intermediate": {
+      "code": "3103",
+      "name": "Teófilo Otoni"
+    }
+  },
+  {
+    "code": "3160306",
+    "name": "Santo Antônio do Jacinto",
+    "immediate": {
+      "code": "310015",
+      "name": "Almenara"
+    },
+    "intermediate": {
+      "code": "3103",
+      "name": "Teófilo Otoni"
+    }
+  },
+  {
+    "code": "3160405",
+    "name": "Santo Antônio do Monte",
+    "immediate": {
+      "code": "310065",
+      "name": "Divinópolis"
+    },
+    "intermediate": {
+      "code": "3113",
+      "name": "Divinópolis"
+    }
+  },
+  {
+    "code": "3160454",
+    "name": "Santo Antônio do Retiro",
+    "immediate": {
+      "code": "310012",
+      "name": "Espinosa"
+    },
+    "intermediate": {
+      "code": "3102",
+      "name": "Montes Claros"
+    }
+  },
+  {
+    "code": "3160504",
+    "name": "Santo Antônio do Rio Abaixo",
+    "immediate": {
+      "code": "310005",
+      "name": "Itabira"
+    },
+    "intermediate": {
+      "code": "3101",
+      "name": "Belo Horizonte"
+    }
+  },
+  {
+    "code": "3160603",
+    "name": "Santo Hipólito",
+    "immediate": {
+      "code": "310004",
+      "name": "Curvelo"
+    },
+    "intermediate": {
+      "code": "3101",
+      "name": "Belo Horizonte"
+    }
+  },
+  {
+    "code": "3160702",
+    "name": "Santos Dumont",
+    "immediate": {
+      "code": "310027",
+      "name": "Juiz de Fora"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3160801",
+    "name": "São Bento Abade",
+    "immediate": {
+      "code": "310045",
+      "name": "Três Corações"
+    },
+    "intermediate": {
+      "code": "3108",
+      "name": "Varginha"
+    }
+  },
+  {
+    "code": "3160900",
+    "name": "São Brás do Suaçuí",
+    "immediate": {
+      "code": "310038",
+      "name": "Conselheiro Lafaiete"
+    },
+    "intermediate": {
+      "code": "3107",
+      "name": "Barbacena"
+    }
+  },
+  {
+    "code": "3160959",
+    "name": "São Domingos das Dores",
+    "immediate": {
+      "code": "310025",
+      "name": "Caratinga"
+    },
+    "intermediate": {
+      "code": "3105",
+      "name": "Ipatinga"
+    }
+  },
+  {
+    "code": "3161007",
+    "name": "São Domingos do Prata",
+    "immediate": {
+      "code": "310026",
+      "name": "João Monlevade"
+    },
+    "intermediate": {
+      "code": "3105",
+      "name": "Ipatinga"
+    }
+  },
+  {
+    "code": "3161056",
+    "name": "São Félix de Minas",
+    "immediate": {
+      "code": "310022",
+      "name": "Mantena"
+    },
+    "intermediate": {
+      "code": "3104",
+      "name": "Governador Valadares"
+    }
+  },
+  {
+    "code": "3161106",
+    "name": "São Francisco",
+    "immediate": {
+      "code": "310011",
+      "name": "São Francisco"
+    },
+    "intermediate": {
+      "code": "3102",
+      "name": "Montes Claros"
+    }
+  },
+  {
+    "code": "3161205",
+    "name": "São Francisco de Paula",
+    "immediate": {
+      "code": "310069",
+      "name": "Oliveira"
+    },
+    "intermediate": {
+      "code": "3113",
+      "name": "Divinópolis"
+    }
+  },
+  {
+    "code": "3161304",
+    "name": "São Francisco de Sales",
+    "immediate": {
+      "code": "310058",
+      "name": "Iturama"
+    },
+    "intermediate": {
+      "code": "3110",
+      "name": "Uberaba"
+    }
+  },
+  {
+    "code": "3161403",
+    "name": "São Francisco do Glória",
+    "immediate": {
+      "code": "310031",
+      "name": "Muriaé"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3161502",
+    "name": "São Geraldo",
+    "immediate": {
+      "code": "310029",
+      "name": "Ubá"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3161601",
+    "name": "São Geraldo da Piedade",
+    "immediate": {
+      "code": "310020",
+      "name": "Governador Valadares"
+    },
+    "intermediate": {
+      "code": "3104",
+      "name": "Governador Valadares"
+    }
+  },
+  {
+    "code": "3161650",
+    "name": "São Geraldo do Baixio",
+    "immediate": {
+      "code": "310020",
+      "name": "Governador Valadares"
+    },
+    "intermediate": {
+      "code": "3104",
+      "name": "Governador Valadares"
+    }
+  },
+  {
+    "code": "3161700",
+    "name": "São Gonçalo do Abaeté",
+    "immediate": {
+      "code": "310062",
+      "name": "Patos de Minas"
+    },
+    "intermediate": {
+      "code": "3112",
+      "name": "Patos de Minas"
+    }
+  },
+  {
+    "code": "3161809",
+    "name": "São Gonçalo do Pará",
+    "immediate": {
+      "code": "310065",
+      "name": "Divinópolis"
+    },
+    "intermediate": {
+      "code": "3113",
+      "name": "Divinópolis"
+    }
+  },
+  {
+    "code": "3161908",
+    "name": "São Gonçalo do Rio Abaixo",
+    "immediate": {
+      "code": "310026",
+      "name": "João Monlevade"
+    },
+    "intermediate": {
+      "code": "3105",
+      "name": "Ipatinga"
+    }
+  },
+  {
+    "code": "3162005",
+    "name": "São Gonçalo do Sapucaí",
+    "immediate": {
+      "code": "310040",
+      "name": "Varginha"
+    },
+    "intermediate": {
+      "code": "3108",
+      "name": "Varginha"
+    }
+  },
+  {
+    "code": "3162104",
+    "name": "São Gotardo",
+    "immediate": {
+      "code": "310062",
+      "name": "Patos de Minas"
+    },
+    "intermediate": {
+      "code": "3112",
+      "name": "Patos de Minas"
+    }
+  },
+  {
+    "code": "3162203",
+    "name": "São João Batista do Glória",
+    "immediate": {
+      "code": "310041",
+      "name": "Passos"
+    },
+    "intermediate": {
+      "code": "3108",
+      "name": "Varginha"
+    }
+  },
+  {
+    "code": "3162252",
+    "name": "São João da Lagoa",
+    "immediate": {
+      "code": "310006",
+      "name": "Montes Claros"
+    },
+    "intermediate": {
+      "code": "3102",
+      "name": "Montes Claros"
+    }
+  },
+  {
+    "code": "3162302",
+    "name": "São João da Mata",
+    "immediate": {
+      "code": "310050",
+      "name": "Pouso Alegre"
+    },
+    "intermediate": {
+      "code": "3109",
+      "name": "Pouso Alegre"
+    }
+  },
+  {
+    "code": "3162401",
+    "name": "São João da Ponte",
+    "immediate": {
+      "code": "310006",
+      "name": "Montes Claros"
+    },
+    "intermediate": {
+      "code": "3102",
+      "name": "Montes Claros"
+    }
+  },
+  {
+    "code": "3162450",
+    "name": "São João das Missões",
+    "immediate": {
+      "code": "310009",
+      "name": "Januária"
+    },
+    "intermediate": {
+      "code": "3102",
+      "name": "Montes Claros"
+    }
+  },
+  {
+    "code": "3162500",
+    "name": "São João del Rei",
+    "immediate": {
+      "code": "310039",
+      "name": "São João del Rei"
+    },
+    "intermediate": {
+      "code": "3107",
+      "name": "Barbacena"
+    }
+  },
+  {
+    "code": "3162559",
+    "name": "São João do Manhuaçu",
+    "immediate": {
+      "code": "310028",
+      "name": "Manhuaçu"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3162575",
+    "name": "São João do Manteninha",
+    "immediate": {
+      "code": "310022",
+      "name": "Mantena"
+    },
+    "intermediate": {
+      "code": "3104",
+      "name": "Governador Valadares"
+    }
+  },
+  {
+    "code": "3162609",
+    "name": "São João do Oriente",
+    "immediate": {
+      "code": "310024",
+      "name": "Ipatinga"
+    },
+    "intermediate": {
+      "code": "3105",
+      "name": "Ipatinga"
+    }
+  },
+  {
+    "code": "3162658",
+    "name": "São João do Pacuí",
+    "immediate": {
+      "code": "310006",
+      "name": "Montes Claros"
+    },
+    "intermediate": {
+      "code": "3102",
+      "name": "Montes Claros"
+    }
+  },
+  {
+    "code": "3162708",
+    "name": "São João do Paraíso",
+    "immediate": {
+      "code": "310008",
+      "name": "Salinas"
+    },
+    "intermediate": {
+      "code": "3102",
+      "name": "Montes Claros"
+    }
+  },
+  {
+    "code": "3162807",
+    "name": "São João Evangelista",
+    "immediate": {
+      "code": "310021",
+      "name": "Guanhães"
+    },
+    "intermediate": {
+      "code": "3104",
+      "name": "Governador Valadares"
+    }
+  },
+  {
+    "code": "3162906",
+    "name": "São João Nepomuceno",
+    "immediate": {
+      "code": "310035",
+      "name": "São João Nepomuceno - Bicas"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3162922",
+    "name": "São Joaquim de Bicas",
+    "immediate": {
+      "code": "310001",
+      "name": "Belo Horizonte"
+    },
+    "intermediate": {
+      "code": "3101",
+      "name": "Belo Horizonte"
+    }
+  },
+  {
+    "code": "3162948",
+    "name": "São José da Barra",
+    "immediate": {
+      "code": "310041",
+      "name": "Passos"
+    },
+    "intermediate": {
+      "code": "3108",
+      "name": "Varginha"
+    }
+  },
+  {
+    "code": "3162955",
+    "name": "São José da Lapa",
+    "immediate": {
+      "code": "310001",
+      "name": "Belo Horizonte"
+    },
+    "intermediate": {
+      "code": "3101",
+      "name": "Belo Horizonte"
+    }
+  },
+  {
+    "code": "3163003",
+    "name": "São José da Safira",
+    "immediate": {
+      "code": "310020",
+      "name": "Governador Valadares"
+    },
+    "intermediate": {
+      "code": "3104",
+      "name": "Governador Valadares"
+    }
+  },
+  {
+    "code": "3163102",
+    "name": "São José da Varginha",
+    "immediate": {
+      "code": "310068",
+      "name": "Pará de Minas"
+    },
+    "intermediate": {
+      "code": "3113",
+      "name": "Divinópolis"
+    }
+  },
+  {
+    "code": "3163201",
+    "name": "São José do Alegre",
+    "immediate": {
+      "code": "310052",
+      "name": "Itajubá"
+    },
+    "intermediate": {
+      "code": "3109",
+      "name": "Pouso Alegre"
+    }
+  },
+  {
+    "code": "3163300",
+    "name": "São José do Divino",
+    "immediate": {
+      "code": "310013",
+      "name": "Teófilo Otoni"
+    },
+    "intermediate": {
+      "code": "3103",
+      "name": "Teófilo Otoni"
+    }
+  },
+  {
+    "code": "3163409",
+    "name": "São José do Goiabal",
+    "immediate": {
+      "code": "310024",
+      "name": "Ipatinga"
+    },
+    "intermediate": {
+      "code": "3105",
+      "name": "Ipatinga"
+    }
+  },
+  {
+    "code": "3163508",
+    "name": "São José do Jacuri",
+    "immediate": {
+      "code": "310021",
+      "name": "Guanhães"
+    },
+    "intermediate": {
+      "code": "3104",
+      "name": "Governador Valadares"
+    }
+  },
+  {
+    "code": "3163607",
+    "name": "São José do Mantimento",
+    "immediate": {
+      "code": "310028",
+      "name": "Manhuaçu"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3163706",
+    "name": "São Lourenço",
+    "immediate": {
+      "code": "310053",
+      "name": "São Lourenço"
+    },
+    "intermediate": {
+      "code": "3109",
+      "name": "Pouso Alegre"
+    }
+  },
+  {
+    "code": "3163805",
+    "name": "São Miguel do Anta",
+    "immediate": {
+      "code": "310033",
+      "name": "Viçosa"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3163904",
+    "name": "São Pedro da União",
+    "immediate": {
+      "code": "310044",
+      "name": "Guaxupé"
+    },
+    "intermediate": {
+      "code": "3108",
+      "name": "Varginha"
+    }
+  },
+  {
+    "code": "3164001",
+    "name": "São Pedro dos Ferros",
+    "immediate": {
+      "code": "310030",
+      "name": "Ponte Nova"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3164100",
+    "name": "São Pedro do Suaçuí",
+    "immediate": {
+      "code": "310021",
+      "name": "Guanhães"
+    },
+    "intermediate": {
+      "code": "3104",
+      "name": "Governador Valadares"
+    }
+  },
+  {
+    "code": "3164209",
+    "name": "São Romão",
+    "immediate": {
+      "code": "310011",
+      "name": "São Francisco"
+    },
+    "intermediate": {
+      "code": "3102",
+      "name": "Montes Claros"
+    }
+  },
+  {
+    "code": "3164308",
+    "name": "São Roque de Minas",
+    "immediate": {
+      "code": "310049",
+      "name": "Piumhi"
+    },
+    "intermediate": {
+      "code": "3108",
+      "name": "Varginha"
+    }
+  },
+  {
+    "code": "3164407",
+    "name": "São Sebastião da Bela Vista",
+    "immediate": {
+      "code": "310050",
+      "name": "Pouso Alegre"
+    },
+    "intermediate": {
+      "code": "3109",
+      "name": "Pouso Alegre"
+    }
+  },
+  {
+    "code": "3164431",
+    "name": "São Sebastião da Vargem Alegre",
+    "immediate": {
+      "code": "310031",
+      "name": "Muriaé"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3164472",
+    "name": "São Sebastião do Anta",
+    "immediate": {
+      "code": "310025",
+      "name": "Caratinga"
+    },
+    "intermediate": {
+      "code": "3105",
+      "name": "Ipatinga"
+    }
+  },
+  {
+    "code": "3164506",
+    "name": "São Sebastião do Maranhão",
+    "immediate": {
+      "code": "310021",
+      "name": "Guanhães"
+    },
+    "intermediate": {
+      "code": "3104",
+      "name": "Governador Valadares"
+    }
+  },
+  {
+    "code": "3164605",
+    "name": "São Sebastião do Oeste",
+    "immediate": {
+      "code": "310065",
+      "name": "Divinópolis"
+    },
+    "intermediate": {
+      "code": "3113",
+      "name": "Divinópolis"
+    }
+  },
+  {
+    "code": "3164704",
+    "name": "São Sebastião do Paraíso",
+    "immediate": {
+      "code": "310047",
+      "name": "São Sebastião do Paraíso"
+    },
+    "intermediate": {
+      "code": "3108",
+      "name": "Varginha"
+    }
+  },
+  {
+    "code": "3164803",
+    "name": "São Sebastião do Rio Preto",
+    "immediate": {
+      "code": "310005",
+      "name": "Itabira"
+    },
+    "intermediate": {
+      "code": "3101",
+      "name": "Belo Horizonte"
+    }
+  },
+  {
+    "code": "3164902",
+    "name": "São Sebastião do Rio Verde",
+    "immediate": {
+      "code": "310053",
+      "name": "São Lourenço"
+    },
+    "intermediate": {
+      "code": "3109",
+      "name": "Pouso Alegre"
+    }
+  },
+  {
+    "code": "3165008",
+    "name": "São Tiago",
+    "immediate": {
+      "code": "310039",
+      "name": "São João del Rei"
+    },
+    "intermediate": {
+      "code": "3107",
+      "name": "Barbacena"
+    }
+  },
+  {
+    "code": "3165107",
+    "name": "São Tomás de Aquino",
+    "immediate": {
+      "code": "310047",
+      "name": "São Sebastião do Paraíso"
+    },
+    "intermediate": {
+      "code": "3108",
+      "name": "Varginha"
+    }
+  },
+  {
+    "code": "3165206",
+    "name": "São Tomé das Letras",
+    "immediate": {
+      "code": "310045",
+      "name": "Três Corações"
+    },
+    "intermediate": {
+      "code": "3108",
+      "name": "Varginha"
+    }
+  },
+  {
+    "code": "3165305",
+    "name": "São Vicente de Minas",
+    "immediate": {
+      "code": "310039",
+      "name": "São João del Rei"
+    },
+    "intermediate": {
+      "code": "3107",
+      "name": "Barbacena"
+    }
+  },
+  {
+    "code": "3165404",
+    "name": "Sapucaí-Mirim",
+    "immediate": {
+      "code": "310052",
+      "name": "Itajubá"
+    },
+    "intermediate": {
+      "code": "3109",
+      "name": "Pouso Alegre"
+    }
+  },
+  {
+    "code": "3165503",
+    "name": "Sardoá",
+    "immediate": {
+      "code": "310020",
+      "name": "Governador Valadares"
+    },
+    "intermediate": {
+      "code": "3104",
+      "name": "Governador Valadares"
+    }
+  },
+  {
+    "code": "3165537",
+    "name": "Sarzedo",
+    "immediate": {
+      "code": "310001",
+      "name": "Belo Horizonte"
+    },
+    "intermediate": {
+      "code": "3101",
+      "name": "Belo Horizonte"
+    }
+  },
+  {
+    "code": "3165552",
+    "name": "Setubinha",
+    "immediate": {
+      "code": "310013",
+      "name": "Teófilo Otoni"
+    },
+    "intermediate": {
+      "code": "3103",
+      "name": "Teófilo Otoni"
+    }
+  },
+  {
+    "code": "3165560",
+    "name": "Sem-Peixe",
+    "immediate": {
+      "code": "310030",
+      "name": "Ponte Nova"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3165578",
+    "name": "Senador Amaral",
+    "immediate": {
+      "code": "310050",
+      "name": "Pouso Alegre"
+    },
+    "intermediate": {
+      "code": "3109",
+      "name": "Pouso Alegre"
+    }
+  },
+  {
+    "code": "3165602",
+    "name": "Senador Cortes",
+    "immediate": {
+      "code": "310035",
+      "name": "São João Nepomuceno - Bicas"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3165701",
+    "name": "Senador Firmino",
+    "immediate": {
+      "code": "310029",
+      "name": "Ubá"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3165800",
+    "name": "Senador José Bento",
+    "immediate": {
+      "code": "310050",
+      "name": "Pouso Alegre"
+    },
+    "intermediate": {
+      "code": "3109",
+      "name": "Pouso Alegre"
+    }
+  },
+  {
+    "code": "3165909",
+    "name": "Senador Modestino Gonçalves",
+    "immediate": {
+      "code": "310016",
+      "name": "Diamantina"
+    },
+    "intermediate": {
+      "code": "3103",
+      "name": "Teófilo Otoni"
+    }
+  },
+  {
+    "code": "3166006",
+    "name": "Senhora de Oliveira",
+    "immediate": {
+      "code": "310038",
+      "name": "Conselheiro Lafaiete"
+    },
+    "intermediate": {
+      "code": "3107",
+      "name": "Barbacena"
+    }
+  },
+  {
+    "code": "3166105",
+    "name": "Senhora do Porto",
+    "immediate": {
+      "code": "310021",
+      "name": "Guanhães"
+    },
+    "intermediate": {
+      "code": "3104",
+      "name": "Governador Valadares"
+    }
+  },
+  {
+    "code": "3166204",
+    "name": "Senhora dos Remédios",
+    "immediate": {
+      "code": "310037",
+      "name": "Barbacena"
+    },
+    "intermediate": {
+      "code": "3107",
+      "name": "Barbacena"
+    }
+  },
+  {
+    "code": "3166303",
+    "name": "Sericita",
+    "immediate": {
+      "code": "310030",
+      "name": "Ponte Nova"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3166402",
+    "name": "Seritinga",
+    "immediate": {
+      "code": "310054",
+      "name": "Caxambu - Baependi"
+    },
+    "intermediate": {
+      "code": "3109",
+      "name": "Pouso Alegre"
+    }
+  },
+  {
+    "code": "3166501",
+    "name": "Serra Azul de Minas",
+    "immediate": {
+      "code": "310016",
+      "name": "Diamantina"
+    },
+    "intermediate": {
+      "code": "3103",
+      "name": "Teófilo Otoni"
+    }
+  },
+  {
+    "code": "3166600",
+    "name": "Serra da Saudade",
+    "immediate": {
+      "code": "310067",
+      "name": "Dores do Indaiá"
+    },
+    "intermediate": {
+      "code": "3113",
+      "name": "Divinópolis"
+    }
+  },
+  {
+    "code": "3166709",
+    "name": "Serra dos Aimorés",
+    "immediate": {
+      "code": "310013",
+      "name": "Teófilo Otoni"
+    },
+    "intermediate": {
+      "code": "3103",
+      "name": "Teófilo Otoni"
+    }
+  },
+  {
+    "code": "3166808",
+    "name": "Serra do Salitre",
+    "immediate": {
+      "code": "310064",
+      "name": "Patrocínio"
+    },
+    "intermediate": {
+      "code": "3112",
+      "name": "Patos de Minas"
+    }
+  },
+  {
+    "code": "3166907",
+    "name": "Serrania",
+    "immediate": {
+      "code": "310042",
+      "name": "Alfenas"
+    },
+    "intermediate": {
+      "code": "3108",
+      "name": "Varginha"
+    }
+  },
+  {
+    "code": "3166956",
+    "name": "Serranópolis de Minas",
+    "immediate": {
+      "code": "310007",
+      "name": "Janaúba"
+    },
+    "intermediate": {
+      "code": "3102",
+      "name": "Montes Claros"
+    }
+  },
+  {
+    "code": "3167004",
+    "name": "Serranos",
+    "immediate": {
+      "code": "310054",
+      "name": "Caxambu - Baependi"
+    },
+    "intermediate": {
+      "code": "3109",
+      "name": "Pouso Alegre"
+    }
+  },
+  {
+    "code": "3167103",
+    "name": "Serro",
+    "immediate": {
+      "code": "310016",
+      "name": "Diamantina"
+    },
+    "intermediate": {
+      "code": "3103",
+      "name": "Teófilo Otoni"
+    }
+  },
+  {
+    "code": "3167202",
+    "name": "Sete Lagoas",
+    "immediate": {
+      "code": "310002",
+      "name": "Sete Lagoas"
+    },
+    "intermediate": {
+      "code": "3101",
+      "name": "Belo Horizonte"
+    }
+  },
+  {
+    "code": "3167301",
+    "name": "Silveirânia",
+    "immediate": {
+      "code": "310029",
+      "name": "Ubá"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3167400",
+    "name": "Silvianópolis",
+    "immediate": {
+      "code": "310050",
+      "name": "Pouso Alegre"
+    },
+    "intermediate": {
+      "code": "3109",
+      "name": "Pouso Alegre"
+    }
+  },
+  {
+    "code": "3167509",
+    "name": "Simão Pereira",
+    "immediate": {
+      "code": "310027",
+      "name": "Juiz de Fora"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3167608",
+    "name": "Simonésia",
+    "immediate": {
+      "code": "310028",
+      "name": "Manhuaçu"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3167707",
+    "name": "Sobrália",
+    "immediate": {
+      "code": "310020",
+      "name": "Governador Valadares"
+    },
+    "intermediate": {
+      "code": "3104",
+      "name": "Governador Valadares"
+    }
+  },
+  {
+    "code": "3167806",
+    "name": "Soledade de Minas",
+    "immediate": {
+      "code": "310053",
+      "name": "São Lourenço"
+    },
+    "intermediate": {
+      "code": "3109",
+      "name": "Pouso Alegre"
+    }
+  },
+  {
+    "code": "3167905",
+    "name": "Tabuleiro",
+    "immediate": {
+      "code": "310029",
+      "name": "Ubá"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3168002",
+    "name": "Taiobeiras",
+    "immediate": {
+      "code": "310008",
+      "name": "Salinas"
+    },
+    "intermediate": {
+      "code": "3102",
+      "name": "Montes Claros"
+    }
+  },
+  {
+    "code": "3168051",
+    "name": "Taparuba",
+    "immediate": {
+      "code": "310028",
+      "name": "Manhuaçu"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3168101",
+    "name": "Tapira",
+    "immediate": {
+      "code": "310056",
+      "name": "Araxá"
+    },
+    "intermediate": {
+      "code": "3110",
+      "name": "Uberaba"
+    }
+  },
+  {
+    "code": "3168200",
+    "name": "Tapiraí",
+    "immediate": {
+      "code": "310066",
+      "name": "Formiga"
+    },
+    "intermediate": {
+      "code": "3113",
+      "name": "Divinópolis"
+    }
+  },
+  {
+    "code": "3168309",
+    "name": "Taquaraçu de Minas",
+    "immediate": {
+      "code": "310001",
+      "name": "Belo Horizonte"
+    },
+    "intermediate": {
+      "code": "3101",
+      "name": "Belo Horizonte"
+    }
+  },
+  {
+    "code": "3168408",
+    "name": "Tarumirim",
+    "immediate": {
+      "code": "310020",
+      "name": "Governador Valadares"
+    },
+    "intermediate": {
+      "code": "3104",
+      "name": "Governador Valadares"
+    }
+  },
+  {
+    "code": "3168507",
+    "name": "Teixeiras",
+    "immediate": {
+      "code": "310033",
+      "name": "Viçosa"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3168606",
+    "name": "Teófilo Otoni",
+    "immediate": {
+      "code": "310013",
+      "name": "Teófilo Otoni"
+    },
+    "intermediate": {
+      "code": "3103",
+      "name": "Teófilo Otoni"
+    }
+  },
+  {
+    "code": "3168705",
+    "name": "Timóteo",
+    "immediate": {
+      "code": "310024",
+      "name": "Ipatinga"
+    },
+    "intermediate": {
+      "code": "3105",
+      "name": "Ipatinga"
+    }
+  },
+  {
+    "code": "3168804",
+    "name": "Tiradentes",
+    "immediate": {
+      "code": "310039",
+      "name": "São João del Rei"
+    },
+    "intermediate": {
+      "code": "3107",
+      "name": "Barbacena"
+    }
+  },
+  {
+    "code": "3168903",
+    "name": "Tiros",
+    "immediate": {
+      "code": "310062",
+      "name": "Patos de Minas"
+    },
+    "intermediate": {
+      "code": "3112",
+      "name": "Patos de Minas"
+    }
+  },
+  {
+    "code": "3169000",
+    "name": "Tocantins",
+    "immediate": {
+      "code": "310029",
+      "name": "Ubá"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3169059",
+    "name": "Tocos do Moji",
+    "immediate": {
+      "code": "310050",
+      "name": "Pouso Alegre"
+    },
+    "intermediate": {
+      "code": "3109",
+      "name": "Pouso Alegre"
+    }
+  },
+  {
+    "code": "3169109",
+    "name": "Toledo",
+    "immediate": {
+      "code": "310050",
+      "name": "Pouso Alegre"
+    },
+    "intermediate": {
+      "code": "3109",
+      "name": "Pouso Alegre"
+    }
+  },
+  {
+    "code": "3169208",
+    "name": "Tombos",
+    "immediate": {
+      "code": "310034",
+      "name": "Carangola"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3169307",
+    "name": "Três Corações",
+    "immediate": {
+      "code": "310045",
+      "name": "Três Corações"
+    },
+    "intermediate": {
+      "code": "3108",
+      "name": "Varginha"
+    }
+  },
+  {
+    "code": "3169356",
+    "name": "Três Marias",
+    "immediate": {
+      "code": "310004",
+      "name": "Curvelo"
+    },
+    "intermediate": {
+      "code": "3101",
+      "name": "Belo Horizonte"
+    }
+  },
+  {
+    "code": "3169406",
+    "name": "Três Pontas",
+    "immediate": {
+      "code": "310046",
+      "name": "Três Pontas - Boa Esperança"
+    },
+    "intermediate": {
+      "code": "3108",
+      "name": "Varginha"
+    }
+  },
+  {
+    "code": "3169505",
+    "name": "Tumiritinga",
+    "immediate": {
+      "code": "310020",
+      "name": "Governador Valadares"
+    },
+    "intermediate": {
+      "code": "3104",
+      "name": "Governador Valadares"
+    }
+  },
+  {
+    "code": "3169604",
+    "name": "Tupaciguara",
+    "immediate": {
+      "code": "310059",
+      "name": "Uberlândia"
+    },
+    "intermediate": {
+      "code": "3111",
+      "name": "Uberlândia"
+    }
+  },
+  {
+    "code": "3169703",
+    "name": "Turmalina",
+    "immediate": {
+      "code": "310014",
+      "name": "Capelinha"
+    },
+    "intermediate": {
+      "code": "3103",
+      "name": "Teófilo Otoni"
+    }
+  },
+  {
+    "code": "3169802",
+    "name": "Turvolândia",
+    "immediate": {
+      "code": "310050",
+      "name": "Pouso Alegre"
+    },
+    "intermediate": {
+      "code": "3109",
+      "name": "Pouso Alegre"
+    }
+  },
+  {
+    "code": "3169901",
+    "name": "Ubá",
+    "immediate": {
+      "code": "310029",
+      "name": "Ubá"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3170008",
+    "name": "Ubaí",
+    "immediate": {
+      "code": "310011",
+      "name": "São Francisco"
+    },
+    "intermediate": {
+      "code": "3102",
+      "name": "Montes Claros"
+    }
+  },
+  {
+    "code": "3170057",
+    "name": "Ubaporanga",
+    "immediate": {
+      "code": "310025",
+      "name": "Caratinga"
+    },
+    "intermediate": {
+      "code": "3105",
+      "name": "Ipatinga"
+    }
+  },
+  {
+    "code": "3170107",
+    "name": "Uberaba",
+    "immediate": {
+      "code": "310055",
+      "name": "Uberaba"
+    },
+    "intermediate": {
+      "code": "3110",
+      "name": "Uberaba"
+    }
+  },
+  {
+    "code": "3170206",
+    "name": "Uberlândia",
+    "immediate": {
+      "code": "310059",
+      "name": "Uberlândia"
+    },
+    "intermediate": {
+      "code": "3111",
+      "name": "Uberlândia"
+    }
+  },
+  {
+    "code": "3170305",
+    "name": "Umburatiba",
+    "immediate": {
+      "code": "310019",
+      "name": "Águas Formosas"
+    },
+    "intermediate": {
+      "code": "3103",
+      "name": "Teófilo Otoni"
+    }
+  },
+  {
+    "code": "3170404",
+    "name": "Unaí",
+    "immediate": {
+      "code": "310063",
+      "name": "Unaí"
+    },
+    "intermediate": {
+      "code": "3112",
+      "name": "Patos de Minas"
+    }
+  },
+  {
+    "code": "3170438",
+    "name": "União de Minas",
+    "immediate": {
+      "code": "310058",
+      "name": "Iturama"
+    },
+    "intermediate": {
+      "code": "3110",
+      "name": "Uberaba"
+    }
+  },
+  {
+    "code": "3170479",
+    "name": "Uruana de Minas",
+    "immediate": {
+      "code": "310063",
+      "name": "Unaí"
+    },
+    "intermediate": {
+      "code": "3112",
+      "name": "Patos de Minas"
+    }
+  },
+  {
+    "code": "3170503",
+    "name": "Urucânia",
+    "immediate": {
+      "code": "310030",
+      "name": "Ponte Nova"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3170529",
+    "name": "Urucuia",
+    "immediate": {
+      "code": "310063",
+      "name": "Unaí"
+    },
+    "intermediate": {
+      "code": "3112",
+      "name": "Patos de Minas"
+    }
+  },
+  {
+    "code": "3170578",
+    "name": "Vargem Alegre",
+    "immediate": {
+      "code": "310025",
+      "name": "Caratinga"
+    },
+    "intermediate": {
+      "code": "3105",
+      "name": "Ipatinga"
+    }
+  },
+  {
+    "code": "3170602",
+    "name": "Vargem Bonita",
+    "immediate": {
+      "code": "310049",
+      "name": "Piumhi"
+    },
+    "intermediate": {
+      "code": "3108",
+      "name": "Varginha"
+    }
+  },
+  {
+    "code": "3170651",
+    "name": "Vargem Grande do Rio Pardo",
+    "immediate": {
+      "code": "310008",
+      "name": "Salinas"
+    },
+    "intermediate": {
+      "code": "3102",
+      "name": "Montes Claros"
+    }
+  },
+  {
+    "code": "3170701",
+    "name": "Varginha",
+    "immediate": {
+      "code": "310040",
+      "name": "Varginha"
+    },
+    "intermediate": {
+      "code": "3108",
+      "name": "Varginha"
+    }
+  },
+  {
+    "code": "3170750",
+    "name": "Varjão de Minas",
+    "immediate": {
+      "code": "310062",
+      "name": "Patos de Minas"
+    },
+    "intermediate": {
+      "code": "3112",
+      "name": "Patos de Minas"
+    }
+  },
+  {
+    "code": "3170800",
+    "name": "Várzea da Palma",
+    "immediate": {
+      "code": "310010",
+      "name": "Pirapora"
+    },
+    "intermediate": {
+      "code": "3102",
+      "name": "Montes Claros"
+    }
+  },
+  {
+    "code": "3170909",
+    "name": "Varzelândia",
+    "immediate": {
+      "code": "310006",
+      "name": "Montes Claros"
+    },
+    "intermediate": {
+      "code": "3102",
+      "name": "Montes Claros"
+    }
+  },
+  {
+    "code": "3171006",
+    "name": "Vazante",
+    "immediate": {
+      "code": "310062",
+      "name": "Patos de Minas"
+    },
+    "intermediate": {
+      "code": "3112",
+      "name": "Patos de Minas"
+    }
+  },
+  {
+    "code": "3171030",
+    "name": "Verdelândia",
+    "immediate": {
+      "code": "310007",
+      "name": "Janaúba"
+    },
+    "intermediate": {
+      "code": "3102",
+      "name": "Montes Claros"
+    }
+  },
+  {
+    "code": "3171071",
+    "name": "Veredinha",
+    "immediate": {
+      "code": "310014",
+      "name": "Capelinha"
+    },
+    "intermediate": {
+      "code": "3103",
+      "name": "Teófilo Otoni"
+    }
+  },
+  {
+    "code": "3171105",
+    "name": "Veríssimo",
+    "immediate": {
+      "code": "310055",
+      "name": "Uberaba"
+    },
+    "intermediate": {
+      "code": "3110",
+      "name": "Uberaba"
+    }
+  },
+  {
+    "code": "3171154",
+    "name": "Vermelho Novo",
+    "immediate": {
+      "code": "310025",
+      "name": "Caratinga"
+    },
+    "intermediate": {
+      "code": "3105",
+      "name": "Ipatinga"
+    }
+  },
+  {
+    "code": "3171204",
+    "name": "Vespasiano",
+    "immediate": {
+      "code": "310001",
+      "name": "Belo Horizonte"
+    },
+    "intermediate": {
+      "code": "3101",
+      "name": "Belo Horizonte"
+    }
+  },
+  {
+    "code": "3171303",
+    "name": "Viçosa",
+    "immediate": {
+      "code": "310033",
+      "name": "Viçosa"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3171402",
+    "name": "Vieiras",
+    "immediate": {
+      "code": "310031",
+      "name": "Muriaé"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3171501",
+    "name": "Mathias Lobato",
+    "immediate": {
+      "code": "310020",
+      "name": "Governador Valadares"
+    },
+    "intermediate": {
+      "code": "3104",
+      "name": "Governador Valadares"
+    }
+  },
+  {
+    "code": "3171600",
+    "name": "Virgem da Lapa",
+    "immediate": {
+      "code": "310017",
+      "name": "Araçuaí"
+    },
+    "intermediate": {
+      "code": "3103",
+      "name": "Teófilo Otoni"
+    }
+  },
+  {
+    "code": "3171709",
+    "name": "Virgínia",
+    "immediate": {
+      "code": "310053",
+      "name": "São Lourenço"
+    },
+    "intermediate": {
+      "code": "3109",
+      "name": "Pouso Alegre"
+    }
+  },
+  {
+    "code": "3171808",
+    "name": "Virginópolis",
+    "immediate": {
+      "code": "310021",
+      "name": "Guanhães"
+    },
+    "intermediate": {
+      "code": "3104",
+      "name": "Governador Valadares"
+    }
+  },
+  {
+    "code": "3171907",
+    "name": "Virgolândia",
+    "immediate": {
+      "code": "310020",
+      "name": "Governador Valadares"
+    },
+    "intermediate": {
+      "code": "3104",
+      "name": "Governador Valadares"
+    }
+  },
+  {
+    "code": "3172004",
+    "name": "Visconde do Rio Branco",
+    "immediate": {
+      "code": "310029",
+      "name": "Ubá"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3172103",
+    "name": "Volta Grande",
+    "immediate": {
+      "code": "310036",
+      "name": "Além Paraíba"
+    },
+    "intermediate": {
+      "code": "3106",
+      "name": "Juíz de Fora"
+    }
+  },
+  {
+    "code": "3172202",
+    "name": "Wenceslau Braz",
+    "immediate": {
+      "code": "310052",
+      "name": "Itajubá"
+    },
+    "intermediate": {
+      "code": "3109",
+      "name": "Pouso Alegre"
+    }
+  }
+]

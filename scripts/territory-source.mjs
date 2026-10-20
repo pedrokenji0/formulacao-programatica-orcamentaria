@@ -1,3 +1,5 @@
+import { writeFileSync, mkdirSync } from 'node:fs';
+import { buildTerritory } from './territory-build.mjs';
 import { createHash } from 'node:crypto';
 const base = 'https://servicodados.ibge.gov.br/api';
 async function get(url) {
@@ -17,6 +19,10 @@ const [mesh, places] = await Promise.all([
 const objects = Object.values(mesh.data.objects || {});
 const geometries = objects.flatMap(object => object.geometries || []);
 if (places.data.length !== 853 || geometries.length !== 853) throw new Error('Esperados 853 municípios: ' + JSON.stringify({ localities: places.data.length, geometries: geometries.length, keys: Object.keys(mesh.data) }));
-console.log('IBGE_SUMMARY ' + JSON.stringify({ places: places.data.length, shapes: geometries.length, firstShape: geometries[0], firstPlace: places.data[0], transform: mesh.data.transform, arco: mesh.data.arcs[0].slice(0,3) }));
-const payload = JSON.stringify({ fetchedAt: new Date().toISOString(), mesh, places });
-for(let offset=0;offset<payload.length;offset+=10000) console.log('FPO_GEO_DATA:' + payload.slice(offset,offset+10000));
+const source = { fetchedAt: new Date().toISOString(), mesh, places };
+mkdirSync('data/territorio', { recursive: true }); mkdirSync('public/data', { recursive: true });
+writeFileSync('data/territorio/fonte-ibge.json', JSON.stringify(source) + '\n');
+const data = buildTerritory(source);
+writeFileSync('public/data/mg-municipios.json', JSON.stringify(data) + '\n');
+writeFileSync('data/territorio/municipios.json', JSON.stringify(data.municipalities.map(({ path, bounds, arcs, ...record }) => record), null, 2) + '\n');
+console.log('Fonte IBGE atualizada: ' + data.municipalities.length + ' municípios. Revise e versione os arquivos gerados.');

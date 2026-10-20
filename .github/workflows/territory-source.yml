@@ -1,8 +1,6 @@
-name: Preparar malha municipal
+name: Atualizar malha IBGE
 on:
-  push:
-    branches: [codex/mapa-territorial-minas-gerais]
-    paths: [.github/workflows/territory-source.yml, scripts/territory-source.mjs]
+  workflow_dispatch:
 permissions:
   contents: read
 jobs:
@@ -15,3 +13,9 @@ jobs:
           node-version: '24'
       - name: Consultar fonte oficial IBGE
         run: node scripts/territory-source.mjs
+      - uses: actions/upload-artifact@v4
+        with:
+          name: territorio-ibge
+          path: |
+            data/territorio/
+            public/data/mg-municipios.json

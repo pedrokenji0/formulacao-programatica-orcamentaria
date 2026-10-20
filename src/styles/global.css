@@ -889,3 +889,53 @@ table.dt .rowacts{display:flex;gap:6px}
 .data-table-search{max-width:440px}.data-table-pagination{justify-content:flex-end;margin-top:14px;font-size:12px;color:#617b8b}.data-table-pagination>span{margin-right:auto}
 
 .integrity-summary{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px}.integrity-summary>span{padding:7px 10px;background:#f1f6f9;border:1px solid #d6e2e9;border-radius:5px;color:#456474;font-size:12px}
+
+/* Mapa territorial: mesma ficha do planejamento, com cartografia municipal. */
+.territory-workspace .card { overflow: hidden; }
+.territory-primary-actions { display: flex; flex-wrap: wrap; gap: 8px; padding: 14px 0; border-bottom: 1px solid #dce5e9; }
+.territory-filters { display: grid; grid-template-columns: 1fr 1.6fr 1.8fr 1fr; gap: 12px; margin: 16px 0 10px; align-items: end; }
+.territory-filters .field, .territory-secondary-tools .field { margin: 0; min-width: 0; }
+.territory-filters select { width: 100%; min-width: 0; text-overflow: ellipsis; }
+.territory-secondary-tools { display: flex; align-items: end; flex-wrap: wrap; gap: 12px; padding-bottom: 12px; }
+.territory-secondary-tools .field { max-width: 270px; }
+.territory-check { display: flex; align-items: center; gap: 6px; min-height: 35px; font-size: 12px; }
+.territory-source-line { padding: 10px 12px; background: #f3f8f9; border: 1px solid #dfebed; border-radius: 8px; font-size: 12px; line-height: 1.7; }
+.territory-layout { display: grid; grid-template-columns: minmax(0, 1fr) 292px; gap: 16px; align-items: start; }
+.territory-layout > div { min-width: 0; }
+.territory-canvas-wrap { position: relative; background: #f6f9fa; border: 1px solid #dce5e9; border-radius: 12px; overflow: hidden; }
+.territory-canvas { display: block; width: 100%; aspect-ratio: 900 / 640; background: radial-gradient(ellipse at 50% 44%, #fff 0, #f2f7f8 85%); cursor: grab; touch-action: none; }
+.territory-canvas:active { cursor: grabbing; }
+.territory-canvas:focus-visible { outline: 2px solid #277b8e; outline-offset: -3px; }
+.territory-map-buttons { position: absolute; top: 10px; left: 10px; display: flex; flex-wrap: wrap; gap: 4px; z-index: 1; max-width: calc(100% - 20px); padding: 4px; border: 1px solid #dce5e9; border-radius: 8px; background: #ffffffed; box-shadow: 0 2px 8px #163b5010; }
+.territory-map-buttons .btn { background: white; }
+.territory-municipality { transition: fill .15s; cursor: pointer; }
+.territory-municipality:hover, .territory-municipality:focus { filter: brightness(.94); outline: none; }
+.territory-map-caption { padding: 9px 12px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px; min-height: 38px; border-top: 1px solid #dce5e9; background: white; font-size: 12px; }
+.territory-map-caption small { color: #667b86; font-size: 10px; }
+.territory-legend { display: flex; flex-wrap: wrap; align-items: center; gap: 7px 12px; padding: 12px 2px; max-height: 190px; overflow: auto; font-size: 11px; }
+.territory-legend > strong { flex: 0 0 100%; color: #344d5b; }
+.territory-legend > span, .territory-legend > button { display: inline-flex; align-items: center; gap: 5px; }
+.territory-legend i { display: inline-block; width: 16px; height: 12px; border-radius: 3px; border: 1px solid #53748130; flex-shrink: 0; }
+.territory-legend button { border: 1px solid transparent; background: transparent; padding: 3px 4px; text-align: left; border-radius: 4px; color: #36515f; cursor: pointer; font: inherit; }
+.territory-legend button.active { border-color: #3b7b8c; background: #edf5f8; }
+.territory-details { border: 1px solid #dce5e9; border-radius: 10px; padding: 15px; background: #fff; font-size: 12px; }
+.territory-details h3 { font-size: 18px; color: #17455d; margin: 6px 0 12px; line-height: 1.3; }
+.territory-details dl { margin: 0 0 12px; }
+.territory-details dl > div { padding: 7px 0; border-bottom: 1px solid #edf1f3; }
+.territory-details dt { color: #637985; font-size: 10px; margin-bottom: 3px; }
+.territory-details dd { margin: 0; color: #273f4e; line-height: 1.5; }
+.territory-details .territory-value { font-size: 20px; font-weight: 700; color: #176d6b; }
+.territory-value-editor { margin: 14px 0; padding: 12px 0; border-bottom: 1px solid #e1e8eb; }
+.territory-municipality-results { max-height: 260px; overflow: auto; border: 1px solid #dfe7eb; border-radius: 7px; }
+.territory-municipality-results button { display: flex; width: 100%; justify-content: space-between; gap: 8px; text-align: left; padding: 8px; border: 0; border-bottom: 1px solid #e8edef; background: white; cursor: pointer; font-size: 11px; color: #274a5b; }
+.territory-municipality-results button:hover, .territory-municipality-results button[aria-pressed="true"] { background: #edf5f7; }
+.territory-municipality-results small { display: block; font-size: 10px; color: #718895; margin-top: 2px; }
+.territory-create-region { display: flex; gap: 12px; align-items: end; }
+.territory-create-region .field { flex: 1; margin-bottom: 0; }
+.territory-region-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 12px; }
+.territory-bulk-tools { display: flex; gap: 10px; flex-wrap: wrap; align-items: end; margin: 10px 0; }
+.territory-bulk-tools .field { margin: 0; min-width: 210px; }
+.territory-municipality-checks { max-height: 330px; overflow: auto; padding-right: 8px; }
+@media (max-width: 1150px) { .territory-filters { grid-template-columns: 1fr 1fr; } .territory-layout { grid-template-columns: minmax(0, 1fr) 260px; gap: 12px; } }
+@media (max-width: 850px) { .territory-layout { grid-template-columns: 1fr; } .territory-details { display: block; } .territory-canvas { min-height: 320px; } }
+@media (max-width: 600px) { .territory-filters { grid-template-columns: 1fr; } .territory-map-buttons { position: static; border: 0; border-bottom: 1px solid #dce5e9; border-radius: 0; max-width: 100%; } .territory-create-region { flex-direction: column; align-items: stretch; } }

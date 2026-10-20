@@ -24,7 +24,7 @@ export function encodeState(state: AppState, initial: AppState): string {
     };
   }
   return JSON.stringify({ schemaVersion: 2, datasetId: initial.planning?.datasetId, collections,
-    values: { perfil: state.perfil, unidade: state.unidade, currentProgramId: state.currentProgramId, planning: state.planning, support: state.support, lists: state.lists } });
+    values: { perfil: state.perfil, unidade: state.unidade, currentProgramId: state.currentProgramId, planning: state.planning, support: state.support, lists: state.lists, territory: state.territory } });
 }
 
 export function decodeState(raw: string, initial: AppState): AppState {
@@ -47,7 +47,7 @@ export function decodeState(raw: string, initial: AppState): AppState {
     }
     (next[key] as unknown[]) = [...records.values()];
   }
-  for (const key of ['perfil','unidade','currentProgramId','planning','support','lists'] as const) if (key in parsed.values) (next as unknown as Record<string, unknown>)[key] = parsed.values[key];
+  for (const key of ['perfil','unidade','currentProgramId','planning','support','lists','territory'] as const) if (key in parsed.values) (next as unknown as Record<string, unknown>)[key] = parsed.values[key];
   next.schemaVersion = 2;
   next.planning = { ...initial.planning!, ...parsed.values.planning, obzDataVersion: parsed.values.planning.obzDataVersion };
   if (parsed.datasetId !== initial.planning?.datasetId) {

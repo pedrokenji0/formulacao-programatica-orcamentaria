@@ -17,6 +17,7 @@ const ROUTES: Record<string, RouteDef> = {
   'qual-programa': { page: 'qualitative', area: 'Programação Qualitativa' },
   'qual-acoes': { page: 'qualitative', area: 'Programação Qualitativa' },
   'qual-mapa': { page: 'qualitative', area: 'Programação Qualitativa' },
+  'qual-territorio': { page: 'qualitative', area: 'Programação Qualitativa' },
   'qual-revisao': { page: 'qualitative', area: 'Programação Qualitativa' },
   'ml-preenchimento': { page: 'ml', tab: 'teoria', area: 'Programação Qualitativa' },
   'ml-arvores': { page: 'ml', tab: 'arvores', area: 'Programação Qualitativa' },
