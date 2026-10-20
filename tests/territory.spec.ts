@@ -41,7 +41,7 @@ test('malha municipal permite seleção, zoom, pesquisa e troca de regiões IBGE
   await page.locator('.territory-municipality[data-code="3100104"]').click();
   await expect(page.getByRole('complementary', { name: 'Detalhes do município' })).toContainText('Abadia dos Dourados');
   await page.getByLabel('Pesquisar município no mapa', { exact: true }).fill('uberlandia');
-  await page.getByRole('button', { name: /Uberlândia.*3170206/ }).click();
+  await page.locator('.territory-municipality-results').getByRole('button', { name: /Uberlândia.*3170206/ }).click();
   await expect(page.getByRole('complementary', { name: 'Detalhes do município' })).toContainText('3170206');
   await page.getByLabel('Regionalização do mapa', { exact: true }).selectOption('ibge-immediate');
   await expect(page.getByLabel('Destacar região', { exact: true }).locator('option')).toHaveCount(71);
