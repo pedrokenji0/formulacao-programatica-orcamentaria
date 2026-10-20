@@ -6,7 +6,6 @@ import hashlib
 import io
 import json
 from pathlib import Path
-from urllib.request import urlopen
 
 ROOT = Path(__file__).resolve().parents[2]
 HERE = Path(__file__).resolve().parent
@@ -174,20 +173,22 @@ check(len(source_csv) == len(PACKAGE["x-source-status"]), "CSV de fontes incompl
 
 parser = argparse.ArgumentParser(description=__doc__)
 parser.add_argument("--padrao", action="store_true",
-                    help="Requer jsonschema e internet para verificar os esquemas oficiais.")
+                    help="Requer datapackage==1.15.4; usa os esquemas oficiais distribuídos na biblioteca.")
 args = parser.parse_args()
 if args.padrao:
+    from datapackage import Profile
     from jsonschema import Draft4Validator
-    schema_url = "https://specs.frictionlessdata.io/schemas/"
-    schemas = {}
-    for name in ("data-package", "tabular-data-resource", "table-schema"):
-        with urlopen(schema_url + name + ".json", timeout=15) as response:
-            schemas[name] = json.load(response)
-    Draft4Validator(schemas["data-package"]).validate(PACKAGE)
+    schemas = {name: Profile(name).jsonschema for name in
+               ("data-package", "tabular-data-resource", "table-schema")}
+    def validate_standard(value, name, label):
+        errors = list(Draft4Validator(schemas[name]).iter_errors(value))
+        for error in errors[:5]:
+            print(label, "/".join(map(str, error.path)), error.message[:400])
+        check(not errors, f"Esquema oficial: {label}")
+    validate_standard(PACKAGE, "data-package", "pacote")
     for resource in RESOURCES.values():
-        Draft4Validator(schemas["tabular-data-resource"]).validate(resource)
-        Draft4Validator(schemas["table-schema"]).validate(resource["schema"])
-    check(True, "Esquemas oficiais")
+        validate_standard(resource, "tabular-data-resource", resource["name"])
+        validate_standard(resource["schema"], "table-schema", resource["name"] + ".schema")
 print(json.dumps({"status": "ok", "checks": checks, "resources": len(RESOURCES),
                   "definitions": len(DEFINITIONS), "dictionaryRows": len(dictionary),
                   "officialSchemas": args.padrao}, ensure_ascii=False))

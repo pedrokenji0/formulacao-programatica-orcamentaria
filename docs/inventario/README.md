@@ -228,10 +228,10 @@ Na raiz de um checkout desta branch:
 python docs/inventario/validar.py
 ```
 
-Para conferir também os esquemas oficiais pela internet:
+Para conferir também os esquemas oficiais distribuídos na biblioteca de referência:
 
 ```text
-python -m pip install jsonschema
+python -m pip install datapackage==1.15.4
 python docs/inventario/validar.py --padrao
 ```
 
