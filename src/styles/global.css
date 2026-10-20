@@ -948,3 +948,24 @@ table.dt .rowacts{display:flex;gap:6px}
 .physical-target-summary dt { color: #5e7683; font-size: 11px; line-height: 1.4; }
 .physical-target-summary dd { color: #1d5c6c; font-size: 23px; font-weight: 700; margin: 7px 0 0; }
 @media(max-width:850px) { .physical-target-summary dl { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+/* Recursos do Reurb: comparação anual e detalhe territorial na mesma ficha. */
+.territory-measures { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 14px; }
+.budget-comparison { border: 1px solid #d7e5e8; border-radius: 10px; background: #f7fafb; padding: 16px; margin: 8px 0 14px; }
+.budget-comparison > header { display: flex; gap: 16px; align-items: center; justify-content: space-between; flex-wrap: wrap; }
+.budget-comparison h3 { margin: 5px 0; color: #1b4d60; font-size: 17px; }
+.budget-comparison > header .field { margin: 0; min-width: 110px; }
+.budget-comparison-total small { display: block; color: #5e7683; font-size: 11px; margin-bottom: 5px; }
+.budget-comparison-total strong { color: #17495e; font-size: 23px; }
+.budget-action-cards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-top: 14px; }
+.budget-action-cards article { border: 1px solid #d7e3e8; border-radius: 9px; padding: 14px; background: #fff; }
+.budget-action-cards article.selected { border-color: #278293; box-shadow: inset 0 3px #278293; }
+.budget-action-cards article > span { font-size: 11px; color: #5e7683; }
+.budget-action-cards h4 { margin: 5px 0 10px; color: #234c60; font-size: 15px; }
+.budget-action-cards article > strong { font-size: clamp(18px, 2vw, 24px); color: #146a70; }
+.budget-action-cards p { font-size: 12px; color: #456675; margin: 7px 0 12px; }
+.budget-share-bar { height: 8px; margin-top: 12px; border-radius: 4px; background: #e8eef1; overflow: hidden; }
+.budget-share-bar i { display: block; height: 100%; background: #278293; border-radius: 4px; }
+.budget-summary dl { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.budget-summary dd { font-size: clamp(17px, 2vw, 23px); overflow-wrap: anywhere; }
+@media(max-width:600px) { .budget-action-cards, .budget-summary dl { grid-template-columns: 1fr; } .budget-comparison { padding: 12px; } }
