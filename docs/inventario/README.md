@@ -222,6 +222,8 @@ Não foram identificados backend Postgres, execução SIAFI, autenticação, RAG
 
 ## Conferência do inventário
 
+Conferência executada com sucesso: **1.013 verificações**, incluindo os esquemas oficiais Data Package, Tabular Data Resource e Table Schema, na [execução de validação](https://github.com/pedrokenji0/formulacao-programatica-orcamentaria/actions/runs/39498035407). O descritor tem 90 recursos, 46 definições e o CSV tem 1.469 linhas de campos.
+
 Na raiz de um checkout desta branch:
 
 ```text
