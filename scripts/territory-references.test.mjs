@@ -82,3 +82,10 @@ test('referências PPO e FJP permanecem protegidas mesmo para perfis de edição
   const next = { ...state, territory: { schemaVersion:1, regionalizations:[], series:[structuredClone(planningTargetSeries[0])] } };
   assert.throws(() => enforceTerritoryUpdate(state, next), /protegidas/);
 });
+
+test('a edição vem da descrição da fonte e não do ano corrente ou do período do indicador', () => {
+  const next = buildFjpRegionalizations({ ...source, description:'Regionalizações dos municípios de Minas Gerais (edição 2027).' }, catalog);
+  assert.equal(next.source.edition, '2027');
+  assert.ok(next.regionalizations.every(scheme => scheme.referenceYear === '2027'));
+  assert.throws(() => buildFjpRegionalizations({ ...source, description:'' }, catalog), /edição/);
+});

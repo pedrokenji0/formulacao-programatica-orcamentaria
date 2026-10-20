@@ -3,6 +3,8 @@ import { resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 export function buildFjpRegionalizations(workbook, municipalityCatalog) {
+  const edition = /edi(?:ç|c)[aã]o\s+(\d{4})/i.exec(workbook.description || '')?.[1];
+  if (!edition) throw new Error('A edição da regionalização deve estar explícita na fonte.');
   const sheet = workbook.sheets.find(sheet => sheet.name === 'Regionalização');
   if (!sheet) throw new Error('Aba Regionalização não encontrada.');
   const [headers, ...input] = sheet.rows;
@@ -26,11 +28,11 @@ export function buildFjpRegionalizations(workbook, municipalityCatalog) {
       names.set(id, label); memberships[String(row.CODIGO_MUNICIPIO)] = id;
     }
     const duplicateNames = new Set([...names.values()].filter((label, i, all) => all.indexOf(label) !== i));
-    return { id: 'fjp-' + key, name, department, ownerUnit: '', referenceYear: '2026', source: 'FJP/IMRS · edição 2026 · ' + sheet.name + ' · NOME_' + column, createdAt: workbook.fetchedAt,
-      reference: { kind: 'fjp', edition: '2026', sourceUrl: workbook.sourceUrl, sourceHash: workbook.sha256, sheet: sheet.name, column: 'NOME_' + column },
+    return { id: 'fjp-' + key, name, department, ownerUnit: '', referenceYear: edition, source: 'FJP/IMRS · edição ' + edition + ' · ' + sheet.name + ' · NOME_' + column, createdAt: workbook.fetchedAt,
+      reference: { kind: 'fjp', edition, sourceUrl: workbook.sourceUrl, sourceHash: workbook.sha256, sheet: sheet.name, column: 'NOME_' + column },
       regions: [...names].map(([id, label]) => ({ id, name: duplicateNames.has(label) ? label + ' · ' + id : label })).sort((a,b) => a.name.localeCompare(b.name, 'pt-BR')), memberships };
   });
-  return { schemaVersion: 1, source: { name: workbook.name, fileName: workbook.fileName, sourceUrl: workbook.sourceUrl, catalogUrl: workbook.catalogUrl, sha256: workbook.sha256, fetchedAt: workbook.fetchedAt, edition: '2026', access: 'public-fjp' }, regionalizations };
+  return { schemaVersion: 1, source: { name: workbook.name, fileName: workbook.fileName, sourceUrl: workbook.sourceUrl, catalogUrl: workbook.catalogUrl, sha256: workbook.sha256, fetchedAt: workbook.fetchedAt, edition, access: 'public-fjp' }, regionalizations };
 }
 if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
   const source = JSON.parse(readFileSync('data/territorio/fonte-regionalizacoes-fjp.json', 'utf8'));
