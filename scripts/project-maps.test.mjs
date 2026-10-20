@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { createProjectMapReferences, originalProjectMap } from '../src/services/projectMapReference.ts';
-import { canEditProjectMap, enforceProjectMapUpdate, projectMapForAction, projectMapsForProgram, projectMapDifferences, restoreProjectMap, restoreProjectRecord, removeProjectRecord } from '../src/services/projectMapDomain.ts';
+import { canEditProjectMap, createLocalProjectMap, projectMapsForAction, enforceProjectMapUpdate, projectMapForAction, projectMapsForProgram, projectMapDifferences, restoreProjectMap, restoreProjectRecord, removeProjectRecord } from '../src/services/projectMapDomain.ts';
 import { encodeState, decodeState } from '../src/services/planningPersistence.ts';
 import { enforceEditingUpdate } from '../src/services/proposalEditing.ts';
 
@@ -113,4 +113,74 @@ test('confirmar vínculo é explícito e remover componente não apaga a associa
   assert.equal(map.indicators.length, 12);
   restoreProjectRecord(state, map.id, 'componente', link.componentId);
   assert.ok(map.components.some((item) => item.id === link.componentId));
+});
+
+import { budgetUnitOptions, formatUnitCode, formatUnitLabel, unitCode } from '../src/services/budgetUnits.ts';
+
+test('UOs usam catálogo oficial, removem os quatro fundos/reserva e exibem códigos sem zeros', () => {
+  const records = [
+    ['01221', '01221 - SEDE'], ['1221', '1221 — SEDE'], ['04741', '04741 - Fundo Justiça'],
+    ['04441', '04441 - Fundo MP'], ['04451', '04451 - Fundo Consumidor'], ['01991', '01991 - Reserva'],
+    ['02171', '02171 - FAOP'], ['01481', '01481 - SEDESE'],
+  ].map(([codigoUnidadeOrcamentaria, unidadeOrcamentaria]) => ({ codigoUnidadeOrcamentaria, unidadeOrcamentaria }));
+  const options = budgetUnitOptions({ programs: [], actions: records });
+  assert.deepEqual(options, ['1221 — SEDE', '1481 — SEDESE', '2171 — FAOP']);
+  assert.equal(new Set(options.map(unitCode)).size, options.length);
+  assert.equal(formatUnitCode('01221'), '1221');
+  assert.equal(formatUnitLabel('01221 - SEDE'), '1221 — SEDE');
+  assert.equal(records[0].codigoUnidadeOrcamentaria, '01221');
+});
+
+test('mapas locais começam vazios, compartilham ações e não recebem referências do Reurb', () => {
+  const before = initial();
+  before.actions.push({ ...actions[2], id: 'outro-programa-acao', programaId: 'programa-externo' });
+  const state = structuredClone(before);
+  const map = createLocalProjectMap(state, { name: 'Política transversal', ownerProgramId: program.id, type: 'demais', actionIds: ['sede', 'outro-programa-acao'] });
+  state.projectMaps.push(map);
+  enforceEditingUpdate(before, state, reference);
+  assert.equal(map.origin, 'local');
+  assert.deepEqual(map.components, []);
+  assert.deepEqual(map.indicators, []);
+  assert.equal(projectMapsForAction(state, 'sede').length, 2);
+  assert.equal(projectMapsForProgram(state, 'programa-externo')[0].id, map.id);
+  assert.deepEqual(originalProjectMap(map).components, []);
+  assert.deepEqual(originalProjectMap(map).indicators, []);
+  assert.equal(state.projectMaps[0].components.length, 37);
+});
+
+test('mapas locais persistem e limpam apenas a aba escolhida, com registro no histórico', () => {
+  const baseline = initial(), state = initial();
+  const map = createLocalProjectMap(state, { name: 'Projeto novo', ownerProgramId: program.id, type: 'demais', actionIds: ['sede'] });
+  state.projectMaps.push(map);
+  map.components.push({ id: 'recurso-local', kind: 'recurso', order: 1, text: 'Equipe', origin: 'local', source: null, actionIds: ['sede'] });
+  map.indicators.push({ id: 'indicador-local', stage: 'recurso', order: 1, name: 'Pessoas', officialCode: '', formula: '', unit: 'pessoas', frequency: '', polarity: '', definition: '', dataSource: '', geography: '', referenceIndex: '', referenceDate: '', origin: 'local', source: null, links: [{ componentId: 'recurso-local', status: 'confirmado' }] });
+  enforceEditingUpdate(baseline, state, reference);
+  const restored = decodeState(encodeState(state, baseline), baseline);
+  assert.deepEqual(restored.projectMaps, state.projectMaps);
+  restoreProjectMap(state, map.id, 'mapr');
+  assert.equal(map.components.length, 0);
+  assert.equal(map.indicators.length, 1);
+  assert.equal(map.indicators[0].links[0].componentId, 'recurso-local');
+  restoreProjectMap(state, map.id, 'indicadores');
+  assert.equal(map.indicators.length, 0);
+  assert.equal(state.projectMaps[0].components.length, 37);
+  assert.equal(state.planning.history.filter((event) => event.entityId === map.id).length, 2);
+});
+
+test('criação respeita UO e perfil, valida participantes e impede mapa geral duplicado', () => {
+  const input = { name: 'Novo', ownerProgramId: program.id, type: 'programa', actionIds: [] };
+  for (const perfil of ['Leitor', 'Consulta', 'DCMEFO/SEPLAG']) {
+    const state = initial(); state.perfil = perfil;
+    assert.throws(() => createLocalProjectMap(state, input), /permissão/);
+  }
+  const state = initial(); state.perfil = 'Gestor UA'; state.unidade = '2461 — ARMVA';
+  assert.throws(() => createLocalProjectMap(state, input), /permissão/);
+  state.unidade = '1221 — SEDE';
+  assert.throws(() => createLocalProjectMap(state, { ...input, name: ' ' }), /nome/);
+  assert.throws(() => createLocalProjectMap(state, { ...input, actionIds: ['inexistente'] }), /não encontrada/);
+  state.projectMaps.push(createLocalProjectMap(state, input));
+  assert.throws(() => createLocalProjectMap(state, input), /já possui/);
+  const before = initial(), forged = initial();
+  const map = createLocalProjectMap(forged, input); map.components = structuredClone(forged.projectMaps[0].components); forged.projectMaps.push(map);
+  assert.throws(() => enforceProjectMapUpdate(before, forged), /protegidas/);
 });

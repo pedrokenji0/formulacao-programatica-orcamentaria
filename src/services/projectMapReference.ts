@@ -28,10 +28,14 @@ export function createProjectMapReferences(actions: Action[]): ProjectPlanningMa
   }];
 }
 
+export function hasProjectMapReference(map: ProjectPlanningMap) {
+  return map.origin !== 'local' && map.id === maps.data[0].mapa_id && map.projectId === projects.data[0].projeto_id && map.referenceVersion === 'mapa-minas-reurb-relatorio2025-v1';
+}
+
 export function originalProjectMap(map: ProjectPlanningMap): ProjectPlanningMap {
   // The metadata identifies the same logical map; reference content is always rebuilt
   // from the versioned source, never from localStorage or the current proposal.
-  return { ...structuredClone(map), ...referenceContent() };
+  return { ...structuredClone(map), ...(hasProjectMapReference(map) ? referenceContent() : { components: [], indicators: [], relations: [] }) };
 }
 
 function referenceContent(): Pick<ProjectPlanningMap, 'components' | 'indicators' | 'relations'> {

@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Building2, Menu, UserRound, X } from 'lucide-react';
 import { SidebarMenu } from './SidebarMenu';
 import { useApp } from '../store/AppStore';
+import { budgetUnitOptions, unitCode } from '../services/budgetUnits';
 import type { Perfil } from '../types';
 
 const PERFIS: Perfil[] = ['Leitor', 'Gestor UA', 'Gestor Setorial', 'Central Geral', 'Consulta', 'Técnico do Órgão', 'Validador do Órgão', 'DCMEFO/SEPLAG', 'Administrador'];
@@ -10,7 +11,9 @@ const portalLogo = `${import.meta.env.BASE_URL}logo-portal-planejamento.svg`;
 export function AppShell({ route, onNavigate, area, children }: {
   route: string; onNavigate: (id: string) => void; area: string; children: React.ReactNode;
 }) {
-  const { state, setPerfil, setUnidade } = useApp();
+  const { state, reference, setPerfil, setUnidade } = useApp();
+  const units = budgetUnitOptions(reference);
+  const selectedUnit = units.find((unit) => unitCode(unit) === unitCode(state.unidade)) || '';
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
@@ -39,8 +42,8 @@ export function AppShell({ route, onNavigate, area, children }: {
         <div className="spacer" />
         <div className="top-select">
           <Building2 size={15} />
-          <select value={state.unidade} onChange={(e) => setUnidade(e.target.value)} title="Unidade">
-            {state.lists.unidades.map((u) => <option key={u} value={u}>{u}</option>)}
+          <select value={selectedUnit} onChange={(e) => setUnidade(e.target.value)} title="Unidade">
+            <option value="">Selecione uma UO</option>{units.map((u) => <option key={u} value={u}>{u}</option>)}
           </select>
         </div>
         <div className="top-select profile-sel">

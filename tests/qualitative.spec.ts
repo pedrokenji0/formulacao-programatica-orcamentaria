@@ -14,11 +14,13 @@ const openProgramMap = async (page: Page) => {
   await button(page, 'Mapas de planejamento');
   const picker = page.getByLabel('Mapa em edição', { exact: true });
   if (await picker.count()) await picker.selectOption('programa');
+  await page.getByText('Conteúdo anterior do programa', { exact: true }).click();
+  await button(page, 'Abrir editor anterior');
 };
 const openSection = async (page: Page, name: string) => button(page, `Abrir ${name}`);
 const open = async (page: Page) => { await page.goto('./'); await expect(page.getByLabel('Programa ativo', { exact: true })).toBeVisible(); };
 const selectAction = async (page: Page, action: typeof sede) => {
-  const label = `${action.codigo || 'Sem código oficial'} · UO ${action.codigoUnidadeOrcamentaria || 'não informada'} · ${action.nome || 'Ação em rascunho'}`;
+  const label = `${action.codigo || 'Sem código oficial'} · UO ${String(action.codigoUnidadeOrcamentaria || '').replace(/^0+(?=\d)/, '') || 'não informada'} · ${action.nome || 'Ação em rascunho'}`;
   await page.getByRole('combobox', { name: 'Ação', exact: true }).fill(label);
   await page.getByRole('option', { name: label, exact: true }).click();
 };

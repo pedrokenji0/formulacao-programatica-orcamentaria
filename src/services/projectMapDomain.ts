@@ -12,9 +12,27 @@ const same = (left: unknown, right: unknown) => JSON.stringify(left) === JSON.st
 export function projectMapsForProgram(state: AppState, programId: string) {
   return (state.projectMaps || []).filter((map) => map.ownerProgramId === programId || map.actionIds.some((id) => state.actions.some((action) => action.id === id && action.programaId === programId)));
 }
-export function projectMapForAction(state: AppState, actionId: string) {
-  return (state.projectMaps || []).find((map) => map.actionIds.includes(actionId));
+export function projectMapsForAction(state: AppState, actionId: string) {
+  return (state.projectMaps || []).filter((map) => map.actionIds.includes(actionId));
 }
+export function projectMapForAction(state: AppState, actionId: string) {
+  return projectMapsForAction(state, actionId)[0];
+}
+export function projectMapLabel(map: ProjectPlanningMap) {
+  return map.projectType === 'programa' ? 'Mapa geral do programa' : map.origin === 'local' ? 'Demais projetos/processos' : `Projeto estratégico ${map.projectCode}`;
+}
+export function createLocalProjectMap(state: AppState, input: { name: string; ownerProgramId: string; actionIds: string[]; type: 'demais' | 'programa' }): ProjectPlanningMap {
+  const owner = state.programs.find((program) => program.id === input.ownerProgramId);
+  if (!owner || !canEditRecord(state, 'program', owner)) throw new Error('Sem permissão para criar mapa neste programa.');
+  if (!input.name.trim()) throw new Error('Informe o nome do projeto ou processo.');
+  if (input.type === 'programa' && state.projectMaps?.some((map) => map.projectType === 'programa' && map.ownerProgramId === input.ownerProgramId)) throw new Error('Este programa já possui um mapa geral.');
+  if (input.actionIds.some((id) => !state.actions.some((action) => action.id === id))) throw new Error('Ação participante não encontrada.');
+  const id = crypto.randomUUID();
+  return { id: `mapa-local-${id}`, projectId: `projeto-local-${id}`, projectCode: '', projectName: input.name.trim(),
+    origin: 'local', projectType: input.type, createdAt: new Date().toISOString(), ownerProgramId: input.ownerProgramId,
+    actionIds: [...new Set(input.actionIds)], referenceVersion: 'local-v1', components: [], indicators: [], relations: [] };
+}
+
 export function canEditProjectMap(state: AppState, map: ProjectPlanningMap) {
   const program = state.programs.find((record) => record.id === map.ownerProgramId);
   return !!program && canEditRecord(state, 'program', program);
@@ -91,17 +109,23 @@ export function projectMapDifferences(map: ProjectPlanningMap, view?: 'mapr' | '
 export function enforceProjectMapUpdate(previous: AppState, next: AppState) {
   const before = previous.projectMaps || [];
   const after = next.projectMaps || [];
-  if (new Set(after.map((map) => map.id)).size !== after.length || new Set(after.map((map) => map.projectId)).size !== after.length) throw new Error('Cada projeto estratégico deve ter um único mapa.');
+  if (new Set(after.map((map) => map.id)).size !== after.length || new Set(after.map((map) => map.projectId)).size !== after.length) throw new Error('Cada projeto ou processo deve ter um único mapa.');
   for (const map of before) if (!after.some((record) => record.id === map.id)) throw new Error('O mapa lógico do projeto deve ser preservado.');
   for (const map of after) {
     const old = before.find((record) => record.id === map.id);
     if (same(old, map)) continue;
-    if (!old || !canEditProjectMap(previous, old)) throw new Error('Sem permissão para alterar o mapa deste projeto.');
-    for (const key of ['id', 'projectId', 'projectCode', 'projectName', 'ownerProgramId', 'actionIds', 'referenceVersion'] as const) if (!same(old[key], map[key])) throw new Error('Identificação e vínculos de referência do mapa são protegidos.');
-    const reference = originalProjectMap(old);
+    if (!canEditProjectMap(previous, old || map)) throw new Error('Sem permissão para alterar o mapa deste projeto.');
+    if (!old) {
+      if (map.origin !== 'local' || !['demais', 'programa'].includes(map.projectType || '') || map.referenceVersion !== 'local-v1' || map.projectCode !== '' || !map.id.startsWith('mapa-local-') || !map.projectId.startsWith('projeto-local-') || !map.projectName.trim()) throw new Error('Novo mapa deve ser um rascunho local identificado.');
+      if (!map.createdAt || !Number.isFinite(Date.parse(map.createdAt))) throw new Error('Data de criação do mapa inválida.');
+      if (map.projectType === 'programa' && after.some((other) => other.id !== map.id && other.projectType === 'programa' && other.ownerProgramId === map.ownerProgramId)) throw new Error('Este programa já possui um mapa geral.');
+    }
+    if (new Set(map.actionIds).size !== map.actionIds.length || map.actionIds.some((id) => !next.actions.some((action) => action.id === id))) throw new Error('Ações participantes inválidas.');
+    for (const key of ['id', 'projectId', 'projectCode', 'projectName', 'ownerProgramId', 'actionIds', 'referenceVersion', 'origin', 'projectType', 'createdAt'] as const) if (old && !same(old[key], map[key])) throw new Error('Identificação e vínculos de referência do mapa são protegidos.');
+    const reference = originalProjectMap(old || map);
     const ids = [...map.components, ...map.indicators].map((item) => item.id);
     if (new Set(ids).size !== ids.length) throw new Error('Identificadores de componentes e indicadores devem ser únicos.');
-    for (const [records, originals, existing] of [[map.components, reference.components, old.components], [map.indicators, reference.indicators, old.indicators]] as const) {
+    for (const [records, originals, existing] of [[map.components, reference.components, old?.components || []], [map.indicators, reference.indicators, old?.indicators || []]] as const) {
       for (const record of records) {
         const original = originals.find((item) => item.id === record.id);
         const baseline = existing.find((item) => item.id === record.id);
@@ -119,7 +143,7 @@ export function enforceProjectMapUpdate(previous: AppState, next: AppState) {
       if (new Set(indicator.links.map((link) => link.componentId)).size !== indicator.links.length) throw new Error('Associação duplicada.');
       for (const link of indicator.links) {
         if (!['sugerido', 'confirmado'].includes(link.status)) throw new Error('Situação de associação inválida.');
-        const baseline = old.indicators.find((record) => record.id === indicator.id)?.links.find((item) => item.componentId === link.componentId);
+        const baseline = old?.indicators.find((record) => record.id === indicator.id)?.links.find((item) => item.componentId === link.componentId);
         const original = reference.indicators.find((record) => record.id === indicator.id)?.links.find((item) => item.componentId === link.componentId);
         if (!same(baseline, link) && !same(original, link) && !map.components.some((component) => component.id === link.componentId && CHAIN_STAGES.includes(component.kind as typeof CHAIN_STAGES[number]))) throw new Error('Componente não encontrado no mapa.');
       }

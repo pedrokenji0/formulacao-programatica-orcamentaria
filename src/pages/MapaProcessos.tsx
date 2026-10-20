@@ -15,7 +15,9 @@ import { ValidationPanel, type Issue } from '../components/ValidationPanel';
 import { CoherenceScore } from '../components/CoherenceScore';
 import type { Action, ProcessMap, ProcessAction, MapItem } from '../types';
 import { Link2, Plus, Trash2, Save } from 'lucide-react';
-import { projectMapsForProgram } from '../services/projectMapDomain';
+import { canEditRecord } from '../services/editingPolicy';
+import { ProjectMapCreator } from './qualitative/ProjectMapCreator';
+import { projectMapLabel, projectMapsForProgram } from '../services/projectMapDomain';
 import { ProjectMapWorkspace } from './qualitative/ProjectMapWorkspace';
 
 function emptyMap(programId: string, problema: string): ProcessMap {
@@ -43,14 +45,27 @@ function AddRow({ categorias, onAdd, placeholder, disabled }: { categorias?: str
 export function MapaProcessosPage({ initialTab, qualitative = false, initialProjectMapId }: { initialTab?: string; qualitative?: boolean; initialProjectMapId?: string }) {
   const { state } = useApp();
   const projects = projectMapsForProgram(state, state.currentProgramId);
-  const [selected, setSelected] = useState(initialProjectMapId || projects[0]?.id || 'programa');
+  const initial = projects.find((record) => record.id === initialProjectMapId) || projects[0];
+  const [selected, setSelected] = useState(initial?.id || 'programa');
+  const [creating, setCreating] = useState(false);
+  const [legacy, setLegacy] = useState(false);
   const map = projects.find((record) => record.id === selected);
+  const program = state.programs.find((record) => record.id === state.currentProgramId)!;
+  const editable = canEditRecord(state, 'program', program);
   return <>
-    {!!projects.length && <label className="planning-selector project-map-picker"><span>Projeto ou programa</span><select aria-label="Mapa em edição" value={map?.id || 'programa'} onChange={(event) => setSelected(event.target.value)}>
-      {projects.map((project) => <option key={project.id} value={project.id}>{project.projectName} · Projeto estratégico {project.projectCode}</option>)}
-      <option value="programa">Mapa geral do programa</option>
-    </select></label>}
-    {map ? <ProjectMapWorkspace key={map.id} map={map} /> : <ProgramMapEditor initialTab={initialTab} qualitative={qualitative} />}
+    <div className="section-actions">
+      <label className="planning-selector project-map-picker"><span>Projeto ou programa</span><select aria-label="Mapa em edição" value={map?.id || 'programa'} onChange={(event) => { setSelected(event.target.value); setLegacy(false); }}>
+        {projects.map((project) => <option key={project.id} value={project.id}>{project.projectName} · {projectMapLabel(project)}</option>)}
+        <option value="programa">Novo mapa / conteúdo anterior</option>
+      </select></label>
+      <ActionButton icon={<Plus size={15} />} disabled={!editable} onClick={() => setCreating(true)}>Criar mapa do zero</ActionButton>
+    </div>
+    {map ? <ProjectMapWorkspace key={map.id} map={map} /> : <>
+      <Card title="Mapas de planejamento"><p>Crie o mapa de um projeto, processo ou programa usando as mesmas abas e fichas do Minas Reurb.</p><p>MaPR e indicadores começam vazios e podem ser preenchidos de forma independente.</p><ActionButton icon={<Plus size={15} />} disabled={!editable} onClick={() => setCreating(true)}>Criar mapas de planejamento</ActionButton></Card>
+      <details className="reference-panel"><summary>Conteúdo anterior do programa</summary><p>Os dados do editor anterior permanecem preservados.</p><ActionButton color="ghost" onClick={() => setLegacy(!legacy)}>{legacy ? 'Fechar editor anterior' : 'Abrir editor anterior'}</ActionButton></details>
+      {legacy && <ProgramMapEditor initialTab={initialTab} qualitative={qualitative} />}
+    </>}
+    {creating && <ProjectMapCreator onClose={() => setCreating(false)} onCreated={(id) => { setSelected(id); setLegacy(false); setCreating(false); }} />}
   </>;
 }
 
